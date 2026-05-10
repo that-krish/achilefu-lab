@@ -15,7 +15,7 @@ This site is hosted independently of the UTSW domain. Target production domain: 
 This repository tracks the **full WordPress install** rooted at `app/public/`: WP core, theme, and plugins. The following are intentionally excluded (see [.gitignore](.gitignore)):
 
 - `wp-config.php` — contains DB credentials; clone `wp-config-sample.php` locally
-- `wp-content/uploads/` — per-environment binary content
+- `wp-content/uploads/` — tracked intentionally (lab site has modest media); keep images compressed
 - Caches, upgrade temp dirs, logs
 - LocalWP runtime artifacts (`local-xdebuginfo.php`, etc.)
 

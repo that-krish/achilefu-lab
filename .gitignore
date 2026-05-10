@@ -8,8 +8,10 @@ wp-config-local.php
 local-xdebuginfo.php
 local-phpinfo.php
 
-# --- User uploads (per-environment, large binaries) ---
-wp-content/uploads/
+# --- User uploads ---
+# Tracked intentionally — lab site has modest media (headshots, lab photos, logo).
+# Keep images compressed. If uploads ever grow large, revisit and use Git LFS.
+# wp-content/uploads/
 
 # --- Caches and upgrade temp dirs ---
 wp-content/cache/

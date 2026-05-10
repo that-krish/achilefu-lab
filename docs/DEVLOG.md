@@ -23,13 +23,13 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 10:49 CDT** by Claude (Opus 4.7).
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 11:04 CDT** by Claude (Sonnet 4.6).
 
 ### Status by area
 
 | Area | Status | Notes |
 |---|---|---|
-| Repo + README | ✅ Done | Initial WordPress install committed (`15febfcf`), README written and pushed (`7cd449cd`). |
+| Repo + README | ✅ Done | Initial WordPress install committed (`15febfcf`), README written and pushed (`7cd449cd`). `.gitignore` updated to track uploads. |
 | Documentation scaffolding | ✅ Done | `docs/DESIGN.md` and `docs/DEVLOG.md` (this file) created. Both committed under `app/public/docs/`. |
 | Design system spec | 🟡 Proposed, not approved | DESIGN.md has a starter palette (deep navy + imaging cyan), IBM Plex type system, accessibility rules. **None of it is approved by Dr. Achilefu or the team yet.** |
 | Design system implementation | ⏹ Not started | Kadence is at default settings. No CSS variables / Customizer changes / Global Colors set. The site does *not* visually reflect DESIGN.md yet. |
@@ -110,6 +110,25 @@ What's still open. Link to a TODO, an issue, or just a sentence.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+### 2026-05-10 11:04 CDT — Track wp-content/uploads/ in git
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main   ·   **Commits:** pending
+
+**What changed**
+Removed `wp-content/uploads/` from [.gitignore](../.gitignore) so images are tracked in the repo. Updated [README.md](../README.md) to reflect this.
+
+**Why**
+The default gitignore excludes uploads for large production sites where media balloons to gigabytes. This lab site has modest, intentionally compressed media (headshots, lab photos, logo) — tracking it in git means the repo is fully self-contained and switching between machines (Windows dev box ↔ MacBook) requires only `git pull`, no manual file copying.
+
+**Watch out for**
+- Keep images compressed before committing. No raw photos, no 4K exports. A good rule of thumb: nothing over 500KB per image, total uploads folder under 50MB.
+- If media ever grows large, revisit and migrate to Git LFS (`git lfs track "wp-content/uploads/**"`). The comment in `.gitignore` flags this.
+- The `wp-content/uploads/` folder may not exist yet locally if no images have been uploaded. Git won't track an empty folder — that's fine.
+
+**Next**
+No action needed. Start uploading images normally; they'll be included in the next `git add`.
+
 
 ### 2026-05-10 10:49 CDT — Repo bootstrap, README, and design documentation scaffolding
 
