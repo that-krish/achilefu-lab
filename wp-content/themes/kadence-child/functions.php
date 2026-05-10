@@ -8,9 +8,16 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style(
+		'al-dm-sans',
+		'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
+		[],
+		null
+	);
+
+	wp_enqueue_style(
 		'kadence-child',
 		get_stylesheet_uri(),
-		[ 'kadence-global' ],  // loads after Kadence's CSS so our overrides win
+		[ 'kadence-global', 'al-dm-sans' ],  // loads after Kadence's CSS so our overrides win
 		wp_get_theme()->get( 'Version' )
 	);
 } );
