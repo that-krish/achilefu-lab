@@ -25,6 +25,7 @@ Two living documents in [docs/](docs/) capture the *intent* and *history* behind
 
 - **[docs/DESIGN.md](docs/DESIGN.md)** — design decisions: color palette, typography, layout principles, imagery direction, voice, and accessibility commitments. The current source of truth for *what the site should look and feel like*. Decisions are versioned in place; superseded ones move to a section at the bottom.
 - **[docs/DEVLOG.md](docs/DEVLOG.md)** — development log: a Current State snapshot at the top (status by area, active work, blocked items — overwritten each session) and an append-only narrative of every meaningful change below. Read sections 1–2 first to orient on where the project stands; sections 3–4 cover conventions and history. Every contributor (human or Claude) is expected to keep this current.
+- **[docs/GOLIVE.md](docs/GOLIVE.md)** — go-live checklist: every step required to migrate the site to production, configure the cloud server, and launch `achilefulab.org`. Update this throughout development as new requirements are discovered. Work through it top to bottom at launch time.
 
 ## Local development
 
