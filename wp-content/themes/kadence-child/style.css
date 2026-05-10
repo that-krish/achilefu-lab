@@ -1,0 +1,1447 @@
+/*
+Theme Name:  Kadence Child
+Template:    kadence
+Description: Achilefu Lab child theme — custom home page and global overrides.
+Version:     1.2.0
+Author:      Krish / Salmon
+*/
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL — page gradient (home page only)
+   WordPress adds class="home" to <body> on the static front page.
+───────────────────────────────────────────────────────────── */
+body.home {
+  /* Diagonal gradient: pale slate-teal → near-white → cooler pale blue.
+     Coordinates with #2D4654 primary + #87BCDE accent. Very low saturation
+     so it reads as "premium background" rather than "coloured page". */
+  background: linear-gradient(
+    168deg,
+    #cfdde8 0%,
+    #e4eef5 22%,
+    #f0f6f9 50%,
+    #e8f1f7 75%,
+    #d8e6ef 100%
+  );
+  min-height: 100vh;
+}
+
+/* Kadence's wrapper divs must be transparent so the body gradient shows through */
+body.home #wrapper,
+body.home #inner-wrap {
+  background: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL DESIGN TOKENS — available on every page.
+   .al-home re-declares the same values in its own scope so
+   inner-page and header CSS can reference them via var().
+───────────────────────────────────────────────────────────── */
+:root {
+  --al-primary:   #2D4654;
+  --al-accent:    #87BCDE;
+  --al-text:      #1A1F2C;
+  --al-muted:     #5C6675;
+  --al-border:    #dde6ec;
+  --al-card:      #ffffff;
+  --al-white:     #ffffff;
+  --al-max-w:     1200px;
+  --r-control:    10px;
+  --r-card:       20px;
+  --r-panel:      24px;
+  --r-icon:       14px;
+  --r-badge:      100px;
+  --shadow-card:  0 2px 20px rgba(35, 60, 78, 0.08);
+  --shadow-panel: 0 6px 44px rgba(35, 60, 78, 0.11);
+  --shadow-hover: 0 12px 40px rgba(35, 60, 78, 0.16);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOME PAGE — all CSS namespaced under .al-home
+───────────────────────────────────────────────────────────── */
+
+/* ── Design tokens ── */
+.al-home {
+  --al-primary:   var(--global-palette1, #2D4654);
+  --al-accent:    var(--global-palette3, #87BCDE);
+  --al-text:      #1A1F2C;
+  --al-muted:     #5C6675;
+  --al-border:    #dde6ec;
+  --al-card:      #ffffff;
+  --al-white:     #ffffff;
+  --al-max-w:     1200px;
+
+  /* Corner radii — Apple system */
+  --r-control:    10px;
+  --r-card:       20px;
+  --r-panel:      24px;
+  --r-icon:       14px;
+  --r-badge:      100px;
+
+  /* Shadows — slightly cooler tint to match gradient palette */
+  --shadow-card:  0 2px 20px rgba(35, 60, 78, 0.08);
+  --shadow-panel: 0 6px 44px rgba(35, 60, 78, 0.11);
+  --shadow-hover: 0 12px 40px rgba(35, 60, 78, 0.16);
+}
+
+.al-home * { box-sizing: border-box; }
+
+/* ── Container ── */
+.al-container {
+  max-width: var(--al-max-w);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* ── Section heading ── */
+.al-section-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--al-text);
+  text-align: center;
+  margin: 0 0 3rem;
+  letter-spacing: -0.015em;
+}
+
+/* ── Buttons ── */
+.al-btn {
+  display: inline-block;
+  padding: 0.75rem 1.625rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--r-control);
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.al-btn:hover {
+  opacity: 0.88;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.al-btn--primary {
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.al-btn--secondary {
+  background: rgba(255,255,255,0.12);
+  color: #000;
+  border: 2px solid rgba(0,0,0,0.65);
+}
+
+/* ───────────────────────────────────────────────
+   1. HERO  — parallax image section
+   Dark overlay via ::before so content is always readable.
+   Fallback: background-color = primary when hero-bg.jpg absent.
+─────────────────────────────────────────────── */
+.al-hero {
+  position: relative;
+  background-color: var(--al-primary);
+  background-image: url('/wp-content/uploads/hero-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+  padding: 8rem 0 7.5rem;
+  overflow: hidden;
+}
+
+/* Combined overlay: dark gradient + right-side accent radial */
+.al-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 48%, rgba(135,188,222,0.13) 0%, transparent 52%),
+    linear-gradient(150deg, rgba(20, 43, 56, 0.93) 0%, rgba(45, 70, 84, 0.87) 100%);
+  z-index: 0;
+}
+
+.al-hero .al-container { position: relative; z-index: 1; }
+
+/* Eyebrow — pill badge */
+.al-hero__eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--al-accent);
+  background: rgba(135,188,222,0.12);
+  border: 1px solid rgba(135,188,222,0.28);
+  border-radius: var(--r-badge);
+  padding: 0.35rem 0.9rem;
+  margin: 0 0 1.5rem;
+}
+
+.al-hero__headline {
+  font-size: clamp(2.125rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.09;
+  letter-spacing: -0.025em;
+  color: var(--al-white);
+  max-width: 680px;
+  margin: 0 0 1.375rem;
+}
+
+.al-hero__sub {
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.70);
+  max-width: 520px;
+  margin: 0 0 2.75rem;
+}
+
+.al-hero__actions { display: flex; flex-wrap: wrap; gap: 0.875rem; }
+
+.al-hero .al-btn--primary {
+  background: var(--al-white);
+  color: var(--al-primary);
+  border-color: var(--al-white);
+}
+
+.al-hero .al-btn--secondary {
+  background: rgba(255,255,255,0.10);
+  color: var(--al-white);
+  border-color: rgba(255,255,255,0.40);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.al-hero .al-btn--secondary:hover { border-color: rgba(255,255,255,0.72); }
+
+/* ───────────────────────────────────────────────
+   2. RESEARCH PILLARS
+   Transparent — body gradient shows through.
+   Each pillar = white card floating on gradient.
+─────────────────────────────────────────────── */
+.al-pillars {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+.al-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.al-pillar {
+  display: flex;
+  flex-direction: column;
+  background: var(--al-card);
+  border-radius: var(--r-card);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.al-pillar:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.al-pillar__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(135,188,222,0.14);
+  border-radius: var(--r-icon);
+  padding: 13px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--al-primary);
+  flex-shrink: 0;
+}
+
+.al-pillar__icon svg { width: 30px; height: 30px; }
+
+.al-pillar__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.625rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.al-pillar__desc {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  color: var(--al-muted);
+  margin: 0;
+}
+
+/* ───────────────────────────────────────────────
+   3. PI SPOTLIGHT
+   Transparent — body gradient shows through.
+   Inner block = one large white panel.
+─────────────────────────────────────────────── */
+.al-pi {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+.al-pi__inner {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: var(--al-card);
+  border-radius: var(--r-panel);
+  padding: 3rem 3.5rem;
+  box-shadow: var(--shadow-panel);
+}
+
+.al-pi__photo-wrap img,
+.al-pi__photo-placeholder {
+  width: 100%;
+  display: block;
+  border-radius: var(--r-card);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #e4eef5;
+  max-width: 360px;
+}
+
+.al-pi__photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.al-pi__photo-placeholder svg { width: 100%; height: 100%; }
+
+.al-pi__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--al-muted);
+  margin: 0 0 0.5rem;
+}
+
+.al-pi__name {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 1.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.al-pi__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.al-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--r-badge);
+  border: 1px solid var(--al-border);
+  color: var(--al-muted);
+  background: #eef4f8;
+  white-space: nowrap;
+}
+
+.al-pi__bio {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--al-muted);
+  margin: 0 0 2rem;
+}
+
+/* ───────────────────────────────────────────────
+   4. LAB IN NUMBERS — parallax image section
+   Same treatment as hero: image + dark overlay.
+   Second image: wp-content/uploads/lab-bg.jpg
+   Fallback: solid primary color when image absent.
+─────────────────────────────────────────────── */
+.al-numbers {
+  position: relative;
+  background-color: var(--al-primary);
+  background-image: url('/wp-content/uploads/lab-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.al-numbers::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 40, 52, 0.94) 0%,
+    rgba(45, 70, 84, 0.88) 100%
+  );
+  z-index: 0;
+}
+
+.al-numbers .al-container { position: relative; z-index: 1; }
+
+.al-numbers__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.al-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--r-card);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.al-stat__value {
+  font-size: clamp(2.25rem, 4.5vw, 3.125rem);
+  font-weight: 700;
+  color: var(--al-white);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.al-stat__label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+  max-width: 110px;
+}
+
+/* ───────────────────────────────────────────────
+   5. LATEST FROM THE LAB
+   Transparent — body gradient shows through.
+─────────────────────────────────────────────── */
+.al-blog {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+.al-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.al-card {
+  background: var(--al-card);
+  border-radius: var(--r-card);
+  padding: 2rem 1.875rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.al-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.al-card__meta {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--al-muted);
+  margin-bottom: 0.875rem;
+}
+
+.al-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.al-card__title a { color: inherit; text-decoration: none; }
+.al-card__title a:hover { color: var(--al-primary); }
+
+.al-card__excerpt {
+  font-size: 0.9rem;
+  line-height: 1.72;
+  color: var(--al-muted);
+  flex: 1;
+  margin: 0 0 1.375rem;
+}
+
+.al-card__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--al-primary);
+  text-decoration: none;
+}
+
+.al-card__link:hover { text-decoration: underline; }
+
+.al-blog__cta { text-align: center; }
+
+.al-blog__empty {
+  color: var(--al-muted);
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+}
+
+/* ───────────────────────────────────────────────
+   6. AFFILIATIONS
+   White card strip — grounds the page bottom.
+─────────────────────────────────────────────── */
+.al-affiliations {
+  padding: 3rem 0;
+  background: transparent;
+}
+
+/* Inner wrapper as a white pill-card */
+.al-affiliations .al-container {
+  background: var(--al-card);
+  border-radius: var(--r-panel);
+  padding: 2.5rem 3rem;
+  box-shadow: var(--shadow-card);
+}
+
+.al-affiliations__label {
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--al-muted);
+  margin: 0 0 1.75rem;
+  opacity: 0.65;
+}
+
+.al-affiliations__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem 3.5rem;
+}
+
+.al-affiliation-item {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #A8B8C4;
+  letter-spacing: 0.02em;
+}
+
+.al-affiliation-item img {
+  height: 36px;
+  width: auto;
+  max-width: 160px;
+  opacity: 0.45;
+  filter: grayscale(1);
+  transition: opacity 0.2s ease;
+  display: block;
+}
+
+.al-affiliation-item img:hover { opacity: 0.72; }
+
+/* ───────────────────────────────────────────────
+   RESPONSIVE
+─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .al-pi__inner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding: 2.25rem;
+  }
+
+  .al-pi__photo-wrap { max-width: 260px; }
+
+  .al-numbers__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .al-hero { padding: 5.5rem 0 5rem; }
+  .al-pillars, .al-pi, .al-blog { padding: 4rem 0; }
+  .al-numbers { padding: 3.5rem 0; }
+
+  .al-hero__actions { flex-direction: column; align-items: flex-start; }
+  .al-hero__actions .al-btn { width: 100%; text-align: center; }
+
+  .al-pillar { padding: 1.75rem 1.5rem; }
+
+  .al-pi__inner {
+    border-radius: var(--r-card);
+    padding: 1.75rem;
+  }
+
+  .al-numbers__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .al-stat { padding: 1.5rem 1rem; }
+
+  .al-affiliations .al-container {
+    border-radius: var(--r-card);
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+/* Disable fixed-attachment on mobile — iOS Safari renders it broken */
+@media (max-width: 768px) {
+  .al-hero,
+  .al-numbers {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-btn, .al-card, .al-pillar { transition: none; }
+  .al-card:hover, .al-pillar:hover, .al-btn:hover { transform: none; }
+  /* Disable parallax for users who prefer reduced motion */
+  .al-hero, .al-numbers { background-attachment: scroll; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SITE HEADER
+   Static (scrolls with page). Frosted glass on home page,
+   solid white everywhere else.
+   Tokens scoped to .al-site-header so they don't bleed globally.
+───────────────────────────────────────────────────────────── */
+/* Nuclear override — ID beats everything without needing !important on every property */
+#masthead {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100%;
+  z-index: 200;
+}
+.admin-bar #masthead { top: 32px !important; }
+@media screen and (max-width: 782px) {
+  .admin-bar #masthead { top: 46px !important; }
+}
+
+.al-site-header {
+  --h-primary:    #2D4654;
+  --h-accent:     #87BCDE;
+  --h-text:       #374151;
+  --h-muted:      #6B7280;
+  --h-height:     68px;
+  --h-radius-btn: 9px;
+  --h-radius-dd:  14px;
+
+  /* ID+class selector + !important beats Kadence's #masthead{position:relative} */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 200;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Admin bar (logged-in users) pushes everything down */
+.admin-bar .al-site-header { top: 32px !important; }
+@media screen and (max-width: 782px) {
+  .admin-bar .al-site-header { top: 46px !important; }
+}
+
+/* On the home page the gradient is behind the header — go glass */
+body.home .al-site-header {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Inner layout ── */
+.al-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.75rem;
+  height: var(--h-height);
+}
+
+/* ── Logo ── */
+.al-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.al-logo-mark {
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: var(--h-primary);
+  border-radius: 7px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Small inner accent dot */
+.al-logo-mark::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  background: var(--h-accent);
+  border-radius: 2px;
+}
+
+.al-logo-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--h-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.al-logo-text strong {
+  font-weight: 700;
+}
+
+.al-logo:hover .al-logo-text { opacity: 0.8; }
+
+/* ── Primary nav wrapper ── */
+.al-primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  /* flex: 1 fills space between logo and CTA; items right-aligned */
+  flex: 1;
+  justify-content: flex-end;
+  margin-inline: 1rem;
+}
+
+/* ── Nav group (trigger + dropdown) ── */
+.al-nav-group {
+  position: relative;
+}
+
+.al-nav-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--h-text);
+  border-radius: 8px;
+  line-height: 1;
+  transition: background 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
+}
+
+.al-nav-label:hover,
+.al-nav-group:hover .al-nav-label,
+.al-nav-group:focus-within .al-nav-label {
+  background: rgba(45, 70, 84, 0.07);
+  color: var(--h-primary);
+}
+
+.al-chevron {
+  flex-shrink: 0;
+  opacity: 0.45;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.al-nav-group:hover .al-chevron,
+.al-nav-group:focus-within .al-chevron {
+  transform: rotate(180deg);
+  opacity: 0.7;
+}
+
+/* ── Dropdown panel ── */
+.al-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 210px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: var(--h-radius-dd);
+  box-shadow: 0 8px 40px rgba(35, 60, 78, 0.13);
+  padding: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Invisible bridge so cursor can move from trigger to dropdown */
+.al-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.al-nav-group:hover .al-dropdown,
+.al-nav-group:focus-within .al-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.al-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.855rem;
+  font-weight: 400;
+  color: var(--h-text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.1s ease, color 0.1s ease;
+  white-space: nowrap;
+}
+
+.al-dropdown a:hover {
+  background: rgba(45, 70, 84, 0.07);
+  color: var(--h-primary);
+}
+
+.al-dropdown-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 5px 8px;
+  border: none;
+}
+
+/* ── Header end: CTA + hamburger ── */
+.al-header-end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.al-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: var(--h-primary);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--h-radius-btn);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+.al-contact-cta:hover {
+  background: #1e3340;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(45, 70, 84, 0.28);
+  color: #ffffff;
+}
+
+/* ── Hamburger ── */
+.al-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.12s ease;
+}
+
+.al-hamburger:hover { background: rgba(45, 70, 84, 0.07); }
+
+.al-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--h-text);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+
+.al-hamburger.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.al-hamburger.is-active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.al-hamburger.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile nav ── */
+@media (max-width: 899px) {
+  .al-hamburger { display: flex; }
+
+  /* Compact the CTA on small screens so it fits beside the hamburger */
+  .al-contact-cta {
+    padding: 7px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .al-primary-nav {
+    display: none;
+    position: absolute;
+    top: 100%; /* flush below the header */
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 12px 40px rgba(35, 60, 78, 0.12);
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    flex: none;
+    margin-inline: 0;
+    z-index: 9;
+  }
+
+  .al-primary-nav.is-open { display: flex; }
+
+  .al-nav-group { width: 100%; }
+
+  .al-nav-label {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 12px;
+    font-size: 0.9375rem;
+  }
+
+  /* Mobile dropdown: not absolute, expands in-flow */
+  .al-dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 0 4px 12px;
+    background: transparent;
+    display: none;
+  }
+
+  .al-nav-group.is-open .al-dropdown { display: block; }
+
+  .al-nav-group.is-open .al-chevron {
+    transform: rotate(180deg);
+    opacity: 0.7;
+  }
+
+  .al-dropdown a {
+    font-size: 0.875rem;
+    color: var(--h-muted);
+    padding: 7px 12px;
+  }
+
+  .al-dropdown a:hover { color: var(--h-primary); }
+
+  .al-dropdown-divider { margin: 4px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-site-header,
+  .al-nav-label,
+  .al-contact-cta,
+  .al-dropdown,
+  .al-chevron,
+  .al-hamburger span { transition: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INNER PAGES — shared layout for Research, Team, Calendar, etc.
+───────────────────────────────────────────────────────────── */
+.al-inner-page {
+  background: #ffffff;
+}
+
+.al-inner-page *,
+.al-inner-page *::before,
+.al-inner-page *::after { box-sizing: border-box; }
+
+/* ── Page hero strip ── */
+.al-inner-hero {
+  background: linear-gradient(150deg, #e2edf5 0%, #eef4f9 55%, #f5f9fc 100%);
+  border-bottom: 1px solid var(--al-border);
+  padding: calc(68px + 4.5rem) 0 4rem;
+}
+
+.al-inner-hero__breadcrumb {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--al-muted);
+  margin-bottom: 1.25rem;
+}
+
+.al-inner-hero__breadcrumb a {
+  color: var(--al-muted);
+  text-decoration: none;
+  transition: color 0.12s;
+}
+
+.al-inner-hero__breadcrumb a:hover { color: var(--al-primary); }
+.al-inner-hero__breadcrumb span { opacity: 0.4; }
+
+.al-inner-hero__eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--al-primary);
+  opacity: 0.7;
+  margin: 0 0 0.75rem;
+}
+
+.al-inner-hero__title {
+  font-size: clamp(1.875rem, 4vw, 2.875rem);
+  font-weight: 700;
+  color: var(--al-text);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  max-width: 700px;
+}
+
+.al-inner-hero__sub {
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: var(--al-muted);
+  max-width: 580px;
+  margin: 0;
+}
+
+/* ── Page body ── */
+.al-inner-body {
+  padding: 5rem 0 6rem;
+}
+
+.al-inner-section {
+  margin-bottom: 4.5rem;
+}
+
+.al-inner-section:last-child { margin-bottom: 0; }
+
+.al-inner-section__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.875rem;
+  letter-spacing: -0.015em;
+}
+
+.al-inner-section__lead {
+  font-size: 1.0625rem;
+  line-height: 1.82;
+  color: var(--al-muted);
+  max-width: 760px;
+  margin: 0 0 2.5rem;
+}
+
+/* ── Prose ── */
+.al-prose {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--al-muted);
+  max-width: 760px;
+}
+
+.al-prose p { margin: 0 0 1.25em; }
+.al-prose p:last-child { margin-bottom: 0; }
+
+/* ── Feature card grid ── */
+.al-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.al-feature-card {
+  background: var(--al-card);
+  border: 1px solid var(--al-border);
+  border-radius: var(--r-card);
+  padding: 2rem 1.875rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.al-feature-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.al-feature-card__icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(135, 188, 222, 0.14);
+  border-radius: var(--r-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--al-primary);
+}
+
+.al-feature-card__icon svg { width: 26px; height: 26px; }
+
+.al-feature-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.5rem;
+}
+
+.al-feature-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--al-muted);
+  margin: 0;
+}
+
+/* ── Research platform nav cards (research overview page) ── */
+.al-research-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.al-research-nav-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--al-card);
+  border: 1px solid var(--al-border);
+  border-radius: var(--r-card);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.al-research-nav-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+  border-color: rgba(135, 188, 222, 0.4);
+}
+
+.al-research-nav-card__icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(135, 188, 222, 0.14);
+  border-radius: var(--r-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--al-primary);
+}
+
+.al-research-nav-card__icon svg { width: 26px; height: 26px; }
+
+.al-research-nav-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.625rem;
+}
+
+.al-research-nav-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.72;
+  color: var(--al-muted);
+  margin: 0;
+  flex: 1;
+}
+
+.al-research-nav-card__arrow {
+  margin-top: 1.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--al-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Two-column layout ── */
+.al-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.al-two-col--60-40 { grid-template-columns: 3fr 2fr; }
+.al-two-col--40-60 { grid-template-columns: 2fr 3fr; }
+
+/* ── PI page ── */
+.al-pi-photo {
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  box-shadow: var(--shadow-panel);
+  position: sticky;
+  top: calc(68px + 2rem);
+}
+
+.al-pi-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.al-pi-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(150deg, #e2edf5, #d0dfe8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a8b8c4;
+}
+
+.al-pi-photo-placeholder svg { width: 80px; height: 80px; }
+
+.al-pi-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.al-pi-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  margin: 2rem 0;
+}
+
+.al-pi-stat {
+  background: #f5f9fc;
+  border-radius: var(--r-card);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.al-pi-stat__value {
+  display: block;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--al-primary);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 0.375rem;
+}
+
+.al-pi-stat__label {
+  font-size: 0.72rem;
+  color: var(--al-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── Team grid ── */
+.al-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.al-team-card {
+  background: var(--al-card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.al-team-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.al-team-card__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.al-team-card__placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(150deg, #e2edf5, #d0dfe8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a8b8c4;
+}
+
+.al-team-card__placeholder svg { width: 44px; height: 44px; }
+
+.al-team-card__body { padding: 1.125rem 1rem 1.375rem; }
+
+.al-team-card__name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--al-text);
+  margin: 0 0 0.25rem;
+}
+
+.al-team-card__role {
+  font-size: 0.8rem;
+  color: var(--al-muted);
+  margin: 0;
+}
+
+/* ── Calendar embed area ── */
+.al-calendar-frame {
+  width: 100%;
+  min-height: 600px;
+  background: #f5f9fc;
+  border: 1px solid var(--al-border);
+  border-radius: var(--r-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: var(--al-muted);
+  text-align: center;
+  padding: 3.5rem;
+}
+
+.al-calendar-frame__icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(135, 188, 222, 0.14);
+  border-radius: var(--r-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--al-primary);
+}
+
+.al-calendar-frame__icon svg { width: 32px; height: 32px; }
+
+.al-calendar-frame p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+/* ── CTA banner ── */
+.al-inner-cta {
+  background: var(--al-primary);
+  border-radius: var(--r-panel);
+  padding: 3rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.al-inner-cta__copy h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.015em;
+}
+
+.al-inner-cta__copy p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.68);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.al-inner-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  background: #fff;
+  color: var(--al-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--r-control);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease, transform 0.12s ease;
+}
+
+.al-inner-cta__btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  color: var(--al-primary);
+}
+
+/* ── Divider ── */
+.al-divider {
+  height: 1px;
+  background: var(--al-border);
+  border: none;
+  margin: 4rem 0;
+}
+
+/* ── Inner page responsive ── */
+@media (max-width: 900px) {
+  .al-two-col,
+  .al-two-col--60-40,
+  .al-two-col--40-60 {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .al-pi-photo { position: static; }
+
+  .al-inner-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .al-inner-hero { padding: calc(68px + 2rem) 0 2.75rem; }
+  .al-inner-body { padding: 3.5rem 0 4.5rem; }
+  .al-inner-section { margin-bottom: 3rem; }
+  .al-pi-stats { grid-template-columns: 1fr 1fr; }
+  .al-inner-cta { padding: 1.75rem 1.5rem; }
+  .al-inner-cta__btn { width: 100%; justify-content: center; }
+}

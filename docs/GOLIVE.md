@@ -45,8 +45,10 @@ This document should be updated throughout development as new requirements are d
 - ⬜ **Settings → General**: confirm Site URL and WordPress Address are `https://achilefulab.org`.
 - ⬜ **Settings → General**: update admin email to `contact@achilefulab.org` (or a real monitored inbox).
 - ⬜ **Settings → Reading**: uncheck **"Discourage search engines from indexing this site"** — this is on by default in dev and will tank SEO if left on.
+- ✅ **Settings → Reading**: Home set as static front page, Blog set as posts page (done 2026-05-10).
 - ⬜ **Settings → Discussion**: review comment settings (likely disable comments entirely for a lab site).
-- ⬜ Remove default content: "Hello world!" post, "Sample Page", default "Uncategorized" category.
+- ✅ Remove "Sample Page" — deleted during development (2026-05-10).
+- ⬜ Remove "Hello world!" post and default "Uncategorized" category.
 
 ---
 
@@ -101,7 +103,7 @@ This document should be updated throughout development as new requirements are d
 
 - ⬜ Run a **Lighthouse** audit (Chrome DevTools → Lighthouse) on the home page. Target: Performance ≥ 90, Accessibility ≥ 90.
 - ⬜ Confirm all images have been compressed before upload (no file over ~500KB).
-- ⬜ Confirm IBM Plex fonts load with `font-display: swap` and are preloaded (see DESIGN.md §3).
+- ⬜ Confirm DM Sans loads with `font-display: swap` — verify in Kadence's Google Font settings (see DESIGN.md §3).
 - ⬜ Check Time to First Byte (TTFB) — if over 600ms, review W3TC / hosting tier.
 
 ---
