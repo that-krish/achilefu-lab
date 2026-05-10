@@ -2,7 +2,7 @@
 Theme Name:  Kadence Child
 Template:    kadence
 Description: Achilefu Lab child theme — custom home page and global overrides.
-Version:     1.2.0
+Version:     1.3.0
 Author:      Krish / Salmon
 */
 
@@ -46,13 +46,13 @@ body.home #inner-wrap {
   --al-white:     #ffffff;
   --al-max-w:     1200px;
   --r-control:    10px;
-  --r-card:       20px;
-  --r-panel:      24px;
-  --r-icon:       14px;
+  --r-card:       12px;
+  --r-panel:      14px;
+  --r-icon:       10px;
   --r-badge:      100px;
-  --shadow-card:  0 2px 20px rgba(35, 60, 78, 0.08);
-  --shadow-panel: 0 6px 44px rgba(35, 60, 78, 0.11);
-  --shadow-hover: 0 12px 40px rgba(35, 60, 78, 0.16);
+  --shadow-card:  0 1px 4px rgba(35, 60, 78, 0.06);
+  --shadow-panel: 0 2px 12px rgba(35, 60, 78, 0.08);
+  --shadow-hover: 0 4px 20px rgba(35, 60, 78, 0.12);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -70,17 +70,17 @@ body.home #inner-wrap {
   --al-white:     #ffffff;
   --al-max-w:     1200px;
 
-  /* Corner radii — Apple system */
+  /* Corner radii */
   --r-control:    10px;
-  --r-card:       20px;
-  --r-panel:      24px;
-  --r-icon:       14px;
+  --r-card:       12px;
+  --r-panel:      14px;
+  --r-icon:       10px;
   --r-badge:      100px;
 
-  /* Shadows — slightly cooler tint to match gradient palette */
-  --shadow-card:  0 2px 20px rgba(35, 60, 78, 0.08);
-  --shadow-panel: 0 6px 44px rgba(35, 60, 78, 0.11);
-  --shadow-hover: 0 12px 40px rgba(35, 60, 78, 0.16);
+  /* Shadows — reduced for cleaner look */
+  --shadow-card:  0 1px 4px rgba(35, 60, 78, 0.06);
+  --shadow-panel: 0 2px 12px rgba(35, 60, 78, 0.08);
+  --shadow-hover: 0 4px 20px rgba(35, 60, 78, 0.12);
 }
 
 .al-home * { box-sizing: border-box; }
@@ -98,7 +98,7 @@ body.home #inner-wrap {
   font-weight: 700;
   color: var(--al-text);
   text-align: center;
-  margin: 0 0 3rem;
+  margin: 0 0 2rem;
   letter-spacing: -0.015em;
 }
 
@@ -215,67 +215,115 @@ body.home #inner-wrap {
 .al-hero .al-btn--secondary:hover { border-color: rgba(255,255,255,0.72); }
 
 /* ───────────────────────────────────────────────
-   2. RESEARCH PILLARS
+   2. RESEARCH PILLARS — accordion
    Transparent — body gradient shows through.
-   Each pillar = white card floating on gradient.
+   One item open at a time; JS toggles is-active.
 ─────────────────────────────────────────────── */
 .al-pillars {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: transparent;
 }
 
-.al-pillars__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+.al-pillars__accordion {
+  border-top: 1px solid var(--al-border);
 }
 
-.al-pillar {
+.al-accordion-item {
+  border-bottom: 1px solid var(--al-border);
+}
+
+.al-accordion-trigger {
   display: flex;
-  flex-direction: column;
-  background: var(--al-card);
-  border-radius: var(--r-card);
-  padding: 2.25rem 2rem;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.22s ease, transform 0.22s ease;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+  color: inherit;
 }
 
-.al-pillar:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
+.al-accordion-trigger:hover,
+.al-accordion-trigger:focus,
+.al-accordion-trigger:active {
+  background: none;
+  box-shadow: none;
+  outline: none;
 }
 
-.al-pillar__icon {
-  width: 56px;
-  height: 56px;
-  background: rgba(135,188,222,0.14);
-  border-radius: var(--r-icon);
-  padding: 13px;
-  margin-bottom: 1.5rem;
+.al-accordion-trigger__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--al-primary);
+  opacity: 0.38;
+  transition: opacity 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--al-primary);
-  flex-shrink: 0;
 }
 
-.al-pillar__icon svg { width: 30px; height: 30px; }
+.al-accordion-trigger__icon svg { width: 32px; height: 32px; }
 
-.al-pillar__title {
+.al-accordion-item.is-active .al-accordion-trigger__icon { opacity: 1; }
+
+.al-accordion-trigger__title {
+  flex: 1;
   font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--al-text);
-  margin: 0 0 0.625rem;
-  line-height: 1.3;
+  font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--al-muted);
+  transition: color 0.2s ease;
 }
 
-.al-pillar__desc {
-  font-size: 0.9375rem;
-  line-height: 1.72;
+.al-accordion-item.is-active .al-accordion-trigger__title { color: var(--al-text); }
+
+.al-accordion-chevron {
+  flex-shrink: 0;
   color: var(--al-muted);
-  margin: 0;
+  opacity: 0.45;
+  transition: transform 0.25s ease, opacity 0.2s ease, color 0.2s ease;
 }
+
+.al-accordion-item.is-active .al-accordion-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: var(--al-primary);
+}
+
+.al-accordion-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.al-accordion-item.is-active .al-accordion-panel { max-height: 12rem; }
+
+.al-accordion-panel__inner {
+  padding-bottom: 1.75rem;
+  padding-left: calc(32px + 1rem);
+}
+
+.al-accordion-panel__desc {
+  font-size: 0.9375rem;
+  line-height: 1.78;
+  color: var(--al-muted);
+  margin: 0 0 0.875rem;
+  max-width: 620px;
+}
+
+.al-accordion-panel__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--al-primary);
+  text-decoration: none;
+}
+
+.al-accordion-panel__link:hover { text-decoration: underline; }
 
 /* ───────────────────────────────────────────────
    3. PI SPOTLIGHT
@@ -283,7 +331,7 @@ body.home #inner-wrap {
    Inner block = one large white panel.
 ─────────────────────────────────────────────── */
 .al-pi {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: transparent;
 }
 
@@ -395,7 +443,7 @@ body.home #inner-wrap {
 .al-numbers__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0;
 }
 
 .al-stat {
@@ -403,14 +451,17 @@ body.home #inner-wrap {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: var(--r-card);
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.14);
+  border-radius: 0;
   padding: 2.25rem 1.5rem;
   text-align: center;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
+
+.al-stat:last-child { border-right: none; }
 
 .al-stat__value {
   font-size: clamp(2.25rem, 4.5vw, 3.125rem);
@@ -432,7 +483,7 @@ body.home #inner-wrap {
    Transparent — body gradient shows through.
 ─────────────────────────────────────────────── */
 .al-blog {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: transparent;
 }
 
@@ -515,12 +566,8 @@ body.home #inner-wrap {
   background: transparent;
 }
 
-/* Inner wrapper as a white pill-card */
 .al-affiliations .al-container {
-  background: var(--al-card);
-  border-radius: var(--r-panel);
-  padding: 2.5rem 3rem;
-  box-shadow: var(--shadow-card);
+  padding: 0;
 }
 
 .al-affiliations__label {
@@ -574,11 +621,14 @@ body.home #inner-wrap {
   .al-pi__photo-wrap { max-width: 260px; }
 
   .al-numbers__grid { grid-template-columns: repeat(2, 1fr); }
+  .al-stat { border-right: 1px solid rgba(255,255,255,0.14); border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .al-stat:nth-child(2n) { border-right: none; }
+  .al-stat:nth-child(3), .al-stat:nth-child(4) { border-bottom: none; }
 }
 
 @media (max-width: 640px) {
   .al-hero { padding: 5.5rem 0 5rem; }
-  .al-pillars, .al-pi, .al-blog { padding: 4rem 0; }
+  .al-pillars, .al-pi, .al-blog { padding: 3rem 0; }
   .al-numbers { padding: 3.5rem 0; }
 
   .al-hero__actions { flex-direction: column; align-items: flex-start; }
@@ -594,10 +644,7 @@ body.home #inner-wrap {
   .al-numbers__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .al-stat { padding: 1.5rem 1rem; }
 
-  .al-affiliations .al-container {
-    border-radius: var(--r-card);
-    padding: 1.75rem 1.5rem;
-  }
+  .al-affiliations .al-container { padding: 0; }
 }
 
 /* Disable fixed-attachment on mobile — iOS Safari renders it broken */
@@ -606,11 +653,14 @@ body.home #inner-wrap {
   .al-numbers {
     background-attachment: scroll;
   }
+
+  .al-accordion-panel__inner { padding-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .al-btn, .al-card, .al-pillar { transition: none; }
-  .al-card:hover, .al-pillar:hover, .al-btn:hover { transform: none; }
+  .al-btn, .al-card, .al-accordion-trigger__icon, .al-accordion-trigger__title,
+  .al-accordion-chevron, .al-accordion-panel { transition: none; }
+  .al-card:hover, .al-btn:hover { transform: none; }
   /* Disable parallax for users who prefer reduced motion */
   .al-hero, .al-numbers { background-attachment: scroll; }
 }

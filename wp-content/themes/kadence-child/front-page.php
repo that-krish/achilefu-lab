@@ -53,68 +53,104 @@ $pi_has_photo  = file_exists( $pi_file );
     <div class="al-container">
       <h2 class="al-section-heading" id="al-pillars-heading">What We Do</h2>
 
-      <div class="al-pillars__grid">
+      <div class="al-pillars__accordion">
 
-        <!-- Pillar 1: Optical & Molecular Imaging -->
-        <div class="al-pillar">
-          <div class="al-pillar__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="7.5" stroke="currentColor" stroke-width="2.5"/>
-              <line x1="24" y1="4"  x2="24" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="24" y1="37" x2="24" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="4"  y1="24" x2="11" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="37" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="10.1" y1="10.1" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="33.5" y1="33.5" x2="37.9" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="37.9" y1="10.1" x2="33.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="14.5" y1="33.5" x2="10.1" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <!-- Item 1: Optical & Molecular Imaging — open by default -->
+        <div class="al-accordion-item is-active">
+          <button class="al-accordion-trigger" aria-expanded="true" aria-controls="pillar-panel-1">
+            <span class="al-accordion-trigger__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="7.5" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="24" y1="4"  x2="24" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="24" y1="37" x2="24" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="4"  y1="24" x2="11" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="37" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="10.1" y1="10.1" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="33.5" y1="33.5" x2="37.9" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="37.9" y1="10.1" x2="33.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="14.5" y1="33.5" x2="10.1" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="al-accordion-trigger__title">Optical &amp; Molecular Imaging</span>
+            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+          </button>
+          <div class="al-accordion-panel" id="pillar-panel-1">
+            <div class="al-accordion-panel__inner">
+              <p class="al-accordion-panel__desc">
+                Near-infrared fluorescence platforms that reveal disease at the molecular level,
+                enabling detection that the naked eye cannot achieve.
+              </p>
+              <a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" class="al-accordion-panel__link">
+                Learn more &rarr;
+              </a>
+            </div>
           </div>
-          <h3 class="al-pillar__title">Optical &amp; Molecular Imaging</h3>
-          <p class="al-pillar__desc">
-            Near-infrared fluorescence platforms that reveal disease at the molecular level,
-            enabling detection that the naked eye cannot achieve.
-          </p>
-        </div>
+        </div><!-- /.al-accordion-item -->
 
-        <!-- Pillar 2: Image-Guided Surgery -->
-        <div class="al-pillar">
-          <div class="al-pillar__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 24C4 24 12 13 24 13C36 13 44 24 44 24C44 24 36 35 24 35C12 35 4 24 4 24Z"
-                    stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-              <circle cx="24" cy="24" r="5.5" stroke="currentColor" stroke-width="2.5"/>
-              <circle cx="24" cy="24" r="2"   fill="currentColor"/>
+        <!-- Item 2: Image-Guided Surgery -->
+        <div class="al-accordion-item">
+          <button class="al-accordion-trigger" aria-expanded="false" aria-controls="pillar-panel-2">
+            <span class="al-accordion-trigger__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 24C4 24 12 13 24 13C36 13 44 24 44 24C44 24 36 35 24 35C12 35 4 24 4 24Z"
+                      stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="24" cy="24" r="5.5" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="24" cy="24" r="2"   fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="al-accordion-trigger__title">Image-Guided Surgery</span>
+            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+          </button>
+          <div class="al-accordion-panel" id="pillar-panel-2">
+            <div class="al-accordion-panel__inner">
+              <p class="al-accordion-panel__desc">
+                Wearable cancer-imaging systems and fluorescent goggles for real-time visualization
+                during oncologic surgery — used in operating rooms worldwide.
+              </p>
+              <a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-accordion-panel__link">
+                Learn more &rarr;
+              </a>
+            </div>
           </div>
-          <h3 class="al-pillar__title">Image-Guided Surgery</h3>
-          <p class="al-pillar__desc">
-            Wearable cancer-imaging systems and fluorescent goggles for real-time visualization
-            during oncologic surgery — used in operating rooms worldwide.
-          </p>
-        </div>
+        </div><!-- /.al-accordion-item -->
 
-        <!-- Pillar 3: Bench to Bedside -->
-        <div class="al-pillar">
-          <div class="al-pillar__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 8H31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M19 8V21L9 36.5C8.1 38 9.4 40 11.5 40H36.5C38.6 40 39.9 38 39 36.5L29 21V8"
-                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9.5 33H38.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="17"  cy="36.5" r="1.75" fill="currentColor" opacity="0.45"/>
-              <circle cx="25"  cy="38"   r="1.5"  fill="currentColor" opacity="0.45"/>
-              <circle cx="32"  cy="35.5" r="2"    fill="currentColor" opacity="0.45"/>
+        <!-- Item 3: Bench to Bedside -->
+        <div class="al-accordion-item">
+          <button class="al-accordion-trigger" aria-expanded="false" aria-controls="pillar-panel-3">
+            <span class="al-accordion-trigger__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 8H31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M19 8V21L9 36.5C8.1 38 9.4 40 11.5 40H36.5C38.6 40 39.9 38 39 36.5L29 21V8"
+                      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.5 33H38.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="17"  cy="36.5" r="1.75" fill="currentColor" opacity="0.45"/>
+                <circle cx="25"  cy="38"   r="1.5"  fill="currentColor" opacity="0.45"/>
+                <circle cx="32"  cy="35.5" r="2"    fill="currentColor" opacity="0.45"/>
+              </svg>
+            </span>
+            <span class="al-accordion-trigger__title">Bench to Bedside</span>
+            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+          </button>
+          <div class="al-accordion-panel" id="pillar-panel-3">
+            <div class="al-accordion-panel__inner">
+              <p class="al-accordion-panel__desc">
+                End-to-end development — from novel molecular probes through preclinical validation
+                to clinical translation and patient care.
+              </p>
+              <a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-accordion-panel__link">
+                Learn more &rarr;
+              </a>
+            </div>
           </div>
-          <h3 class="al-pillar__title">Bench to Bedside</h3>
-          <p class="al-pillar__desc">
-            End-to-end development — from novel molecular probes through preclinical validation
-            to clinical translation and patient care.
-          </p>
-        </div>
+        </div><!-- /.al-accordion-item -->
 
-      </div><!-- /.al-pillars__grid -->
+      </div><!-- /.al-pillars__accordion -->
     </div><!-- /.al-container -->
   </section><!-- /.al-pillars -->
 

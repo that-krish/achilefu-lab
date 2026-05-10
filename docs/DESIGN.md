@@ -128,7 +128,7 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 
 ## 5. Home page layout
 
-> Status: **✅ Built and iterated (2026-05-10).** `kadence-child/front-page.php` + `style.css` v1.2.0. See DEVLOG 2026-05-10 for full iteration history.
+> Status: **✅ Built and iterated (2026-05-10).** `kadence-child/front-page.php` + `style.css` v1.4.0. See DEVLOG 2026-05-10 for full iteration history.
 
 **Current layout model (as built):**
 
@@ -140,34 +140,37 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 ║  [Our Research]  [Contact Us]                       ║
 ╚═════════════════════════════════════════════════════╝
                                         ← global diagonal gradient visible here
-   ┌──────────┐ ┌──────────┐ ┌──────────┐
-   │ PILLAR 1 │ │ PILLAR 2 │ │ PILLAR 3 │  ← white cards, 20px radius, shadow
-   └──────────┘ └──────────┘ └──────────┘
+   ── Optical & Molecular Imaging ──────────────── ∨  ← accordion, open by default
+      Near-infrared fluorescence platforms...
+      Learn more →
+   ── Image-Guided Surgery ────────────────────── ›
+   ── Bench to Bedside ────────────────────────── ›
    ┌───────────────────────────────────────────────┐
-   │  PI SPOTLIGHT  [white panel card, 24px radius] │
+   │  PI SPOTLIGHT  [white panel card, 14px radius] │
    │  [Photo 4:5] │ bio + badges + Meet Team CTA   │
    └───────────────────────────────────────────────┘
 ╔═════════════════════════════════════════════════════╗
 ║  LAB IN NUMBERS  [parallax image + dark overlay]    ║
-║  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐       ║
-║  │  300+  │ │  70+   │ │   2    │ │  25+   │       ║  ← frosted mini-cards
-║  └────────┘ └────────┘ └────────┘ └────────┘       ║
+║   300+       70+        2         25+               ║  ← flat, thin dividers only
+║  Publications  Patents  Nat'l Acad  Years           ║
 ╚═════════════════════════════════════════════════════╝
                                         ← gradient continues
    ┌──────────┐ ┌──────────┐ ┌──────────┐
-   │  POST 1  │ │  POST 2  │ │  POST 3  │  ← white cards, 20px radius
+   │  POST 1  │ │  POST 2  │ │  POST 3  │  ← white cards, 12px radius
    └──────────┘ └──────────┘ └──────────┘
-   ┌───────────────────────────────────────────────┐
-   │  AFFILIATIONS  [white card panel, 24px radius] │
-   └───────────────────────────────────────────────┘
+   UTSW · Simmons Cancer Center · NIH       ← logos on gradient, no box
 ```
 
 **Key design decisions made during iteration:**
 - No alternating full-bleed section backgrounds. One global diagonal gradient (`body.home`) is the page surface.
 - Hero and Numbers are the only full-bleed sections — they use parallax images with dark overlays as intentional visual anchors.
-- All other sections are transparent; gradient shows through. Separation comes from card shadows and vertical rhythm, not background color changes.
+- All other sections are transparent; gradient shows through. Separation comes from vertical rhythm and hairline borders, not background color changes or heavy shadows.
 - Hero eyebrow badge removed — headline leads directly.
 - Fixed header: pinned via `#masthead { position: fixed !important }` in child CSS (not Kadence theme mods — those were cleared). Kadence's own `header.min.css` has `#masthead { position: relative }` which previously won on specificity. ID selector + `!important` resolves this definitively. See DEVLOG 2026-05-10 for full root-cause.
+- **Research Pillars use an accordion** (v1.4.0, confirmed by Krish): one row expands at a time, first open by default. No hover/focus visual effects on accordion triggers — explicitly stripped because Kadence's button stylesheet adds them. JS is front-page-only, vanilla ES5.
+- **Lab in Numbers is card-free** (v1.3.0): stats sit flat on the dark background separated by 1px rgba white dividers. Frosted glass mini-cards removed — they added visual noise against an already-dark parallax section.
+- **Affiliations strip is box-free** (v1.3.0): logos render directly on the gradient with no white pill-card wrapper.
+- **Global shadow + radius reduction** (v1.3.0): card radius 20px→12px, panel radius 24px→14px, all shadow values reduced by ~60%. Goal: editorial/institutional feel over SaaS-product feel.
 
 See [CONTENT.md](CONTENT.md) for all copy.
 
@@ -181,7 +184,7 @@ Working principles (defaults until contradicted):
 
 - **8px spacing grid.** All margins, padding, and gaps are multiples of 8 (4px allowed for fine adjustments inside small components).
 - **Max content width: 72ch** for body prose (~720px). Long-form text is unreadable wider than this. Wider full-bleed sections are fine for hero blocks, image galleries, and data tables.
-- **Generous whitespace at section breaks.** Academic sites that look credible tend to have *more* whitespace, not less. Default section vertical padding: 96px desktop / 64px mobile.
+- **Whitespace at section breaks.** Default section vertical padding: 64px (4rem) desktop / 48px (3rem) mobile. Originally 96px; reduced in v1.3.0 after the site felt too airy with multiple sections stacked.
 - **Mobile-first.** Site must be fully usable on a phone — peer reviewers and prospective students often browse from mobile first.
 
 To decide:

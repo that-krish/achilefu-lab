@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CDT** by Claude (Sonnet 4.6).
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.0.
 
 ### Status by area
 
@@ -37,7 +37,7 @@ This file is the single source of truth for *implementation state and decision h
 | Core pages | ✅ Done | 7 pages created and published (IDs 6–12). Home = static front page. Blog = posts page. |
 | Navigation | ✅ Done | `header.php` override; all 9 dropdown target slugs resolve to live pages. |
 | Fixed header | ✅ Done | Header pinned via `#masthead { position: fixed !important }`. Offset baked into `.al-inner-hero` padding. No `#wrapper` padding needed. |
-| Home page content | ✅ Done | All 6 sections live. Design iterated to global gradient + parallax image anchors + floating card system. See DESIGN.md §5. |
+| Home page content | ✅ Done | All 6 sections live. Design iterated: v1.4.0 — Pillars = accordion (one open at a time, JS-driven, no hover/focus shadow). Numbers = flat stats on dark bg, thin dividers. Affiliations = no box. See DESIGN.md §5. |
 | Home page images | ✅ Done | `dr-achilefu.jpg`, `hero-bg.jpg`, `lab-bg.jpg` placed in `wp-content/uploads/` by Krish. |
 | Logo / wordmark | 🟡 Placeholder | CSS wordmark ("Achilefu Lab" + small teal square mark) in header. Real SVG logo TBD. |
 | Other pages content | 🟡 Templates built, content placeholder | 7 `page-{slug}.php` templates created with real design-system layouts and substantive placeholder copy. Media + Contact = no template yet (stubs). Lab Calendar awaits Google Calendar embed. Team grid awaits member bios from lab. |
@@ -50,7 +50,7 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 
 ### Active work
 
-**Header pinned, inner page templates complete.** Next up: fill in team member bios, get Google Calendar embed link for Lab Calendar, and build Media + Contact page templates.
+**Home page visual pass complete (v1.4.0).** Pillars accordion live, shadows/radii tightened globally, numbers and affiliations de-boxed. Next: team member bios, Google Calendar embed, Media + Contact page templates. Blog cards and PI Spotlight panel are still boxed — candidates for next design pass.
 
 ### Blocked / pending decisions
 
@@ -107,7 +107,49 @@ What's still open.
 
 ---
 
-### 2026-05-10 13:20 CDT — Fixed header pinning; inner page padding; breadcrumb removed
+### 2026-05-10 ~13:30 CST — Research Pillars → accordion design (theme v1.4.0)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **Pillars redesigned as an accordion** (`front-page.php`, `style.css`, `functions.php`): the "What We Do" section replaced the earlier borderless strip with a vertical accordion — three rows separated by 1px hairlines, one open at a time. First pillar (Optical & Molecular Imaging) is open by default. Each panel reveals the description + "Learn more →" link to the relevant research sub-page. JS lives in `functions.php` as a `wp_footer` action at priority 21, front-page only.
+2. **Accordion hover/focus/active shadows stripped**: Kadence's base button stylesheet was adding `box-shadow` and `background` on `:hover`, `:focus`, and `:active` states. Overridden explicitly with `background: none; box-shadow: none; outline: none` on all three pseudo-classes.
+
+**Why**
+Krish preferred accordion over the borderless strip — the expand/collapse gives each research area breathing room without permanently occupying three columns of space.
+
+**Watch out for**
+- Accordion `max-height` for the panel is set to `12rem` — enough for current content. If descriptions are ever expanded significantly, bump this value.
+- The accordion JS collapses all items then opens the clicked one, so clicking an open item closes it with nothing left open. This was an intentional choice.
+- `is-front-page()` guard on the accordion JS means it only fires on the home page template.
+
+**Next**
+Blog cards and PI Spotlight panel are still white boxes — next design pass candidates.
+
+---
+
+### 2026-05-10 ~13:00 CST — Visual tightening: shadows reduced, pillars → borderless strip, numbers → flat dividers
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **Global design tokens tightened** (`style.css` v1.3.0): shadow variables reduced (card: `0 2px 20px .08` → `0 1px 4px .06`, panel: `0 6px 44px .11` → `0 2px 12px .08`, hover: `0 12px 40px .16` → `0 4px 20px .12`). Border radii reduced (card: 20px → 12px, panel: 24px → 14px). Section padding reduced from 6rem to 4rem on pillars/PI/blog sections. Section heading margin from 3rem to 2rem.
+2. **Research Pillars redesigned as a borderless strip**: removed white card backgrounds, box-shadows, and icon background boxes. Grid changed from `auto-fit minmax(280px)` to `repeat(3, 1fr)` with `gap: 0` and 1px `border-right` separators between columns. On mobile (≤768px) switches to stacked vertical layout with `border-bottom` separators.
+3. **Lab in Numbers**: removed frosted glass card treatment (background, border, border-radius, backdrop-filter). Stats now sit flat on the dark section background, separated by 1px `border-right: rgba(255,255,255,0.14)`. Responsive 2×2 layout uses cross-hatched borders via nth-child selectors.
+4. **Affiliations strip**: removed white pill-card wrapper (background, border-radius, box-shadow). Logos now float directly on the body gradient.
+
+**Why**
+Site read as visually noisy — too many floating white card boxes stacked on top of each other within sections that were already boxed by heavy section padding. Goal: premium/editorial look vs. SaaS-product look.
+
+**Watch out for**
+Pillars section now requires `grid-template-columns: repeat(3, 1fr)` fixed — auto-fit was fine when cards had minimum widths, but the borderless strip needs exact 3-column for the dividers to work. If a fourth pillar is ever added, the CSS must change.
+
+**Next**
+Blog section still uses white cards — carousel or list-style redesign is a candidate for next session. PI Spotlight still has a white panel wrapper — could remove that too for further de-boxing.
+
+---
+
+### 2026-05-10 13:20 CST — Fixed header pinning; inner page padding; breadcrumb removed
 
 **Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
 
@@ -328,7 +370,7 @@ The audience range (student → NIH director) demands a site that's both welcomi
 
 ---
 
-### 2026-05-10 11:09 CDT — Add GOLIVE.md checklist
+### 2026-05-10 11:09 CST — Add GOLIVE.md checklist
 
 **Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main   ·   **Commits:** `4a761514`
 
@@ -340,7 +382,7 @@ Krish wants every go-live step documented so it's repeatable and auditable.
 
 ---
 
-### 2026-05-10 11:04 CDT — Track wp-content/uploads/ in git
+### 2026-05-10 11:04 CST — Track wp-content/uploads/ in git
 
 **Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main   ·   **Commits:** `4df005ac`
 
@@ -355,7 +397,7 @@ Keep images compressed before committing. Nothing over ~500KB. If media ever gro
 
 ---
 
-### 2026-05-10 10:49 CDT — Repo bootstrap, README, and design documentation scaffolding
+### 2026-05-10 10:49 CST — Repo bootstrap, README, and design documentation scaffolding
 
 **Author:** Claude (Opus 4.7, 1M context) working with Krish   ·   **Branch:** main   ·   **Commits:** `15febfcf`, `7cd449cd`
 
