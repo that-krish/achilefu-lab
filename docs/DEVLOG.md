@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.1.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.2.
 
 ### Status by area
 
@@ -104,6 +104,28 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-10 ~16:00 CST — Desktop nav close delay; mobile dropdown open animation (theme v1.4.2)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **Desktop nav: 500ms close delay** (`functions.php`, `style.css`): hovering off a nav group no longer closes the dropdown instantly. A JS `mouseleave` handler sets a 500ms `setTimeout` before removing the `.keep-open` class; `mouseenter` cancels the timer. CSS added `.al-nav-group.keep-open .al-dropdown` to the visible-state selector group. The delay gives the cursor time to travel diagonally from the nav button to the dropdown panel without the panel vanishing mid-transit. Only fires on desktop (`window.matchMedia('(min-width: 900px)')`).
+
+2. **Mobile dropdown: slide-down + fade-in animation** (`style.css`): the mobile accordion dropdowns previously appeared instantly (`display: none` → `display: block`, which CSS cannot transition). Replaced with `max-height: 0 → 300px` + `opacity: 0 → 1`, keeping `display: block` always set so transitions can fire. Closed state: `max-height: 0; overflow: hidden; opacity: 0; pointer-events: none`. Open state (`.al-nav-group.is-open`): `max-height: 300px; opacity: 1; pointer-events: auto`. Transition: `0.22s ease-out` on max-height, `0.18s ease` on opacity. Reduced-motion users are unaffected — `.al-dropdown` was already in the `prefers-reduced-motion` transition-none block.
+
+**Why**
+The desktop nav gap issue was a UX friction point — fast cursor movement across the button-to-dropdown gap caused the panel to close before the user arrived. The mobile animation makes the accordion feel intentional rather than abrupt.
+
+**Watch out for**
+- The desktop close timer JS runs at `wp_footer` priority 19 (before the mobile accordion at 21 and mobile nav at 20). Do not raise its priority above 19 or it may run before the DOM is ready.
+- `max-height: 300px` is a ceiling, not the actual rendered height — the animation eases to content height then sits idle until 300px. If a dropdown ever has significantly more items, bump this value.
+- The mobile hover override (`.al-nav-group:hover .al-dropdown`) now explicitly sets `max-height: 0; opacity: 0; pointer-events: none` to neutralise the desktop hover rule's `opacity: 1; pointer-events: auto`. The `.is-open` rule comes after it in source order and wins the specificity tie — do not reorder these rules.
+
+**Next**
+Team member bios, Google Calendar embed, Media + Contact page templates.
 
 ---
 

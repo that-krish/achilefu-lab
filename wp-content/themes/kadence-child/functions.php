@@ -44,6 +44,33 @@ if ( ! function_exists( 'al_blog_url' ) ) {
 	}
 }
 
+// ── Desktop nav: 1s close delay so cursor can reach dropdown ─────
+
+add_action( 'wp_footer', function () {
+	?>
+	<script>
+	(function () {
+		if ( ! window.matchMedia( '(min-width: 900px)' ).matches ) return;
+
+		document.querySelectorAll( '.al-nav-group' ).forEach( function ( group ) {
+			var timer;
+
+			group.addEventListener( 'mouseenter', function () {
+				clearTimeout( timer );
+				group.classList.add( 'keep-open' );
+			} );
+
+			group.addEventListener( 'mouseleave', function () {
+				timer = setTimeout( function () {
+					group.classList.remove( 'keep-open' );
+				}, 500 );
+			} );
+		} );
+	})();
+	</script>
+	<?php
+}, 19 );
+
 // ── Pillars accordion JS (front page only) ────────────────────
 
 add_action( 'wp_footer', function () {

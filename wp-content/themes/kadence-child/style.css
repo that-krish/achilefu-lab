@@ -867,7 +867,8 @@ body.home .al-site-header {
 }
 
 .al-nav-group:hover .al-dropdown,
-.al-nav-group:focus-within .al-dropdown {
+.al-nav-group:focus-within .al-dropdown,
+.al-nav-group.keep-open .al-dropdown {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
@@ -999,29 +1000,42 @@ body.home .al-site-header {
     font-size: 0.9375rem;
   }
 
-  /* Mobile dropdown: not absolute, expands in-flow */
+  /* Mobile dropdown: collapses to zero height; animates open via max-height.
+     display:block is always set so CSS transitions can fire. */
   .al-dropdown {
     position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
     box-shadow: none;
     border: none;
     border-radius: 0;
     padding: 0 0 4px 12px;
     background: transparent;
-    display: none;
+    transform: none;
+    transition: max-height 0.22s ease-out, opacity 0.18s ease;
   }
 
-  /* Desktop :hover rule (specificity 0-2-0) beats the base reset above (0-1-0)
-     on touch devices where :hover fires after a tap. Match specificity here so
-     source order wins and the translateX(-50%) shift is neutralised. */
+  /* Desktop :hover/:focus-within rules have specificity 0-2-0 and set opacity:1,
+     pointer-events:auto, transform — neutralise all of them on mobile so a touch
+     tap can't accidentally open the dropdown via the CSS hover path. */
   .al-nav-group:hover .al-dropdown,
   .al-nav-group:focus-within .al-dropdown {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
     transform: none;
   }
 
-  .al-nav-group.is-open .al-dropdown { display: block; }
+  /* is-open (added by JS on tap) has equal specificity but later source order,
+     so it wins the tie and actually opens the dropdown. */
+  .al-nav-group.is-open .al-dropdown {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   .al-nav-group.is-open .al-chevron {
     transform: rotate(180deg);
