@@ -1,0 +1,50 @@
+# Achilefu Lab
+
+Website for Dr. Samuel Achilefu's research lab at UT Southwestern Medical Center, Dallas. Dr. Achilefu is the inaugural Chair of the Department of Biomedical Engineering and holds the Lyda Hill Distinguished University Chair.
+
+This site is hosted independently of the UTSW domain. Target production domain: **achilefulab.org** (TBD).
+
+## Stack
+
+- WordPress on [LocalWP](https://localwp.com/) for development
+- Theme: [Kadence](https://www.kadencewp.com/kadence-theme/)
+- Plugins: Kadence Blocks, Elementor, WPForms Lite, WP Mail SMTP, Yoast SEO, W3 Total Cache
+
+## Repo layout
+
+This repository tracks the **full WordPress install** rooted at `app/public/`: WP core, theme, and plugins. The following are intentionally excluded (see [.gitignore](.gitignore)):
+
+- `wp-config.php` — contains DB credentials; clone `wp-config-sample.php` locally
+- `wp-content/uploads/` — per-environment binary content
+- Caches, upgrade temp dirs, logs
+- LocalWP runtime artifacts (`local-xdebuginfo.php`, etc.)
+
+## Local development
+
+1. Install [LocalWP](https://localwp.com/) and create a site with hostname `achilefu-lab.local`.
+2. Clone this repo into `~/Local Sites/achilefu-lab/app/public/` (replacing the default LocalWP install).
+3. Copy `wp-config-sample.php` to `wp-config.php` and fill in your local DB credentials (LocalWP shows them in the site dashboard).
+4. Visit http://achilefu-lab.local/.
+
+## Site structure
+
+- **Home** — lab goals + tree visualization of the three focus areas
+- **Research** — Devices / Nanoplatforms / Molecular Imaging
+- **People** — hierarchical, with headshots and LinkedIn
+- **Publications** — auto-pulled from Google Scholar, filtered to publication type
+- **Patents** — auto-updating
+- **Milestones & Grants**
+- **Media Gallery** — curated imaging highlights
+- **Events** — formal seminars and visiting UTSW talks
+- **Blog** — monthly lab member posts
+- **Contact**
+
+## Team
+
+- **Krish**, **Salmon** — web leads
+- **Eshani**, **Megan** — content and member interviews
+- **Erin** — lab comms
+- **Ian** — UTSW page sync
+- **Dr. Samuel Achilefu** — principal stakeholder
+
+Lab contact: contact@achilefulab.org
