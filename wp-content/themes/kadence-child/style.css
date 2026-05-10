@@ -1013,6 +1013,14 @@ body.home .al-site-header {
     display: none;
   }
 
+  /* Desktop :hover rule (specificity 0-2-0) beats the base reset above (0-1-0)
+     on touch devices where :hover fires after a tap. Match specificity here so
+     source order wins and the translateX(-50%) shift is neutralised. */
+  .al-nav-group:hover .al-dropdown,
+  .al-nav-group:focus-within .al-dropdown {
+    transform: none;
+  }
+
   .al-nav-group.is-open .al-dropdown { display: block; }
 
   .al-nav-group.is-open .al-chevron {

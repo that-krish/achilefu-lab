@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.0.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.1.
 
 ### Status by area
 
@@ -104,6 +104,28 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-10 ~15:00 CST — DM Sans enforced globally; mobile dropdown transform bug fixed (theme v1.4.1)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **DM Sans loaded and force-applied** (`functions.php`, `style.css`): DM Sans was referenced in CSS but never actually loaded — no Google Fonts URL, no `@font-face`. Fixed by enqueuing `https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@...&display=swap` via `wp_enqueue_style('al-dm-sans', ...)` in `functions.php` (declared as a dependency of `kadence-child` so it loads first). Added a global override in `style.css`: `body, h1–h6, input, textarea, select, button { font-family: 'DM Sans', sans-serif !important }`. The `!important` is required to beat Kadence's inline dynamic CSS, which is output as a `<style>` block in `<head>` and can win on specificity without it.
+2. **Mobile dropdown `translateX` bug fixed** (`style.css`): Opening an accordion group in the mobile nav was showing only the right-hand tail of each link text (e.g. "ng" instead of "Optical & Molecular Imaging"). Root cause: desktop CSS `.al-nav-group:hover .al-dropdown { transform: translateX(-50%) translateY(0) }` has specificity 0-2-0, which beats the mobile reset `.al-dropdown { transform: none }` at 0-1-0 — regardless of media query. On touch devices, `:hover` sticks after a tap, so the desktop rule fired and shifted the dropdown panel 50% to the left, off-screen. Fix: added a matching-specificity `transform: none` override for the same selectors inside `@media (max-width: 899px)`, so source order breaks the tie.
+3. **Reverted spurious `position: fixed` on mobile nav**: During debugging the dropdown issue, the nav panel was temporarily changed from `position: absolute; top: 100%` to `position: fixed; top: 68px`, which caused a visible gap between the header and the nav panel on the home page (the frosted-glass hero bled through). Reverted — the `position: absolute` approach was correct; only the transform specificity was the problem.
+
+**Why**
+DM Sans was the intended font from day one but silently falling back to the OS system stack everywhere except the two components where it was explicitly declared. The mobile dropdown bug was a CSS cascade/specificity trap: the desktop hover rule was never guarded by a `max-width` media query, so it won on specificity on mobile touch devices.
+
+**Watch out for**
+- The `!important` on the global `font-family` rule is intentional and load-bearing — do not remove it without replacing Kadence's dynamic inline CSS output.
+- The `transform: none` override for the mobile dropdown hover state must remain inside `@media (max-width: 899px)` and must use the same two selectors (`.al-nav-group:hover .al-dropdown, .al-nav-group:focus-within .al-dropdown`) to match specificity. A lower-specificity reset will lose again.
+- The redundant `font-family: 'DM Sans', sans-serif` declarations on `.al-btn` and `.al-accordion-trigger` are now harmless (they match the inherited value) — left in place to avoid unnecessary diff.
+
+**Next**
+Team member bios, Google Calendar embed, Media + Contact page templates.
 
 ---
 
