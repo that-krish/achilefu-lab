@@ -1,0 +1,44 @@
+# --- Secrets / local config ---
+wp-config.php
+wp-config-local.php
+.env
+.env.*
+
+# --- LocalWP artifacts ---
+local-xdebuginfo.php
+local-phpinfo.php
+
+# --- User uploads (per-environment, large binaries) ---
+wp-content/uploads/
+
+# --- Caches and upgrade temp dirs ---
+wp-content/cache/
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/w3tc-config/
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/db.php
+
+# --- Logs ---
+*.log
+wp-content/debug.log
+error_log
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor / IDE ---
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# --- Build tooling (future) ---
+node_modules/
+vendor/
