@@ -19,6 +19,13 @@ This repository tracks the **full WordPress install** rooted at `app/public/`: W
 - Caches, upgrade temp dirs, logs
 - LocalWP runtime artifacts (`local-xdebuginfo.php`, etc.)
 
+## Documentation
+
+Two living documents in [docs/](docs/) capture the *intent* and *history* behind this build. Read them before making non-trivial changes — they exist so the next developer (or AI assistant) doesn't have to re-derive every decision.
+
+- **[docs/DESIGN.md](docs/DESIGN.md)** — design decisions: color palette, typography, layout principles, imagery direction, voice, and accessibility commitments. The current source of truth for *what the site should look and feel like*. Decisions are versioned in place; superseded ones move to a section at the bottom.
+- **[docs/DEVLOG.md](docs/DEVLOG.md)** — development log: a Current State snapshot at the top (status by area, active work, blocked items — overwritten each session) and an append-only narrative of every meaningful change below. Read sections 1–2 first to orient on where the project stands; sections 3–4 cover conventions and history. Every contributor (human or Claude) is expected to keep this current.
+
 ## Local development
 
 1. Install [LocalWP](https://localwp.com/) and create a site with hostname `achilefu-lab.local`.
