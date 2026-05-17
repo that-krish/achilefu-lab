@@ -128,49 +128,62 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 
 ## 5. Home page layout
 
-> Status: **✅ Built and iterated (2026-05-10).** `kadence-child/front-page.php` + `style.css` v1.4.0. See DEVLOG 2026-05-10 for full iteration history.
+> Status: **✅ Built and iterated through v2.2.0 (2026-05-17).** `kadence-child/front-page.php` + `style.css` v2.3.0. See DEVLOG 2026-05-17 for full iteration history.
 
-**Current layout model (as built):**
+**Current layout model (v2.2 editorial density):**
 
 ```
 ╔═════════════════════════════════════════════════════╗
-║  HERO  [parallax image + dark overlay, full-bleed]  ║
+║  HERO  [full-bleed, navy banner bg, molecule flare] ║
 ║  "Harnessing Light to Understand, Diagnose          ║
 ║   & Treat Disease."                                 ║
-║  [Our Research]  [Contact Us]                       ║
+║  [Our Research]  [Meet the PI]                      ║
+║  ─────────────────────────────────────────          ║
+║  300+ Publications · 70+ Patents · 2 Nat'l Acad ·  ║
+║  25+ Years                      ← credentials strip ║
 ╚═════════════════════════════════════════════════════╝
-                                        ← global diagonal gradient visible here
-   ── Optical & Molecular Imaging ──────────────── ∨  ← accordion, open by default
-      Near-infrared fluorescence platforms...
-      Learn more →
+
+   ── Optical & Molecular Imaging ──────────────── ∨  ← flex-expand (not accordion)
+      Near-infrared fluorescence platforms...          first panel open by default
    ── Image-Guided Surgery ────────────────────── ›
    ── Bench to Bedside ────────────────────────── ›
-   ┌───────────────────────────────────────────────┐
-   │  PI SPOTLIGHT  [white panel card, 14px radius] │
-   │  [Photo 4:5] │ bio + badges + Meet Team CTA   │
-   └───────────────────────────────────────────────┘
-╔═════════════════════════════════════════════════════╗
-║  LAB IN NUMBERS  [parallax image + dark overlay]    ║
-║   300+       70+        2         25+               ║  ← flat, thin dividers only
-║  Publications  Patents  Nat'l Acad  Years           ║
-╚═════════════════════════════════════════════════════╝
-                                        ← gradient continues
-   ┌──────────┐ ┌──────────┐ ┌──────────┐
-   │  POST 1  │ │  POST 2  │ │  POST 3  │  ← white cards, 12px radius
-   └──────────┘ └──────────┘ └──────────┘
-   UTSW · Simmons Cancer Center · NIH       ← logos on gradient, no box
+
+   ┌─────────────────────────────────────────────────┐
+   │  FEATURED RESEARCH  [editorial 2-col, 5fr/6fr]  │
+   │  [image left]  │  headline + body + CTA right   │
+   └─────────────────────────────────────────────────┘
+
+   ┌─────────────────────────────────────────────────┐
+   │  PI  [white bg, 2-col photo left / bio right]   │
+   │  [Photo 4:5]  │  bio + credentials              │
+   │  ─────────────────────────────────────          │
+   │  300+ Pub  │  70+ Patents  │  2 Acad  │  25+ Yr │  ← inline stats band
+   └─────────────────────────────────────────────────┘
+
+   LATEST FROM THE LAB  [3-col equal grid]
+   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+   │ Recent Pubs  │ │ In the News  │ │ From Blog    │
+   │ hairline rows│ │ hairline rows│ │ hairline rows│
+   └──────────────┘ └──────────────┘ └──────────────┘
+
+   UTSW · Simmons Cancer Center · NIH  ← tight closing band (~2.5rem padding)
 ```
 
-**Key design decisions made during iteration:**
-- No alternating full-bleed section backgrounds. One global diagonal gradient (`body.home`) is the page surface.
-- Hero and Numbers are the only full-bleed sections — they use parallax images with dark overlays as intentional visual anchors.
-- All other sections are transparent; gradient shows through. Separation comes from vertical rhythm and hairline borders, not background color changes or heavy shadows.
-- Hero eyebrow badge removed — headline leads directly.
-- Fixed header: pinned via `#masthead { position: fixed !important }` in child CSS (not Kadence theme mods — those were cleared). Kadence's own `header.min.css` has `#masthead { position: relative }` which previously won on specificity. ID selector + `!important` resolves this definitively. See DEVLOG 2026-05-10 for full root-cause.
-- **Research Pillars use an accordion** (v1.4.0, confirmed by Krish): one row expands at a time, first open by default. No hover/focus visual effects on accordion triggers — explicitly stripped because Kadence's button stylesheet adds them. JS is front-page-only, vanilla ES5.
-- **Lab in Numbers is card-free** (v1.3.0): stats sit flat on the dark background separated by 1px rgba white dividers. Frosted glass mini-cards removed — they added visual noise against an already-dark parallax section.
-- **Affiliations strip is box-free** (v1.3.0): logos render directly on the gradient with no white pill-card wrapper.
-- **Global shadow + radius reduction** (v1.3.0): card radius 20px→12px, panel radius 24px→14px, all shadow values reduced by ~60%. Goal: editorial/institutional feel over SaaS-product feel.
+**Key design decisions (v2.x):**
+- **White page, white header, white everything** — no dark background sections, no gradient page surface. The v1 global diagonal gradient and the "Lab in Numbers" dark parallax section are gone. Color comes from the brand navy (`#2D4654`) applied to hero banners and section strips only.
+- **Stats folded into hero and PI** — the standalone "Lab in Numbers" section is removed. The four stats appear twice: once as an inline credentials strip in the hero (establishes credibility immediately), once as a thin hairline-bordered band at the bottom of the PI section (contextualizes the bio). This is intentional redundancy for two different reading contexts.
+- **Featured Research block** (editorial 5fr/6fr 2-col): sits between Pillars and PI. The left image column is purely decorative — it uses `lab-bg.jpg` as placeholder. When a real highlight image is available, it goes at `wp-content/uploads/featured-research.jpg`.
+- **Latest from the Lab** replaces the blog card grid: three equal columns (Recent Publications / In the News / From the Blog), each column a hairline-separated list (`1px var(--al-border)` row borders). Publications and In the News are static placeholder content in `front-page.php`; From the Blog pulls from real WP posts. See §11 for the hairline row pattern.
+- **Affiliations is a closing band**, not a section — `padding: 2.5rem 0`, logos inline, no background panel or wrapper.
+- **Research Pillars use flex-expand** (CSS `flex: 1` → `flex: 5` on hover/active, JS toggles `.is-active`). First panel open by default. Min-height `420px` (was `520px` in v1).
+- Fixed header: pinned via `#masthead { position: fixed !important }`. Hero pads `calc(68px + 4.25rem)` to clear it.
+
+**Superseded v1 decisions (moved here from §5 body):**
+- ~~Global diagonal gradient~~ — removed. Felt like a landing-page marketing template.
+- ~~Standalone "Lab in Numbers" parallax section~~ — stats folded into hero strip + PI band.
+- ~~Blog card grid (3 cards)~~ — replaced by the denser "Latest from the Lab" 3-column list.
+- ~~Section heading centered + teal underline bar~~ — now left-aligned editorial (see §11).
+- ~~Card radius 12px, reduced shadows~~ — v2 has no cards on the home page.
 
 See [CONTENT.md](CONTENT.md) for all copy.
 
@@ -178,19 +191,18 @@ See [CONTENT.md](CONTENT.md) for all copy.
 
 ## 6. Layout & spacing
 
-> Status: **Light scaffolding only. Decisions to make as pages get built.**
+> Status: **✅ Settled in v2.x (2026-05-17).** See §11 for the editorial density system that governs spacing on all pages.
 
-Working principles (defaults until contradicted):
+- **8px spacing grid.** All margins, padding, and gaps are multiples of 8 (4px allowed for fine adjustments).
+- **Max content width: 1200px** container for full pages; body prose capped at `72ch` within that.
+- **Section vertical padding: 3.5–5rem desktop / 2.5–3.5rem mobile.** (Was 6–8rem in v1; reduced to signal density and active content volume.) The tightest sections (affiliations closing band) go as low as 2.5rem.
+- **Mobile-first.** Full usability on phone — peer reviewers and prospective students browse mobile first.
+- **No cards on the home page.** Content streams use hairline-separated list rows (see §11). Cards remain appropriate for the Media image showcase only.
+- **CSS grid native** for two-column editorial blocks (PI, Featured Research). Kadence's grid is not used for page-level layout — child theme CSS handles it directly.
 
-- **8px spacing grid.** All margins, padding, and gaps are multiples of 8 (4px allowed for fine adjustments inside small components).
-- **Max content width: 72ch** for body prose (~720px). Long-form text is unreadable wider than this. Wider full-bleed sections are fine for hero blocks, image galleries, and data tables.
-- **Whitespace at section breaks.** Default section vertical padding: 64px (4rem) desktop / 48px (3rem) mobile. Originally 96px; reduced in v1.3.0 after the site felt too airy with multiple sections stacked.
-- **Mobile-first.** Site must be fully usable on a phone — peer reviewers and prospective students often browse from mobile first.
-
-To decide:
-- [ ] Grid system (12-col Bootstrap-style? CSS grid native? Kadence's built-in grid?)
-- [ ] Container max-width for full pages (1200px? 1280px?)
-- [ ] Card vs. plain-block treatment for Team / Publications
+Open:
+- [ ] Card vs. plain-block treatment for Team / Publications pages (not yet built)
+- [ ] Print stylesheet for publications and bios
 
 ---
 
@@ -255,6 +267,68 @@ Things we haven't decided and will need to before launch:
 - [ ] Custom 404 / search-empty illustrations
 - [ ] Print stylesheet for publications and bios
 - [x] **Breadcrumb navigation** — removed (2026-05-10, Krish). The "Home › Research › Page" trail felt unnecessary for a site of this size. HTML remains in templates behind `display: none`.
+
+---
+
+## 11. v2.x editorial density system
+
+> Status: **✅ Implemented across all 10 pages (home + 9 inner) as of v2.3.0 (2026-05-17).**
+
+This section documents the design language that superseded the v1 "spacious landing page" aesthetic. Read this before touching any page template.
+
+### Why it exists
+
+Krish's feedback after v2.0: "nice frame, but the website has no soul. it is too empty looking." The v1 pattern — centered headline + spacious subhead + sparse content — repeated six times felt like a brand marketing site, not a research lab. The fix: replace abstract section wrappers with multiple concrete content streams per page, and cut section spacing by ~30%.
+
+### Core rules
+
+**Section headings:**
+- Left-aligned, not centered.
+- Weight 700, size `clamp(1.5rem, 2.6vw, 2.125rem)`.
+- No teal `::after` underline bar. Separation comes from layout, not decorative rules.
+- Subheads (`<p class="al-section-sub">`) left-aligned, `max-width: 52ch`, color `var(--al-muted)`.
+
+**Hairline row lists:**
+- Used for Recent Publications, In the News, From the Blog, and any dense content stream.
+- Pattern: `<ul>` with `border-top: 1px var(--al-border)` on `<li>`, last child `border-bottom` too.
+- Row content: date/label left, title/headline as the main text, link arrow right.
+- No cards, no box-shadows, no background fills on individual rows.
+
+**Inline stats bands:**
+- A thin row of 4 stats separated by `border-right: 1px var(--al-border)`.
+- Bounded above and below by `border-top` / `border-bottom` hairlines.
+- Used in two places: hero credentials strip and bottom of PI section.
+- Mobile: collapses to 2×2 grid, right-borders removed, bottom-borders only.
+
+**Padding targets (desktop → mobile):**
+| Context | Desktop | Mobile |
+|---|---|---|
+| Hero | `calc(68px + 4.25rem) 0 5rem` | `calc(68px + 3rem) 0 3.5rem` |
+| Standard section | `5rem 0` | `3.5rem 0` |
+| PI section | `5rem 0 4.5rem` | `3.5rem 0 3rem` |
+| Affiliations closing band | `2.5rem 0` | `2rem 0` |
+
+**Section backgrounds:**
+- All page sections: `background: transparent` (page bg is white).
+- Hero and inner-page hero strips: `background: var(--al-navy)` (`#2D4654`).
+- No dark full-bleed sections anywhere else on any page.
+
+### Hero flare effect
+
+A decorative field of 14 small teal dots (`.al-flare-dot`) is scattered behind the hero content using absolute positioning. On cursor proximity (within ~120px), dots scale up and brighten via a JS `mousemove` listener. Visual reference: NIR fluorescence imaging — the dots simulate excited fluorescent molecules responding to a light source (the cursor).
+
+Implementation details:
+- Dots injected via JS into `.al-hero` on `DOMContentLoaded`.
+- Each dot: `8–14px` diameter, `background: var(--al-teal)`, `border-radius: 50%`, `opacity: 0.18` at rest.
+- Excitation: `transform: scale(2.2)`, `opacity: 0.7`, transition `200ms ease-out`.
+- Disabled entirely when `window.matchMedia('(hover: none)')` (touch devices) or `prefers-reduced-motion: reduce`.
+- Applied only on `front-page.php` — inner pages do not get the effect.
+
+### Inner pages
+
+All 9 inner pages share the same language: navy hero strip → white content sections with editorial density. Each page has at least one hairline-row list or inline stats band. No page uses a dark background section below the hero.
+
+Pages: Research landing · Optical Imaging · Image-Guided Surgery · Bench-to-Bedside · PI · Team · Lab Calendar · Contact · Media (visual showcase).
 
 ---
 

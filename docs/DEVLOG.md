@@ -24,44 +24,51 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6). Theme v2.0.0.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6 + Opus 4.7). Theme v2.3.0.
 
 ### Status by area
 
 | Area | Status | Notes |
 |---|---|---|
-| Repo + README | ✅ Done | Initial WP install committed, README written and pushed. |
+| Repo + README | ✅ Done | WP install + README committed. |
 | Documentation | ✅ Done | DESIGN.md, DEVLOG.md, GOLIVE.md, CONTENT.md all under `docs/`. |
-| Design system spec | ✅ Confirmed | v2.0 tokens: dark bg (#0f1d2a), neon (#6EF77A), Syne display + DM Sans body. |
-| Design system implementation | ✅ Done | Global CSS in `style.css`; Syne + DM Sans loaded from Google Fonts via `functions.php`. |
-| Core pages | ✅ Done | 7 pages created and published (IDs 6–12). Home = static front page. Blog = posts page. |
-| Navigation | ✅ Done | `header.php` override; dark glass on home, white on inner pages. 500ms hover-delay on desktop. |
-| Fixed header | ✅ Done | Header pinned via `#masthead { position: fixed !important }`. Offset baked into `.al-inner-hero`. |
-| Home page — v2.0 redesign | ✅ Done | Cinematic flex-expand pillars, Syne display font, neon accent, diagonal section transitions, scroll reveal, counter animation. All 6 sections live. |
-| Home page images | ✅ Done | `dr-achilefu.jpg`, `hero-bg.jpg`, `lab-bg.jpg` in `wp-content/uploads/`. |
-| Inner page templates | ✅ Done | Research, 3 sub-pages (optical-imaging, image-guided-surgery, bench-to-bedside), PI, Team, Lab Calendar, **Contact**, **Media** — all use v2.0 design tokens. |
-| Logo / wordmark | 🟡 Placeholder | CSS wordmark in header. Real SVG logo TBD. |
-| Contact form | 🟡 Placeholder | WPForms installed. Template shows placeholder form + email fallback. Activate with `[wpforms id="X"]` shortcode when form is created. |
-| Team member bios | ⏹ Awaiting content | `$team` array in `page-team.php` — add entries as bios arrive from lab. |
-| Media gallery images | ⏹ Awaiting content | Placeholder shown. Add `<figure class="al-media-figure">` entries to `page-media.php`. |
-| Publications auto-pull | ⏹ Not started | Strategy TBD (PubMed API likely). |
-| Lab Calendar | 🟡 Template built | Google Calendar embed URL needed. |
+| Design system spec | ✅ Confirmed | v2.x: DM Sans only (300–800), brand navy + teal palette, editorial density, no neon/Syne/clip-path. See DESIGN.md §11. |
+| Design system implementation | ✅ Done | Global CSS in `style.css` v2.3.0; DM Sans loaded as single Google Fonts request. |
+| Core pages | ✅ Done | 7 WP pages (IDs 6–12). Home = static front page. Blog = posts page. |
+| Navigation | ✅ Done | `header.php` override; white header on all pages (consistent); 500ms hover-delay on desktop. |
+| Fixed header | ✅ Done | `#masthead { position: fixed !important }`. Hero pads `calc(68px + 4.25rem)` to clear it. |
+| Home page (v2.2 editorial) | ✅ Done | Hero (+ inline credentials strip) → Pillars (cinematic flex-expand) → Featured Research → PI (with inline stats band) → Latest from the Lab (3-col: Publications · News · Blog) → Affiliations (tight closing band). |
+| Hero flare effect | ✅ Done | Decorative fluorescent-molecule field: 14 small teal dots scattered behind hero content; cursor proximity excites them. Direct visual reference to the lab's NIR fluorescence imaging. Disabled on touch + reduced-motion. |
+| Inner pages — all 9 done | ✅ Done | Research landing, 3 research sub-pages (Optical Imaging, Image-Guided Surgery, Bench-to-Bedside), PI, Team, Lab Calendar, Contact, Media — all share v2.2 editorial density language. |
+| Media page | ✅ Visual showcase | Rebuilt as image showcase (not press): hero featured figure + Research Imagery (9) + Lab Life (8) + Conferences (5) + In the OR (4). 27 placeholder SVG figures with varied aspect ratios. |
+| Logo / wordmark | 🟡 Placeholder | CSS wordmark in `header.php`. Real SVG TBD. |
+| Contact form | 🟡 Placeholder | WPForms installed; disabled mock form rendered. Activate by uncommenting `do_shortcode('[wpforms id="X"]')` in `page-contact.php`. |
+| Team member bios | 🟡 Placeholder content | 18 placeholder members across 4 groups in `$team` array. Replace with real lab members. |
+| Lab image gallery | 🟡 Placeholder SVGs | 27 SVG placeholders on `/media`. Replace with real photos via `.al-media-figure` pattern. |
+| Recent Publications | 🟡 Placeholder | Hardcoded list on home page + 3 research sub-pages. Replace with real papers (or CPT/API later). |
+| In the News | 🟡 Placeholder + 3 real | Real anchors: NAE 2018, NAM 2024, UTSW chair 2024. Rest are placeholders. |
+| Lab Calendar | 🟡 Template built | `.al-calendar-frame` placeholder waiting for Google Calendar embed URL. |
+| Page Publications template | ⏹ Not built | Page exists in WP (ID 8) but no custom template; falls back to Kadence default. |
 | Plugins | 🟡 Installed, not configured | Yoast / WPForms / W3TC at defaults. |
 | Deployment / production host | ⏹ Not chosen | `achilefulab.org` target domain. |
+| PHP (system) | ✅ Done | PHP 8.2 via winget. |
 
 Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing/blocked
 
 ### Active work
 
-**v2.2 editorial density pass.** Home page restructured for content density: hero gained an inline credentials strip; standalone Numbers section folded inline into PI as a thin stats band; Blog section replaced with a 3-column **Latest from the Lab** (Recent Publications / In the News / From the Blog); new **Featured Research** editorial block between Pillars and PI; Affiliations compressed into a tight closing band. Section headings now left-aligned editorial (no centered teal underline). Header is white on all pages.
+**Editorial density pass complete across the entire site.** v2.3.0. Home page + 9 inner pages all share the same design language: DM Sans only, brand navy + teal palette, left-aligned section heads, hairline-rule list rows for content streams, inline stat bands instead of standalone hero-stats sections, tight padding (3.5–5rem vs the old 6–8rem). Decorative cursor-excitation molecule field on the hero is the only "unnecessary flare." Media page rebuilt as a visual showcase (not a press page) — press lives on the home page's "Latest from the Lab" instead.
 
 ### Blocked / pending decisions
 
 - [ ] Logo / wordmark (real SVG).
-- [ ] Lab member list and bios for Team page (`$team` array in `page-team.php`).
-- [ ] Molecular imaging photos from lab members (for Media gallery).
-- [ ] WPForms contact form ID — create form, then add `[wpforms id="X"]` to `page-contact.php`.
+- [ ] Real lab member list + bios for Team page (`$team` array in `page-team.php`).
+- [ ] Real molecular imaging + lab life photos for `/media` (replace 27 SVG placeholders).
+- [ ] Real recent publications list (replace placeholder entries on Home + Research sub-pages, OR build a `publications` CPT / API pull).
+- [ ] Real press coverage entries (replace placeholder "In the News" items on home).
+- [ ] WPForms contact form: create form, then activate `[wpforms id="X"]` shortcode in `page-contact.php`.
 - [ ] Google Calendar embed URL for Lab Calendar page.
+- [ ] `page-publications.php` template — Publications page exists in WP but renders Kadence default.
 - [ ] Verify "25+ Years of innovation" stat with Dr. Achilefu.
 - [ ] Production host + DNS provider for `achilefulab.org`.
 
