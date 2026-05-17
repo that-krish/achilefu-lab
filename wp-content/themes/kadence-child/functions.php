@@ -91,9 +91,9 @@ add_action( 'wp_footer', function () {
 		var isTouch  = ! window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches;
 
 		// Target density: hero area (px²) per dot. Lower = denser.
-		var DENSITY  = isTouch ? 6000 : 6500;
-		var MIN_DOTS = 40;
-		var MAX_DOTS = isTouch ? 100 : 340;
+		var DENSITY  = isTouch ? 9000 : 6500;
+		var MIN_DOTS = isTouch ? 28 : 40;
+		var MAX_DOTS = isTouch ? 65 : 340;
 
 		var molecules = [];
 		var molPos    = [];
@@ -103,6 +103,35 @@ add_action( 'wp_footer', function () {
 		var mouseY    = -9999;
 		var rafId     = null;
 
+		// Touch blink keyframes — used by Web Animations API for per-dot timing.
+		// Flash duration randomizes per dot (2–4s); gap between flashes is 8s.
+		var BLINK_DIM_OPACITY  = 0.20;
+		var BLINK_PEAK_OPACITY = 0.98;
+		var BLINK_DIM_SHADOW   = '0 0 8px 0 rgba(135, 188, 222, 0.45)';
+		var BLINK_PEAK_SHADOW  = '0 0 30px 7px rgba(135, 188, 222, 0.90)';
+		var BLINK_GAP_SEC      = 8;
+		var BLINK_FLASH_MIN    = 2;
+		var BLINK_FLASH_MAX    = 4;
+
+		function attachBlink ( el ) {
+			if ( typeof el.animate !== 'function' ) return;
+			var flashSec  = BLINK_FLASH_MIN + Math.random() * ( BLINK_FLASH_MAX - BLINK_FLASH_MIN );
+			var totalSec  = BLINK_GAP_SEC + flashSec;
+			var dimEnd    = BLINK_GAP_SEC / totalSec;
+			var peakAt    = ( BLINK_GAP_SEC + flashSec / 2 ) / totalSec;
+			el.animate( [
+				{ offset: 0,      opacity: BLINK_DIM_OPACITY,  boxShadow: BLINK_DIM_SHADOW  },
+				{ offset: dimEnd, opacity: BLINK_DIM_OPACITY,  boxShadow: BLINK_DIM_SHADOW  },
+				{ offset: peakAt, opacity: BLINK_PEAK_OPACITY, boxShadow: BLINK_PEAK_SHADOW },
+				{ offset: 1,      opacity: BLINK_DIM_OPACITY,  boxShadow: BLINK_DIM_SHADOW  }
+			], {
+				duration:       totalSec * 1000,
+				iterations:     Infinity,
+				easing:         'ease-in-out',
+				iterationStart: Math.random()
+			} );
+		}
+
 		function generate () {
 			var rect   = hero.getBoundingClientRect();
 			var area   = rect.width * rect.height;
@@ -110,23 +139,24 @@ add_action( 'wp_footer', function () {
 
 			field.textContent = '';
 			var frag = document.createDocumentFragment();
+			var created = [];
 			for ( var i = 0; i < target; i++ ) {
 				var span = document.createElement( 'span' );
 				span.className = 'al-molecule';
 				var r    = Math.random();
 				var size = r < 0.15 ? 5 : ( r < 0.70 ? 3 : 4 );
-				// Two delays: one per animation in the shorthand (breathe 7s, blink 2.6s).
 				var breatheDelay = ( Math.random() * 7 ).toFixed( 2 );
-				var blinkDelay   = ( Math.random() * 2.6 ).toFixed( 2 );
 				span.style.cssText =
 					'left:'    + ( Math.random() * 99 + 0.5 ).toFixed( 2 ) + '%;' +
 					'top:'     + ( Math.random() * 99 + 0.5 ).toFixed( 2 ) + '%;' +
 					'width:'   + size + 'px;' +
 					'height:'  + size + 'px;' +
-					'animation-delay:' + breatheDelay + 's,' + blinkDelay + 's;';
+					'animation-delay:' + breatheDelay + 's;';
 				frag.appendChild( span );
+				created.push( span );
 			}
 			field.appendChild( frag );
+			if ( isTouch ) created.forEach( attachBlink );
 			molecules = Array.prototype.slice.call( field.children );
 			cachePositions();
 		}

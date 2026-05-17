@@ -344,27 +344,9 @@ html { scroll-behavior: smooth; }
   50%      { transform: scale(1.15); }
 }
 
-/* Touch devices (phones, iPad) get an auto-blink since there's no cursor
-   to excite the field. Each dot already has a staggered animation-delay,
-   so the field twinkles out of sync. */
-@keyframes al-molecule-blink {
-  0%, 100% {
-    opacity: 0.20;
-    box-shadow: 0 0 8px 0 rgba(135, 188, 222, 0.45);
-  }
-  50% {
-    opacity: 0.98;
-    box-shadow: 0 0 30px 7px rgba(135, 188, 222, 0.90);
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  .al-molecule {
-    animation:
-      al-molecule-breathe 7s ease-in-out infinite,
-      al-molecule-blink 2.6s ease-in-out infinite;
-  }
-}
+/* Touch devices get an auto-blink applied per-dot via Web Animations API in
+   functions.php (variable flash duration 2–4s + fixed 8s gap). CSS just keeps
+   the ambient breathe; the WAAPI animation handles opacity + box-shadow. */
 
 @media (prefers-reduced-motion: reduce) {
   .al-molecule {
