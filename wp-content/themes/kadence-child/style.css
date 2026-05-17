@@ -79,11 +79,6 @@ input, textarea, select, button {
    BODY — home page
    Dark base so sections with their own bg look right.
 ───────────────────────────────────────────────────────────── */
-body.home {
-  background: var(--al-primary);
-  min-height: 100vh;
-}
-
 body.home #wrapper,
 body.home #inner-wrap {
   background: transparent;
@@ -193,7 +188,7 @@ body.home #inner-wrap {
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
-  padding: 9rem 0 8rem;
+  padding: calc(68px + 6rem) 0 8rem;
   overflow: hidden;
 }
 
@@ -845,69 +840,6 @@ body.home #inner-wrap {
   .admin-bar .al-site-header { top: 46px !important; }
 }
 
-/* Home page: dark glass header (hero is dark) */
-body.home .al-site-header {
-  background: rgba(28, 51, 71, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: rgba(255,255,255,0.10);
-}
-
-/* Scrolled state on home: denser dark */
-body.home .al-site-header.is-scrolled {
-  background: rgba(28, 51, 71, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom-color: rgba(255,255,255,0.10);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
-
-/* Nav text goes white on home */
-body.home .al-site-header .al-logo-text,
-body.home .al-site-header .al-nav-label {
-  color: rgba(255,255,255,0.85) !important;
-}
-
-body.home .al-site-header .al-logo-mark {
-  background: rgba(255,255,255,0.20);
-}
-body.home .al-site-header .al-logo-mark::after {
-  background: rgba(255,255,255,0.6);
-}
-
-body.home .al-site-header .al-nav-label:hover,
-body.home .al-site-header .al-nav-group:hover .al-nav-label,
-body.home .al-site-header .al-nav-group:focus-within .al-nav-label {
-  background: rgba(255,255,255,0.10);
-  color: #fff !important;
-}
-
-body.home .al-site-header .al-chevron { color: rgba(255,255,255,0.55) !important; }
-
-body.home .al-site-header .al-contact-cta {
-  background: rgba(255,255,255,0.15);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.35);
-}
-
-body.home .al-site-header .al-contact-cta:hover {
-  background: rgba(255,255,255,0.25);
-  box-shadow: none;
-  color: #ffffff;
-}
-
-body.home .al-site-header .al-hamburger span {
-  background: rgba(255,255,255,0.8);
-}
-
-/* Dropdown stays white in all cases */
-body.home .al-site-header .al-dropdown {
-  background: #ffffff;
-  border-color: rgba(0,0,0,0.08);
-}
-
-body.home .al-site-header .al-dropdown a { color: var(--h-text); }
-body.home .al-site-header .al-dropdown a:hover { color: var(--h-primary); }
 
 /* ── Inner layout ── */
 .al-header-inner {
@@ -2008,7 +1940,7 @@ body.home .al-site-header .al-dropdown a:hover { color: var(--h-primary); }
 
 /* Hero */
 @media (max-width: 640px) {
-  .al-hero { padding: 7rem 0 8rem; }
+  .al-hero { padding: calc(68px + 3.5rem) 0 5rem; }
   .al-hero__actions { flex-direction: column; align-items: flex-start; }
   .al-hero__actions .al-btn { width: 100%; text-align: center; }
 }
