@@ -27,7 +27,6 @@ get_header();
 				<span aria-hidden="true">›</span>
 				<span aria-current="page">Lab Calendar</span>
 			</nav>
-			<p class="al-inner-hero__eyebrow">Updates</p>
 			<h1 class="al-inner-hero__title" id="cal-heading">Lab Calendar</h1>
 			<p class="al-inner-hero__sub">
 				Weekly meetings, journal clubs, visiting speakers, and conference travel &mdash; the working rhythm of the Achilefu Lab at UT&nbsp;Southwestern.

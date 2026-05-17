@@ -16,7 +16,7 @@ This file is the single source of truth for *implementation state and decision h
 
 **Stack**: WordPress on LocalWP for dev. Theme: Kadence 1.4.5. Plugins: Kadence Blocks, WPForms Lite, WP Mail SMTP, Yoast SEO, W3 Total Cache. Repo tracks the full WP install at `app/public/`. WP-CLI available via LocalWP's bundled PHP (`C:/Users/krish/AppData/Roaming/Local/lightning-services/php-8.2.29+0/bin/win64/php.exe`).
 
-**Site pages**: Home · Research · Publications · Team · Blog · Media · Contact (7 pages, all published).
+**Site pages**: Home · Research · Publications · Team · Journal · Media (+3 sibling category pages: Media-Research / Media-People / Media-Events) · Contact (7 + 3 media siblings, all published).
 
 **Team**: Krish + Salmon (web leads), Dr. Achilefu (principal stakeholder).
 
@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Opus 4.7). Theme v2.4.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 16:45 CDT** by Claude (Opus 4.7). Theme v2.7.0.
 
 ### Status by area
 
@@ -34,17 +34,18 @@ This file is the single source of truth for *implementation state and decision h
 | Documentation | ✅ Done | DESIGN.md, DEVLOG.md, GOLIVE.md, CONTENT.md all under `docs/`. |
 | Design system spec | ✅ Confirmed | v2.x: DM Sans only (300–800), brand navy + teal palette, editorial density, no neon/Syne/clip-path. See DESIGN.md §11. |
 | Design system implementation | ✅ Done | Global CSS in `style.css` v2.3.0; DM Sans loaded as single Google Fonts request. |
-| Core pages | ✅ Done | 7 WP pages (IDs 6–12). Home = static front page. Blog = posts page. |
+| Core pages | ✅ Done | 7 WP pages (IDs 6–12). Home = static front page. Journal = posts page (slug `/journal/`, renamed from `/blog/` in v2.5.1). |
 | Navigation | ✅ Done | `header.php` override; white header on all pages (consistent); 500ms hover-delay on desktop. |
 | Fixed header | ✅ Done | `#masthead { position: fixed !important }`. Hero pads `calc(68px + 4.25rem)` to clear it. |
-| Home page (v2.3.5 editorial) | ✅ Done | Hero (+ inline credentials strip) → PI (with inline stats band) → Latest from the Lab (2-col: Publications · Blog) → Affiliations (tight closing band). Pillars section removed v2.3.5 — single-platform setup didn't justify a 3-panel grid. |
+| Home page (v2.3.5 editorial) | ✅ Done | Hero (+ inline credentials strip) → PI (with inline stats band) → Latest from the Lab (2-col: Publications · Journal) → Affiliations (tight closing band). Pillars section removed v2.3.5 — single-panel grid didn't justify the layout. |
 | Hero flare effect | ✅ Done (v2.4) | Decorative fluorescent-molecule field scattered behind hero content. **JS-generated, density-driven** (px² per dot target, debounced resize regen). Two modes: desktop = cursor-reactive proximity glow; touch = CSS auto-blink keyframes matched to the desktop max-intensity endpoints. Hero is now `min-height: 100svh` with flex-centered content + a bouncing scroll-cue chevron to `#al-pi`. |
-| Inner pages — 7 done | ✅ Done | Research landing, Optical Imaging sub-page, PI, Team, Lab Calendar, Contact, Media — all share v2.x editorial density language. (IGS + B2B sub-pages removed v2.3.4 — fabricated platforms, not on real lab site.) |
-| Media page | ✅ Visual showcase | Rebuilt as image showcase (not press): hero featured figure + Research Imagery (9) + Lab Life (8) + Conferences (5) + In the OR (4). 27 placeholder SVG figures with varied aspect ratios. |
+| Inner pages — 7 + 3 done | ✅ Done | Research landing, Optical Imaging sub-page, PI, Team, Lab Calendar, Contact, Media (+ v2.6.6 Media siblings: Media-Research / Media-People / Media-Events at flat top-level slugs `/media-research/`, `/media-people/`, `/media-events/`) — all share v2.x editorial density language. v2.5.1 locked every `.al-inner-hero` to `min-height: 440px` desktop / `340px` mobile with a 60/150-char copy budget for uniform band heights. (IGS + B2B sub-pages removed v2.3.4 — fabricated platforms, not on real lab site.) |
+| Journal templates (home.php + single.php) | ✅ Done (v2.5.1) | Posts index + single-post pages render the inner-page editorial template. Single-post hero shows category as eyebrow (THOUGHTS / LAB MEMOS / NEWS), title, date · author. `.al-post-body` auto-styles paragraphs, headings, links, lists, blockquotes, images, captions. |
+| Media page | ✅ Hub-and-spoke, CMS-driven | **v2.7.0:** `/media/` is a hub with three teaser rows (Research · People · Events). Each row auto-pulls the 3 newest captured-date photos in its category. Full galleries live on 3 sibling pages: `/media-research/`, `/media-people/`, `/media-events/`. Templates auto-match by filename. All photo content is managed in WP admin → Gallery Photos (CPT). |
 | Logo / wordmark | 🟡 Placeholder | CSS wordmark in `header.php`. Real SVG TBD. |
 | Contact form | 🟡 Placeholder | WPForms installed; disabled mock form rendered. Activate by uncommenting `do_shortcode('[wpforms id="X"]')` in `page-contact.php`. |
-| Team member bios | 🟡 Empty arrays | Fabricated names removed; `$team` arrays empty. Real roster needed from lab admin. |
-| Lab image gallery | 🟡 Placeholder SVGs | 27 SVG placeholders on `/media`. Replace with real photos via `.al-media-figure` pattern. |
+| Team member bios | ✅ Done (v2.5.0) | Full roster populated in `page-team.php` from labs.utsouthwestern.edu/achilefu-lab/lab-members-and-alumni — 5 groups + 31-entry alumni list. Monogram avatars (no photos). |
+| Lab image gallery | ✅ CMS-driven (empty) | **v2.7.0:** photos managed via the **Gallery Photos** custom post type (WP admin sidebar). Each photo has Title (description), Photo Category radio (Research/People/Events), Bucket free-form tag (photographer / event / context), Captured Date (EXIF auto + manual override), and Featured Image (the file). Subpages auto-pull by category. Desktop: hover overlay reveals metadata. Mobile: tap opens lightbox. Galleries are empty until Krish adds Gallery Photos. |
 | Recent Publications | ✅ Done | Verified real papers on home, research landing, optical-imaging sub-page, and PI page (from labs.utsouthwestern.edu/achilefu-lab). |
 | Lab Calendar | 🟡 Template built | `.al-calendar-frame` placeholder waiting for Google Calendar embed URL. |
 | Page Publications template | ⏹ Not built | Page exists in WP (ID 8) but no custom template; falls back to Kadence default. |
@@ -61,15 +62,16 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 ### Blocked / pending decisions
 
 - [ ] Logo / wordmark (real SVG).
-- [ ] Real lab member list + bios for Team page (empty `$team` arrays in `page-team.php`; alumni section now static).
-- [ ] Real molecular imaging + lab life photos for `/media` (replace 27 SVG placeholders).
+- [x] Real lab member list + bios for Team page — populated v2.5.0 from labs.utsouthwestern.edu/achilefu-lab/lab-members-and-alumni.
+- [ ] Real photos for `/media` and its 3 subpages. Workflow: WP admin → Gallery Photos → Add New → fill title (description), pick category radio, type a bucket tag, set captured date (auto from EXIF or manual), set featured image (the photo file). Subpages auto-update.
 - [x] Real recent publications list — replaced with verified papers from UTSW source site.
 - [ ] Full publications page template (`page-publications.php`) — currently Kadence default.
 - [ ] WPForms contact form: create form, then activate `[wpforms id="X"]` shortcode in `page-contact.php`.
 - [ ] Google Calendar embed URL for Lab Calendar page.
 - [ ] `page-publications.php` template — Publications page exists in WP but renders Kadence default.
 - [ ] Verify "25+ Years of innovation" stat with Dr. Achilefu.
-- [ ] Production host + DNS provider for `achilefulab.org`.
+- [ ] Production host + DNS provider for `achilefulab.org` — Sam cannot publish Journal entries until the site is publicly reachable (WP mobile app cannot reach `*.local`).
+- [ ] WP user account + Application Password for each contributing lab member (required for **Lab Memos** category author attribution).
 
 ### Don't break
 
@@ -114,6 +116,525 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-17 16:45 CDT — Media: CMS-driven via Gallery Photos CPT + per-photo metadata + mobile lightbox (theme v2.7.0)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+
+Photos on the media hub and subpages are now fully **CMS-managed** through a new **Gallery Photos** admin section. SVG placeholders are gone from every media template; the templates query and render real photos from the database. Designed so blog uploads have **zero** intersection with gallery uploads — Sam never sees a gallery prompt unless he explicitly opens the Gallery Photos section.
+
+**Data model (per photo)**
+
+| Concept | Storage |
+|---|---|
+| Description | Post title (renders as `<figcaption>` text) |
+| Category (which subpage) | `photo_category` taxonomy, hierarchical, **single-select** via custom radio metabox. Seeded terms: Research / People / Events. |
+| Bucket (creator / event / context) | `photo_bucket` taxonomy, non-hierarchical, free-form tag with auto-complete |
+| Captured date | Post meta `_al_photo_captured_date` (Y-m-d). EXIF auto-fill on save; manual override always wins; falls back to post_date if neither. |
+| The photo file | Featured image (relabeled "The Photo" in the UI) |
+
+**Admin changes — `functions.php` (+~280 lines)**
+
+- **`register_post_type('gallery_photo')`** — public, has_archive:false, supports:[title, thumbnail, revisions], menu-icon dashicons-format-gallery at position 21 (right under Pages). Featured-image labels rewritten: "The Photo" / "Upload or pick the photo" / "Use as the photo".
+- **Two taxonomies registered on `gallery_photo`:** `photo_category` (hierarchical, show_admin_column, seeded with Research/People/Events terms) + `photo_bucket` (tag-style, show_admin_column).
+- **Custom single-select category metabox** — default WP checkbox UI replaced by radio buttons via `remove_meta_box('photo_categorydiv', …)` + custom metabox. Enforces "one category per photo" at the UI level.
+- **Captured Date metabox** in the side column with a `<input type="date">` + help text.
+- **Save hook** `save_post_gallery_photo`: writes the single category term + writes captured-date (manual → EXIF from featured image's `wp_attachment_metadata['image_meta']['created_timestamp']` → post_date fallback, in that priority order).
+- **`enter_title_here` filter** — title placeholder becomes "Photo description (e.g. 'Confocal microscopy of tumor margin')" so Sam knows the title is the visible description.
+- **Admin list columns** — "All Gallery Photos" view shows a thumbnail + title + categories + buckets + captured date for quick scanning.
+
+**Rendering — `al_render_gallery_photos( $slug, $limit = -1, $shape = 'square' )`**
+
+- Queries `gallery_photo` posts in the given category, orders by `_al_photo_captured_date` DESC (always populated thanks to the save hook).
+- Outputs each as `<figure class="al-media-figure --{shape} --overlay" data-photo-id="…">` with `<img>` (lazy-loaded, 'large' size) + a structured `<figcaption>` containing `.al-media-figure__desc` (title), `.al-media-figure__meta` (bucket · date).
+- **Empty state:** if no photos match, renders `.al-gallery-empty`. For logged-in editors it links to *"Add the first one →"*; for visitors it says *"Photos coming soon."*
+
+**Templates rewritten**
+
+- **`page-media.php`** — three rows, each now a one-liner: `<?php al_render_gallery_photos( 'research'/'people'/'events', 3 ); ?>`. v4.0 → v4.2.
+- **`page-media-research.php`**, **`page-media-people.php`**, **`page-media-events.php`** — each gutted from ~250 lines of SVG markup down to ~50 lines. Single helper call drives the gallery.
+
+**CSS — `style.css` v2.6.6 → v2.7.0**
+
+- **`.al-media-figure--overlay figcaption`** restructured: flex column, gap 0.35rem. Inner `.al-media-figure__desc` is the prominent description; `.al-media-figure__meta` is the small-caps muted line for bucket · date.
+- **`@media (hover: none)`** override: on touch-primary devices, the hover-overlay never appears, and tapping a figure opens a lightbox instead. Adds `cursor: pointer` on tappable figures.
+- **`.al-gallery-empty`** dashed-border empty state.
+- **`.al-lightbox*`** — fixed-position full-screen overlay (z-index 9999), backdrop click-to-close, top-right close button, max-width-clamped image (`max-width: min(94vw, 720px); max-height: 65vh`), centered metadata below the photo. `body.al-lightbox-open` locks page scroll while open.
+
+**JS — `functions.php` `wp_footer` hook**
+
+- Inline lightbox script, ~50 lines, vanilla. Bails immediately if `(hover: hover)` matches (no work on desktop). On touch devices: delegated click listener on `document` catches any `.al-media-figure[data-photo-id]` click, clones the `<img>` + the figcaption HTML into the lightbox shell that lives at the bottom of every page, sets `aria-hidden="false"`. Closes on backdrop / close-button / Escape key.
+
+**Why**
+
+Hand-curated SVG figures in PHP templates were never going to scale — Sam was going to send photos and the lab needed a workflow that didn't involve editing PHP. Single-category enforcement avoids the "this photo is on three pages now" mess that would happen with multi-select. Separating gallery photos into a CPT (rather than tagging Media Library attachments) means Sam's blog-post upload flow is completely untouched — no extra fields, no decision points, no confusion. The hover-on-desktop / tap-on-mobile split matches user intent: scan-fast on a laptop, look-closer on a phone.
+
+**Watch out for**
+
+- **Featured image is mandatory** for a photo to render. The helper silently skips entries without a thumbnail. If a Gallery Photo is saved without setting the featured image, it just won't appear.
+- **Category is single-select via UI** but the underlying taxonomy is hierarchical. Save hook explicitly writes a single-term array. External writers (REST API, WP-CLI) could in theory write multiple terms.
+- **EXIF privacy.** We only read `created_timestamp` and don't display GPS or device IDs. Audit before exposing any other EXIF fields.
+- **No photos yet** — the entire `/media/` hub + 3 subpages are visually empty until Krish adds Gallery Photos. Empty state for logged-in users links to *"Add the first one →"*; for visitors it says *"Photos coming soon."* Recommend uploading a few photos before any deploy.
+
+**Next**
+
+- Krish uploads first set of real photos via *Gallery Photos → Add New*. EXIF should auto-populate the captured date for phone/camera photos.
+- Possible follow-up: **group by bucket** on subpages (e.g. on `/media-events/` cluster photos by event name as subheadings). Cheap extension to `al_render_gallery_photos`.
+- Possible follow-up: lightbox **prev/next** for swiping between photos without closing.
+
+---
+
+### 2026-05-17 16:20 CDT — Decision: Lab Calendar pipeline via invite-as-guest pattern (no theme change, v2.6.6)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What was decided**
+The Lab Calendar page will be populated dynamically from a dedicated Google Calendar account (referred to in docs as **"the labcal mailbox"** — the literal address is intentionally kept out of all `/docs` files and out of the public site; ask Krish or check the password manager). Lab members invite that account as a guest on any event they want surfaced publicly. The website subscribes to the labcal account's public calendar feed and renders the events on `/lab-calendar/`.
+
+**Architecture sketch**
+1. **The mailbox.** A Google Workspace account (Workspace preferred over free Gmail so the address sits on the brand domain and admin-level invite filtering is available). One-time setup: enable Calendar Settings → Event settings → "Automatically add invitations: Yes, even if I have not responded." From that moment, anything the account is invited to lands on its primary calendar with no acceptance step.
+2. **Per-event lab workflow (the whole point).** Lab member creates an event in their own calendar (any tool — Google, Outlook, phone), adds the labcal mailbox as a guest, saves. Done. Edits and cancellations propagate automatically — labcal is just another invitee.
+3. **The feed.** labcal's primary calendar is set to public; we use its public ICS feed (or Calendar ID for the JS embed route) on the WP side.
+4. **The render.** `page-lab-calendar.php` will read that feed via a plugin (Simple Calendar / "Google Calendar Events" is the current candidate — it accepts a public Calendar ID and emits theme-styleable markup). Custom JS via FullCalendar.io is a fallback if Simple Calendar's output proves too inflexible.
+
+**Why this pattern**
+Lab members have low tech-time budget. Asking them to log into WP admin and create a calendar entry for every meeting is a much harsher failure mode than asking them to add a guest to an event they're already creating in their normal flow — the latter is a 4-second action inside the tool they already use. The trade-off is that this pattern is **curated, not exhaustive**: only events where someone remembered to invite labcal will surface. That's acceptable for a public-facing lab calendar (we don't want every internal meeting on the website anyway). And the failure mode is recoverable in under a minute — open the event, add labcal as a guest, save; the website picks it up after the next feed refresh.
+
+**Trade-offs explicitly considered and rejected**
+- *WordPress-native event management* (members create events inside WP admin): rejected. High tech-savvy + time-budget cost on members for every single event.
+- *Share each member's personal calendar with labcal as a member* (so labcal sees everything they put on their own calendar without an invite): rejected. Privacy-invasive — labcal would inherit visibility into internal/private meetings members didn't intend to publish.
+- *Shared "Lab Events" calendar that members add events to directly* (instead of inviting labcal as a guest): noted as a viable alternative, but rejected for now. It just relocates the "remember to do the thing" problem from "remember to invite labcal" to "remember to pick the right calendar from the dropdown." Equivalent friction, less ergonomic recovery (events created on the wrong calendar have to be deleted + re-created on the right one, vs. just adding a guest).
+
+**Watch out for**
+- **Auto-accept = spam vector.** Anyone in the world who learns the labcal address can drop events onto the public feed. Mitigations: keep the address private (do NOT publish it on the site, do NOT put it in `/docs` files), use Workspace's org-level invite-domain allowlist if available, and periodically eyeball the calendar for junk. This is the single biggest operational risk.
+- **ICS feed cache latency.** Google caches public ICS feeds for hours; the WP-side plugin will add another cache layer on top. Realistic feed-to-website latency is 30 min – 2 h. Document this on the page so visitors don't expect real-time. For urgent timing changes (e.g. "seminar moved by an hour, starts in 30 min"), the calendar page is not the right channel — Slack/email is.
+- **Curated, not exhaustive.** Events without a labcal guest will never appear. Worth a short FAQ-style note on the page for lab members ("how does an event get here?") — or just in a sticky DM to the lab group.
+- **Account ownership.** The labcal account password belongs to the lab/Krish, NOT a personal Google account. If whoever set it up leaves, the account must survive. Lock down the recovery email + phone accordingly.
+
+**Status**
+Decision only — nothing built yet. `page-lab-calendar.php` still renders the placeholder ("Calendar coming soon"). Implementation tasks tracked in [GOLIVE.md §14](GOLIVE.md). When this gets built, write a follow-up DEVLOG entry covering the actual mechanics (account ID stays private, but: plugin choice + version, custom theme styling, cache TTL chosen).
+
+**Next**
+Build is unblocked but not scheduled. Pre-requisites before any code: (1) provision the labcal Workspace account on the `achilefulab.org` domain, (2) configure auto-accept, (3) set the calendar public and capture its Calendar ID / ICS URL, (4) install + configure the plugin. All in [GOLIVE.md §14](GOLIVE.md).
+
+---
+
+### 2026-05-17 16:18 CDT — Media subpages: flat slugs + rename Lab Life → People, Conferences → Events (theme v2.6.6)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+
+Krish created the three category pages in WP admin as **flat top-level pages** (siblings of Media), not nested children, and renamed two of the three categories. The templates and hub were updated to match.
+
+- **Slug + URL changes:**
+  - `media-research`  → `/media-research/`  (was planned as `/media/research/`)
+  - `media-people`    → `/media-people/`    (was planned as `/media/lab-life/`)
+  - `media-events`    → `/media-events/`    (was planned as `/media/conferences/`)
+- **File renames:**
+  - `page-media-lab-life.php`     → `page-media-people.php`
+  - `page-media-conferences.php`  → `page-media-events.php`
+  - `page-media-research.php` keeps its name (already correct).
+- **page-media.php (hub):** `al_page_url('media/research')` etc. → `al_page_url('media-research')` etc.; `$url_lab_life` → `$url_people`; `$url_conferences` → `$url_events`. Row 2 retitled "Lab Life" → "People" with new lead *"The lab as a community — retreats, dinners, hooding ceremonies, birthdays, and the everyday rhythm of the group."* Row 3 retitled "Conferences" → "Events" with new lead *"Conferences, plenaries, posters, panels, awards, and travel — the lab out at SPIE, BMES, WMIC, and other venues where the field gathers."* ARIA `id`/`aria-labelledby` pairs updated to match. Docblock bumped v4.0 → v4.1.
+- **Subpage docblocks + Template Name headers** updated to reflect the actual flat slugs. Template Name strings now read *"Media — Research"*, *"Media — People"*, *"Media — Events"* (so they're still manually assignable via Page Attributes if needed, but filename matching is sufficient and is the actual resolution path).
+- **Subpage hero copy** updated: People page hero is now h1 *"People"* / sub *"The lab as a community — retreats, dinners, hooding ceremonies, birthdays, and the everyday rhythm of the group."* Events page hero is now h1 *"Events"* / sub *"Conferences, plenaries, posters, awards, and travel — the lab out at SPIE Photonics West, BMES, WMIC, and other venues."* Research page hero unchanged.
+- **style.css v2.6.5 → v2.6.6** — bumped only for cachebusting/version-tracking consistency; no CSS rules changed in this commit.
+
+**Why**
+
+Flat slugs were Krish's call when actually creating the pages in WP admin. The pros: simpler URL structure (no parent/child relationship to maintain in WP), template filename matching just works without `Template Name:` assignment, and `/media-research/` reads as identifiable as `/media/research/` would. The con (slightly clunkier URL) is fine for a small lab site.
+
+The category renames broaden the framing:
+- **Lab Life → People** — broader than casual moments; covers anyone-in-the-lab content regardless of setting.
+- **Conferences → Events** — broader than academic talks; covers any organized lab event, leaving room for retreats-as-events, workshops, symposia, ceremonies, etc.
+
+This was the only round of breaking changes the hub→subpage wiring needed; subsequent photo additions just append `<figure>` blocks to the relevant subpage gallery.
+
+**Watch out for**
+
+- **Stale URL references in the previous DEVLOG entry (16:08 CDT v2.6.5)** still describe `/media/research/`, `/media/lab-life/`, `/media/conferences/`. Not edited — that entry documents the prior plan, and the new entry supersedes. Status table + project-at-a-glance section have been updated to the current state.
+- **The "Submit a Photo" CTA** on the hub was already trimmed to "Request an Image" (press-only, no submit copy) in the previous edit. Unchanged by this commit.
+- If Krish ever moves the pages back to nested under Media (Page Attributes → Parent = Media), the slugs would become just `research`/`people`/`events` and would COLLIDE with `page-research.php` (existing) and any future top-level page named the same. Stick with flat slugs.
+
+**Next**
+
+- Real photos. The subpage galleries are SVG placeholders; replace with real `<img>` or `<picture>` inside the existing `<figure class="al-media-figure al-media-figure--{shape}">` pattern as Krish brings photos in.
+- Decide when to drop hand-curated hub photos in favor of an auto-pulled latest-3-per-category mechanism (WP attachments tagged by category, or a custom post type). Worth doing once each category has 20+ real photos.
+
+---
+
+### 2026-05-17 16:08 CDT — Media: hub-and-spoke restructure — three subpages + a teaser hub (theme v2.6.5)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+
+The two-section reshape from one hour ago (`v2.6.4`) is gone. `/media/` is now a hub with three dedicated subpages — one per content stream.
+
+- **`page-media.php` rebuilt as the hub.** Hero retained, hero sub re-trimmed to *"A visual record of the Achilefu Lab — research, lab life, and conferences."* (95 chars). Body is now three stacked teaser rows. Each row = `<header>` (title + "See more →" link, baseline-aligned, justify-between) + `.al-inner-section__lead` + a 3-figure preview gallery (1 featured square at 2fr column width, 2 smaller squares at 1fr each, all class `--square` for clean grid). Bottom CTA preserved.
+- **Three new subpage templates** (each uses `Template Name:` header so Krish assigns via Page Attributes — slug-based filename matching won't work for child pages whose slugs are plain `research`/`lab-life`/`conferences`):
+  - `page-media-research.php` — *Template Name: Media — Research* — 13 figures (9 research + 4 OR), hero "Research".
+  - `page-media-lab-life.php` — *Template Name: Media — Lab Life* — 8 figures, hero "Lab Life".
+  - `page-media-conferences.php` — *Template Name: Media — Conferences* — 5 figures, hero "Conferences".
+  - Each subpage ends with a `.al-post-back` "← Back to Media" link (reuses the styled-back-link block introduced for `single.php`).
+- **Top featured figure on the hub removed.** The hub's job is to show 3 doors; a 4th editorial moment above them muddied the read. Hero leads straight into the three rows.
+- **`style.css` v2.6.5.** New `.al-media-hub-row*` block (`+ .al-media-hub-row` 4.5rem spacing; `__header` flex baseline + justify-between; `__see-more` accent-color link with hover-translate arrow; `__gallery` `grid-template-columns: 2fr 1fr 1fr` desktop, `1fr 1fr` ≤720px with featured spanning full width, `1fr` ≤480px). No changes to existing `.al-media-figure` or `.al-media-gallery` rules — those continue to drive the subpages unchanged.
+- **URL helpers.** `al_page_url('media/research')` etc. resolves via `get_page_by_path()` which accepts nested slug paths. No new helper needed.
+
+**Why**
+
+Krish's read: the two-section page felt taxonomic, and the conferences-as-social framing from v2.6.4 was a stretch — a podium photo and a retreat photo do not belong on the same page. Three category pages with a hub overview is the standard IA for a growing lab photo library (which Krish confirmed is coming), and it gives conferences its own identity as the "professional" stream alongside science output and casual life.
+
+The hub layout deliberately uses square-only figures in a `2fr / 1fr / 1fr` row: the featured is double-width AND double-height (square at width 2W → height 2W), the two smaller squares (square at width W → height W) sit top-aligned in their cells with the lower half of each cell empty. This asymmetry is intentional — it signals visual hierarchy (featured = latest) without forcing the smalls to stretch to match the featured's height. Editorial magazines do this constantly.
+
+**Watch out for / Krish must do in WP admin**
+
+1. **Create three new WP pages, each as a child of "Media" (parent = page 11):**
+   - Title: *Research*       · Slug: `research`     · Page Attributes → Template: **Media — Research**
+   - Title: *Lab Life*       · Slug: `lab-life`     · Page Attributes → Template: **Media — Lab Life**
+   - Title: *Conferences*    · Slug: `conferences`  · Page Attributes → Template: **Media — Conferences**
+2. **Verify URLs resolve** to `/media/research/`, `/media/lab-life/`, `/media/conferences/`. If permalinks misbehave, visit Settings → Permalinks and click Save (no change needed — just flush rewrite rules).
+3. Until those WP pages exist, the "See more →" links on the hub resolve to `#` (`al_page_url` returns `#` when `get_page_by_path` finds nothing). The hub itself is fine; only the navigation to subpages is gated.
+4. Subpages use `Template Name:` for assignment instead of slug-based filename matching (the existing convention). That's because nested page slugs like just `research` would collide with the existing top-level `page-research.php`. The `Template Name:` approach is WordPress-canonical and works for any URL; the codebase now has both conventions in use.
+5. Hub photos are **hand-curated** — Krish updates the "latest + 2 older" per row by editing `page-media.php` when new photos come in. The SVG IDs in the hub (`hub-r1a`, `hub-l1`, `hub-c1`, …) are namespaced separately from the subpage SVG IDs (`r-glow*`, `lab*`, `conf*`) so the hub and subpages cannot collide on the same DOM (which doesn't happen anyway since they're separate pages).
+
+**Next**
+
+- **Replace SVG placeholders with real photos** once Krish has them. Each subpage's gallery items follow the standard `<figure class="al-media-figure al-media-figure--{shape}"> … </figure>` pattern; swap the inner `<svg>` for `<img>` or `<picture>`.
+- **Auto-curate the hub.** Long-term, instead of hand-editing `page-media.php` per new photo, register photos as either WP attachments tagged by category or a custom post type (`media_capture`) with a `category` taxonomy. Hub pulls latest 3 per category via WP_Query. Worth doing once there are 30+ real photos — too much scaffolding before content exists.
+- **Navigation entry.** `/media/` lives in the main nav already; the three subpages are reachable only via the hub. Decide later whether they need their own dropdown items under Media (probably not — the hub is the index).
+
+---
+
+### 2026-05-17 15:53 CDT — Media page: two-section reshape — "From the Lab" + "Off the Lens" (theme v2.6.4)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-media.php:** Four subsections collapsed to two top-level sections.
+  - **From the Lab** (new) — merges the old *Research Imagery* (9 figs) and *In the Operating Room* (4 figs) galleries into a single 13-figure block. Spectral panel (full-width) kept as the closing flourish; OR figures inserted ahead of it so the science-on-the-bench → science-in-the-OR arc reads top-to-bottom.
+  - **Off the Lens** (new) — merges *Lab Life* (8 figs) and *Conferences & Events* (5 figs) into a 13-figure block. Conference photos reframed as "lab members out in the world" rather than as scientific output (Krish's call — a person at SPIE is a people photo).
+- **Hero sub trimmed** 175 → 95 chars to fit the 150-char `.al-inner-hero` budget and reflect the new two-section split: "A visual record of the Achilefu Lab — the imaging work itself, and the people behind it."
+- **Image Use & Licensing section deleted.** The two-column prose block (~30 lines) was a full standalone section with its own heading; it added administrative weight to a visual page. Essentials folded into the CTA paragraph: credit line + high-res email address, one sentence.
+- **Docblock** bumped v3.0 → v3.1 with the new section vocabulary.
+- **style.css** version: 2.6.3 → 2.6.4. No CSS changes — every figure reuses existing `.al-media-figure--{square,portrait,wide,full,span-2}` classes; the grid handles 13 figs/section without modification.
+
+**Why**
+Krish wanted "two CLEAR sections" instead of four. The old four-way split (Research Imagery / Lab Life / Conferences / OR) made the page feel like a taxonomy exercise rather than a record. Two sections lets the contrast do the work: the **work** the lab produces vs. the **people** who do it. The "Off the Lens" name riffs on the hero ("Light, Captured.") — moments *not* framed by a microscope — and gives the social section a deliberate identity rather than a generic "Lab Life" label.
+
+Conferences moved to *Off the Lens* (not *From the Lab*) on Krish's read: regardless of what's on the projector behind the speaker, a photo of a lab member at a conference is a social/travel photo. Treating them as scientific output would be a category error.
+
+Licensing was a full section with two prose columns. It's useful info but unrelated to the *visual* purpose of the page; dropping it to one sentence in the CTA preserves the email-the-lab pathway without imposing a 4-paragraph administrative interruption between the gallery and the action.
+
+**Watch out for**
+- 13 figures per section is dense. If/when real photos replace the SVG placeholders, photo file sizes will dominate page weight — consider lazy-loading (`loading="lazy"` on `<img>`) and `srcset` for the larger figures (full-width spectral panel, awards reception, retreat shots).
+- The conference SVGs (plenary slide, poster session, awards-reception slide) read more as event documentation than as people photos. With real photographs of lab members at these events, the "people" framing will land more clearly; the placeholders make Off the Lens feel slightly more event-y than intended.
+- `.al-two-col--60-40` CSS classes are still defined in `style.css` but no longer used on the media page. They remain in use elsewhere (e.g., PI page), so don't remove them.
+
+**Next**
+- Replace SVG placeholders with real photos as they come in. Pattern: keep the `.al-media-figure--{shape}` class on the `<figure>` and swap the inner `<svg>` for an `<img>` (or `<picture>` for art-directed).
+- If the From the Lab gallery feels too long once photos are in, consider promoting the OR subset back to its own section — but only if there are ≥6 real OR photos to fill it. Below that count it'd be lopsided.
+
+---
+
+### 2026-05-17 15:04 CDT — Inner-hero discipline + Journal templates (Blog → Journal rename, theme v2.5.1)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+
+**Inner-hero band — fixed height across every subpage.**
+- **style.css:** `.al-inner-hero` switched from content-driven padding (`calc(68px + 4.5rem) 0 5rem`) to `display: flex; align-items: center; min-height: 440px` on desktop and `min-height: 340px` at ≤640px. Top padding kept at `calc(68px + 1.5rem)` desktop / `calc(68px + 1rem)` mobile for sticky-header clearance. Added `.al-inner-hero > .al-container { width: 100% }` so the flex child fills the band.
+- **Char budget enforced.** Hard rule: title ≤60 chars, sub ≤150 chars on every `.al-inner-hero`. Existing copy trimmed to fit:
+  - `page-pi.php`: sub 294 → 128 chars
+  - `page-research.php`: title 69 → 49, sub 232 → 106
+  - `page-optical-imaging.php`: sub 201 → 130
+  - `page-team.php`: sub 163 → 121
+- Centered alignment retained after a brief top-align experiment (reverted; centered looked better once the char budget removed the variable-height cause).
+
+**Journal templates — Blog renamed end to end.**
+- **home.php (new file)** — Journal index. Hero band + post list (date · title · excerpt · "Read entry →") + pagination + empty state.
+- **single.php (new file)** — single post. Hero band uses category name as eyebrow (uppercase accent), post title as H1, `date · author` as sub. Body rendered via `the_content()` inside `.al-post-body`. Bottom "← Back to Journal" link.
+- **functions.php:** `al_blog_url()` → `al_journal_url()`; fallback URL `/blog/` → `/journal/`.
+- **header.php:** Updates dropdown link "Blog" → "Journal".
+- **front-page.php:** "From the Blog" col → "From the Journal"; "View all posts" → "View all entries"; `$url_blog` → `$url_journal`; comment headers updated.
+- **style.css:**
+  - All `.al-blog-*` classes → `.al-journal-*` (`.al-journal-list`, `.al-journal-item`, `.al-journal-pagination`, `.al-journal-empty`).
+  - New **SINGLE JOURNAL ENTRY** CSS block (~95 lines): `.al-post-body` paragraph/h2/h3/link/list/blockquote/figure/figcaption/img/hr rules + `.al-post-back` styling.
+  - Mobile (≤640px) override added for `.al-post-body h2` and `.al-post-body h3`.
+- **wp-admin (Krish):** the page set as `page_for_posts` renamed (title: Journal, slug: journal). Three categories created: **Thoughts** (PI commentary), **Lab Memos** (timely dispatches from individual lab members), **News** (institutional announcements — papers, grants, awards, hires, press). News set as **Default Post Category** in Settings → Writing. Each category renders uppercase as the eyebrow on `single.php`; one category per post (template uses `$cats[0]`).
+
+**Why**
+
+Two unrelated quality issues addressed in one pass:
+
+1. *Inner-hero heights varied page-to-page* because each `.al-inner-hero` sized itself to its content. PI's 4-line sub made it the tallest by a wide margin; Contact's 1-line sub made it the shortest. Navigating between subpages felt sloppy. Locking to `min-height` with flex-centered content + a hard char budget on the copy gives uniform bands without imposing a strict CSS height (so a tiny viewport with wrapped copy can still grow if needed — "fixed height, unless the viewport is too small").
+
+2. *Blog page was completely out of sync* — no `home.php` or `single.php` existed in the child theme, so the WordPress posts page fell back to the parent Kadence `index.php` and rendered nothing like the rest of the site. While building the templates, Krish decided "Blog" was too casual for a research lab and picked "Journal" — renamed across the codebase + the WP page slug `/blog/ → /journal/`.
+
+The category set (Thoughts / Lab Memos / News) was chosen to carry an **author signal**: Thoughts = Sam's voice, Lab Memos = individual lab member's voice, News = institutional voice. Each label looks clean as the uppercase eyebrow on a post hero.
+
+**Watch out for**
+
+- `.al-inner-hero__eyebrow` (style.css line ~1084) was removed from page-level templates in the 14:35 CDT entry below, but **`single.php` (Journal posts) restored its use** — the category name renders as the eyebrow above the post title. The CSS rule is still in use; do not delete it.
+- `.al-inner-hero` uses `min-height`, not strict `height`. Long post titles (which come from user content) can grow the band beyond 440px. The 60-char title budget applies to **hand-authored hero copy on fixed pages**, not dynamic post titles. Variable-height heroes on `/journal/<post>/` are accepted as the cost of dynamic content.
+- For **Lab Memos** to work editorially, each contributing lab member needs their own WP user account so `get_the_author()` returns the right name. Posting everything under Sam's account defeats the category's purpose.
+- `single.php` does not yet style WP Gutenberg's `.alignleft`, `.alignright`, `.alignwide`, `.alignfull` image classes. Defaults work; add overrides only if Sam posts an entry that uses them and the layout looks wrong.
+- Pre-launch, no `/blog/` URLs exist publicly, so no redirect rule was added. If the site has been indexed externally before relaunch, add a one-line `template_redirect` filter in `functions.php` sending `/blog/...` → `/journal/...`.
+
+**Next**
+
+- Lab member user accounts + Application Passwords (one-time setup per contributing member).
+- Production host + DNS for `achilefulab.org` — Sam cannot post until the site is publicly reachable; the WP mobile app can't talk to `*.local`.
+- `page-publications.php` template still missing (Publications page renders Kadence default).
+
+---
+
+### 2026-05-17 15:56 CDT — Team cards: pin footer to bottom edge (theme v2.6.4)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **style.css `.al-team-card__main`:** Added `flex: 1`.
+- **style.css `.al-team-card__body`:** Added `flex: 1`.
+
+**Why**
+Krish spotted on mobile that when a row has cards of different heights (e.g. one name wraps to 2 lines, another to 1), the CSS Grid stretches every card to the row's tallest, but inside each card the flex-column children only took their natural height. That left the footer hanging just below the role text with empty whitespace between it and the rounded bottom corner of the card.
+
+The fix: `.al-team-card__main` grows to absorb the extra vertical space the grid gave the wrapper, and `.al-team-card__body` grows within main to absorb the extra space inside it. Result: the footer always sits flush at the bottom edge of the card; any "extra" height is paid for inside the body's padding region (the name + role stay top-anchored in the body, so the slack appears as added breathing room below the role text, not as a weird gap above the footer).
+
+**Watch out for**
+- Cards without a footer (no LinkedIn/Scholar/Email populated) also benefit: `__main` fills the whole card now, so they no longer end in a dead-space rounded corner either.
+- If a future variant adds more content below the role text (back to a focus line, say), it stays inside `.al-team-card__body` and inherits the same grow behavior — no extra wiring needed.
+
+**Next**
+None pending.
+
+---
+
+### 2026-05-17 15:50 CDT — Team-card footer: divided cells, no icon chrome (theme v2.6.3)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **style.css `.al-team-card__link`:** Dropped the off-white pill background, fixed 34×34 dimensions, border-radius, and translate-Y hover lift. Each icon link is now `flex: 1` (equal-width cell), vertically padded (`0.7rem 0`) to set the strip height. Glyph stays 16×16 centered.
+- **Vertical dividers:** New rule `.al-team-card__link:not(:last-child) { border-right: 1px solid var(--al-border); }` — single hairline between each cell, matching the weight + color of the existing footer-top hairline so the whole "T" of dividers reads as one continuous element.
+- **`.al-team-card__footer`:** Dropped `justify-content: space-evenly`, `gap`, and the side padding. Footer is now just `display: flex; align-items: stretch` with its top hairline; the links fill it edge-to-edge.
+- **Hover state:** `transform: translateY(-1px)` removed (the bg-less pill had nothing to lift). Replaced the heavy accent-tinted bg with a much lighter one (`rgba(135,188,222,0.10)`) — communicates the click target without overpowering the bare-glyph aesthetic. Color still shifts muted → primary.
+- **Focus ring:** Switched from outer box-shadow to `inset` box-shadow so the keyboard focus indicator sits within the cell boundary rather than spilling over the divider hairlines.
+- **Mobile (640px):** Removed the now-stale `.al-team-card__link { width: 32px; height: 32px }` override; replaced with `padding: 0.625rem 0` so the strip is slightly tighter on small screens.
+
+**Why**
+Krish wanted the icons to lose their pill chrome and read as bare glyphs separated by lines — the footer becomes a row of equal "cells" divided by hairlines, like a tab strip. Removing the per-icon background also makes the merged card from v2.6.2 read even more as a single continuous rectangle: no nested rounded shapes inside the footer.
+
+**Watch out for**
+- With `flex: 1`, the cells always divide the footer equally regardless of icon count. A 2-icon footer = 2 equal halves with one divider; 1-icon footer = full width, no divider. That matches the `space-evenly` distribution principle Krish picked earlier and inherits naturally from the new geometry.
+- Hit target stays large (entire cell is the link), so even though the visible glyph is small, the click area is generous.
+- Hover bg now blends with the card chrome. If a future hover state ever wants more saturation, bump the `0.10` alpha rather than reintroducing a pill background.
+
+**Next**
+None pending.
+
+---
+
+### 2026-05-17 15:48 CDT — Team cards: merge main + footer into one continuous card (theme v2.6.2)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **style.css `.al-team-card`:** The card chrome (background, border, border-radius, overflow:hidden, box-shadow, hover lift + tinted border) now lives on the `.al-team-card` wrapper itself, not on the child rectangles.
+- **`.al-team-card__main` / `__footer`:** Both stripped of their bg/border/radius/shadow/hover. The 6px gap between them is gone. `__footer` keeps its `padding` + `display: flex` + `justify-content: space-evenly` for icon distribution, plus a new `border-top: 1px solid var(--al-border)` for the hairline that separates it from the main region.
+- **Hover:** Lift/shadow/border-color transitions moved from the two children up to the wrapper, so the whole card animates as a single unit.
+- **Reduced-motion guard:** Swapped `.al-team-card__main / __footer` (no longer transitioning) for `.al-team-card`.
+
+**Why**
+Krish flagged the visible gap between the main rectangle and the footer rectangle — the previous v2.6.1 design read as "two stacked rectangles" but he wanted the footer to read as "the rectangle's extension." The fix is to make the card one continuous rounded rectangle with a single hairline separating the footer region from the body. The wrapper now owns the geometry; the children just contribute content + the hairline.
+
+**Watch out for**
+- When a member has no LinkedIn / Scholar / Email, no `.al-team-card__footer` renders → the card is just the main region inside the wrapper's rounded chrome, which still looks correct (no flat-bottom corners).
+- The hairline now uses `var(--al-border)`. If a future state ever needs a different separator (e.g. a subtle accent during hover), do it via `.al-team-card:hover .al-team-card__footer { border-top-color: … }` rather than re-adding bg/border to the footer.
+
+**Next**
+None pending.
+
+---
+
+### 2026-05-17 15:43 CDT — Team-card footer: space-evenly icon distribution (theme v2.6.1)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **style.css `.al-team-card__footer`:** `justify-content` switched from `center` → `space-evenly`. Footer rectangle still spans the full card width; with fewer than 3 icons populated, the remaining icons now distribute across the footer width instead of clustering at center.
+
+**Why**
+With `center`, a 2-icon footer looked sparse — two icons floating in the middle of a wide strip. With `space-evenly`, each present icon claims an equal slice of the footer, so the strip reads as intentionally laid out regardless of icon count. Footer height + position stay identical across cards, so the grid's bottom edge alignment is preserved.
+
+**Watch out for**
+- `gap: 0.5rem` is still set as the minimum spacing. With 3 icons it has no visible effect at typical card widths (space-evenly distributes well past that); it's a safety floor for very narrow widths.
+- The icons inside `.al-team-card__link` keep their fixed 34×34 size — only the empty space between them flexes.
+
+**Next**
+None pending.
+
+---
+
+### 2026-05-17 15:24 CDT — Team cards: portrait layout + attached footer strip (theme v2.6.0)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-team.php card markup:** Replaced the landscape monogram-avatar card with a two-rectangle portrait layout.
+  - `.al-team-card` is now a flex-column wrapper with `gap: 6px` between two visually distinct children.
+  - **`.al-team-card__main`** (top rectangle, fully rounded): contains `.al-team-card__image` (square aspect-ratio block with a soft gray-blue gradient and a centered generic person silhouette SVG) and `.al-team-card__body` (name + role, tight padding).
+  - **`.al-team-card__footer`** (bottom rectangle, fully rounded, attached below with 6px gap): icon strip with the LinkedIn / Scholar / Email links centered horizontally. Still conditional — only renders when at least one URL is populated.
+  - Both rectangles share the same border, radius, shadow, and hover lift, so they animate as a single unit when the user hovers the card.
+- **Dropped renderings:** the `.al-team-card__focus` line is no longer rendered (focus data stays in the array for potential future use — alt text, SEO metadata, hover overlay). The "monogram" avatar (`.al-team-card__mono`) is gone entirely. The `al_team_initials()` helper that generated those initials is also removed (no callers left).
+- **CSS replaced wholesale** for the team-card block in style.css:
+  - New `.al-team-card__main / __image / __silhouette / __body / __name / __role` rules.
+  - New `.al-team-card__footer` rule that mirrors the main rectangle's chrome (border, radius, shadow, hover) so the footer reads as a visually attached sibling.
+  - `.al-team-card__link` retained, sized up slightly to 34×34 (was 30×30) with 16px glyphs to balance the now-larger footer strip.
+  - Grid resized to `repeat(auto-fill, minmax(220px, 1fr))` (was `300px`) — portrait cards are narrower than the old landscape format, so the grid packs 4-5 per row on desktop.
+- **Responsive (640px):** team grid drops to a 2-column layout (was 1-column with the landscape cards) so the portrait cards stay readable rather than stretching full width. Tightened paddings + smaller name/role sizes inside that breakpoint.
+- **Reduced-motion guard:** removed dead `.al-team-card / __mono` entries, added `.al-team-card__main / __footer / __image`.
+
+**Why**
+Krish asked for a portrait-format card: 80% top is the image area, 20% bottom is name + role, and three quick-action buttons (LinkedIn / Google Scholar / Email) sit attached at the bottom as their own rectangle. No "read more" or focus line — clean. With no headshots available yet, the image area renders a generic silhouette on a brand-tinted gradient; when real photos drop, swap the silhouette block for an `<img>` and the layout absorbs it (the square aspect-ratio + `overflow: hidden` already handle clipping). Krish's explicit preference was for two visually distinct rectangles ("glued together with a small gap") rather than one card with an internal divider, so the footer is its own bordered + rounded + shadowed element with a 6px gap above it.
+
+**Watch out for**
+- The footer is still **conditional**. With every `linkedin` / `scholar` / `email` empty by default, no footers currently render. To verify the look, paste any real URL into any member's entry in [page-team.php:22-128](wp-content/themes/kadence-child/page-team.php) — the footer for that one card will appear immediately on refresh. Did NOT fabricate URLs to demo the layout (a wrong profile URL on a published academic page is a real reputational risk).
+- The two rectangles share hover state via `.al-team-card:hover .al-team-card__main` / `.al-team-card:hover .al-team-card__footer`. If a future change splits them into separate hover targets, the lift will desync.
+- `.al-team-card__focus` is now an **orphaned CSS class** — no markup references it. Left it removed from the stylesheet (no behavior gap, lighter sheet). If focus rendering is ever wanted back, restore the rule alongside the markup.
+- The silhouette SVG is intentionally inline (one path, ~120 bytes) rather than an external asset, so it doesn't add a network request per card. Repeats per card; that's fine.
+
+**Next**
+Awaiting Krish's URL/email list, OR per-person additions over time. Eventually swap the silhouette `<svg>` for an `<img>` once headshots arrive — likely via a new optional `photo` key on each member's entry. Not adding that field today because the user hasn't asked for it and there are zero photos available right now (per [[project_inner_hero_fixed_height]] discipline, only build what's needed today).
+
+---
+
+### 2026-05-17 15:16 CDT — Team cards: third CTA — Email (theme v2.5.3)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-team.php $team:** Added `'email' => ''` to all 23 member entries. Header docblock updated to describe the new key + the LinkedIn-and-Scholar-open-new-tab / email-opens-mail-client behavior contrast.
+- **page-team.php card markup:** `$email` resolved alongside the existing `$linkedin` / `$scholar`. The row's outer condition is now `$linkedin || $scholar || $email`. New inner `<?php if ( $email ) : ?>` block renders an envelope-icon anchor with `href="mailto:<email>"`. The address is run through WordPress core's `antispambot()` before being echoed, which encodes characters into HTML entities to slow down naive scrapers. No `target="_blank"` / `rel="noopener noreferrer"` — `mailto:` triggers the OS mail client, not a tab navigation. `aria-label="Email <Name>"`.
+- **Email icon SVG:** Inline 24×24 stroke-style envelope (no fill, 1.8px stroke, round caps/joins) using `currentColor` so it picks up the same `.al-team-card__link` color states as the LinkedIn / Scholar icons. The other two icons are filled glyphs; the envelope is a stroke glyph but reads consistently at 15px next to them.
+- **No CSS changes.** `.al-team-card__link` already handles all three icons uniformly (background, hover/focus state, focus ring, lift, reduced-motion guard).
+
+**Why**
+Krish wanted a third quick-action — Email — alongside the LinkedIn + Scholar pair from v2.5.2. Same conditional-render pattern: the icon only appears for members whose `email` field is non-empty, so the page reads clean while URLs / addresses are being collected over time.
+
+**How to populate**
+Set a member's `'email'` to a plain address (no `mailto:` prefix — the template adds that), e.g. `'email' => 'walter.akers@utsouthwestern.edu'`. `antispambot()` will encode it at render time.
+
+**Watch out for**
+- `antispambot()` is a low-effort scraper deterrent, not real protection. Treat any address rendered on this page as effectively public.
+- Don't paste pre-formatted mailto links into the `email` field — just the bare address. The template prepends `mailto:`.
+- Icon order in the row is LinkedIn → Scholar → Email; if you want a different order, reorder the three `<?php if (…) : ?>` blocks inside `.al-team-card__links`.
+
+**Next**
+Awaiting Krish's list (LinkedIn URLs / Scholar URLs / emails per person) — or per-person additions over time.
+
+---
+
+### 2026-05-17 15:14 CDT — Team cards: per-person LinkedIn + Google Scholar CTAs (theme v2.5.2)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-team.php $team:** Added `linkedin` and `scholar` keys to every member entry (all 23 entries across Faculty, Staff, Postdocs, Grads, Interns) as empty strings. Header docblock updated to spec the new optional keys.
+- **page-team.php card markup:** Added a conditional `.al-team-card__links` row at the bottom of each card's body. The row renders only when at least one URL is populated; each icon-anchor inside renders only when its own URL is non-empty. Each link uses `target="_blank" rel="noopener noreferrer"` and an `aria-label` of the form `"<Name> on LinkedIn"` / `"<Name> on Google Scholar"`. SVGs are inline, `fill="currentColor"` so they inherit the link's color state.
+- **style.css `.al-team-card__links / __link`:** New CSS block. Icon-tile design: 30×30 rounded square (`r=8px`), neutral off-white background, muted glyph color. Hover/focus-visible: accent-tinted background (`rgba(135,188,222,0.22)`), primary glyph color, 1px lift, and a 2px accent ring on keyboard focus. Sibling rule `.al-team-card__focus + .al-team-card__links` strips the second hairline when both blocks are present.
+- **Reduced-motion guard:** Extended to cover `.al-team-card__link` so the lift/color transitions go away when the user prefers reduced motion.
+
+**Why**
+Krish asked for per-person LinkedIn + Google Scholar CTAs on each team card. The card is dense (no photo, ~110px body width on mobile) so the affordances had to read as low-weight: monochrome icon tiles instead of pill buttons. Both URLs are intentionally empty by default — I will not fabricate or guess profile URLs (would be a real reputational risk on a published academic page), so the icons are off until URLs are added per-person.
+
+**How to populate**
+Fill in any member's `'linkedin'` / `'scholar'` key in [page-team.php:22-128](wp-content/themes/kadence-child/page-team.php) with the full `https://…` URL. The icon for that platform will appear on that member's card on the next page load.
+
+**Watch out for**
+- The Google Scholar icon is a stylized graduation cap (not the official Scholar logo, which is a four-shield mark that doesn't read well at 15px). It's recognizable in context. If a higher-fidelity Scholar glyph is wanted later, swap the `<path>` inside `.al-team-card__link--scholar`.
+- `esc_url()` is applied on every href, but for safety: only paste public profile URLs (linkedin.com/in/… and scholar.google.com/citations?user=…). Don't paste tracking-redirector URLs.
+- The new hover state (accent-tinted background) on the icon tile is independent of the card's own hover (lift + tinted border) — both fire simultaneously when the user hovers over an icon, which is the intended layered behavior.
+
+**Next**
+Awaiting Krish's URL list (or per-person URL additions over time). Same pattern could be considered for the alumni directory rows, but their visual density is lower and they intentionally don't carry CTAs today — flag if that decision should change.
+
+---
+
+### 2026-05-17 15:10 CDT — Team cards: drop asymmetric left-border hack (theme v2.5.1)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **style.css `.al-team-card`:** Removed the `border-left: 3px solid transparent` baseline and the matching `border-left-color: var(--al-accent)` on `:hover`. Card now carries a uniform 1px border on all four sides. Padding bumped on the left from `1.25rem` → `1.375rem` to compensate for the lost border thickness. Hover affordance becomes: lift + stronger shadow + `border-color` shift to a soft accent tint (`rgba(135, 188, 222, 0.55)`), on top of the existing monogram gradient flip.
+
+**Why**
+On narrow viewports the asymmetric border widths (3px left vs 1px on the other three sides) interacted badly with `border-radius: var(--r-card)`: the left corners visibly clipped inward compared to the right corners, so each card read as "shaved" on its left edge. Krish flagged it in screenshot review. The accent-on-hover effect was the only reason the 3px-transparent slot existed; the remaining hover signals (lift + shadow + monogram color flip) are already enough affordance, so removing the slot is a net simplification.
+
+**Watch out for**
+- The exact same hack exists on `.al-feature-card` (style.css ~line 1161) and `.al-research-nav-card` (~line 1216). They'll exhibit the same corner-clipping if rendered at narrow widths. Not changed in this pass — only the team cards were flagged. Worth considering on the next pass through those components.
+- Hover state now uses a tinted border instead of an accent-coloured left edge. If anyone re-introduces a left-edge accent later, do it with an absolutely-positioned pseudo-element (so card geometry stays symmetric) rather than with `border-left`.
+
+**Next**
+None pending.
+
+---
+
+### 2026-05-17 15:07 CDT — Meet the Team revamp: real roster, monogram cards, PI feature strip, alumni directory (theme v2.5.0)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-team.php:** Full template rewrite. Populated `$team` with the real roster pulled from `labs.utsouthwestern.edu/achilefu-lab/lab-members-and-alumni` — 5 groups (Faculty, Staff Scientists & Engineers, Postdoctoral Fellows, Graduate Students, Summer Interns) and a separate 31-entry `$alumni` array with year ranges and current positions. Added `al_team_initials()` helper that strips trailing credentials (`", Ph.D."` etc.) and ignores parenthetical nicknames so monograms come out clean (Walter Akers → "WA", Hanru (Haini) Zhang → "HZ").
+- **PI section:** Replaced the small avatar-link card with a full-width `.al-team-pi` feature strip. Subtle white→off-white gradient panel, accent gradient rule on the left edge that thickens on hover, soft accent glow in the upper-right, eyebrow → big name (2.25rem, weight 800, -0.03em tracking) → title row → tag pills (NAE · NAM · Simmons Cancer Center · Radiology) → "Full profile →" with hover gap-expand. Whole strip is the link.
+- **Group sections:** New `.al-team-group__head` flex row with the group title plus a count chip (e.g. "Faculty 6") in a pill using the brand accent. Empty groups still skipped silently.
+- **Team cards:** Replaced the photo-first square card with a landscape `.al-team-card`. 52px circular monogram avatar (initials, white on a brand-navy gradient) + name + role + optional 1-line focus area separated by a hairline rule. Hover: 3px accent left-border + lift + monogram gradient flips to accent → primary and scales 1.04. Grid is `auto-fill, minmax(300px, 1fr)`.
+- **Alumni section:** Three pieces. (1) A 4-cell `.al-team-alumni__ribbon` metric panel (30+ alumni placed · 15+ in academia & research · 7+ in industry R&D · 25+ yr continuous mentorship) sitting on off-white with a small gradient rule prefixing each cell. (2) A 2-col `.al-team-alumni__list` directory: name (bold) · years (primary-colored) · final lab role · "current position" line. Rows separated by hairlines. (3) The original 3-column `.al-latest` static block was removed — the directory replaces it.
+- **CTA:** Kept the existing `.al-inner-cta` dark gradient block at the bottom (it was already the "modern dark accent" pattern; no change needed).
+- **style.css v2.5.0:** Replaced the legacy `.al-team-grid / .al-team-card / .al-team-card__photo / __placeholder / __body / __name / __role` block (lines ~1346–1398) with a much larger TEAM PAGE section: `.al-team-pi*`, `.al-team-group__head*`, `.al-team-grid`, `.al-team-card / __mono / __body / __name / __role / __focus`, `.al-team-alumni__lead / __ribbon / __metric*`, `.al-team-alumni__list`, `.al-team-alumni-row / __name / __role / __years / __sep / __now`. Added matching 900px and 640px responsive rules + extended the reduced-motion guard to cover the new transition-bearing classes (`.al-team-pi`, `.al-team-pi__rule`, `.al-team-pi__more`, `.al-team-card__mono`).
+
+**Why**
+Krish asked for a "modern as fuck, but still use the existing theme patterns" revamp of Meet the Team. The previous template was structurally fine but visually plain: empty roster arrays meant every group block was suppressed, leaving the page as hero → intro/stats → a tiny PI avatar-link → a 3-column generic "Alumni Network" of static prose → CTA. With the real roster in hand (and no photos available), monogram avatars on landscape cards give the page real density and identity without depending on portraits, and the PI strip turns the page's headline person into an actual moment instead of a 72px avatar. The alumni directory replaces vague prose with the actual 31-person list, which is the substantive thing alumni-pages are supposed to do.
+
+**Watch out for**
+- **Counts are derived, not hard-coded.** Group count chips use `count($section['members'])` and the alumni count uses `count($alumni)` — adding/removing rows updates the chips automatically.
+- **Alumni ribbon metrics ARE hard-coded** (30+ / 15+ / 7+ / 25+) and were chosen as conservative aggregates against the 31-entry list. If the alumni list materially changes, revisit these.
+- **`al_team_initials()` is name-aware but not perfect.** It strips after the first comma (handles credentials) and skips parenthetical tokens (handles nicknames). Hyphenated last names (e.g. "Habimana-Griffin") will still produce a single-letter last-initial; the function takes the first character of the last whole word. That looks fine in practice but flag it if a future entry surfaces a surname where this reads wrong.
+- The header copy on the hero is unchanged (locked to the 440px desktop / 340px mobile hero height — see [[project_inner_hero_fixed_height]]). Title "Meet the Team" (12 chars) and sub (148 chars) both sit inside the [[feedback_inner_hero_copy_limits]] budget.
+- The old `.al-team-card__photo` and `.al-team-card__placeholder` rules are gone. Any other page reusing those classes will lose styling; spot-check confirmed only `page-team.php` referenced them.
+
+**Next**
+None pending. When portraits become available, drop them into `wp-content/uploads/team/` and either extend `.al-team-card__mono` to render an `<img>` variant or restore a photo-prefixed card alongside the monogram fallback.
+
+---
+
+### 2026-05-17 14:35 CDT — Remove hero eyebrow chips across home + all inner pages (theme v2.4.1)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **front-page.php:** Removed `<span class="al-hero__eyebrow">Achilefu Lab &middot; UT Southwestern</span>` from the home hero. The H1 now follows immediately after the molecule field container.
+- **Inner-page templates (7 files):** Removed `<p class="al-inner-hero__eyebrow">…</p>` from the hero block of `page-research.php` ("Our Research"), `page-pi.php` ("Principal Investigator"), `page-media.php` ("Media & Imagery"), `page-team.php` ("Our People"), `page-optical-imaging.php` ("Foundational Research"), `page-lab-calendar.php` ("Updates"), `page-contact.php` ("Contact"). On templates that carry a breadcrumb (PI, Optical Imaging, Lab Calendar), the breadcrumb now sits directly above the H1.
+- **Intentionally retained:** the `<p class="al-inner-hero__eyebrow">Visit</p>` at `page-contact.php:247`. That instance is inside a content-section subhead (Visit / Finding the Lab), not a hero chip — different role, different placement, kept on purpose.
+
+**Why**
+Krish flagged the eyebrow chips ("OUR RESEARCH", "PRINCIPAL INVESTIGATOR", "MEDIA & IMAGERY", "Achilefu Lab · UT Southwestern") as visually redundant: on inner pages the H1 already announces what the page is, and on the home hero the headline + inline credentials strip already establish the lab's identity. The chips read as "navigation residue" — labels for a place you're already at.
+
+Second time the home hero eyebrow has been removed (first removal logged in the 2026-05-10 sticky-header entry below). The chip came back as a neon pill during the v2.0 home redesign, survived v2.3.5 simplification, and is now removed for good in v2.4.1 alongside the matching inner-page chips so the pattern is consistent across the whole site.
+
+**Watch out for**
+- `.al-hero__eyebrow` (style.css line 240) and its responsive override (line 1904) are now orphaned — no template references them. Left in place rather than removed in case the decision flips again; safe to delete on the next style.css cleanup pass.
+- `.al-inner-hero__eyebrow` (style.css line 1084) is **still in use** by the Contact page's "Visit" subhead. Do not delete that rule.
+- If a future template restores an eyebrow on a hero, prefer reusing the existing class so the styling stays in one place.
+
+**Next**
+None pending.
 
 ---
 

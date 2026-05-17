@@ -363,7 +363,13 @@ Dr. Achilefu's current research concentrates on three interconnected areas: the 
 
 ### Calendar
 
-*(Google Calendar embed — coming soon. Placeholder currently reads: "Calendar coming soon.")*
+The calendar is populated **dynamically** via a dedicated Google Calendar mailbox ("the labcal mailbox" — address kept private; see [DEVLOG decision entry](DEVLOG.md) and [GOLIVE.md §14](GOLIVE.md)). Lab members invite that mailbox as a guest on any event they want surfaced publicly; the website subscribes to the mailbox's public calendar feed and renders events server-side via a plugin (Simple Calendar is the current candidate).
+
+There is no hand-maintained event list on this page — by design. The whole point of the architecture is that lab members never touch the website to publish an event.
+
+**Current state:** placeholder. `page-lab-calendar.php` still renders "Calendar coming soon." Flip happens once the labcal mailbox is provisioned + the plugin is installed (tasks in [GOLIVE.md §14](GOLIVE.md)).
+
+**Page copy that will accompany the rendered calendar** (TBD — write as part of the flip; aim for one short paragraph above the calendar widget explaining "events appear automatically as lab members add them to their calendars; updates may lag by up to ~2 hours for ICS cache").
 
 ---
 
@@ -396,12 +402,126 @@ Dr. Achilefu's current research concentrates on three interconnected areas: the 
 
 ---
 
+## PAGE: Media
+*Slug: /media (hub). Subpage slugs: /media-research, /media-people, /media-events.*
+
+The Media page is a **hub-and-spoke gallery**. `/media/` is a landing page with three teaser rows; each row links to a dedicated subpage that shows the full gallery for that category. Photo content is **CMS-managed via the Gallery Photos custom post type** (WP admin → Gallery Photos) — no PHP edits required to add or remove photos.
+
+---
+
+### Hero (hub)
+
+**Title:** Light, Captured.
+**Subheading:** A visual record of the Achilefu Lab &mdash; research, lab life, and conferences.
+
+---
+
+### Hub rows
+
+Each row shows the **3 newest captured-date photos** in its category. Layout: one featured (large square) on the left + two smaller squares on the right. "See more →" links to the matching subpage.
+
+**Row 1 — Research**
+**Title:** Research
+**Lead:** Cell lines, microscopy, NIR captures, instrumentation, and operating-room work &mdash; the imaging output of the lab.
+**See more →** /media-research/
+
+**Row 2 — People**
+**Title:** People
+**Lead:** The lab as a community &mdash; retreats, dinners, hooding ceremonies, birthdays, and the everyday rhythm of the group.
+**See more →** /media-people/
+
+**Row 3 — Events**
+**Title:** Events
+**Lead:** Conferences, plenaries, posters, panels, awards, and travel &mdash; the lab out at SPIE, BMES, WMIC, and other venues where the field gathers.
+**See more →** /media-events/
+
+---
+
+### Subpage heroes
+
+**/media-research/** (`page-media-research.php`)
+**Title:** Research
+**Subheading:** Cell lines, microscopy, NIR captures, instrumentation, and the operating-room work where imaging moves bench-to-bedside.
+
+**/media-people/** (`page-media-people.php`)
+**Title:** People
+**Subheading:** The lab as a community &mdash; retreats, dinners, hooding ceremonies, birthdays, and the everyday rhythm of the group.
+
+**/media-events/** (`page-media-events.php`)
+**Title:** Events
+**Subheading:** Conferences, plenaries, posters, awards, and travel &mdash; the lab out at SPIE Photonics West, BMES, WMIC, and other venues.
+
+Each subpage ends with a **"← Back to Media"** link.
+
+---
+
+### CTA Banner (hub only)
+
+**Heading:** Request an Image
+**Body:** For high-resolution files or use in print and broadcast features, email contact@achilefulab.org. Credit "Achilefu Lab, UT Southwestern Medical Center."
+**Button:** Get in Touch
+
+---
+
+### How photos appear on the page (workflow)
+
+Photos are added via **WP admin → Gallery Photos → Add New**. The fields on the edit screen:
+
+| Field | What to fill in | Notes |
+|---|---|---|
+| **Title** | The description shown under the photo (e.g. "Confocal microscopy of tumor margin") | Single line, no markdown. Acts as the photo's caption. |
+| **Photo Category** (radio) | One of: Research / People / Events | Determines which subpage the photo appears on. Single-select — pick one. |
+| **Buckets** (tag) | Free-form, meaning depends on category (see below) | Auto-completes from past values. Usually one tag per photo. |
+| **Captured Date** | When the photo was taken | Pre-fills from EXIF for phone/camera photos. Type to override. Falls back to today if neither set. |
+| **The Photo** | Featured image (the actual file) | Upload from disk or pick from Media Library. Without this, the photo is silently skipped at render. |
+
+**Bucket meaning per category:**
+
+| Category | Bucket holds | Examples |
+|---|---|---|
+| Research | Photographer / creator | "Sam Achilefu", "Postdoc J. Lee", "Imaging Core" |
+| People | Where & why | "Lab retreat, Dallas 2024", "Hooding — Jane Doe PhD", "Lab dinner" |
+| Events | Event name | "SPIE Photonics West 2025", "BMES 2024", "WMIC 2024" |
+
+Once Published, the photo immediately appears on the matching subpage, **newest captured-date first**. The hub row updates the same way (the top-3 query re-runs on every page load).
+
+> **Sam's blog uploads are unaffected.** The Gallery Photos workflow is a completely separate admin section. Uploading an image inline in a Journal post never touches any gallery field.
+
+---
+
+### Display behavior
+
+- **Desktop (hover-capable devices):** hovering a photo fades in a dark gradient overlay over the bottom of the image, showing description (top, regular text) and bucket · date (small caps, accent color, below). No click-to-open — the overlay is informative enough.
+- **Mobile / touch devices:** tapping a photo opens a full-screen lightbox with the photo and metadata centered below. Close via the × button, tapping the backdrop, or pressing Esc.
+
+---
+
+### Empty states
+
+- **Logged-in editors** see: *"No photos yet in this category. [Add the first one →]"* with a direct link to the admin Add New screen.
+- **Public visitors** see: *"Photos coming soon."*
+
+A subpage is "empty" if zero Gallery Photos in that category exist. The hub row shows however many it can find, up to 3.
+
+---
+
+### Where to look in code
+
+- CPT, taxonomies, metaboxes, save hooks, render helper, lightbox JS → `wp-content/themes/kadence-child/functions.php` (search for "Gallery Photos").
+- Hub template → `page-media.php` (three `al_render_gallery_photos($cat, 3)` calls).
+- Subpage templates → `page-media-research.php`, `page-media-people.php`, `page-media-events.php` (each calls `al_render_gallery_photos($cat)` with no limit).
+- CSS → `style.css` blocks `.al-media-figure--overlay`, `.al-gallery-empty`, `.al-lightbox*`.
+
+Image specs and the design rationale live in [DESIGN.md §7 — Imagery and media](DESIGN.md). Implementation history lives in [DEVLOG.md → v2.7.0 entry](DEVLOG.md). Pre-launch seeding checklist lives in [GOLIVE.md §15 — Media gallery seeding](GOLIVE.md).
+
+---
+
+---
+
 ## PAGES: Not Yet Built
 
 **Publications** — Content TBD
 
-**Media** — Content TBD
-
 **Contact** — Content TBD
 
-**Blog** — Content TBD
+**Journal** — Content TBD (templates exist; per-post content authored from WP admin → Posts)

@@ -1,7 +1,7 @@
 <?php
 /**
  * Home page template — Achilefu Lab
- * v2.3.5 — Hero · PI · Latest (Pubs + Blog) · Affiliations.
+ * v2.3.5 — Hero · PI · Latest (Pubs + Journal) · Affiliations.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -12,7 +12,7 @@ $url_research     = esc_url( get_permalink( get_page_by_path( 'research' ) ) );
 $url_contact      = esc_url( get_permalink( get_page_by_path( 'contact' ) ) );
 $url_team         = esc_url( get_permalink( get_page_by_path( 'team' ) ) );
 $url_publications = al_page_url( 'publications' );
-$url_blog         = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
+$url_journal      = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
 
 $uploads      = wp_get_upload_dir();
 $pi_file      = $uploads['basedir'] . '/dr-achilefu.jpg';
@@ -35,8 +35,6 @@ $pi_has_photo = file_exists( $pi_file );
     <div class="al-hero__molecules" aria-hidden="true"></div>
 
     <div class="al-container">
-
-      <span class="al-hero__eyebrow">Achilefu Lab &middot; UT Southwestern</span>
 
       <h1 class="al-hero__headline" id="al-hero-headline">
         Harnessing <em>Light</em> to Understand, Diagnose &amp;&nbsp;Treat&nbsp;Disease.
@@ -139,7 +137,7 @@ $pi_has_photo = file_exists( $pi_file );
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       3. LATEST FROM THE LAB — 2-col: Publications, Blog
+       3. LATEST FROM THE LAB — 2-col: Publications, Journal
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-latest" aria-labelledby="al-latest-heading">
     <div class="al-container">
@@ -181,9 +179,9 @@ $pi_has_photo = file_exists( $pi_file );
           </a>
         </div>
 
-        <!-- From the Blog -->
+        <!-- From the Journal -->
         <div class="al-latest__col al-reveal" data-delay="3">
-          <p class="al-latest__col-heading">From the Blog</p>
+          <p class="al-latest__col-heading">From the Journal</p>
           <?php
           $recent = get_posts( [
             'numberposts'      => 3,
@@ -202,8 +200,8 @@ $pi_has_photo = file_exists( $pi_file );
               </li>
             <?php endforeach; wp_reset_postdata(); ?>
           </ul>
-          <a href="<?php echo $url_blog; ?>" class="al-latest__more">
-            View all posts &rarr;
+          <a href="<?php echo $url_journal; ?>" class="al-latest__more">
+            View all entries &rarr;
           </a>
           <?php else : ?>
             <p class="al-latest__empty">Posts coming soon.</p>

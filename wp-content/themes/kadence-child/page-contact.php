@@ -22,7 +22,6 @@ get_header();
 	<!-- ── Hero ──────────────────────────────────────────── -->
 	<section class="al-inner-hero" aria-labelledby="contact-heading">
 		<div class="al-container">
-			<p class="al-inner-hero__eyebrow">Contact</p>
 			<h1 class="al-inner-hero__title" id="contact-heading">
 				Connect With the Lab
 			</h1>

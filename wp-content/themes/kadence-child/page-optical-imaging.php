@@ -28,12 +28,11 @@ get_header();
 				<span aria-hidden="true">›</span>
 				<span aria-current="page">Optical &amp; Molecular Imaging</span>
 			</nav>
-			<p class="al-inner-hero__eyebrow">Foundational Research</p>
 			<h1 class="al-inner-hero__title" id="omi-heading">
 				Seeing Disease at the Molecular Level
 			</h1>
 			<p class="al-inner-hero__sub">
-				Bespoke near-infrared probes and imaging agents that bind the molecular signatures of disease &mdash; rendering tumors, pathogens, and biological processes visible in living tissue with chemical specificity.
+				Bespoke near-infrared probes that bind the molecular signatures of disease &mdash; making tumors and pathogens visible in living tissue.
 			</p>
 		</div>
 	</section>

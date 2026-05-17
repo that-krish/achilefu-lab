@@ -17,12 +17,11 @@ $url_publications = al_page_url( 'publications' );
 	<!-- ── Hero ──────────────────────────────────────────── -->
 	<section class="al-inner-hero" aria-labelledby="research-heading">
 		<div class="al-container">
-			<p class="al-inner-hero__eyebrow">Our Research</p>
 			<h1 class="al-inner-hero__title" id="research-heading">
-				Interventional Molecular Systems to Understand &amp; Improve Human Health
+				Interventional Molecular Systems for Human Health
 			</h1>
 			<p class="al-inner-hero__sub">
-				Light-based imaging techniques using custom molecular contrast agents to visualize tissue, understand molecular biology, create diagnostic tools, and establish light-based treatments &mdash; from the single molecule to the operating room.
+				Custom molecular contrast agents and light-based imaging &mdash; from the single molecule to the operating room.
 			</p>
 		</div>
 	</section>

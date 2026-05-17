@@ -179,6 +179,7 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 - ~~"In the News" home column~~ — removed v2.3.4. Real lab site has no news/press section.
 - ~~"Image-Guided Surgery" and "Bench to Bedside" pillar panels~~ — removed v2.3.4. Neither is a research platform on the real UTSW site; both pillar panels and their dedicated sub-pages were fabricated breakouts.
 - ~~Research Pillars section~~ — removed entirely in v2.3.5. With only one real platform left, a single-panel flex-expand grid didn't justify the layout. The CSS for `.al-pillars*` and `.al-pillar-panel*` was also deleted from `style.css`.
+- ~~Hero eyebrow chip ("Achilefu Lab · UT Southwestern")~~ — removed v2.4.1. The H1 + inline credentials strip already establish lab identity; the chip read as navigation residue. (Was removed in v1.x, returned during the v2.0 redesign as a neon pill, removed again in v2.4.1.) `.al-hero__eyebrow` CSS retained as orphaned for now.
 
 See [CONTENT.md](CONTENT.md) for all copy.
 
@@ -223,8 +224,47 @@ Open:
 To decide:
 - [ ] Headshot photographer / DIY guide for the team
 - [x] Image aspect ratios for hero (16:9), PI (4:5) — set 2026-05-10
-- [ ] Card thumbnail aspect ratio for Blog page
+- [ ] Card thumbnail aspect ratio for Journal post listings
 - [ ] Whether to commission illustrations for the three research areas or use real imagery
+
+---
+
+### 7.1 Gallery Photos pattern (Media page family, v2.7.0+)
+
+The `/media/` hub and its three subpages (`/media-research/`, `/media-people/`, `/media-events/`) render photos from the **Gallery Photos** custom post type — *not* from static template markup. Each photo carries description, photo_category, photo_bucket tag, captured date, and the file itself. The page templates query the database via `al_render_gallery_photos($category_slug, $limit)` and render — no hardcoded HTML, no Gallery blocks, no Media Library categorization to manage.
+
+Operator workflow + field meanings are documented in [CONTENT.md → PAGE: Media](CONTENT.md). Implementation lives in [DEVLOG.md → v2.7.0 entry](DEVLOG.md). Pre-launch seeding checklist is in [GOLIVE.md §15](GOLIVE.md). This section is the **visual / display design** contract.
+
+**Layout:**
+- **Hub rows:** 3-column grid `2fr 1fr 1fr`. Featured (col 1) is a larger square; the two thumbs (cols 2 & 3) are smaller squares aligned to start. Asymmetric below-the-fold space is intentional — visual hierarchy, not a bug. Mobile collapses to 2-col then 1-col.
+- **Subpages:** standard `.al-media-gallery` grid with `repeat(auto-fill, minmax(280px, 1fr))` — same layout the editorial subpages used pre-CMS.
+- **All gallery thumbs are square** in the rendered output (helper passes `--square` modifier by default). Non-square uploads get center-cropped via `object-fit: cover`.
+
+**Reveal behavior:**
+- **Desktop (`@media (hover: hover)`):** hover-reveal overlay. Dark gradient fades in over the bottom of the image with two stacked spans: `.al-media-figure__desc` (description, regular weight) and `.al-media-figure__meta` (bucket · date, small caps, accent-color blue-light). Implemented as `.al-media-figure--overlay`. No click-to-open on desktop — overlay is informative enough.
+- **Touch (`@media (hover: none)`):** hover overlay is hidden entirely (it can't trigger anyway). Tapping any `.al-media-figure[data-photo-id]` opens a fixed full-screen lightbox (`.al-lightbox`) with the photo (max-width clamped to `min(94vw, 720px)`, max-height `65vh`) and metadata centered below. Dismiss via × button, backdrop tap, or Esc.
+
+**Empty states:**
+- Logged-in editors: dashed-border `.al-gallery-empty` block with *"No photos yet. Add the first one →"* link to the admin Add New screen.
+- Public visitors: same block, copy *"Photos coming soon."*
+
+**Image specs (recommendations for uploads via Gallery Photos → Add New):**
+
+| Property | Recommended | Notes |
+|---|---|---|
+| Aspect ratio | **Square (1:1)** | The grid lays out at 1:1; non-square uploads get center-cropped. Pre-crop to square for predictable framing. |
+| Long edge | 1600–2400 px | WP auto-generates `large` (default 1024w) and `medium` thumbnails. Source image needs to be ≥ `large` size for crisp display on retina screens. |
+| File size | < 500 KB | Pre-compress with [Squoosh](https://squoosh.app/) or ImageOptim. Lab page weight matters — visitors on phones use cellular. |
+| Format | JPEG (photos), PNG (microscopy with text overlays / line art) | WebP is fine if Krish wants smaller files; WP supports it. |
+| EXIF | Keep `created_timestamp` intact | The save hook reads it to auto-populate Captured Date. Phones/cameras include it by default; screenshots and Slack downloads often don't. |
+| Filename | Doesn't matter | The Title field on the CPT post is the visible description; the filename only shows in admin. |
+
+**EXIF / privacy note:** the save hook reads only `created_timestamp` from EXIF. GPS coordinates, device serial, and other EXIF fields are ignored. If any new field is ever surfaced from EXIF, audit it for privacy implications first.
+
+**Why this pattern over WP Gallery block or ACF:**
+- Gallery block has no per-image taxonomy → can't filter automatically by category → would require Krish to maintain three separate Gallery blocks (one per subpage) and pick images by hand.
+- ACF Pro Image Gallery field gives per-figure layout control but costs money and requires Krish to manage galleries from inside each page edit screen — same friction as Gallery block.
+- A dedicated CPT lets Sam never see gallery fields when uploading blog images (zero confusion), and the page-level admin UX is just "upload + tag, done."
 
 ---
 
@@ -342,6 +382,8 @@ Applied only on `front-page.php` — inner pages do not get the effect.
 All 7 inner pages share the same language: navy hero strip → white content sections with editorial density. Each page has at least one hairline-row list or inline stats band. No page uses a dark background section below the hero.
 
 Pages: Research landing · Optical Imaging · PI · Team · Lab Calendar · Contact · Media (visual showcase).
+
+**Hero pattern (v2.4.1):** optional breadcrumb → H1 (`.al-inner-hero__title`) → subhead (`.al-inner-hero__sub`). No eyebrow chip — removed v2.4.1 because the H1 already names the page and the chip read as redundant navigation residue. The `.al-inner-hero__eyebrow` class still exists in `style.css` because it's reused (with different intent) by the Contact page's "Visit" content-section subhead; do not delete the rule.
 
 ---
 

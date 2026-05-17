@@ -133,7 +133,82 @@ This document should be updated throughout development as new requirements are d
 
 ---
 
-## 14. Post-launch
+## 14. Lab Calendar pipeline
+
+> Architecture decision recorded in [DEVLOG.md §4 entry "Decision: Lab Calendar pipeline via invite-as-guest pattern"](DEVLOG.md). Summary: lab members invite a dedicated Google Calendar mailbox ("the labcal mailbox") as a guest on events they want public; the website subscribes to that mailbox's public calendar feed.
+>
+> ⚠️ The literal email address for the labcal mailbox is intentionally kept out of this document and out of every other file in the repo. It is private operational info — store it in the team password manager only.
+
+**Provision the mailbox**
+- ⬜ Create the dedicated Google Workspace account on the `achilefulab.org` domain (Workspace preferred over free Gmail for brand-domain address + org-level invite filtering). Display name something like "Achilefu Lab Calendar."
+- ⬜ Store the account credentials in the team password manager. Add a recovery email and recovery phone owned by the lab (not a personal account that could leave with a former member).
+- ⬜ Sign into the account and complete first-run setup; accept Calendar terms.
+
+**Configure auto-accept**
+- ⬜ Calendar Settings → Event settings → "Automatically add invitations" → set to **"Yes, even if I have not responded to the invitation."**
+- ⬜ Send a test invite from a different Google account to the labcal mailbox. Confirm the event appears on labcal's calendar within a few minutes with no manual acceptance.
+
+**Lock down the spam surface**
+- ⬜ Workspace Admin Console → Apps → Google Workspace → Calendar → External sharing options for primary calendars: restrict invites from outside the org if possible, OR
+- ⬜ Workspace Admin Console → Apps → Calendar → "Who can invite users to events" / domain allowlist — restrict to `*.utsouthwestern.edu` and `achilefulab.org` if the org-level toggle exists in your Workspace tier.
+- ⬜ If the above isn't available on your Workspace tier, instead: keep the labcal address strictly internal (never publish it on the site, in code, in docs, or in the contact form). Periodically eyeball the calendar (e.g. monthly) for spam invites and delete.
+
+**Publish the calendar**
+- ⬜ Settings for the labcal account's primary calendar → "Access permissions for events" → check **"Make available to public"** (See all event details).
+- ⬜ Copy the public iCal URL and the Calendar ID (Settings → Integrate calendar). Both go in the password manager alongside the credentials.
+
+**Wire the website**
+- ⬜ Install + activate the **Simple Calendar** plugin (formerly "Google Calendar Events"). Settings → Simple Calendar → API key (free Google API key with Calendar API enabled).
+- ⬜ Create a new feed in Simple Calendar pointing at the labcal Calendar ID. Set cache to 4–6 h (balances ICS latency vs server load).
+- ⬜ Update `wp-content/themes/kadence-child/page-lab-calendar.php` to render the Simple Calendar shortcode where the current "Calendar coming soon" placeholder sits. Apply theme styling on the calendar markup to match the rest of `.al-inner-page`.
+- ⬜ Add a short FAQ block on the page for lab members: "How does an event end up here? Invite the labcal mailbox as a guest on your event — that's it. Reach out to Krish/admin for the address."
+
+**Verify end-to-end**
+- ⬜ Create a test event in a lab member's calendar with the labcal mailbox as a guest.
+- ⬜ Wait for the plugin's cache to refresh (force-clear via the plugin if needed).
+- ⬜ Confirm the event renders correctly on `/lab-calendar/` with the right title, date, time, and any description.
+- ⬜ Edit the test event (move the time), confirm the update propagates on the next refresh.
+- ⬜ Cancel the test event, confirm it disappears.
+
+---
+
+## 15. Media gallery seeding
+
+> Architecture documented in [CONTENT.md → PAGE: Media](CONTENT.md), display contract in [DESIGN.md §7.1](DESIGN.md), implementation in [DEVLOG.md → v2.7.0 entry](DEVLOG.md). Workflow: lab admins add photos via **WP admin → Gallery Photos → Add New**. Photos auto-appear on `/media/` and the matching subpage immediately on publish — no per-page editing required.
+
+**Why this section exists**
+The `/media/` hub and its three subpages (`/media-research/`, `/media-people/`, `/media-events/`) are wired but **empty**. Without at least a few photos per category, the live site shows "Photos coming soon." on every gallery page. Visitors don't read empty-state copy charitably — seed first, launch second.
+
+**Per-photo upload checklist**
+For each photo added via Gallery Photos → Add New:
+- ⬜ **Title** — the description (e.g. "Confocal microscopy of tumor margin"). Single line.
+- ⬜ **Photo Category** — radio: Research / People / Events. Determines which subpage it lands on.
+- ⬜ **Buckets** — one tag (photographer for Research, where/why for People, event name for Events).
+- ⬜ **Captured Date** — verify the auto-filled EXIF date is correct, or set manually for screenshots/scans.
+- ⬜ **The Photo** — Featured Image. **Required** — photos without a featured image are silently skipped at render.
+
+**Before launch**
+- ⬜ Add **at least 3 photos per category** (Research / People / Events) so the hub's three teaser rows render full (each row shows the 3 newest captured-date photos).
+- ⬜ Add **enough photos per subpage to fill at least 1–2 grid rows** (the subpage gallery is `repeat(auto-fill, minmax(280px, 1fr))`, so 4–9 photos depending on viewport).
+- ⬜ Pre-compress all photos to < 500 KB and crop to square (1:1) before upload. See [DESIGN.md §7.1](DESIGN.md) for full image specs.
+- ⬜ Confirm each photo carries an EXIF date OR has Captured Date set manually. The query orders by captured date desc; ties fall back to publish date.
+- ⬜ Verify the **All Gallery Photos** admin list view: every row has a thumbnail (the leftmost column). Blank thumbnail = no featured image = won't render on the front end.
+
+**Verify end-to-end**
+- ⬜ Visit `/media/` — confirm all three rows are populated.
+- ⬜ Visit each subpage (`/media-research/`, `/media-people/`, `/media-events/`) — confirm full gallery renders, ordered newest captured-date first.
+- ⬜ Desktop: hover any photo — confirm the dark overlay fades in over the bottom of the image with description + bucket · date.
+- ⬜ Mobile (or DevTools touch mode): tap any photo — confirm the lightbox opens with the photo and metadata centered below. Confirm × button, backdrop tap, and Esc all close it.
+
+**Worth knowing**
+- **Single category per photo.** If you want a photo on multiple subpages (e.g. a conference photo that's also a great group portrait), upload it twice with different categories. The CPT's category metabox is radio-only by design.
+- **Sam's blog uploads are unaffected.** The Gallery Photos workflow is a completely separate admin section — uploading an image inline in a Journal post never touches any gallery field.
+- **No edits to PHP templates** are required to add or remove photos. The subpages query the CPT live.
+- **EXIF GPS coordinates and device IDs are ignored** by the save hook (only `created_timestamp` is read). Safe to upload phone photos without stripping EXIF, though stripping is still good privacy hygiene.
+
+---
+
+## 16. Post-launch
 
 - ⬜ Update `docs/DEVLOG.md` with a go-live entry (date, host, domain, what was migrated).
 - ⬜ Update `docs/DESIGN.md` if any visual decisions were finalized during the migration process.

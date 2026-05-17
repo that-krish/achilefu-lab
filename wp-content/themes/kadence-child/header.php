@@ -2,7 +2,7 @@
 /**
  * Kadence Child — header.php
  * Overrides the parent Kadence header with a custom wordmark + dropdown nav.
- * Helper functions live in functions.php (al_page_url, al_blog_url).
+ * Helper functions live in functions.php (al_page_url, al_journal_url).
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -82,7 +82,7 @@ defined( 'ABSPATH' ) || exit;
 					</button>
 					<div class="al-dropdown" role="menu">
 						<a href="<?php echo al_page_url( 'media' ); ?>" role="menuitem">Media</a>
-						<a href="<?php echo al_blog_url(); ?>" role="menuitem">Blog</a>
+						<a href="<?php echo al_journal_url(); ?>" role="menuitem">Journal</a>
 						<a href="<?php echo al_page_url( 'lab-calendar' ); ?>" role="menuitem">Lab Calendar</a>
 					</div>
 				</div>

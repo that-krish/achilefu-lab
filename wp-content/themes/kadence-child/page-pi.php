@@ -33,10 +33,9 @@ get_header();
 				<span aria-hidden="true">›</span>
 				<span aria-current="page">Principal Investigator</span>
 			</nav>
-			<p class="al-inner-hero__eyebrow">Principal Investigator</p>
 			<h1 class="al-inner-hero__title" id="pi-heading">Dr. Samuel Achilefu</h1>
 			<p class="al-inner-hero__sub">
-				Inaugural Chair of Biomedical Engineering at UT Southwestern Medical Center and Lyda Hill Distinguished University Chair. Pioneer in optical and molecular imaging, and one of a small number of researchers elected to both the National Academy of Engineering and the National Academy of Medicine.
+				Inaugural Chair of Biomedical Engineering at UT Southwestern. Member of both the National Academies of Engineering and Medicine.
 			</p>
 		</div>
 	</section>
