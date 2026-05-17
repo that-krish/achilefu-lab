@@ -114,7 +114,8 @@ get_header();
 						<h3 class="al-contact-detail-card__label">Lab Location</h3>
 						<address class="al-contact-detail-card__value">
 							UT Southwestern Medical Center<br>
-							5323 Harry Hines Blvd, Dallas, TX 75390
+							5323 Harry Hines Blvd, Dallas, TX 75390<br>
+							<a href="tel:+12146483111">214-648-3111</a>
 						</address>
 					</div>
 
@@ -159,7 +160,7 @@ get_header();
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="contact-routing-heading">How We Route Inquiries</h2>
 					<p class="al-inner-section__lead">
-						A quick guide to who handles what, and what to include so we can respond efficiently. <!-- [PLACEHOLDER] routing details and response windows pending confirmation with lab admin. -->
+						A quick guide to who handles what, and what to include so we can respond efficiently.
 					</p>
 				</div>
 
@@ -171,19 +172,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Research collaboration inquiries</p>
-								<p class="al-latest__meta">Routed to PI &middot; typical response 2&ndash;3 business days <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to PI &middot; typical response 2&ndash;3 business days</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Prospective graduate students</p>
-								<p class="al-latest__meta">Include CV + research interests &middot; routed to lab admin <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Include CV + research interests &middot; routed to lab admin</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Postdoctoral fellowships</p>
-								<p class="al-latest__meta">CV, two references, statement of interest &middot; routed to PI <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">CV, two references, statement of interest &middot; routed to PI</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Visiting scholars &amp; sabbaticals</p>
-								<p class="al-latest__meta">Routed to PI &middot; subject to UTSW visa &amp; appointment policy <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to PI &middot; subject to UTSW visa &amp; appointment policy</p>
 							</li>
 						</ul>
 					</div>
@@ -194,19 +195,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Industry partnerships &amp; licensing</p>
-								<p class="al-latest__meta">Routed to UTSW Office for Technology Development <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to UTSW Office for Technology Development</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Sponsored research &amp; contracts</p>
-								<p class="al-latest__meta">Routed to UTSW Sponsored Programs &middot; copy lab admin <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to UTSW Sponsored Programs &middot; copy lab admin</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Speaking &amp; conference invitations</p>
-								<p class="al-latest__meta">Routed to PI's office &middot; advance notice appreciated <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to PI's office &middot; advance notice appreciated</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Vendor &amp; reagent solicitations</p>
-								<p class="al-latest__meta">Email only &middot; no on-site drop-ins <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Email only &middot; no on-site drop-ins</p>
 							</li>
 						</ul>
 					</div>
@@ -217,19 +218,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Press &amp; media inquiries</p>
-								<p class="al-latest__meta">Handled by Erin in lab communications <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Handled by Erin in lab communications</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Patient inquiries</p>
-								<p class="al-latest__meta">Directed to UTSW clinical care teams &middot; the lab does not provide direct patient care <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Directed to UTSW clinical care teams &middot; the lab does not provide direct patient care</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Image &amp; figure reuse permissions</p>
-								<p class="al-latest__meta">Email contact@achilefulab.org with citation context <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Email contact@achilefulab.org with citation context</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Outreach &amp; community events</p>
-								<p class="al-latest__meta">Routed to lab comms &middot; response within one week <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Routed to lab comms &middot; response within one week</p>
 							</li>
 						</ul>
 					</div>
@@ -251,16 +252,14 @@ get_header();
 							Department of Biomedical Engineering<br>
 							UT Southwestern Medical Center<br>
 							5323 Harry Hines Blvd<br>
-							Dallas, TX 75390<br>
-							<!-- [PLACEHOLDER] suite / building / floor number -->
-							Building &amp; suite: TBD
+							Dallas, TX 75390
 						</address>
 					</aside>
 
 					<div>
 						<div class="al-prose">
 							<p>
-								The lab is located on the UT Southwestern Medical Center campus in Dallas. Most visitors enter through the South Campus parking structures; visitor parking is available adjacent to the main hospital entrance, with directions provided after appointments are confirmed. <!-- [PLACEHOLDER] confirm preferred visitor garage with PI's office. -->
+								The lab is located on the UT Southwestern Medical Center campus in Dallas. Most visitors enter through the South Campus parking structures; visitor parking is available adjacent to the main hospital entrance, with directions provided after appointments are confirmed.
 							</p>
 							<p>
 								Please coordinate visits in advance with the PI's office or lab admin &mdash; campus access is badge-controlled and most lab spaces require an escort. Site visits for collaborators, prospective trainees, and industry partners are welcomed by appointment.
@@ -280,16 +279,16 @@ get_header();
 			<section class="al-inner-section" aria-labelledby="contact-connect-heading">
 				<h2 class="al-inner-section__title" id="contact-connect-heading">Connect on Academic Profiles</h2>
 				<p class="al-inner-section__lead">
-					Follow Dr. Achilefu's publications, citations, and the lab's public work across the channels below. <!-- [PLACEHOLDER] confirm URLs with PI's office before launch. -->
+					Follow Dr. Achilefu's publications, citations, and the lab's public work across the channels below.
 				</p>
 
 				<div class="al-pi-badges" style="margin-top:1.25rem;">
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->Google Scholar</a>
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->ORCID</a>
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->PubMed</a>
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->ResearchGate</a>
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->LinkedIn</a>
-					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->Lab X / Twitter</a>
+					<a href="https://scholar.google.com/citations?user=YywM5OwAAAAJ&hl=en" class="al-badge" target="_blank" rel="noopener">Google Scholar</a>
+					<a href="#" class="al-badge">ORCID</a>
+					<a href="https://pubmed.ncbi.nlm.nih.gov/?term=achilefu+s&sort=date" class="al-badge" target="_blank" rel="noopener">PubMed</a>
+					<a href="#" class="al-badge">ResearchGate</a>
+					<a href="#" class="al-badge">LinkedIn</a>
+					<a href="#" class="al-badge">Lab X / Twitter</a>
 					<a href="<?php echo $url_pi; ?>" class="al-badge">PI Profile</a>
 					<a href="<?php echo $url_publications; ?>" class="al-badge">Publications</a>
 				</div>

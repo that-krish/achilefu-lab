@@ -71,9 +71,9 @@ $has_lab_bg  = file_exists( $lab_bg_file );
 
       <ul class="al-hero__cred" aria-label="Lab at a glance">
         <li><strong>300+</strong> Publications</li>
-        <li><strong>70+</strong> U.S. Patents</li>
+        <li><strong>60+</strong> U.S. Patents</li>
         <li><strong>NAE &amp; NAM</strong> Member</li>
-        <li><strong>25+ Years</strong> of Innovation</li>
+        <li><strong>4</strong> Products in Clinical Study</li>
       </ul>
 
     </div>
@@ -197,20 +197,19 @@ $has_lab_bg  = file_exists( $lab_bg_file );
         <div class="al-highlight__copy al-reveal" data-delay="2">
           <p class="al-highlight__eyebrow">Featured Research</p>
           <h2 class="al-highlight__title" id="al-highlight-heading">
-            Real-time fluorescence guidance for cancer surgery
+            Selective tumor imaging via phosphorylated Annexin&nbsp;A2
           </h2>
           <p class="al-highlight__meta">
-            <span>Journal of Biomedical Optics</span>
+            <span>Nature Biomedical Engineering</span>
             <span class="al-highlight__meta-sep" aria-hidden="true">·</span>
-            <span>2024</span>
-            <span class="al-highlight__meta-sep" aria-hidden="true">·</span>
-            <span>Cover feature</span>
+            <span>2020</span>
           </p>
           <p class="al-highlight__lede">
-            The lab's wearable near-infrared fluorescence imaging system &mdash; built on a decade of
-            molecular probe engineering &mdash; lets surgeons see tumor margins and lymph nodes
-            in real time during oncologic procedures. Now in active clinical use at UT Southwestern
-            and partner institutions.
+            A cyclic octapeptide labeled with a near-infrared dye that selectively binds
+            phosphorylated Annexin A2 &mdash; a calcium-dependent marker overexpressed at invasive
+            tumor edges. The probe enables precision tumor detection, metastatic lesion identification,
+            and fluorescence-guided surgical resection in animal models, with potential for broad
+            tumor diagnostics and targeted drug delivery.
           </p>
           <a href="<?php echo $url_research; ?>" class="al-highlight__link">
             Read the research &rarr;
@@ -270,16 +269,16 @@ $has_lab_bg  = file_exists( $lab_bg_file );
               <span class="al-pi__stat-label">Peer-reviewed publications</span>
             </li>
             <li>
-              <span class="al-pi__stat-value">70+</span>
-              <span class="al-pi__stat-label">U.S. Patents</span>
+              <span class="al-pi__stat-value">60+</span>
+              <span class="al-pi__stat-label">Issued U.S. Patents</span>
             </li>
             <li>
               <span class="al-pi__stat-value">2</span>
               <span class="al-pi__stat-label">National Academy memberships</span>
             </li>
             <li>
-              <span class="al-pi__stat-value">25+</span>
-              <span class="al-pi__stat-label">Years of innovation</span>
+              <span class="al-pi__stat-value">3</span>
+              <span class="al-pi__stat-label">Startup companies founded</span>
             </li>
           </ul>
 
@@ -312,20 +311,20 @@ $has_lab_bg  = file_exists( $lab_bg_file );
           <ul class="al-latest__list">
             <li class="al-latest__item">
               <a href="<?php echo $url_publications; ?>">
-                <p class="al-latest__title">Targeted near-infrared probes for image-guided cancer surgery</p>
-                <p class="al-latest__meta">Nature Biomedical Engineering &middot; 2025</p>
+                <p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Surgery</p>
+                <p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
               </a>
             </li>
             <li class="al-latest__item">
               <a href="<?php echo $url_publications; ?>">
-                <p class="al-latest__title">Wearable fluorescence imaging for intraoperative tumor margin assessment</p>
-                <p class="al-latest__meta">J. Biomed. Opt. &middot; 2024</p>
+                <p class="al-latest__title">Radionuclide-stimulated dynamic therapy induces complementary immunogenic necroptosis and apoptosis</p>
+                <p class="al-latest__meta">Communications Biology &middot; 2026</p>
               </a>
             </li>
             <li class="al-latest__item">
               <a href="<?php echo $url_publications; ?>">
-                <p class="al-latest__title">Theranostic agents for combined molecular imaging and targeted therapy</p>
-                <p class="al-latest__meta">Biomaterials &middot; 2024</p>
+                <p class="al-latest__title">Chemo-RaST with bortezomib inhibits multiple myeloma relapse</p>
+                <p class="al-latest__meta">Theranostics &middot; 2025</p>
               </a>
             </li>
           </ul>

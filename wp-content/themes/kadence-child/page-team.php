@@ -11,63 +11,35 @@ defined( 'ABSPATH' ) || exit;
 
 /*
  * Team data — add entries here as bios become available.
- * Format: [ 'name', 'role', 'photo_filename' (in wp-content/uploads/team/), 'pronouns' ]
+ * Format: [ 'name', 'role', 'photo_filename' (in wp-content/uploads/team/) ]
  * Leave photo_filename empty string for the placeholder avatar.
  *
- * [PLACEHOLDER] — replace with real lab members once roster is confirmed.
- * Names below are realistic stand-ins; titles reflect the typical Achilefu Lab
- * composition (molecular imaging, probe chemistry, BME, oncology translation).
+ * Roster will be populated once confirmed with lab admin.
  */
 $team = [
 
 	// ─── Postdoctoral Fellows ───────────────────────────────────────────
 	[
 		'group'   => 'Postdoctoral Fellows',
-		'members' => [
-			// [PLACEHOLDER]
-			[ 'name' => 'Dr. Maria Chen',      'role' => 'Postdoctoral Fellow, Molecular Imaging',       'photo_filename' => '' ],
-			[ 'name' => 'Dr. Aisha Patel',     'role' => 'Postdoctoral Fellow, Probe Chemistry',          'photo_filename' => '' ],
-			[ 'name' => 'Dr. Daniel Okafor',   'role' => 'Postdoctoral Fellow, Image-Guided Surgery',     'photo_filename' => '' ],
-			[ 'name' => 'Dr. Hyejin Park',     'role' => 'Postdoctoral Fellow, Theranostics',             'photo_filename' => '' ],
-			[ 'name' => 'Dr. Rafael Mendoza',  'role' => 'Postdoctoral Fellow, NIR Fluorescence Imaging', 'photo_filename' => '' ],
-		],
+		'members' => [],
 	],
 
 	// ─── Graduate Students ──────────────────────────────────────────────
 	[
 		'group'   => 'Graduate Students',
-		'members' => [
-			// [PLACEHOLDER]
-			[ 'name' => 'James Liu',           'role' => 'PhD Candidate, Biomedical Engineering',   'photo_filename' => '' ],
-			[ 'name' => 'Priya Iyer',          'role' => 'PhD Candidate, Chemistry',                'photo_filename' => '' ],
-			[ 'name' => 'Marcus Williams',     'role' => 'PhD Student, Biomedical Engineering',     'photo_filename' => '' ],
-			[ 'name' => 'Elena Rossi',         'role' => 'PhD Candidate, Cancer Biology',           'photo_filename' => '' ],
-			[ 'name' => 'Tomás Herrera',       'role' => 'PhD Student, Bioengineering',             'photo_filename' => '' ],
-			[ 'name' => 'Anika Sharma',        'role' => 'MD/PhD Student, Radiology',               'photo_filename' => '' ],
-		],
+		'members' => [],
 	],
 
 	// ─── Research Scientists ────────────────────────────────────────────
 	[
 		'group'   => 'Research Scientists',
-		'members' => [
-			// [PLACEHOLDER]
-			[ 'name' => 'Dr. Yuki Tanaka',     'role' => 'Senior Research Scientist, Probe Development', 'photo_filename' => '' ],
-			[ 'name' => 'Dr. Olusegun Adeyemi', 'role' => 'Research Scientist, Clinical Translation',   'photo_filename' => '' ],
-			[ 'name' => 'Dr. Lin Zhao',        'role' => 'Research Scientist, Optical Instrumentation',  'photo_filename' => '' ],
-		],
+		'members' => [],
 	],
 
 	// ─── Lab Alumni ─────────────────────────────────────────────────────
 	[
 		'group'   => 'Lab Alumni',
-		'members' => [
-			// [PLACEHOLDER]
-			[ 'name' => 'Dr. Sarah Kim',       'role' => 'Now Assistant Professor, Stanford University',         'photo_filename' => '' ],
-			[ 'name' => 'Dr. Benjamin Carter', 'role' => 'Now Scientist, Memorial Sloan Kettering',              'photo_filename' => '' ],
-			[ 'name' => 'Dr. Naledi Mokoena',  'role' => 'Now Faculty, Johns Hopkins School of Medicine',        'photo_filename' => '' ],
-			[ 'name' => 'Dr. Wei Zhang',       'role' => 'Now Principal Scientist, Genentech',                   'photo_filename' => '' ],
-		],
+		'members' => [],
 	],
 ];
 
@@ -104,23 +76,22 @@ get_header();
 					The Achilefu Lab brings together researchers from biomedical engineering, chemistry, medicine, and the clinical sciences &mdash; working at the interface of light, molecules, and patient care. The roster below reflects the people currently driving that work forward, plus an alumni network that now spans academia, industry, and clinical practice.
 				</p>
 
-				<!-- Mini stats strip · [PLACEHOLDER] counts -->
 				<ul class="al-pi-stats" aria-label="Lab at a glance">
 					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">5</span>
-						<span class="al-pi-stat__label">Postdoctoral Fellows</span>
+						<span class="al-pi-stat__value">300+</span>
+						<span class="al-pi-stat__label">Publications</span>
 					</li>
 					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">6</span>
-						<span class="al-pi-stat__label">Graduate Students</span>
+						<span class="al-pi-stat__value">60+</span>
+						<span class="al-pi-stat__label">Issued U.S. Patents</span>
+					</li>
+					<li class="al-pi-stat">
+						<span class="al-pi-stat__value">25+</span>
+						<span class="al-pi-stat__label">Years of Training</span>
 					</li>
 					<li class="al-pi-stat">
 						<span class="al-pi-stat__value">3</span>
-						<span class="al-pi-stat__label">Research Scientists</span>
-					</li>
-					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">40+</span>
-						<span class="al-pi-stat__label">Lab Alumni</span>
+						<span class="al-pi-stat__label">Startup Companies Founded</span>
 					</li>
 				</ul>
 			</section>
@@ -195,85 +166,72 @@ get_header();
 			<hr class="al-divider">
 			<?php endforeach; ?>
 
-			<!-- ── Alumni network · editorial list (hairline rows, not cards) ── -->
-			<?php
-			$alumni_group = null;
-			foreach ( $team as $section ) {
-				if ( $section['group'] === 'Lab Alumni' && ! empty( $section['members'] ) ) {
-					$alumni_group = $section;
-					break;
-				}
-			}
-			if ( $alumni_group ) :
-			?>
+			<!-- ── Alumni network · editorial ── -->
 			<section class="al-inner-section al-latest">
 				<div class="al-latest__head">
 					<h2 class="al-section-heading">Alumni Network</h2>
 					<p class="al-section-subhead">
-						Former lab members now leading research, teaching, and clinical work across academia and industry. A small sample below &mdash; the full alumni roster spans 40+ scientists across three continents.
+						Former lab members now leading research, teaching, and clinical work across academia and industry. The Achilefu Lab has trained researchers for more than 25 years; alumni span faculty positions, industry R&amp;D, and clinical translation worldwide.
 					</p>
 				</div>
 
 				<div class="al-latest__grid">
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Recent Alumni &middot; Now At</p>
-						<ul class="al-latest__list">
-							<?php foreach ( $alumni_group['members'] as $alum ) : ?>
-							<li class="al-latest__item">
-								<a href="<?php echo al_page_url( 'contact' ); ?>">
-									<p class="al-latest__title"><?php echo esc_html( $alum['name'] ); ?></p>
-									<p class="al-latest__meta"><?php echo esc_html( $alum['role'] ); ?></p>
-								</a>
-							</li>
-							<?php endforeach; ?>
-						</ul>
-						<a href="<?php echo al_page_url( 'contact' ); ?>" class="al-latest__more">
-							Connect with alumni &rarr;
-						</a>
-					</div>
-
-					<!-- Where alumni go — editorial pull · [PLACEHOLDER] -->
-					<div class="al-latest__col">
 						<p class="al-latest__col-heading">Where Alumni Land</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Academic faculty positions</p>
-								<p class="al-latest__meta">Stanford &middot; Johns Hopkins &middot; Washington University &middot; Northwestern</p>
+								<p class="al-latest__meta">Independent research programs at universities and medical schools across the U.S., Europe, and Asia</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Industry research &amp; development</p>
-								<p class="al-latest__meta">Genentech &middot; Bristol Myers Squibb &middot; Roche &middot; Pfizer</p>
+								<p class="al-latest__meta">Scientists and engineers at biotech, pharma, and medical device companies</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Clinical translation &amp; medical practice</p>
-								<p class="al-latest__meta">MSK &middot; Mayo Clinic &middot; MD Anderson &middot; Cleveland Clinic</p>
+								<p class="al-latest__meta">Physician-scientists bridging laboratory discovery and direct patient care</p>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Lab legacy · longitudinal stats · [PLACEHOLDER] -->
 					<div class="al-latest__col">
 						<p class="al-latest__col-heading">Lab Legacy</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">25+ years of trainees</p>
-								<p class="al-latest__meta">Continuous mentorship since the lab's founding</p>
+								<p class="al-latest__title">25+ years of continuous trainee mentorship</p>
+								<p class="al-latest__meta">Founded at Washington University in St. Louis; continued at UT Southwestern Medical Center</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">15+ faculty appointments</p>
-								<p class="al-latest__meta">Alumni now running their own labs worldwide</p>
+								<p class="al-latest__title">3 startup companies founded</p>
+								<p class="al-latest__meta">Lab discoveries commercialized via UTSW Office for Technology Development</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">3 founded companies</p>
-								<p class="al-latest__meta">Translating lab discoveries into clinical products</p>
+								<p class="al-latest__title">4 products currently in clinical study</p>
+								<p class="al-latest__meta">Technologies carried from bench to active human evaluation</p>
 							</li>
 						</ul>
+					</div>
+
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">Connect</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Alumni inquiries</p>
+								<p class="al-latest__meta">Reach out via the contact page &mdash; we welcome reconnections from former lab members</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Prospective trainees</p>
+								<p class="al-latest__meta">Ask about the lab culture, mentorship, and career outcomes through the contact page</p>
+							</li>
+						</ul>
+						<a href="<?php echo al_page_url( 'contact' ); ?>" class="al-latest__more">
+							Get in touch &rarr;
+						</a>
 					</div>
 				</div>
 			</section>
 
 			<hr class="al-divider">
-			<?php endif; ?>
 
 			<!-- ── Join the lab CTA ── -->
 			<div class="al-inner-cta">

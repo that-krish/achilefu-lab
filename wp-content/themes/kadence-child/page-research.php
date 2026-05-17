@@ -19,10 +19,10 @@ $url_publications = al_page_url( 'publications' );
 		<div class="al-container">
 			<p class="al-inner-hero__eyebrow">Our Research</p>
 			<h1 class="al-inner-hero__title" id="research-heading">
-				Harnessing Light to Understand &amp; Treat Disease
+				Interventional Molecular Systems to Understand &amp; Improve Human Health
 			</h1>
 			<p class="al-inner-hero__sub">
-				Optical and molecular tools that let scientists and clinicians see biology at a resolution and specificity not possible with conventional methods &mdash; from the single molecule to the operating room.
+				Light-based imaging techniques using custom molecular contrast agents to visualize tissue, understand molecular biology, create diagnostic tools, and establish light-based treatments &mdash; from the single molecule to the operating room.
 			</p>
 		</div>
 	</section>
@@ -38,31 +38,30 @@ $url_publications = al_page_url( 'publications' );
 				<h2 class="al-inner-section__title">Mission &amp; Vision</h2>
 				<div class="al-prose">
 					<p>
-						We invent and deploy light-based technologies that illuminate the molecular signatures of disease &mdash; building the probes, agents, and detection systems that let biology speak clearly to researchers, surgeons, and patients.
+						The Achilefu Lab develops complete solutions from conception through human clinical implementation. We design light-based imaging technologies using custom molecular contrast agents that visualize tissue, reveal molecular biology, enable diagnostics, and establish light-based treatments for disease.
 					</p>
 					<p>
-						Our vision is a clinic where a surgeon sees every cancer cell in real time, a physician detects disease years before symptoms, and a researcher watches cellular processes unfold in living tissue. Every project in the lab is a step toward that standard of care.
+						Our vision is a clinic where a surgeon sees every cancer cell in real time, a physician detects disease years before symptoms, and a researcher watches cellular processes unfold in living tissue. Every project &mdash; from probe chemistry to wearable surgical imager to first-in-human trial &mdash; is a step toward that standard of care.
 					</p>
 				</div>
 
 				<!-- Inline stat strip — lab at a glance -->
-				<!-- [PLACEHOLDER] stat values pending confirmation from PI -->
 				<ul class="al-pi-stats" aria-label="Research program at a glance">
 					<li class="al-pi-stat">
+						<span class="al-pi-stat__value">300+</span>
+						<span class="al-pi-stat__label">Scientific publications</span>
+					</li>
+					<li class="al-pi-stat">
+						<span class="al-pi-stat__value">60+</span>
+						<span class="al-pi-stat__label">Issued U.S. Patents</span>
+					</li>
+					<li class="al-pi-stat">
+						<span class="al-pi-stat__value">4</span>
+						<span class="al-pi-stat__label">Products in clinical study</span>
+					</li>
+					<li class="al-pi-stat">
 						<span class="al-pi-stat__value">3</span>
-						<span class="al-pi-stat__label">Active research platforms</span>
-					</li>
-					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">30+</span>
-						<span class="al-pi-stat__label">Institutional collaborations</span>
-					</li>
-					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">12</span>
-						<span class="al-pi-stat__label">NIH-funded projects</span>
-					</li>
-					<li class="al-pi-stat">
-						<span class="al-pi-stat__value">200+</span>
-						<span class="al-pi-stat__label">Trainees &amp; alumni</span>
+						<span class="al-pi-stat__label">Startup companies</span>
 					</li>
 				</ul>
 			</section>
@@ -151,26 +150,25 @@ $url_publications = al_page_url( 'publications' );
 				<div class="al-latest__grid">
 
 					<!-- Optical & Molecular Imaging -->
-					<!-- [PLACEHOLDER] sample publications — replace with curated list -->
 					<div class="al-latest__col">
 						<p class="al-latest__col-heading">Optical Imaging</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Tumor-targeted near-infrared probes for sub-millimeter lesion detection</p>
-									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2025</p>
+									<p class="al-latest__title">Selective imaging of solid tumours via the calcium-dependent high-affinity binding of cyclic peptide to phosphorylated Annexin A2</p>
+									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2020</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">A pH-activated cyanine dye for in vivo glioma delineation</p>
-									<p class="al-latest__meta">ACS Nano &middot; 2024</p>
+									<p class="al-latest__title">Near infrared fluorophore specific for annexin A2 identifies peripheral nerve injury</p>
+									<p class="al-latest__meta">Frontiers in Cell and Developmental Biology &middot; 2026</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Multispectral imaging of microvascular hypoxia in solid tumors</p>
-									<p class="al-latest__meta">J. Biomed. Opt. &middot; 2024</p>
+									<p class="al-latest__title">Cancer-targeted pro-theranostic bi-metallic organo-coordination nanoparticles</p>
+									<p class="al-latest__meta">Theranostics &middot; 2025</p>
 								</a>
 							</li>
 						</ul>
@@ -180,26 +178,25 @@ $url_publications = al_page_url( 'publications' );
 					</div>
 
 					<!-- Image-Guided Surgery -->
-					<!-- [PLACEHOLDER] sample publications — replace with curated list -->
 					<div class="al-latest__col">
 						<p class="al-latest__col-heading">Image-Guided Surgery</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Wearable fluorescence goggles improve margin clearance in breast-conserving surgery</p>
-									<p class="al-latest__meta">Annals of Surgery &middot; 2025</p>
+									<p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Surgery</p>
+									<p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Real-time intraoperative lymph node mapping with NIR contrast</p>
-									<p class="al-latest__meta">JAMA Surgery &middot; 2024</p>
+									<p class="al-latest__title">Frugal engineering-inspired wearable augmented reality goggle system enables fluorescence-guided surgery</p>
+									<p class="al-latest__meta">Scientific Reports &middot; 2024</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Augmented-reality overlays for nerve preservation in head &amp; neck procedures</p>
-									<p class="al-latest__meta">IEEE Trans. Med. Imaging &middot; 2023</p>
+									<p class="al-latest__title">Quantitative tumor depth determination using dual wavelength excitation fluorescence</p>
+									<p class="al-latest__meta">Biomedical Optics Express &middot; 2022</p>
 								</a>
 							</li>
 						</ul>
@@ -209,26 +206,25 @@ $url_publications = al_page_url( 'publications' );
 					</div>
 
 					<!-- Bench to Bedside -->
-					<!-- [PLACEHOLDER] sample publications — replace with curated list -->
 					<div class="al-latest__col">
 						<p class="al-latest__col-heading">Bench to Bedside</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">First-in-human trial of LS301 in image-guided cancer resection</p>
-									<p class="al-latest__meta">Clinical Cancer Research &middot; 2025</p>
+									<p class="al-latest__title">First-in-Humans Evaluation of Safety and Dosimetry of 64Cu-LLP2A for PET Imaging</p>
+									<p class="al-latest__meta">Journal of Nuclear Medicine &middot; 2023</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">IND-enabling toxicology of a tumor-targeted theranostic agent</p>
-									<p class="al-latest__meta">Molecular Pharmaceutics &middot; 2024</p>
+									<p class="al-latest__title">Radionuclides transform chemotherapeutics into phototherapeutics for precise treatment of disseminated cancer</p>
+									<p class="al-latest__meta">Nature Communications &middot; 2018</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Manufacturing and GMP scale-up of NIR contrast agents for clinical use</p>
-									<p class="al-latest__meta">Bioconjugate Chemistry &middot; 2023</p>
+									<p class="al-latest__title">Breaking the depth dependency of phototherapy with Cerenkov radiation and low-radiance-responsive nanophotosensitizers</p>
+									<p class="al-latest__meta">Nature Nanotechnology &middot; 2015</p>
 								</a>
 							</li>
 						</ul>

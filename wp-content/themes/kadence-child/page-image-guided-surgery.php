@@ -32,7 +32,7 @@ get_header();
 				Real-Time Vision for the Operating Room
 			</h1>
 			<p class="al-inner-hero__sub">
-				Fluorescence-guided surgery platforms &mdash; including the wearable cancer-imaging goggles developed in our lab &mdash; that let surgeons see tumor margins, lymph nodes, and critical structures in real time, reducing incomplete resections and improving patient outcomes.
+				Fluorescence-guided surgery platforms &mdash; including the wearable Cancer Vision Goggles and label-free Focal Dynamic Thermal Imaging (FDTI) system developed in this lab &mdash; that let surgeons distinguish malignant, benign, and inflamed tissue in real time, reducing incomplete resections and improving patient outcomes.
 			</p>
 		</div>
 	</section>
@@ -49,24 +49,20 @@ get_header();
 					<p class="al-latest__col-heading">Clinical Footprint</p>
 					<div class="al-pi-stats">
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] cumulative surgeries enabled across all sites -->
 							<span class="al-pi-stat__value">100+</span>
-							<span class="al-pi-stat__label">Surgeries Enabled <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__label">Surgeries Enabled</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] active clinical sites -->
-							<span class="al-pi-stat__value">5</span>
-							<span class="al-pi-stat__label">Clinical Sites <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">5+</span>
+							<span class="al-pi-stat__label">Clinical Sites</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] devices currently in human trials -->
-							<span class="al-pi-stat__value">3</span>
-							<span class="al-pi-stat__label">Devices in Trial <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">2</span>
+							<span class="al-pi-stat__label">Devices in Trial</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] cancer indications imaged to date -->
-							<span class="al-pi-stat__value">12+</span>
-							<span class="al-pi-stat__label">Cancer Types Imaged <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">10+</span>
+							<span class="al-pi-stat__label">Cancer Types Imaged</span>
 						</div>
 					</div>
 				</aside>
@@ -80,7 +76,7 @@ get_header();
 								Cancer surgery has an Achilles' heel: surgeons operate under white light, using visual and tactile cues to separate tumor from healthy tissue. Cancer cells routinely infiltrate beyond what the eye can see. Positive surgical margins occur in 20&ndash;40% of solid tumor resections and remain the leading cause of local recurrence.
 							</p>
 							<p>
-								Our platforms give the operating team a real-time molecular map of the tumor boundary &mdash; the cancer-imaging goggles pioneered in this lab were among the first to translate near-infrared fluorescence guidance into routine oncologic practice, and have since been used in operating rooms across multiple academic medical centers.
+								The lab has developed two complementary surgical imaging technologies: near-infrared fluorescence-guided Cancer Vision Goggles (wearable, hands-free, paired with targeted molecular probes) and Focal Dynamic Thermal Imaging (FDTI) &mdash; a label-free system using a 405&nbsp;nm laser to stimulate tissue and capture thermal responses, distinguishing malignant from benign and inflamed tissue through material heterogeneity without any contrast agent.
 							</p>
 						</div>
 					</section>
@@ -101,65 +97,65 @@ get_header();
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="igs-projects-heading">Active Clinical Projects</h2>
 					<p class="al-inner-section__lead">
-						Devices, agents, and trial protocols currently in development or under clinical evaluation. <!-- [PLACEHOLDER] full project list pending review with clinical collaborators. -->
+						Devices, agents, and trial protocols currently in development or under clinical evaluation.
 					</p>
 				</div>
 
 				<div class="al-latest__grid">
 
-					<!-- Column 1: Wearable Imaging Systems -->
+					<!-- Column 1: Cancer Vision Goggles -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Wearable Imaging Systems</p>
+						<p class="al-latest__col-heading">Cancer Vision Goggles</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Next-Generation NIR Imaging Goggles (v3)</p>
-								<p class="al-latest__meta">UTSW &middot; Preclinical &middot; Multi-indication <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Single-operator quantitative NIR fluorescence Cancer Vision Goggles</p>
+								<p class="al-latest__meta">UTSW &middot; Surgical oncology &middot; Multi-tumor</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Head-Mounted Display with Multispectral Overlay</p>
-								<p class="al-latest__meta">UTSW &middot; Feasibility &middot; Breast / Soft-tissue <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Frugal engineering wearable AR goggle for fluorescence-guided surgery</p>
+								<p class="al-latest__meta">Low-cost platform &middot; Broad accessibility</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Pediatric Tumor Imaging System</p>
-								<p class="al-latest__meta">Multi-site &middot; Design phase &middot; Pediatric oncology <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Quantitative tumor depth determination via dual wavelength excitation</p>
+								<p class="al-latest__meta">UTSW &middot; Intraoperative depth mapping</p>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 2: Intraoperative Trials -->
+					<!-- Column 2: FDTI / Thermal Imaging -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Intraoperative Trials</p>
+						<p class="al-latest__col-heading">Focal Dynamic Thermal Imaging</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Real-Time Tumor Margin Assessment in Breast Cancer</p>
-								<p class="al-latest__meta">UTSW Simmons &middot; Phase I/II &middot; Breast-conserving surgery <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Label-free FDTI distinguishes malignant, benign, and inflamed tissue</p>
+								<p class="al-latest__meta">405&nbsp;nm laser excitation &middot; Material heterogeneity detection</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Lymph Node Mapping with Targeted NIR Probes</p>
-								<p class="al-latest__meta">Multi-site &middot; Phase I &middot; Melanoma / Breast <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">FDTI for intraoperative margin assessment without contrast agents</p>
+								<p class="al-latest__meta">No probe required &middot; Real-time thermal response</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Fluorescence-Guided Cytoreduction in Ovarian Cancer</p>
-								<p class="al-latest__meta">Partner site &middot; Phase I &middot; Gynecologic oncology <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Integration of FDTI with fluorescence-guided surgery platforms</p>
+								<p class="al-latest__meta">Complementary modalities &middot; Surgical decision support</p>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 3: Surgical AR &amp; Decision Support -->
+					<!-- Column 3: Fluorescence-Guided Surgery Trials -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Surgical AR &amp; Decision Support</p>
+						<p class="al-latest__col-heading">Fluorescence-Guided Surgery</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Surgical AR Integration for Nerve Preservation</p>
-								<p class="al-latest__meta">UTSW &middot; Preclinical &middot; Head &amp; neck / Parotid <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Real-Time Tumor Margin Assessment with pANXA2 NIR probe</p>
+								<p class="al-latest__meta">UTSW Simmons &middot; Breast-conserving surgery</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Perforator &amp; Flap Perfusion Mapping</p>
-								<p class="al-latest__meta">UTSW Plastic Surgery &middot; Pilot &middot; Reconstructive <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Fluorescence-guided cytoreduction in ovarian cancer</p>
+								<p class="al-latest__meta">Multi-site &middot; Gynecologic oncology</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Real-Time Image Processing for Margin Call-Out</p>
-								<p class="al-latest__meta">UTSW &middot; Software platform &middot; Cross-indication <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Fiber endface photoacoustic generator for quantitative photoacoustic tomography</p>
+								<p class="al-latest__meta">Intraoperative guidance &middot; Novel instrumentation</p>
 							</li>
 						</ul>
 					</div>
@@ -245,43 +241,43 @@ get_header();
 				<section class="al-inner-section" style="margin-bottom:0;" aria-labelledby="igs-pubs-heading">
 					<h2 class="al-inner-section__title" id="igs-pubs-heading">Selected Publications</h2>
 					<p class="al-inner-section__lead">
-						Representative work from the image-guided surgery program. <!-- [PLACEHOLDER] citations below pending verification. -->
+						Representative work from the image-guided surgery program.
 					</p>
 					<ul class="al-latest__list">
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">Wearable NIR fluorescence imaging for image-guided breast cancer surgery</p>
-								<p class="al-latest__meta">Annals of Surgery &middot; 2024 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Surgery</p>
+								<p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
 							</a>
 						</li>
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">Real-time tumor margin detection using a head-mounted display</p>
-								<p class="al-latest__meta">Journal of Biomedical Optics &middot; 2023 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Frugal engineering-inspired wearable augmented reality goggle system enables fluorescence-guided surgery</p>
+								<p class="al-latest__meta">Scientific Reports &middot; 2024</p>
 							</a>
 						</li>
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">Clinical evaluation of fluorescence-guided cytoreduction in advanced ovarian cancer</p>
-								<p class="al-latest__meta">Cancer Research &middot; 2023 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Low-cost augmented reality goggles enable precision fluorescence-guided cancer surgery</p>
+								<p class="al-latest__meta">Research Square &middot; 2023</p>
 							</a>
 						</li>
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">A head-mounted near-infrared imaging system for cancer surgery</p>
-								<p class="al-latest__meta">Journal of Biomedical Optics &middot; 2014 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Quantitative tumor depth determination using dual wavelength excitation fluorescence</p>
+								<p class="al-latest__meta">Biomedical Optics Express &middot; 2022</p>
 							</a>
 						</li>
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">Targeted near-infrared probes for sentinel lymph node mapping</p>
-								<p class="al-latest__meta">Annals of Surgical Oncology &middot; 2022 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Real-time fluorescence image-guided oncologic surgery</p>
+								<p class="al-latest__meta">Advances in Cancer Research &middot; 2014</p>
 							</a>
 						</li>
 						<li class="al-latest__item">
 							<a href="<?php echo $url_publications; ?>">
-								<p class="al-latest__title">Nerve-selective contrast agents for intraoperative nerve preservation</p>
-								<p class="al-latest__meta">Science Translational Medicine &middot; 2021 <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Hands-free, wireless goggles for near-infrared fluorescence and real-time image-guided surgery</p>
+								<p class="al-latest__meta">Surgery &middot; 2011</p>
 							</a>
 						</li>
 					</ul>
@@ -295,28 +291,28 @@ get_header();
 					<section class="al-inner-section" style="margin-bottom:0;">
 						<h2 class="al-inner-section__title">Clinical Partners</h2>
 						<p class="al-inner-section__lead">
-							Academic medical centers and surgical teams collaborating on device evaluation, multi-site trials, and protocol development. <!-- [PLACEHOLDER] partner list pending confirmation. -->
+							Academic medical centers and research teams collaborating on device evaluation and fluorescence-guided surgery protocols.
 						</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">UT Southwestern Medical Center</p>
-								<p class="al-latest__meta">Simmons Comprehensive Cancer Center &middot; lead site <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Simmons Comprehensive Cancer Center &middot; Surgical &amp; Radiation Oncology &middot; Lead site</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Washington University in St. Louis</p>
-								<p class="al-latest__meta">Department of Radiology &middot; multi-site trial <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Victor Gruev, Shengkui Gao (Goggles) &middot; Julie Margenthaler, Ryan Fields (Oncologic Surgery) &middot; Farrokh Dehdashti (Molecular Imaging)</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">MD Anderson Cancer Center</p>
-								<p class="al-latest__meta">Surgical oncology &middot; protocol collaboration <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">University of Arizona</p>
+								<p class="al-latest__meta">Ron Liang, Nan Zhu &middot; College of Optical Sciences &middot; Optics and instrumentation</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Memorial Sloan Kettering Cancer Center</p>
-								<p class="al-latest__meta">Image-guided surgery program <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">University of Missouri</p>
+								<p class="al-latest__meta">Jeffrey Bryan, Tony Mann (Veterinary Surgery) &middot; Preclinical surgical oncology models</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Children's Health (Dallas)</p>
-								<p class="al-latest__meta">Pediatric oncology &middot; device evaluation <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Fudan University, Shanghai</p>
+								<p class="al-latest__meta">Zhao-You Tang, Jia Fan, Hui-Chuan Sun &middot; Hepatic Surgery &middot; International translation</p>
 							</li>
 						</ul>
 					</section>

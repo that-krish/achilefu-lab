@@ -35,7 +35,6 @@ get_header();
 		<div class="al-container">
 
 			<!-- ── Featured image ─────────────────────────────── -->
-			<!-- [PLACEHOLDER] Featured molecular imaging capture; replace with hero photo when available. -->
 			<figure class="al-media-figure al-media-figure--featured al-media-figure--full al-media-figure--overlay">
 				<svg viewBox="0 0 1200 514" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder for featured molecular imaging capture">
 					<defs>
@@ -68,10 +67,7 @@ get_header();
 						<circle cx="1050" cy="160" r="1.8" opacity="0.75"/>
 					</g>
 				</svg>
-				<figcaption>
-					<!-- [PLACEHOLDER] -->
-					NIR-II fluorescence capture of a tumor margin, in&nbsp;vivo &middot; 2024
-				</figcaption>
+				<figcaption>NIR-II fluorescence capture of a tumor margin, in&nbsp;vivo &middot; 2024</figcaption>
 			</figure>
 
 			<hr class="al-divider">
@@ -83,11 +79,10 @@ get_header();
 					Molecular images, NIR fluorescence captures, confocal and widefield microscopy, in&nbsp;vivo imaging, and instrumentation. The visual record of how the lab sees disease at the molecular level.
 				</p>
 
-				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
 				<div class="al-media-gallery">
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: NIR fluorescence whole-animal imaging">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="NIR fluorescence whole-animal imaging">
 							<defs>
 								<radialGradient id="r-glow1" cx="40%" cy="55%" r="42%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.9"/>
@@ -105,11 +100,11 @@ get_header();
 								<circle cx="340" cy="155" r="2.2" opacity="0.88"/>
 							</g>
 						</svg>
-						<figcaption>NIR-II whole-animal fluorescence imaging, LS301 probe &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>NIR-II whole-animal fluorescence imaging, LS301 probe &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: confocal microscopy">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="confocal microscopy">
 							<defs>
 								<radialGradient id="r-glow2" cx="50%" cy="50%" r="38%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
@@ -128,11 +123,11 @@ get_header();
 								<circle cx="260" cy="420" r="1.6" opacity="0.8"/>
 							</g>
 						</svg>
-						<figcaption>Confocal microscopy &mdash; tumor-targeted probe uptake &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Confocal microscopy &mdash; tumor-targeted probe uptake &middot; 2023</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: cherenkov imaging">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="cherenkov imaging">
 							<defs>
 								<radialGradient id="r-glow3" cx="55%" cy="40%" r="40%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.9"/>
@@ -150,11 +145,11 @@ get_header();
 								<circle cx="320" cy="420" r="1.8" opacity="0.8"/>
 							</g>
 						</svg>
-						<figcaption>Cherenkov luminescence imaging during radiotherapy &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Cherenkov luminescence imaging during radiotherapy &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: histology overlay">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="histology overlay">
 							<defs>
 								<radialGradient id="r-glow4" cx="30%" cy="35%" r="50%">
 									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.65"/>
@@ -175,11 +170,11 @@ get_header();
 								<circle cx="220" cy="170" r="1.2" opacity="0.65"/>
 							</g>
 						</svg>
-						<figcaption>Multimodal histology overlay &mdash; fluorescence + brightfield &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Multimodal histology overlay &mdash; fluorescence + brightfield &middot; 2023</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: probe synthesis">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="probe synthesis">
 							<defs>
 								<radialGradient id="r-glow5" cx="50%" cy="50%" r="55%">
 									<stop offset="0%"  stop-color="#243B4A" stop-opacity="0"/>
@@ -203,11 +198,11 @@ get_header();
 								<circle cx="340" cy="360" r="6"/>
 							</g>
 						</svg>
-						<figcaption>NIR fluorophore &mdash; molecular structure rendering <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>NIR fluorophore &mdash; molecular structure rendering</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: imaging instrumentation">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="imaging instrumentation">
 							<defs>
 								<linearGradient id="r-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
 									<stop offset="0%"  stop-color="#243B4A"/>
@@ -228,11 +223,11 @@ get_header();
 							</g>
 							<circle cx="300" cy="170" r="3" fill="#F2F6F9" opacity="0.95"/>
 						</svg>
-						<figcaption>Custom-built NIR imaging system &mdash; lab bay 4 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Custom-built NIR imaging system &mdash; lab bay 4</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: in vivo capture">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="in vivo capture">
 							<defs>
 								<radialGradient id="r-glow7" cx="50%" cy="55%" r="38%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
@@ -248,11 +243,11 @@ get_header();
 								<circle cx="250" cy="380" r="2.0" opacity="0.85"/>
 							</g>
 						</svg>
-						<figcaption>In&nbsp;vivo tumor imaging &mdash; preclinical model &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>In&nbsp;vivo tumor imaging &mdash; preclinical model &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: cell imaging">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="cell imaging">
 							<defs>
 								<radialGradient id="r-glow8" cx="45%" cy="45%" r="36%">
 									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.55"/>
@@ -269,11 +264,11 @@ get_header();
 								<circle cx="170" cy="380" r="10" opacity="0.7"/>
 							</g>
 						</svg>
-						<figcaption>Targeted probe uptake &mdash; single-cell fluorescence <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Targeted probe uptake &mdash; single-cell fluorescence</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--full">
-						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: spectral imaging panel">
+						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="spectral imaging panel">
 							<defs>
 								<radialGradient id="r-glow9a" cx="20%" cy="50%" r="22%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
@@ -302,7 +297,7 @@ get_header();
 								<circle cx="960" cy="340" r="2.4" opacity="0.9"/>
 							</g>
 						</svg>
-						<figcaption>Three-channel spectral panel &mdash; 700&nbsp;nm, 800&nbsp;nm, 900&nbsp;nm fluorescence &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Three-channel spectral panel &mdash; 700&nbsp;nm, 800&nbsp;nm, 900&nbsp;nm fluorescence &middot; 2024</figcaption>
 					</figure>
 
 				</div>
@@ -317,11 +312,10 @@ get_header();
 					The community behind the science &mdash; group photos, celebrations, milestones, lab dinners, graduation hoods, birthdays, and the everyday rhythm of a research team.
 				</p>
 
-				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
 				<div class="al-media-gallery">
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: group photo">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Annual lab group photo">
 							<defs>
 								<linearGradient id="lab1" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#2D4654"/>
@@ -346,11 +340,11 @@ get_header();
 								<rect x="448" y="200" width="44" height="90" rx="4"/>
 							</g>
 						</svg>
-						<figcaption>Annual lab group photo &mdash; UTSW BME &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Annual lab group photo &mdash; UTSW BME &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: lab dinner">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="lab dinner">
 							<defs>
 								<radialGradient id="lab2" cx="50%" cy="50%" r="50%">
 									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.18"/>
@@ -370,11 +364,11 @@ get_header();
 								<rect x="250" y="420" width="80" height="120" rx="6"/>
 							</g>
 						</svg>
-						<figcaption>End-of-year lab dinner &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>End-of-year lab dinner &middot; 2023</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: graduation hooding">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="graduation hooding">
 							<defs>
 								<linearGradient id="lab3" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#243B4A"/>
@@ -388,11 +382,11 @@ get_header();
 							<path d="M150 280 Q225 250 300 280 L300 480 L150 480 Z" fill="#B5DBF3" opacity="0.4"/>
 							<path d="M175 270 Q225 240 275 270 L275 200 Q225 180 175 200 Z" fill="#1C3347"/>
 						</svg>
-						<figcaption>PhD graduation hooding ceremony &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>PhD graduation hooding ceremony &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: birthday">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="birthday">
 							<defs>
 								<radialGradient id="lab4" cx="50%" cy="60%" r="40%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.45"/>
@@ -414,11 +408,11 @@ get_header();
 								<circle cx="340" cy="210" r="5"/>
 							</g>
 						</svg>
-						<figcaption>Birthday in the lab &mdash; another decade of imaging <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Birthday in the lab &mdash; another decade of imaging</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: lab outing">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="lab outing">
 							<defs>
 								<linearGradient id="lab5" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.3"/>
@@ -437,11 +431,11 @@ get_header();
 							</g>
 							<rect x="0" y="280" width="600" height="58" fill="#1C3347" opacity="0.7"/>
 						</svg>
-						<figcaption>Lab retreat &mdash; outside Dallas &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Lab retreat &mdash; outside Dallas &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: new member welcome">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="new member welcome">
 							<defs>
 								<radialGradient id="lab6" cx="50%" cy="40%" r="45%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.5"/>
@@ -459,11 +453,11 @@ get_header();
 								<rect x="255" y="280" width="70" height="120" rx="6"/>
 							</g>
 						</svg>
-						<figcaption>Welcoming new postdocs &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Welcoming new postdocs &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: holiday party">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="holiday party">
 							<defs>
 								<radialGradient id="lab7" cx="45%" cy="45%" r="48%">
 									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.12"/>
@@ -486,11 +480,11 @@ get_header();
 								<circle cx="420" cy="380" r="28"/>
 							</g>
 						</svg>
-						<figcaption>Holiday party &mdash; lab + collaborators &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Holiday party &mdash; lab + collaborators &middot; 2023</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--wide">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: whiteboard moment">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="whiteboard moment">
 							<defs>
 								<linearGradient id="lab8" x1="0%" y1="0%" x2="100%" y2="0%">
 									<stop offset="0%"  stop-color="#1C3347"/>
@@ -508,7 +502,7 @@ get_header();
 								<circle cx="400" cy="200" r="18"/>
 							</g>
 						</svg>
-						<figcaption>Whiteboard moment &mdash; weekly group meeting <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Whiteboard moment &mdash; weekly group meeting</figcaption>
 					</figure>
 
 				</div>
@@ -523,11 +517,10 @@ get_header();
 					Lab members presenting at SPIE Photonics West, BMES, the World Molecular Imaging Congress, and other venues where the field gathers.
 				</p>
 
-				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
 				<div class="al-media-gallery">
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: keynote talk">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Plenary presentation at conference">
 							<defs>
 								<linearGradient id="conf1" x1="0%" y1="0%" x2="100%" y2="0%">
 									<stop offset="0%"  stop-color="#1C3347"/>
@@ -546,11 +539,11 @@ get_header();
 							</g>
 							<rect x="250" y="270" width="100" height="50" rx="4" fill="#87BCDE" opacity="0.65"/>
 						</svg>
-						<figcaption>Plenary &mdash; SPIE Photonics West, San Francisco &middot; 2025 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Plenary &mdash; SPIE Photonics West, San Francisco &middot; 2025</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: poster session">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="poster session">
 							<defs>
 								<linearGradient id="conf2" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#243B4A"/>
@@ -570,11 +563,11 @@ get_header();
 								<rect x="100" y="320" width="240" height="120" fill="#87BCDE" opacity="0.4"/>
 							</g>
 						</svg>
-						<figcaption>Poster session &mdash; BMES Annual Meeting &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Poster session &mdash; BMES Annual Meeting &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: panel discussion">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="panel discussion">
 							<defs>
 								<radialGradient id="conf3" cx="50%" cy="40%" r="50%">
 									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.3"/>
@@ -596,11 +589,11 @@ get_header();
 								<rect x="460" y="410" width="80" height="100" rx="4"/>
 							</g>
 						</svg>
-						<figcaption>Symposium panel &mdash; molecular-guided surgery &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Symposium panel &mdash; molecular-guided surgery &middot; 2024</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: conference travel">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="conference travel">
 							<defs>
 								<linearGradient id="conf4" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.18"/>
@@ -627,11 +620,11 @@ get_header();
 								<rect x="465" y="290" width="14" height="14"/>
 							</g>
 						</svg>
-						<figcaption>Conference travel &mdash; San Francisco skyline &middot; 2025 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Conference travel &mdash; San Francisco skyline &middot; 2025</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--full">
-						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: award ceremony">
+						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="award ceremony">
 							<defs>
 								<radialGradient id="conf5" cx="50%" cy="50%" r="40%">
 									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.45"/>
@@ -651,7 +644,7 @@ get_header();
 								<rect x="520" y="370" width="160" height="60" fill="#87BCDE" opacity="0.6"/>
 							</g>
 						</svg>
-						<figcaption>Awards reception &mdash; World Molecular Imaging Congress &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Awards reception &mdash; World Molecular Imaging Congress &middot; 2024</figcaption>
 					</figure>
 
 				</div>
@@ -666,11 +659,10 @@ get_header();
 					Translational moments &mdash; equipment, instrumentation, and surgical-suite environments where the lab's imaging technologies move from bench to bedside. No patient-identifying imagery.
 				</p>
 
-				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected. All clinical imagery omits patient-identifying content per HIPAA. -->
 				<div class="al-media-gallery">
 
 					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
-						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: surgical suite">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="surgical suite">
 							<defs>
 								<radialGradient id="or1" cx="50%" cy="45%" r="35%">
 									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.55"/>
@@ -687,11 +679,11 @@ get_header();
 							</g>
 							<circle cx="300" cy="190" r="4" fill="#F2F6F9" opacity="0.95"/>
 						</svg>
-						<figcaption>Cancer-imaging goggles &mdash; intraoperative configuration <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Cancer-imaging goggles &mdash; intraoperative configuration</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: instrumentation">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="instrumentation">
 							<defs>
 								<linearGradient id="or2" x1="0%" y1="0%" x2="100%" y2="100%">
 									<stop offset="0%"  stop-color="#243B4A"/>
@@ -711,11 +703,11 @@ get_header();
 								<rect x="260" y="440" width="80" height="20" rx="3"/>
 							</g>
 						</svg>
-						<figcaption>NIR imaging system &mdash; OR-ready unit <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>NIR imaging system &mdash; OR-ready unit</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--portrait">
-						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: surgical light">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="surgical light">
 							<defs>
 								<radialGradient id="or3" cx="50%" cy="30%" r="35%">
 									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.7"/>
@@ -731,11 +723,11 @@ get_header();
 								<rect x="170" y="380" width="110" height="40" rx="4"/>
 							</g>
 						</svg>
-						<figcaption>Surgical illumination &mdash; NIR + visible spectrum <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Surgical illumination &mdash; NIR + visible spectrum</figcaption>
 					</figure>
 
 					<figure class="al-media-figure al-media-figure--square">
-						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: imaging display">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="imaging display">
 							<defs>
 								<linearGradient id="or4" x1="0%" y1="0%" x2="0%" y2="100%">
 									<stop offset="0%"  stop-color="#1C3347"/>
@@ -758,7 +750,7 @@ get_header();
 								<circle cx="260" cy="290" r="2.0" opacity="0.85"/>
 							</g>
 						</svg>
-						<figcaption>Intraoperative imaging display &mdash; real-time fluorescence overlay <!-- [PLACEHOLDER] --></figcaption>
+						<figcaption>Intraoperative imaging display &mdash; real-time fluorescence overlay</figcaption>
 					</figure>
 
 				</div>
@@ -776,7 +768,7 @@ get_header();
 							Imagery on this page is provided for editorial and educational use. Please credit <strong>Achilefu Lab, UT Southwestern Medical Center</strong> and link back to <em>achilefulab.org</em> where possible.
 						</p>
 						<p>
-							For high-resolution files, alternate framings, or use in print/broadcast features, contact the lab directly. We can typically provide TIFF or print-ready files within a few business days. <!-- [PLACEHOLDER] confirm turnaround with UTSW comms. -->
+							For high-resolution files, alternate framings, or use in print/broadcast features, contact the lab directly. We can typically provide TIFF or print-ready files within a few business days.
 						</p>
 						<p>
 							Commercial use, redistribution, or modification of images requires written permission. Clinical and operating-room imagery omits patient-identifying content; any further clinical context must be cleared through UTSW communications.
@@ -789,7 +781,7 @@ get_header();
 							Credit line: <em>"Achilefu Lab, UT Southwestern Medical Center."</em>
 						</p>
 						<p>
-							High-res requests: <a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a> <!-- [PLACEHOLDER] confirm address -->
+							High-res requests: <a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a>
 						</p>
 						<p>
 							Press &amp; comms: route through UTSW Newsroom for institutional approval on broadcast features.

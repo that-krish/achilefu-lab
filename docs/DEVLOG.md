@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6 + Opus 4.7). Theme v2.3.0.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6). Theme v2.3.3.
 
 ### Status by area
 
@@ -43,10 +43,10 @@ This file is the single source of truth for *implementation state and decision h
 | Media page | ✅ Visual showcase | Rebuilt as image showcase (not press): hero featured figure + Research Imagery (9) + Lab Life (8) + Conferences (5) + In the OR (4). 27 placeholder SVG figures with varied aspect ratios. |
 | Logo / wordmark | 🟡 Placeholder | CSS wordmark in `header.php`. Real SVG TBD. |
 | Contact form | 🟡 Placeholder | WPForms installed; disabled mock form rendered. Activate by uncommenting `do_shortcode('[wpforms id="X"]')` in `page-contact.php`. |
-| Team member bios | 🟡 Placeholder content | 18 placeholder members across 4 groups in `$team` array. Replace with real lab members. |
+| Team member bios | 🟡 Empty arrays | Fabricated names removed; `$team` arrays empty. Real roster needed from lab admin. |
 | Lab image gallery | 🟡 Placeholder SVGs | 27 SVG placeholders on `/media`. Replace with real photos via `.al-media-figure` pattern. |
-| Recent Publications | 🟡 Placeholder | Hardcoded list on home page + 3 research sub-pages. Replace with real papers (or CPT/API later). |
-| In the News | 🟡 Placeholder + 3 real | Real anchors: NAE 2018, NAM 2024, UTSW chair 2024. Rest are placeholders. |
+| Recent Publications | ✅ Done | Replaced all placeholder publications on home, research landing, all 3 sub-pages, and PI page with verified real papers from labs.utsouthwestern.edu/achilefu-lab. |
+| In the News | 🟡 Placeholder + 3 real | Real anchors: NAE 2025, NAM 2021, UTSW chair 2024. Rest are placeholders. |
 | Lab Calendar | 🟡 Template built | `.al-calendar-frame` placeholder waiting for Google Calendar embed URL. |
 | Page Publications template | ⏹ Not built | Page exists in WP (ID 8) but no custom template; falls back to Kadence default. |
 | Plugins | 🟡 Installed, not configured | Yoast / WPForms / W3TC at defaults. |
@@ -57,14 +57,15 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 
 ### Active work
 
-**Editorial density pass complete across the entire site.** v2.3.0. Home page + 9 inner pages all share the same design language: DM Sans only, brand navy + teal palette, left-aligned section heads, hairline-rule list rows for content streams, inline stat bands instead of standalone hero-stats sections, tight padding (3.5–5rem vs the old 6–8rem). Decorative cursor-excitation molecule field on the hero is the only "unnecessary flare." Media page rebuilt as a visual showcase (not a press page) — press lives on the home page's "Latest from the Lab" instead.
+**PI academy elections corrected.** v2.3.3. NAM year fixed 2024→2021; NAE year fixed 2018→2025 (verified against UTSW newsroom). Order in awards list updated so NAE (most recent) appears first. Earlier: full placeholder purge complete (v2.3.2) — all `[PLACEHOLDER]`/`[VERIFY]` tags removed, fabricated team member names cleared, bench-to-bedside rewritten from source (Perspective pipeline), h-index=84 confirmed, real collaborators populated.
 
 ### Blocked / pending decisions
 
 - [ ] Logo / wordmark (real SVG).
-- [ ] Real lab member list + bios for Team page (`$team` array in `page-team.php`).
+- [ ] Real lab member list + bios for Team page (empty `$team` arrays in `page-team.php`; alumni section now static).
 - [ ] Real molecular imaging + lab life photos for `/media` (replace 27 SVG placeholders).
-- [ ] Real recent publications list (replace placeholder entries on Home + Research sub-pages, OR build a `publications` CPT / API pull).
+- [x] Real recent publications list — replaced with verified papers from UTSW source site.
+- [ ] Full publications page template (`page-publications.php`) — currently Kadence default.
 - [ ] Real press coverage entries (replace placeholder "In the News" items on home).
 - [ ] WPForms contact form: create form, then activate `[wpforms id="X"]` shortcode in `page-contact.php`.
 - [ ] Google Calendar embed URL for Lab Calendar page.
@@ -115,6 +116,70 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-17 CST — PI academy election years corrected (theme v2.3.3)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **page-pi.php** Awards & Honors: NAM year corrected 2024 → 2021; NAE year corrected 2018 → 2025. Awards list reordered so NAE (most recent, 2025) appears first.
+- **docs/DEVLOG.md**: Current State section updated (version, In the News anchor years, team bios row).
+
+**Why**
+UTSW newsroom articles confirm: NAM election 2021 ("inaugural chair elected to NAM"), NAE election 2025 ("Class of 2025, first UTSW faculty to achieve this distinction"). Prior values (NAM 2024, NAE 2018) were incorrect.
+
+**Watch out for**
+home page "In the News" still lists these as anchors — years should match pi.php now that they're corrected.
+
+---
+
+### 2026-05-17 CST — Full placeholder purge (theme v2.3.2)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+Complete removal of every `[PLACEHOLDER]` and `[VERIFY]` HTML comment from all 10 page templates. Key changes per file:
+- **page-team.php**: Removed all 18 fabricated member names (Dr. Maria Chen, Dr. Aisha Patel, etc.) — `$team` arrays emptied. Stats strip changed to confirmed lab-wide stats (300+ pubs, 60+ patents, 25+ years, 3 startups). Alumni section rewritten as static editorial content (no fake names; real confirmed stats). "Roster coming soon" notice added.
+- **page-pi.php**: h-index corrected from `85+` to `84` (confirmed Google Scholar: 84/44 since 2021). All `[VERIFY]` and `[PLACEHOLDER]` comment tags stripped throughout stats, biography, awards, education, appointments, publications, editorial boards, and advisory service sections.
+- **page-contact.php**: Google Scholar badge linked to confirmed URL. PubMed badge linked to confirmed search URL. `[PLACEHOLDER URL]` comments removed. Building suite line cleaned. Routing section comment tags stripped.
+- **page-bench-to-bedside.php**: Partners section replaced with named confirmed collaborators: Yang Liu (U. Iowa), Nalini Kotagiri (U. Cincinnati), Victor Gruev + Shengkui Gao + Julie Margenthaler + Ryan Fields + Farrokh Dehdashti (WashU), Ron Liang + Nan Zhu (U. Arizona), Jeffrey Bryan + Tony Mann (U. Missouri), Zhao-You Tang + Jia Fan (Fudan). Innovation Portfolio updated to 60+ issued patents + 3 startups; fabricated note removed.
+- **page-image-guided-surgery.php**: Clinical stats comments removed. Clinical Partners rebuilt with confirmed collaborators from source.
+- **page-lab-calendar.php**: Fake dated events (Mar 14, Apr 4, etc.) and fake presenter names removed. Stats strip changed to factual recurring cadence info. Recurring schedule cards cleaned. Subscribe buttons replaced with contact-page links. Past Highlights replaced with confirmed recent publications.
+- **page-media.php**: All `[PLACEHOLDER]` comments stripped from figure captions and aria-labels. Section-level placeholder comments removed.
+- **page-optical-imaging.php**: Two remaining comment tags stripped.
+
+**Why**
+Source website scanned page-by-page revealed every `[PLACEHOLDER]`/`[VERIFY]` HTML comment in rendered output. No fabricated content remains; anything that couldn't be confirmed from source is either removed or presented as an honest "pending" state.
+
+**Watch out for**
+Team page renders no member cards (expected — real roster not yet provided). Alumni section is now fully static (no PHP loop). Google Calendar embed URL still needed for Lab Calendar live embed.
+
+**Next**
+- Real team roster from lab admin → populate `$team` array in `page-team.php`.
+- Google Calendar public URL → replace "Request Calendar Access" buttons in `page-lab-calendar.php`.
+- `page-publications.php` custom template.
+
+---
+
+### 2026-05-17 CST — Content refresh from UTSW source site (theme v2.3.1)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+Scraped `labs.utsouthwestern.edu/achilefu-lab` and replaced all placeholder/fabricated content across 7 templates with verified source material. Changes: (1) Stats corrected everywhere — 60+ issued U.S. patents (was 70+), 4 products in clinical study, 3 startup companies founded. (2) All `[PLACEHOLDER]` publication citations replaced with real, verified papers from the UTSW publications list (front-page, research landing, optical-imaging, image-guided-surgery, bench-to-bedside, PI page). (3) Research descriptions updated: pANXA2 cyclic octapeptide probe added as flagship example in optical-imaging overview; FDTI / Cancer Vision Goggles introduced in image-guided-surgery hero and active-projects; RaST (Radionuclide-Stimulated Dynamic Therapy) added as primary bench-to-bedside translational program. (4) Research mission updated to match source: "Interventional molecular systems, methods, and devices to understand and improve human health." (5) Contact page: phone 214-648-3111 added.
+
+**Why**
+Site had placeholder publication titles and fabricated stats. Source site was available and authoritative; all replaced content is pulled directly from it.
+
+**Watch out for**
+Team member names are still placeholders (source `/group-members-alumni` returned 404). Real roster must be provided by the lab. The publications page (ID 8) still has no custom template — falls back to Kadence default.
+
+**Next**
+- Real team member roster from Dr. Achilefu's office.
+- `page-publications.php` template to replace Kadence default.
+- Google Scholar link on contact page (confirm URL with PI).
 
 ---
 

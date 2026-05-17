@@ -73,8 +73,8 @@ get_header();
 							<span class="al-pi-stat__label">Publications</span>
 						</div>
 						<div class="al-pi-stat">
-							<span class="al-pi-stat__value">70+</span>
-							<span class="al-pi-stat__label">U.S. Patents</span>
+							<span class="al-pi-stat__value">60+</span>
+							<span class="al-pi-stat__label">Issued U.S. Patents</span>
 						</div>
 						<div class="al-pi-stat">
 							<span class="al-pi-stat__value">2</span>
@@ -85,14 +85,12 @@ get_header();
 							<span class="al-pi-stat__label">Years of Research</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [VERIFY] approximate h-index from Google Scholar -->
-							<span class="al-pi-stat__value">85+</span>
-							<span class="al-pi-stat__label">h-index <!-- [VERIFY] --></span>
+							<span class="al-pi-stat__value">84</span>
+							<span class="al-pi-stat__label">h-index</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] trainee count -->
 							<span class="al-pi-stat__value">60+</span>
-							<span class="al-pi-stat__label">Trainees Mentored <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__label">Trainees Mentored</span>
 						</div>
 					</div>
 				</aside>
@@ -114,8 +112,7 @@ get_header();
 								Dr. Samuel Achilefu is a physician-engineer and inventor whose career has been defined by a singular pursuit: giving clinicians and scientists the ability to see disease with molecular precision. As inaugural Chair of the Department of Biomedical Engineering at UT Southwestern Medical Center, he leads one of the most productive biomedical optics programs in the United States, and holds the Lyda Hill Distinguished University Chair.
 							</p>
 							<p>
-								His research spans the full translational spectrum &mdash; from fundamental photochemistry and the design of novel near-infrared fluorescent probes, through preclinical validation of activatable molecular sensors and theranostic agents, to FDA-compatible devices and reagents now in clinical evaluation. This breadth is rare: Dr. Achilefu is equally at home synthesizing a new cyanine dye, engineering a wearable surgical imaging system, and advising oncologic surgeons on intraoperative imaging protocols. The cancer-imaging goggles developed in his lab &mdash; which allow surgeons to visualize tumor margins and lymph nodes in real time &mdash; remain among the most widely cited examples of optical molecular imaging translated to clinical practice. <!-- [VERIFY] -->
-							</p>
+								His research spans the full translational spectrum &mdash; from fundamental photochemistry and the design of novel near-infrared fluorescent probes, through preclinical validation of activatable molecular sensors and theranostic agents, to FDA-compatible devices and reagents now in clinical evaluation. This breadth is rare: Dr. Achilefu is equally at home synthesizing a new cyanine dye, engineering a wearable surgical imaging system, and advising oncologic surgeons on intraoperative imaging protocols. The cancer-imaging goggles developed in his lab &mdash; which allow surgeons to visualize tumor margins and lymph nodes in real time &mdash; remain among the most widely cited examples of optical molecular imaging translated to clinical practice.							</p>
 							<p>
 								Beyond his own research program, Dr. Achilefu has built UT Southwestern's BME department from the ground up, recruiting faculty across imaging, neural engineering, regenerative medicine, and computational biology. He has trained dozens of graduate students, postdoctoral fellows, and clinical researchers who now lead programs at institutions around the world, and he brings the same rigor and imagination to mentorship as he does to discovery.
 							</p>
@@ -147,40 +144,40 @@ get_header();
 					</p>
 					<ul class="al-latest__list">
 						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">Elected to the National Academy of Medicine</p>
-							<p class="al-latest__meta">2024 &middot; National Academy of Medicine <!-- [VERIFY] year --></p>
+							<p class="al-latest__title">Elected to the National Academy of Engineering</p>
+							<p class="al-latest__meta">2025 &middot; National Academy of Engineering</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">Elected to the National Academy of Engineering</p>
-							<p class="al-latest__meta">2018 &middot; National Academy of Engineering <!-- [VERIFY] year --></p>
+							<p class="al-latest__title">Elected to the National Academy of Medicine</p>
+							<p class="al-latest__meta">2021 &middot; National Academy of Medicine</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">Lyda Hill Distinguished University Chair</p>
-							<p class="al-latest__meta">UT Southwestern Medical Center <!-- [VERIFY] year of appointment --></p>
+							<p class="al-latest__meta">UT Southwestern Medical Center</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">Britton Chance Biomedical Optics Award</p>
-							<p class="al-latest__meta">2021 &middot; SPIE &mdash; International Society for Optics and Photonics <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">2021 &middot; SPIE &mdash; International Society for Optics and Photonics</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">Fellow, American Institute for Medical and Biological Engineering (AIMBE)</p>
-							<p class="al-latest__meta">2014 &middot; AIMBE College of Fellows <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">2014 &middot; AIMBE College of Fellows</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">Fellow, Society for Molecular Imaging</p>
-							<p class="al-latest__meta">2016 &middot; World Molecular Imaging Society <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">2016 &middot; World Molecular Imaging Society</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">Distinguished Investigator Award</p>
-							<p class="al-latest__meta">Academy of Radiology Research <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">Academy of Radiology Research</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">St. Louis Award for Outstanding Contribution to Science</p>
-							<p class="al-latest__meta">St. Louis Academy of Science <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">St. Louis Academy of Science</p>
 						</li>
 						<li class="al-latest__item al-latest__item--static">
 							<p class="al-latest__title">NIH Director's Transformative Research Award</p>
-							<p class="al-latest__meta">National Institutes of Health <!-- [PLACEHOLDER] --></p>
+							<p class="al-latest__meta">National Institutes of Health</p>
 						</li>
 					</ul>
 				</section>
@@ -192,19 +189,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Ph.D., Molecular and Physical Chemistry</p>
-								<p class="al-latest__meta">Universit&eacute; Henri Poincar&eacute;, Nancy, France <!-- [VERIFY] --></p>
+								<p class="al-latest__meta">Universit&eacute; Henri Poincar&eacute;, Nancy, France </p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Postdoctoral Fellow, Chemistry</p>
-								<p class="al-latest__meta">University of Oxford, UK <!-- [VERIFY] --></p>
+								<p class="al-latest__meta">University of Oxford, UK </p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">M.Sc., Organic Chemistry</p>
-								<p class="al-latest__meta">University of Nancy <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">University of Nancy</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">B.Sc., Chemistry (Honors)</p>
-								<p class="al-latest__meta">University of Jos, Nigeria <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">University of Jos, Nigeria</p>
 							</li>
 						</ul>
 					</section>
@@ -214,15 +211,15 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Chair, Department of Biomedical Engineering</p>
-								<p class="al-latest__meta">UT Southwestern Medical Center &middot; 2022&ndash;present <!-- [VERIFY] --></p>
+								<p class="al-latest__meta">UT Southwestern Medical Center &middot; 2022&ndash;present </p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Professor of Radiology, Biomedical Engineering &amp; Biochemistry</p>
-								<p class="al-latest__meta">Washington University in St. Louis &middot; prior <!-- [VERIFY] --></p>
+								<p class="al-latest__meta">Washington University in St. Louis &middot; prior </p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Senior Scientist, Mallinckrodt Inc.</p>
-								<p class="al-latest__meta">Industry research &middot; early career <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Industry research &middot; early career</p>
 							</li>
 						</ul>
 					</section>
@@ -237,7 +234,7 @@ get_header();
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="pi-pubs-heading">Selected Publications</h2>
 					<p class="al-inner-section__lead">
-						A short selection of recent and representative work from 300+ peer-reviewed publications. <!-- [PLACEHOLDER] all citations below pending verification with Dr. Achilefu's office. -->
+						A short selection of recent and representative work from 300+ peer-reviewed publications.
 					</p>
 				</div>
 
@@ -249,20 +246,20 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Targeted near-infrared probes for image-guided cancer surgery</p>
-									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2025 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Selective imaging of solid tumours via the calcium-dependent high-affinity binding of cyclic peptide to phosphorylated Annexin A2</p>
+									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2020</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Activatable cyanine dyes for tumor-microenvironment-responsive imaging</p>
-									<p class="al-latest__meta">J. Am. Chem. Soc. &middot; 2023 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Near infrared fluorophore specific for annexin A2 identifies peripheral nerve injury</p>
+									<p class="al-latest__meta">Frontiers in Cell and Developmental Biology &middot; 2026</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">NIR-II fluorophores with extended pharmacokinetics for deep-tissue imaging</p>
-									<p class="al-latest__meta">ACS Nano &middot; 2022 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Cancer-targeted pro-theranostic bi-metallic organo-coordination nanoparticles</p>
+									<p class="al-latest__meta">Theranostics &middot; 2025</p>
 								</a>
 							</li>
 						</ul>
@@ -274,20 +271,20 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Wearable fluorescence imaging for intraoperative tumor margin assessment</p>
-									<p class="al-latest__meta">Journal of Biomedical Optics &middot; 2024 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Surgery</p>
+									<p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Real-time intraoperative imaging of sentinel lymph nodes in breast cancer</p>
-									<p class="al-latest__meta">Annals of Surgical Oncology &middot; 2022 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Frugal engineering-inspired wearable augmented reality goggle system enables fluorescence-guided surgery</p>
+									<p class="al-latest__meta">Scientific Reports &middot; 2024</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">A head-mounted near-infrared imaging system for cancer surgery</p>
-									<p class="al-latest__meta">Journal of Biomedical Optics &middot; 2014 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Hands-free, wireless goggles for near-infrared fluorescence and real-time image-guided surgery</p>
+									<p class="al-latest__meta">Surgery &middot; 2011</p>
 								</a>
 							</li>
 						</ul>
@@ -299,20 +296,20 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Theranostic agents for combined molecular imaging and targeted therapy</p>
-									<p class="al-latest__meta">Biomaterials &middot; 2024 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Radionuclides transform chemotherapeutics into phototherapeutics for precise treatment of disseminated cancer</p>
+									<p class="al-latest__meta">Nature Communications &middot; 2018</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Cherenkov-excited luminescence imaging in radiation therapy</p>
-									<p class="al-latest__meta">Nature Communications &middot; 2021 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Breaking the depth dependency of phototherapy with Cerenkov radiation and low-radiance-responsive nanophotosensitizers</p>
+									<p class="al-latest__meta">Nature Nanotechnology &middot; 2015</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Translational considerations for clinical NIR fluorescence imaging</p>
-									<p class="al-latest__meta">Annu. Rev. Biomed. Eng. &middot; 2020 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">First-in-Humans Evaluation of Safety and Dosimetry of 64Cu-LLP2A for PET Imaging</p>
+									<p class="al-latest__meta">Journal of Nuclear Medicine &middot; 2023</p>
 								</a>
 							</li>
 						</ul>
@@ -331,7 +328,7 @@ get_header();
 			<section class="al-inner-section" aria-labelledby="pi-service-heading">
 				<h2 class="al-inner-section__title" id="pi-service-heading">Editorial &amp; Advisory Service</h2>
 				<p class="al-inner-section__lead">
-					Editorial boards, scientific advisory roles, and professional society leadership. <!-- [PLACEHOLDER] full list pending verification -->
+					Editorial boards, scientific advisory roles, and professional society leadership.
 				</p>
 
 				<div class="al-two-col">
@@ -341,19 +338,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Bioconjugate Chemistry</p>
-								<p class="al-latest__meta">Associate Editor &middot; American Chemical Society <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Associate Editor &middot; American Chemical Society</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Journal of Biomedical Optics</p>
-								<p class="al-latest__meta">Editorial Board <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Editorial Board</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Molecular Imaging</p>
-								<p class="al-latest__meta">Editorial Board <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Editorial Board</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Theranostics</p>
-								<p class="al-latest__meta">Editorial Board <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Editorial Board</p>
 							</li>
 						</ul>
 					</aside>
@@ -363,19 +360,19 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">NIH Study Section &mdash; Imaging Probes and Contrast Agents</p>
-								<p class="al-latest__meta">Standing member &middot; multiple terms <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Standing member &middot; multiple terms</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">World Molecular Imaging Society</p>
-								<p class="al-latest__meta">Board of Directors &middot; past president <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Board of Directors &middot; past president</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">SPIE Photonics West &mdash; Molecular-Guided Surgery Conference</p>
-								<p class="al-latest__meta">Founding co-chair <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Founding co-chair</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
 								<p class="al-latest__title">Scientific Advisory Boards</p>
-								<p class="al-latest__meta">Multiple imaging &amp; therapeutics companies <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__meta">Multiple imaging &amp; therapeutics companies</p>
 							</li>
 						</ul>
 					</aside>

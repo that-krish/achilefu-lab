@@ -44,19 +44,19 @@ get_header();
 				<div class="al-pi-stats">
 					<div class="al-pi-stat">
 						<span class="al-pi-stat__value">Weekly</span>
-						<span class="al-pi-stat__label">Lab meetings <!-- [PLACEHOLDER] --></span>
+						<span class="al-pi-stat__label">Lab Meetings</span>
 					</div>
 					<div class="al-pi-stat">
-						<span class="al-pi-stat__value">20+</span>
-						<span class="al-pi-stat__label">Visiting speakers / year <!-- [PLACEHOLDER] --></span>
+						<span class="al-pi-stat__value">Bi-weekly</span>
+						<span class="al-pi-stat__label">Journal Club</span>
 					</div>
 					<div class="al-pi-stat">
-						<span class="al-pi-stat__value">8</span>
-						<span class="al-pi-stat__label">Major conferences <!-- [PLACEHOLDER] --></span>
+						<span class="al-pi-stat__value">SPIE &middot; BMES &middot; WMIC</span>
+						<span class="al-pi-stat__label">Annual Conferences</span>
 					</div>
 					<div class="al-pi-stat">
-						<span class="al-pi-stat__value">50+</span>
-						<span class="al-pi-stat__label">Talks given / year <!-- [PLACEHOLDER] --></span>
+						<span class="al-pi-stat__value">Open</span>
+						<span class="al-pi-stat__label">To Collaborators</span>
 					</div>
 				</div>
 			</section>
@@ -70,7 +70,6 @@ get_header();
 					Subscribe to follow lab meetings, seminars, and travel in real time. Visiting researchers and prospective collaborators are welcome at most public events &mdash; contact us for an invite link.
 				</p>
 
-				<!-- [PLACEHOLDER] Google Calendar embed URL -->
 				<!-- ── SWAP THIS BLOCK with an <iframe> once the Google Calendar is set up ── -->
 				<div class="al-calendar-frame" role="img" aria-label="Calendar embed pending">
 					<div class="al-calendar-frame__icon" aria-hidden="true">
@@ -89,74 +88,29 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 3: Upcoming Events (3-col list stream) ── -->
-			<section class="al-latest al-latest--nested" aria-labelledby="cal-upcoming-heading">
-				<div class="al-latest__head">
-					<h2 class="al-inner-section__title" id="cal-upcoming-heading">Upcoming Events</h2>
-					<p class="al-inner-section__lead">
-						Next several weeks of lab activity. <!-- [PLACEHOLDER] events below pending confirmation each week. -->
-					</p>
-				</div>
-
-				<div class="al-latest__grid">
-
-					<!-- Column 1: This month -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">This Month</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Lab Meeting &mdash; Probe development update</p>
-								<p class="al-latest__meta">Mar 14 &middot; Dr. Kim presenting <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Journal Club &mdash; Recent NIR fluorescence translation papers</p>
-								<p class="al-latest__meta">Mar 21 &middot; Open discussion <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Lab Meeting &mdash; Imaging system rebuild walkthrough</p>
-								<p class="al-latest__meta">Mar 28 &middot; Engineering team <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
+			<!-- ── Row 3: Upcoming Events ── -->
+			<section class="al-inner-section" aria-labelledby="cal-upcoming-heading">
+				<h2 class="al-inner-section__title" id="cal-upcoming-heading">Upcoming Events</h2>
+				<p class="al-inner-section__lead">
+					Specific event dates and presenters are confirmed on a rolling basis. Subscribe to the calendar below for live updates, or contact the lab to be added to the seminar invite list.
+				</p>
+				<div class="al-feature-grid">
+					<div class="al-feature-card">
+						<p class="al-feature-card__title">Weekly Lab Meetings</p>
+						<p class="al-feature-card__desc">All-hands meeting where one member presents in depth and others give brief status updates. Open to invited collaborators.</p>
 					</div>
-
-					<!-- Column 2: Visiting speakers & travel -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Speakers &amp; Travel</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Visiting Speaker &mdash; &ldquo;Imaging at the molecular scale&rdquo;</p>
-								<p class="al-latest__meta">Apr 4 &middot; Dr.&nbsp;[Name], MIT <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">SPIE Photonics West &mdash; Dr.&nbsp;Achilefu keynote</p>
-								<p class="al-latest__meta">Apr 18 &middot; Conference presentation <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">World Molecular Imaging Congress &mdash; lab posters</p>
-								<p class="al-latest__meta">May 2 &middot; Three trainees presenting <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
+					<div class="al-feature-card">
+						<p class="al-feature-card__title">Bi-weekly Journal Club</p>
+						<p class="al-feature-card__desc">Critical review of new literature in molecular imaging, probe chemistry, and image-guided surgery. Rotating presenter; all trainees participate.</p>
 					</div>
-
-					<!-- Column 3: Lab life & deadlines -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Lab Life &amp; Deadlines</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Lab Social &mdash; End-of-semester gathering</p>
-								<p class="al-latest__meta">May 9 &middot; All members &amp; families <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">F31 / F32 internal review deadline</p>
-								<p class="al-latest__meta">May 15 &middot; Submit drafts to PI <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Annual Lab Symposium &mdash; save the date</p>
-								<p class="al-latest__meta">Jun 6 &middot; UTSW campus <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
+					<div class="al-feature-card">
+						<p class="al-feature-card__title">Visiting Seminars</p>
+						<p class="al-feature-card__desc">Hosted speakers from collaborating institutions and industry; typically coordinated with the UTSW BME Seminar Series.</p>
 					</div>
-
+					<div class="al-feature-card">
+						<p class="al-feature-card__title">Conference Travel</p>
+						<p class="al-feature-card__desc">The lab attends SPIE Photonics West, BMES Annual Meeting, World Molecular Imaging Congress (WMIC), and Society of Nuclear Medicine &amp; Molecular Imaging (SNMMI).</p>
+					</div>
 				</div>
 			</section>
 
@@ -166,7 +120,7 @@ get_header();
 			<section class="al-inner-section">
 				<h2 class="al-inner-section__title">Recurring Schedule</h2>
 				<p class="al-inner-section__lead">
-					The weekly cadence the lab runs on. Exact rooms and times are confirmed each semester. <!-- [PLACEHOLDER] times -->
+					The weekly cadence the lab runs on. Exact rooms and times are confirmed each semester &mdash; contact the lab manager to receive current scheduling.
 				</p>
 
 				<div class="al-feature-grid">
@@ -177,7 +131,7 @@ get_header();
 								<path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Lab Meeting &middot; Tuesdays 10:00 AM <!-- [PLACEHOLDER] --></p>
+						<p class="al-feature-card__title">Weekly Lab Meeting</p>
 						<p class="al-feature-card__desc">All-hands meeting. One lab member presents in depth; everyone else gives a one-minute status. Open to invited collaborators.</p>
 					</div>
 					<div class="al-feature-card">
@@ -187,8 +141,8 @@ get_header();
 								<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Journal Club &middot; Fridays 1:00 PM <!-- [PLACEHOLDER] --></p>
-						<p class="al-feature-card__desc">Bi-weekly critical review of new literature in molecular imaging, probe chemistry, and image-guided surgery. Rotating presenter.</p>
+						<p class="al-feature-card__title">Bi-weekly Journal Club</p>
+						<p class="al-feature-card__desc">Critical review of new literature in molecular imaging, probe chemistry, and image-guided surgery. Rotating presenter.</p>
 					</div>
 					<div class="al-feature-card">
 						<div class="al-feature-card__icon" aria-hidden="true">
@@ -197,7 +151,7 @@ get_header();
 								<path d="M12 8v4l3 3"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">PI Office Hours &middot; Wed 3&ndash;4 PM <!-- [PLACEHOLDER] --></p>
+						<p class="al-feature-card__title">PI Office Hours</p>
 						<p class="al-feature-card__desc">Open block for trainees, prospective students, and collaborators. Drop in or book a slot through the lab manager.</p>
 					</div>
 					<div class="al-feature-card">
@@ -206,8 +160,8 @@ get_header();
 								<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">BME Seminar Series &middot; Thursdays <!-- [PLACEHOLDER] --></p>
-						<p class="al-feature-card__desc">UTSW Biomedical Engineering Department seminars with invited speakers from academia and industry. Open to the UTSW community.</p>
+						<p class="al-feature-card__title">UTSW BME Seminar Series</p>
+						<p class="al-feature-card__desc">Department-wide seminars with invited speakers from academia and industry. Open to the UTSW community. The Achilefu Lab actively participates in speaker selection.</p>
 					</div>
 				</div>
 			</section>
@@ -231,10 +185,8 @@ get_header();
 					</div>
 
 					<aside style="display:flex; flex-direction:column; gap:0.75rem; align-self:center;">
-						<!-- [PLACEHOLDER] Google Calendar subscribe link -->
-						<a href="#" class="al-btn al-btn--primary">Add to Google Calendar</a>
-						<!-- [PLACEHOLDER] iCal feed URL -->
-						<a href="#" class="al-btn al-btn--secondary">Copy iCal feed (.ics)</a>
+						<a href="<?php echo $url_contact; ?>" class="al-btn al-btn--primary">Request Calendar Access</a>
+						<a href="<?php echo $url_contact; ?>" class="al-btn al-btn--secondary">Get Seminar Invites</a>
 					</aside>
 
 				</div>
@@ -242,31 +194,31 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 6: Past Highlights ── -->
+			<!-- ── Row 6: Recent Activity ── -->
 			<section class="al-latest al-latest--nested" aria-labelledby="cal-past-heading">
 				<div class="al-latest__head">
-					<h2 class="al-inner-section__title" id="cal-past-heading">Recent Highlights</h2>
+					<h2 class="al-inner-section__title" id="cal-past-heading">Recent Activity</h2>
 					<p class="al-inner-section__lead">
-						A look back at events from the last few months. <!-- [PLACEHOLDER] entries pending confirmation. -->
+						A look at lab activity from the past year, drawn from publications and conference records.
 					</p>
 				</div>
 
 				<ul class="al-latest__list">
 					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Dr.&nbsp;Achilefu delivered keynote at SPIE Photonics West</p>
-						<p class="al-latest__meta">Feb 2026 &middot; San Francisco, CA <!-- [PLACEHOLDER] --></p>
+						<p class="al-latest__title">Single-Operator Cancer Vision Goggles paper published</p>
+						<p class="al-latest__meta">2026 &middot; IEEE Transactions on Biomedical Engineering &middot; Xu et al.</p>
 					</li>
 					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Lab hosted Dr.&nbsp;[Name] (Stanford) for a joint seminar on activatable probes</p>
-						<p class="al-latest__meta">Jan 2026 &middot; UTSW campus <!-- [PLACEHOLDER] --></p>
+						<p class="al-latest__title">Radionuclide-stimulated dynamic therapy immunogenic cell death paper published</p>
+						<p class="al-latest__meta">2026 &middot; Communications Biology &middot; Egbulefu et al.</p>
 					</li>
 					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Three trainees presented posters at the World Molecular Imaging Congress</p>
-						<p class="al-latest__meta">Nov 2025 &middot; Annual meeting <!-- [PLACEHOLDER] --></p>
+						<p class="al-latest__title">Chemo-RaST with bortezomib for myeloma relapse prevention published</p>
+						<p class="al-latest__meta">2025 &middot; Theranostics &middot; Ghai et al.</p>
 					</li>
 					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Annual lab symposium &mdash; year-in-review &amp; poster session</p>
-						<p class="al-latest__meta">Oct 2025 &middot; UTSW campus <!-- [PLACEHOLDER] --></p>
+						<p class="al-latest__title">First-in-humans evaluation of ⁶⁴Cu-LLP2A published in Journal of Nuclear Medicine</p>
+						<p class="al-latest__meta">2023 &middot; Laforest et al. &middot; Safety &amp; dosimetry results</p>
 					</li>
 				</ul>
 			</section>

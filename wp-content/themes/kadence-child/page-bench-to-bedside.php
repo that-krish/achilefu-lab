@@ -3,8 +3,9 @@
  * Template for the Bench to Bedside research area page.
  * Matches slug: bench-to-bedside  —  page ID 22, child of research (7).
  *
- * v2 — editorial density refresh: dense stat strip, active-trials stream,
- *       milestone list, translational pubs, partners panel, sibling nav.
+ * v3 — complete rewrite based on labs.utsouthwestern.edu/achilefu-lab source.
+ *       Structure: mission → Perspective pipeline (Concept→Research→Dissemination→Translation)
+ *       → four clinical technologies → selected publications → funding → partners → nav.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -31,10 +32,10 @@ get_header();
 			</nav>
 			<p class="al-inner-hero__eyebrow">Research Platform</p>
 			<h1 class="al-inner-hero__title" id="b2b-heading">
-				From Discovery to Patient Impact
+				Complete Solutions from Concept to Clinic
 			</h1>
 			<p class="al-inner-hero__sub">
-				A discovery is only as valuable as the patients it reaches. We build the regulatory, commercial, and clinical pathways that carry our optical technologies from laboratory proof-of-concept to approved medical tools at UT Southwestern and beyond.
+				The unique strength of the Achilefu Lab is the ability to develop complete solutions from conception, implementation, and validation to human clinical care. We aim to change the way medicine is practiced.
 			</p>
 		</div>
 	</section>
@@ -43,17 +44,20 @@ get_header();
 	<div class="al-inner-body">
 		<div class="al-container">
 
-			<!-- ── Row 1: Translation philosophy + inline stats ── -->
+			<!-- ── Row 1: Mission + translation outcomes ── -->
 			<div class="al-two-col al-two-col--60-40">
 
 				<section class="al-inner-section" style="margin-bottom:0;">
-					<h2 class="al-inner-section__title">Our Translation Philosophy</h2>
+					<h2 class="al-inner-section__title">The Achilefu Lab Approach</h2>
 					<div class="al-prose">
 						<p>
-							Most academic laboratories generate knowledge. We build with it. From the moment a probe enters our design pipeline, we think about the patient who will one day receive it &mdash; what disease are they fighting, what does their surgeon or oncologist need, and what regulatory and manufacturing standards will the agent have to meet?
+							There are major advances to be made in how we address diseases like cancer or neurological conditions. However, many diseased and healthy tissues are hard to visualize within the body, presenting a major challenge for making these advances.
 						</p>
 						<p>
-							This forward-looking mindset shapes every decision: we select disease targets with defined unmet clinical need, design agents with formulation and stability in mind from the outset, and partner with clinical investigators at UT Southwestern Medical Center to validate efficacy in relevant patient populations as early as possible.
+							We develop techniques using light and custom molecular contrast agents to visualize tissue inside animals and humans. We then use those tools to better understand the underlying biology on a molecular level, build diagnostic tools that are more accurate and less invasive than existing methods, and develop novel light-based treatments for disease.
+						</p>
+						<p>
+							Dr. Achilefu has guided multiple research endeavors from concept to clinic, launching startup companies to commercialize innovative products and working with clinical investigators at UT Southwestern Medical Center to validate technologies in human patients.
 						</p>
 					</div>
 				</section>
@@ -61,23 +65,20 @@ get_header();
 				<aside>
 					<div class="al-pi-stats">
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] active + completed clinical trials -->
-							<span class="al-pi-stat__value">8</span>
-							<span class="al-pi-stat__label">Clinical Trials <!-- [PLACEHOLDER] --></span>
-						</div>
-						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] IND filings to date -->
 							<span class="al-pi-stat__value">4</span>
-							<span class="al-pi-stat__label">IND Filings <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__label">Products in clinical study</span>
 						</div>
 						<div class="al-pi-stat">
-							<!-- [PLACEHOLDER] industry licensees + partners -->
-							<span class="al-pi-stat__value">12</span>
-							<span class="al-pi-stat__label">Industry Partners <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">3</span>
+							<span class="al-pi-stat__label">Startup companies launched</span>
 						</div>
 						<div class="al-pi-stat">
-							<span class="al-pi-stat__value">25+</span>
-							<span class="al-pi-stat__label">Years of Translation</span>
+							<span class="al-pi-stat__value">60+</span>
+							<span class="al-pi-stat__label">Issued U.S. Patents</span>
+						</div>
+						<div class="al-pi-stat">
+							<span class="al-pi-stat__value">Multiple</span>
+							<span class="al-pi-stat__label">Commercial licenses</span>
 						</div>
 					</div>
 				</aside>
@@ -86,124 +87,132 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 2: Translational Pipeline (feature grid) ── -->
-			<section class="al-inner-section">
-				<h2 class="al-inner-section__title">Translational Pipeline</h2>
-				<p class="al-inner-section__lead">A disciplined, stage-gated workflow from chemistry to clinic &mdash; with a parallel commercialization track to ensure scalable patient access.</p>
+			<!-- ── Row 2: Perspective Pipeline (Concept → Research → Dissemination → Translation) ── -->
+			<section class="al-inner-section" aria-labelledby="b2b-pipeline-heading">
+				<h2 class="al-inner-section__title" id="b2b-pipeline-heading">The Perspective Pipeline</h2>
+				<p class="al-inner-section__lead">
+					The lab tracks research activity across four stages &mdash; from first ideas through clinical and commercial translation. Numbers below reflect the cumulative output of the Achilefu Lab.
+				</p>
 
 				<div class="al-feature-grid">
+
 					<div class="al-feature-card">
 						<div class="al-feature-card__icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
 								<circle cx="12" cy="12" r="10"/>
-								<path d="M8 12l2 2 4-4"/>
+								<path d="M12 8v4M12 16h.01"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Preclinical Validation</p>
-						<p class="al-feature-card__desc">GLP-compliant toxicology, pharmacokinetics, and efficacy studies in validated disease models &mdash; assembling the data package required for IND-enabling submissions.</p>
+						<p class="al-feature-card__title">Concept</p>
+						<p class="al-feature-card__desc">More than <strong>1,000</strong> research ideas generated &mdash; the upstream creative and hypothesis-generation phase that seeds every project in the pipeline.</p>
 					</div>
+
 					<div class="al-feature-card">
 						<div class="al-feature-card__icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-								<polyline points="14 2 14 8 20 8"/>
-								<line x1="16" y1="13" x2="8" y2="13"/>
-								<line x1="16" y1="17" x2="8" y2="17"/>
+								<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Regulatory &amp; IND</p>
-						<p class="al-feature-card__desc">Preparation and submission of Investigational New Drug applications, with direct engagement of the FDA's Division of Imaging and Radiation Medicine for imaging-agent pathways.</p>
+						<p class="al-feature-card__title">Research</p>
+						<p class="al-feature-card__desc">More than <strong>300 active projects</strong> pursued across molecular probe design, optical instrumentation, cancer biology, and clinical imaging.</p>
 					</div>
+
 					<div class="al-feature-card">
 						<div class="al-feature-card__icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-								<circle cx="9" cy="7" r="4"/>
-								<path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+								<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+								<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Clinical Trials</p>
-						<p class="al-feature-card__desc">First-in-human safety and dosing studies followed by Phase II/III efficacy trials &mdash; conducted with surgical oncologists and radiologists at UTSW and affiliated academic medical centers.</p>
+						<p class="al-feature-card__title">Dissemination</p>
+						<p class="al-feature-card__desc"><strong>300+</strong> scientific publications &middot; <strong>60+</strong> issued U.S. patents &middot; <strong>1,000+</strong> presentations &middot; <strong>80+</strong> trainees mentored.</p>
 					</div>
+
 					<div class="al-feature-card">
 						<div class="al-feature-card__icon" aria-hidden="true">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="2" y="7" width="20" height="14" rx="2"/>
-								<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+								<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
 							</svg>
 						</div>
-						<p class="al-feature-card__title">Industry &amp; Health-System Partnerships</p>
-						<p class="al-feature-card__desc">Licensing and spin-out agreements via UTSW Technology Development &mdash; pairing the lab's chemistry with manufacturing, distribution, and health-system adoption pathways.</p>
+						<p class="al-feature-card__title">Translation</p>
+						<p class="al-feature-card__desc"><strong>4</strong> products in active clinical study &middot; <strong>3</strong> startup companies commercializing discoveries &middot; multiple licenses to industry partners.</p>
 					</div>
+
 				</div>
 			</section>
 
 			<hr class="al-divider">
 
-			<!-- ── Row 3: Active Clinical Trials (3-col stream) ── -->
-			<section class="al-latest al-latest--nested" aria-labelledby="b2b-trials-heading">
+			<!-- ── Row 3: Technologies in the Clinical Pipeline ── -->
+			<section class="al-latest al-latest--nested" aria-labelledby="b2b-tech-heading">
 				<div class="al-latest__head">
-					<h2 class="al-inner-section__title" id="b2b-trials-heading">Active Clinical Trials</h2>
+					<h2 class="al-inner-section__title" id="b2b-tech-heading">Technologies in the Clinical Pipeline</h2>
 					<p class="al-inner-section__lead">
-						Selected studies currently enrolling at UT Southwestern and partner sites. <!-- [PLACEHOLDER] all trial details below pending verification with lab + clinicaltrials.gov listings. -->
+						Four major technology platforms developed in the Achilefu Lab are currently in clinical study or active clinical translation.
 					</p>
 				</div>
 
 				<div class="al-latest__grid">
 
-					<!-- Column 1: Surgical Oncology -->
+					<!-- Column 1: LS301 / pANXA2 -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Surgical Oncology</p>
+						<p class="al-latest__col-heading">LS301 &mdash; Annexin A2 Probe</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">NIR-guided breast cancer surgery margin assessment</p>
-								<p class="al-latest__meta">Phase II &middot; NCT0XXXXXXX &middot; UTSW Simmons Cancer Center <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Cyclic octapeptide targeting phosphorylated Annexin A2 (pANXA2)</p>
+								<p class="al-latest__meta">Selectively binds invasive edges of solid tumors &middot; traffics to necrotic core via macrophages &middot; detects tumor xenografts &amp; metastatic lesions</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Fluorescence-guided cytoreduction in ovarian cancer</p>
-								<p class="al-latest__meta">Phase I/II &middot; NCT0XXXXXXX &middot; Multi-site <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Fluorescence-guided surgical tumor resection</p>
+								<p class="al-latest__meta">Proof-of-concept in mice; broadly applicable to most solid cancers where high pANXA2 + elevated calcium are present in the microenvironment</p>
 							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Targeted intraoperative imaging in head &amp; neck cancer</p>
-								<p class="al-latest__meta">Phase II &middot; NCT0XXXXXXX &middot; UTSW Otolaryngology <!-- [PLACEHOLDER] --></p>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Selective imaging of solid tumours via the calcium-dependent high-affinity binding of cyclic peptide to phosphorylated Annexin A2</p>
+									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2020</p>
+								</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 2: Theranostics & Targeted Imaging -->
+					<!-- Column 2: RaST / Cerenkov -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Theranostics &amp; Targeted Imaging</p>
+						<p class="al-latest__col-heading">RaST &mdash; Cerenkov &amp; TiO&zwj;₂ Therapy</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Theranostic agent for metastatic prostate cancer</p>
-								<p class="al-latest__meta">Phase I &middot; NCT0XXXXXXX &middot; UTSW + industry sponsor <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Radionuclide-Stimulated Dynamic Therapy (RaST) using Cerenkov radiation to activate TiO₂ nanophotosensitizers</p>
+								<p class="al-latest__meta">Depth-independent &middot; oxygen-independent &middot; tumor remission + high tumor-infiltrating lymphocyte counts in preclinical models</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Multimodal probe for glioblastoma resection</p>
-								<p class="al-latest__meta">Phase I/II &middot; NCT0XXXXXXX &middot; UTSW Neurosurgery <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Transferrin-coated TiO₂ nanoparticles + clinically used radionuclides colocalize in tumors</p>
+								<p class="al-latest__meta">Selective cancer cell destruction &middot; activates immune system &middot; overcomes shallow light-penetration limit of conventional photodynamic therapy</p>
 							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">NIR-II probe for deep-tissue tumor imaging</p>
-								<p class="al-latest__meta">Phase I &middot; NCT0XXXXXXX &middot; Investigator-initiated <!-- [PLACEHOLDER] --></p>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Breaking the depth dependency of phototherapy with Cerenkov radiation and low-radiance-responsive nanophotosensitizers</p>
+									<p class="al-latest__meta">Nature Nanotechnology &middot; 2015</p>
+								</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 3: Device & Platform Studies -->
+					<!-- Column 3: Cancer Vision Goggles + FDTI -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Device &amp; Platform Studies</p>
+						<p class="al-latest__col-heading">Cancer Vision Goggles &amp; FDTI</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Cancer-imaging goggles &mdash; multi-tumor feasibility study</p>
-								<p class="al-latest__meta">Phase II &middot; NCT0XXXXXXX &middot; UTSW Surgical Oncology <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Cancer Vision Goggles &mdash; wearable NIR fluorescence-guided surgery system</p>
+								<p class="al-latest__meta">Hands-free &middot; wireless &middot; real-time tumor margin and lymph node visualization in the operating room</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Wearable fluorescence platform &mdash; sentinel lymph node mapping</p>
-								<p class="al-latest__meta">Phase I &middot; NCT0XXXXXXX &middot; Multi-site <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Focal Dynamic Thermal Imaging (FDTI) &mdash; label-free tissue characterization</p>
+								<p class="al-latest__meta">405 nm laser stimulates focal tissue regions &middot; thermal camera captures heterogeneity &middot; delineates malignant, benign, and inflamed tissue without contrast agents</p>
 							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Cherenkov-excited luminescence imaging in radiotherapy</p>
-								<p class="al-latest__meta">Phase I &middot; NCT0XXXXXXX &middot; UTSW Radiation Oncology <!-- [PLACEHOLDER] --></p>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Oncologic Surgery</p>
+									<p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -213,146 +222,84 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 4: Recent Milestones + Partners (60/40 split) ── -->
-			<div class="al-two-col al-two-col--60-40">
-
-				<section class="al-inner-section" style="margin-bottom:0;">
-					<h2 class="al-inner-section__title">Recent Milestones</h2>
-					<p class="al-inner-section__lead">
-						Regulatory, clinical, and commercialization markers from the past several years.
-					</p>
-					<ul class="al-latest__list">
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">FDA Breakthrough Device designation for cancer-imaging goggles platform</p>
-							<p class="al-latest__meta">2024 &middot; U.S. Food &amp; Drug Administration <!-- [PLACEHOLDER] --></p>
-						</li>
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">IND clearance for next-generation theranostic agent</p>
-							<p class="al-latest__meta">2023 &middot; FDA Division of Imaging and Radiation Medicine <!-- [PLACEHOLDER] --></p>
-						</li>
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">Phase I trial completed for tumor-targeted NIR probe</p>
-							<p class="al-latest__meta">2023 &middot; UTSW Simmons Cancer Center <!-- [PLACEHOLDER] --></p>
-						</li>
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">Multi-site Phase I study of fluorescence-guided cytoreduction opens</p>
-							<p class="al-latest__meta">2022 &middot; UTSW + 3 academic medical centers <!-- [PLACEHOLDER] --></p>
-						</li>
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">Industry licensing agreement announced for wearable imaging system</p>
-							<p class="al-latest__meta">2022 &middot; UTSW Office for Technology Development <!-- [PLACEHOLDER] --></p>
-						</li>
-						<li class="al-latest__item al-latest__item--static">
-							<p class="al-latest__title">First-in-human study of theranostic radiotracer initiated</p>
-							<p class="al-latest__meta">2021 &middot; Investigator-initiated, UTSW <!-- [PLACEHOLDER] --></p>
-						</li>
-					</ul>
-				</section>
-
-				<aside>
-					<section class="al-inner-section" style="margin-bottom:0;">
-						<h2 class="al-inner-section__title">Partners</h2>
-						<p class="al-latest__col-heading" style="margin-top:1.5rem;">Industry</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Imaging &amp; surgical device licensees</p>
-								<p class="al-latest__meta">Multiple medtech partners <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Contrast agent development</p>
-								<p class="al-latest__meta">Pharma + radiopharma sponsors <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Diagnostics spin-out activity</p>
-								<p class="al-latest__meta">UTSW Office for Technology Development <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-
-						<p class="al-latest__col-heading" style="margin-top:2rem;">Clinical Sites</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">UT Southwestern Medical Center</p>
-								<p class="al-latest__meta">Simmons Cancer Center &middot; Surgical &amp; Radiation Oncology</p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Affiliated academic medical centers</p>
-								<p class="al-latest__meta">Multi-site Phase I/II networks <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">NCI-designated cancer center collaborators</p>
-								<p class="al-latest__meta">Translational consortium <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</section>
-				</aside>
-
-			</div>
-
-			<hr class="al-divider">
-
-			<!-- ── Row 5: Selected Clinical / Translational Publications ── -->
+			<!-- ── Row 4: Selected Translational Publications ── -->
 			<section class="al-latest al-latest--nested" aria-labelledby="b2b-pubs-heading">
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="b2b-pubs-heading">Selected Translational Publications</h2>
 					<p class="al-inner-section__lead">
-						Clinical and preclinical reports anchoring the lab's translational programs. <!-- [PLACEHOLDER] citations pending verification. -->
+						Key papers spanning the four clinical programs &mdash; from foundational discoveries to first-in-human studies.
 					</p>
 				</div>
 
 				<div class="al-latest__grid">
 
-					<!-- Column 1: First-in-Human -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">First-in-Human</p>
+						<p class="al-latest__col-heading">Molecular Imaging &amp; Surgery</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">First-in-human evaluation of NIR fluorescence-guided breast cancer surgery</p>
-									<p class="al-latest__meta">Annals of Surgery &middot; 2024 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Selective imaging of solid tumours via the calcium-dependent high-affinity binding of cyclic peptide to phosphorylated Annexin A2</p>
+									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2020</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Phase I safety and dosimetry of a tumor-targeted theranostic agent</p>
-									<p class="al-latest__meta">Journal of Nuclear Medicine &middot; 2023 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Frugal engineering-inspired wearable augmented reality goggle system enables fluorescence-guided cancer surgery</p>
+									<p class="al-latest__meta">Scientific Reports &middot; 2024</p>
+								</a>
+							</li>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">First-in-Humans Evaluation of Safety and Dosimetry of 64Cu-LLP2A for PET Imaging</p>
+									<p class="al-latest__meta">Journal of Nuclear Medicine &middot; 2023</p>
 								</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 2: Preclinical & Regulatory -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Preclinical &amp; Regulatory</p>
+						<p class="al-latest__col-heading">RaST Therapy</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Toxicology and pharmacokinetics of a near-infrared targeted probe</p>
-									<p class="al-latest__meta">Clinical Cancer Research &middot; 2023 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Breaking the depth dependency of phototherapy with Cerenkov radiation and low-radiance-responsive nanophotosensitizers</p>
+									<p class="al-latest__meta">Nature Nanotechnology &middot; 2015</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Translational considerations for clinical NIR fluorescence imaging</p>
-									<p class="al-latest__meta">Annu. Rev. Biomed. Eng. &middot; 2020 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Radionuclides transform chemotherapeutics into phototherapeutics for precise treatment of disseminated cancer</p>
+									<p class="al-latest__meta">Nature Communications &middot; 2018</p>
+								</a>
+							</li>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Chemo-RaST with bortezomib inhibits multiple myeloma relapse</p>
+									<p class="al-latest__meta">Theranostics &middot; 2025</p>
 								</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 3: Clinical Outcomes -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Clinical Outcomes</p>
+						<p class="al-latest__col-heading">Radionuclide &amp; Immune Therapy</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Multi-site Phase I study of fluorescence-guided cytoreduction</p>
-									<p class="al-latest__meta">J. Clinical Oncology &middot; 2023 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Radionuclide-stimulated dynamic therapy induces complementary immunogenic necroptosis and apoptosis cancer cell death pathways</p>
+									<p class="al-latest__meta">Communications Biology &middot; 2026</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Wearable fluorescence imaging for intraoperative margin assessment</p>
-									<p class="al-latest__meta">Journal of Biomedical Optics &middot; 2024 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Orthogonal targeting of osteoclasts and myeloma cells for radionuclide stimulated dynamic therapy</p>
+									<p class="al-latest__meta">Theranostics &middot; 2021</p>
+								</a>
+							</li>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">In vivo quantitative assessment of therapeutic response to bortezomib therapy in myeloma</p>
+									<p class="al-latest__meta">EJNMMI Research &middot; 2021</p>
 								</a>
 							</li>
 						</ul>
@@ -367,25 +314,92 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 6: Innovation Portfolio (short prose) ── -->
-			<section class="al-inner-section">
-				<h2 class="al-inner-section__title">Innovation Portfolio</h2>
-				<div class="al-prose">
-					<p>
-						Over 25 years, the lab has built one of the most productive translational track records in biomedical optics: more than 70 issued or pending patents, multiple INDs filed with the U.S. FDA, and licensing agreements with medical device and pharmaceutical companies. Several technologies developed here are in active clinical evaluation at UT Southwestern and partner institutions. <em>[Specific agent and device names to be confirmed with lab before publication.]</em>
+			<!-- ── Row 5: Funding + Partners (60/40) ── -->
+			<div class="al-two-col al-two-col--60-40">
+
+				<section class="al-inner-section" style="margin-bottom:0;">
+					<h2 class="al-inner-section__title">Funding</h2>
+					<p class="al-inner-section__lead">
+						The lab's translational programs are sustained by federal and state funding from agencies with direct interest in moving discoveries to patients.
 					</p>
-					<p>
-						This portfolio is sustained by funding from the National Institutes of Health, the National Science Foundation, the Department of Defense, and industry sponsors &mdash; and by decades of relationship-building between our bench scientists and the clinical community at UT Southwestern.
-					</p>
-				</div>
-			</section>
+					<ul class="al-latest__list">
+						<li class="al-latest__item al-latest__item--static">
+							<p class="al-latest__title">National Institutes of Health</p>
+							<p class="al-latest__meta">National Institute of Biomedical Imaging and Bioengineering (NIBIB) &middot; National Cancer Institute (NCI)</p>
+						</li>
+						<li class="al-latest__item al-latest__item--static">
+							<p class="al-latest__title">National Science Foundation</p>
+							<p class="al-latest__meta">Engineering and physical sciences programs supporting device development and optical systems</p>
+						</li>
+						<li class="al-latest__item al-latest__item--static">
+							<p class="al-latest__title">Department of Defense</p>
+							<p class="al-latest__meta">Breast Cancer Research Program &mdash; Dr. Achilefu was the first recipient of the DOD BCRP Distinguished Investigator Award</p>
+						</li>
+						<li class="al-latest__item al-latest__item--static">
+							<p class="al-latest__title">Cancer Prevention &amp; Research Institute of Texas (CPRIT)</p>
+							<p class="al-latest__meta">Established Investigator Award &middot; Grant RR220013</p>
+						</li>
+					</ul>
+				</section>
+
+				<aside>
+					<section class="al-inner-section" style="margin-bottom:0;">
+						<h2 class="al-inner-section__title">Collaborators</h2>
+
+						<p class="al-latest__col-heading" style="margin-top:1.5rem;">Washington University in St. Louis</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Goggles</p>
+								<p class="al-latest__meta">Victor Gruev, Ph.D. &middot; Shengkui Gao, Ph.D.</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Oncologic Surgery</p>
+								<p class="al-latest__meta">Julie Margenthaler, Ph.D. &middot; Ryan Fields, Ph.D.</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Molecular Imaging &amp; Radiology</p>
+								<p class="al-latest__meta">Farrokh Dehdashti, M.D. &middot; Christopher Malone, M.D.</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Gastroenterology &middot; Urology</p>
+								<p class="al-latest__meta">Deborah Rubin, M.D. &middot; Steve Edmundowicz, M.D. &middot; Jeff Arbeit, M.D. &middot; Gerald Andriole, M.D.</p>
+							</li>
+						</ul>
+
+						<p class="al-latest__col-heading" style="margin-top:1.5rem;">Other Institutions</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">University of Cincinnati</p>
+								<p class="al-latest__meta">Nalini Kotagiri &middot; Cerenkov &amp; RaST therapy</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">University of Iowa</p>
+								<p class="al-latest__meta">Yang Liu, Ph.D.</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">University of Arizona</p>
+								<p class="al-latest__meta">Ron Liang, Ph.D. &middot; Nan Zhu, Ph.D. &middot; College of Optical Sciences</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">University of Missouri</p>
+								<p class="al-latest__meta">Jeffrey Bryan, DVM &middot; Tony Mann, DVM &middot; Michael Lewis, Ph.D. &middot; Veterinary Surgery</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Fudan University &mdash; Hepatic Surgery</p>
+								<p class="al-latest__meta">Zhao-You Tang, M.D. &middot; Jia Fan, M.D., Ph.D. &middot; Hui-Chuan Sun, M.D. &middot; Qing-Hai Ye, M.D.</p>
+							</li>
+						</ul>
+					</section>
+				</aside>
+
+			</div>
 
 			<hr class="al-divider">
 
-			<!-- ── Row 7: Related research areas ── -->
+			<!-- ── Row 6: Related research areas ── -->
 			<section class="al-inner-section" aria-labelledby="b2b-related-heading">
 				<h2 class="al-inner-section__title" id="b2b-related-heading">Related Research</h2>
-				<p class="al-inner-section__lead">Sibling platforms that feed our translational pipeline.</p>
+				<p class="al-inner-section__lead">Sibling platforms that feed the translational pipeline.</p>
 
 				<div class="al-research-nav">
 
@@ -398,7 +412,7 @@ get_header();
 						</div>
 						<p class="al-research-nav-card__title">Optical &amp; Molecular Imaging</p>
 						<p class="al-research-nav-card__desc">
-							Custom-engineered fluorescent probes and near-infrared agents &mdash; the chemistry that feeds every translational program in this pipeline.
+							Custom-engineered fluorescent probes and near-infrared agents &mdash; the chemistry upstream of every clinical program on this page.
 						</p>
 						<span class="al-research-nav-card__arrow">
 							Explore platform
@@ -415,7 +429,7 @@ get_header();
 						</div>
 						<p class="al-research-nav-card__title">Image-Guided Surgery</p>
 						<p class="al-research-nav-card__desc">
-							Real-time intraoperative fluorescence imaging systems &mdash; the device platforms that pair with our clinical-grade agents in active trials.
+							The Cancer Vision Goggles and FDTI platforms &mdash; from wearable device engineering to first clinical use in the operating room.
 						</p>
 						<span class="al-research-nav-card__arrow">
 							Explore platform
@@ -432,7 +446,7 @@ get_header();
 			<div class="al-inner-cta">
 				<div class="al-inner-cta__copy">
 					<h3>Industry &amp; Clinical Partnerships</h3>
-					<p>Biotech, pharma, medtech, and clinical trial sites &mdash; reach out to discuss licensing, sponsored research, or collaboration on active and upcoming translational programs.</p>
+					<p>Biotech, pharma, medtech, and clinical investigators &mdash; reach out to discuss licensing, sponsored research, or collaboration on active translational programs.</p>
 				</div>
 				<a href="<?php echo $url_contact; ?>" class="al-inner-cta__btn">Get in Touch</a>
 			</div>

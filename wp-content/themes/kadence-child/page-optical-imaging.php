@@ -54,29 +54,29 @@ get_header();
 							The foundation of the Achilefu Lab is the chemistry of seeing. We design small-molecule and peptide-based probes that operate in the near-infrared (NIR) spectrum &mdash; wavelengths that penetrate deep into tissue with low scatter and minimal autofluorescence. These are not passive dyes; they are purpose-built molecular sensors that activate, accumulate, or shift signal in response to specific biological targets.
 						</p>
 						<p>
-							The chemistry spans the full architecture space: always-on targeted agents for receptor-expressing tumors, activatable probes that remain dark until they encounter disease-specific enzymes or pH gradients, and multimodal agents detectable by complementary imaging modalities (PET, MRI). The result is a library of tools that can be matched to the biological question rather than the other way around.
+							A flagship example is our cyclic octapeptide-based NIR probe that selectively recognizes phosphorylated Annexin A2 (pANXA2) &mdash; a calcium-dependent marker overexpressed at invasive tumor edges and trafficked to necrotic regions via macrophages. This probe enables high-affinity binding to tumor margins, detection of metastatic spread, and fluorescence-guided surgical resection. The lab also investigates copper-catalyzed covalent dimerization of NIR cyanine dyes to engineer probes with optimized pharmacokinetics and improved tumor selectivity.
 						</p>
 					</div>
 				</section>
 
 				<aside>
-					<p class="al-inner-section__lead" style="margin-top:0;">By the numbers <!-- [PLACEHOLDER] --></p>
+					<p class="al-inner-section__lead" style="margin-top:0;">By the numbers</p>
 					<div class="al-pi-stats" style="margin-top:0.5rem;">
 						<div class="al-pi-stat">
-							<span class="al-pi-stat__value">150+</span>
-							<span class="al-pi-stat__label">Publications in area <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">300+</span>
+							<span class="al-pi-stat__label">Peer-reviewed publications</span>
 						</div>
 						<div class="al-pi-stat">
-							<span class="al-pi-stat__value">30+</span>
-							<span class="al-pi-stat__label">Active probes <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">60+</span>
+							<span class="al-pi-stat__label">Issued U.S. Patents</span>
 						</div>
 						<div class="al-pi-stat">
-							<span class="al-pi-stat__value">8</span>
-							<span class="al-pi-stat__label">NIH-funded projects <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__value">4</span>
+							<span class="al-pi-stat__label">Products in clinical study</span>
 						</div>
 						<div class="al-pi-stat">
 							<span class="al-pi-stat__value">25+</span>
-							<span class="al-pi-stat__label">Years of work <!-- [PLACEHOLDER] --></span>
+							<span class="al-pi-stat__label">Years of innovation</span>
 						</div>
 					</div>
 				</aside>
@@ -140,7 +140,7 @@ get_header();
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="omi-projects-heading">Active Projects</h2>
 					<p class="al-inner-section__lead">
-						A snapshot of ongoing probe-design and imaging-agent campaigns in the lab. <!-- [PLACEHOLDER] project list pending verification with PI. -->
+						A snapshot of ongoing probe-design and imaging-agent campaigns in the lab.
 					</p>
 				</div>
 
@@ -151,54 +151,54 @@ get_header();
 						<p class="al-latest__col-heading">Targeted Probes</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">NIR probes for HER2+ breast cancer</p>
-								<p class="al-latest__meta">Affibody conjugate &middot; preclinical <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Cyclic octapeptide NIR probe for phosphorylated Annexin A2 in solid tumors</p>
+								<p class="al-latest__meta">pANXA2-targeted &middot; tumor detection &amp; surgical resection</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Integrin-targeted cyanines for glioma margins</p>
-								<p class="al-latest__meta">RGD scaffold &middot; orthotopic models <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">CD38-targeted peptides for multiple myeloma imaging</p>
+								<p class="al-latest__meta">PET &amp; NIR imaging &middot; myeloma models</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Somatostatin-receptor probes for neuroendocrine tumors</p>
-								<p class="al-latest__meta">Octreotate analog &middot; in&nbsp;vivo validation <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 2: Activatable probes -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Activatable Probes</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Self-quenching probes for tumor microenvironment imaging</p>
-								<p class="al-latest__meta">pH-responsive &middot; pancreatic models <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Protease-activated probes for cathepsin imaging</p>
-								<p class="al-latest__meta">Cleavable linker &middot; breast &amp; ovarian <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Caged probes for triggered release imaging</p>
-								<p class="al-latest__meta">Photoactivatable &middot; mechanism studies <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Transferrin receptor-targeted probes for breast cancer metastasis</p>
+								<p class="al-latest__meta">Primary &amp; metastatic lesion detection &middot; in vivo</p>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 3: Multimodal & theranostics -->
+					<!-- Column 2: Nanoparticle &amp; multimodal platforms -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Multimodal &amp; Theranostics</p>
+						<p class="al-latest__col-heading">Nanoparticle &amp; Multimodal</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Multimodal NIR/PET contrast agents</p>
-								<p class="al-latest__meta">Cu-64 chelate &middot; co-registered imaging <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Bi-metallic organo-coordination nanoparticles for cancer-targeted theranostics</p>
+								<p class="al-latest__meta">PET/optical &middot; multi-tumor models</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Photodynamic theranostic agents for resistant tumors</p>
-								<p class="al-latest__meta">PDT payload &middot; melanoma models <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Chelate-free gadolinium-loaded TiO₂ nanoparticles for MRI</p>
+								<p class="al-latest__meta">MRI contrast &middot; stable nanoplatform</p>
 							</li>
 							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Cherenkov-excited probes for radiotherapy guidance</p>
-								<p class="al-latest__meta">Radioluminescent &middot; with Radiation Oncology <!-- [PLACEHOLDER] --></p>
+								<p class="al-latest__title">Thio-stabilized gold nanoparticles for NIR fluorescence detection</p>
+								<p class="al-latest__meta">Multifunctional &middot; optical imaging</p>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Column 3: Cyanine dye chemistry -->
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">Dye Chemistry</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Copper-catalyzed covalent dimerization of NIR fluorescent cyanine dyes</p>
+								<p class="al-latest__meta">Probe engineering &middot; pharmacokinetic optimization</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Side-chain modification of collagen-targeting peptide to prevent dye aggregation</p>
+								<p class="al-latest__meta">Photochemistry &middot; structural biology</p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Non-invasive NIR probe for monitoring arthritis treatment response</p>
+								<p class="al-latest__meta">Tyrosine-phosphorylated proteins &middot; in vivo</p>
 							</li>
 						</ul>
 					</div>
@@ -213,7 +213,7 @@ get_header();
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="omi-pubs-heading">Selected Publications</h2>
 					<p class="al-inner-section__lead">
-						Representative papers from the lab's probe-chemistry and molecular-imaging program. <!-- [PLACEHOLDER] all citations below pending verification. -->
+						Representative papers from the lab's probe-chemistry and molecular-imaging program.
 					</p>
 				</div>
 
@@ -225,52 +225,52 @@ get_header();
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Self-quenching NIR fluorescent probes for tumor imaging</p>
-									<p class="al-latest__meta">Nature Chemistry &middot; 2024 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Selective imaging of solid tumours via the calcium-dependent high-affinity binding of cyclic peptide to phosphorylated Annexin A2</p>
+									<p class="al-latest__meta">Nature Biomedical Engineering &middot; 2020</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Cyanine dyes with extended pharmacokinetics for deep-tissue imaging</p>
-									<p class="al-latest__meta">J. Am. Chem. Soc. &middot; 2023 <!-- [PLACEHOLDER] --></p>
-								</a>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 2: Activatable & targeted -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Activatable &amp; Targeted</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Activatable cyanines for protease imaging in solid tumors</p>
-									<p class="al-latest__meta">Bioconjugate Chemistry &middot; 2024 <!-- [PLACEHOLDER] --></p>
-								</a>
-							</li>
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Receptor-targeted NIR probes for image-guided cancer staging</p>
-									<p class="al-latest__meta">Molecular Imaging &middot; 2022 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Near infrared fluorophore specific for annexin A2 identifies peripheral nerve injury</p>
+									<p class="al-latest__meta">Frontiers in Cell and Developmental Biology &middot; 2026</p>
 								</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Column 3: Theranostics & multimodal -->
+					<!-- Column 2: Targeted &amp; multimodal -->
 					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Theranostics &amp; Multimodal</p>
+						<p class="al-latest__col-heading">Targeted &amp; Multimodal</p>
 						<ul class="al-latest__list">
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Theranostic nanoplatforms for combined imaging and therapy</p>
-									<p class="al-latest__meta">ACS Nano &middot; 2023 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Development of New CD38 Targeted Peptides for Cancer Imaging</p>
+									<p class="al-latest__meta">Molecular Imaging and Biology &middot; 2024</p>
 								</a>
 							</li>
 							<li class="al-latest__item">
 								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Dual-modality NIR/PET agents for clinical translation</p>
-									<p class="al-latest__meta">Theranostics &middot; 2021 <!-- [PLACEHOLDER] --></p>
+									<p class="al-latest__title">Side-chain modification of collagen-targeting peptide prevents dye aggregation</p>
+									<p class="al-latest__meta">J. Photochem. Photobiol. A &middot; 2022</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Column 3: Theranostics & nanoparticles -->
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">Theranostics &amp; Nanoparticles</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Cancer-targeted pro-theranostic bi-metallic organo-coordination nanoparticles</p>
+									<p class="al-latest__meta">Theranostics &middot; 2025</p>
+								</a>
+							</li>
+							<li class="al-latest__item">
+								<a href="<?php echo $url_publications; ?>">
+									<p class="al-latest__title">Non-invasive monitoring of arthritis treatment response via targeting of tyrosine-phosphorylated proteins</p>
+									<p class="al-latest__meta">Arthritis Research &amp; Therapy &middot; 2021</p>
 								</a>
 							</li>
 						</ul>
