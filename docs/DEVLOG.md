@@ -53,7 +53,7 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 
 ### Active work
 
-**v2.0 full visual redesign committed.** Home page: cinematic expanding pillar panels (CSS flex), Syne display font, neon phosphorescent accent, scroll reveal on all sections, counter animation on stats, diagonal clip-path transitions between sections. All 9 page templates now complete including Contact and Media.
+**v2.2 editorial density pass.** Home page restructured for content density: hero gained an inline credentials strip; standalone Numbers section folded inline into PI as a thin stats band; Blog section replaced with a 3-column **Latest from the Lab** (Recent Publications / In the News / From the Blog); new **Featured Research** editorial block between Pillars and PI; Affiliations compressed into a tight closing band. Section headings now left-aligned editorial (no centered teal underline). Header is white on all pages.
 
 ### Blocked / pending decisions
 
@@ -108,6 +108,31 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-17 CST — Editorial density pass; home page restructure (theme v2.2.0)
+
+**Author:** Claude (Opus 4.7, 1M context) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **Home page structure rebuilt for editorial density** (`front-page.php`, `style.css`): Section flow is now **Hero → Pillars → Featured Research → PI+Stats → Latest from the Lab → Affiliations**. The standalone dark "Lab in Numbers" section is gone — its four stats now live as a thin border-top/bottom band inside the PI section. The Blog cards section is replaced by a 3-column **Latest from the Lab** grid (Recent Publications · In the News · From the Blog) with dense list-style rows separated by `1px var(--al-border)` hairlines. A new **Featured Research** section (editorial 5fr/6fr 2-col, image left, copy right) sits between Pillars and PI. Hero now has an inline credentials strip (`<strong>300+</strong> Publications · …`) below the buttons, with a top border separator.
+2. **Section heading restyle**: removed centered text-align, removed the small teal `::after` underline bar, reduced size (`clamp(1.5rem, 2.6vw, 2.125rem)`), reduced font-weight (700, not 800). Section subheads no longer centered. Section heads now read as editorial column heads rather than landing-page brochure titles.
+3. **Padding reduced across the board**: Hero `calc(68px+6rem) 0 8rem` → `calc(68px+4.25rem) 0 5rem`. PI 6/5rem → 5/4.5rem. Highlight + Latest sections 5rem 0. Affiliations 4.5rem 0 → 2.5rem 0 (now a tight closing band, not a hero section). Pillar `min-height: 520px` → `420px`; panel content padding `2.5rem` → `1.875rem`.
+4. **Dead code removed**: `.al-numbers`, `.al-stat`, `.al-blog`, `.al-blog__grid`, `.al-card`, `.al-card__*` selectors and their @media responsive rules. The front-page-only counter animation JS in `functions.php` (was targeting `.al-stat__value[data-count]`) removed — no more stats with `data-count` on the page.
+
+**Why**
+Krish's feedback: "nice frame, but the website has no soul. it is too empty looking." The v2.x design was a centered-headline + spacious-subhead + sparse-content pattern repeated six times. The fix: replace abstract pillars-only content streams with **multiple concrete content streams per section** (publications, press, posts, featured research, PI bio + inline stats), and cut the spacing between/within sections by ~25–35%. The visual density now signals "this is an active research lab with real work going on" rather than "this is a brand landing page."
+
+**Watch out for**
+- The credentials strip in the hero is hardcoded in `front-page.php` and **must be kept in sync** with the same four stats now living in the PI section (`.al-pi__stats`). Editing one without the other will leave inconsistent numbers visible on the same page (they appear in hero, then again in PI).
+- The Recent Publications and In the News items in `.al-latest` are static placeholder content in `front-page.php`. The third column (From the Blog) pulls from real WP posts. When real publications and press coverage are tracked, those columns should pull from a CPT or external source — currently they're hardcoded `<li>` elements with `[link to /publications]` and `[link to /media]` respectively.
+- The Featured Research section's image is `lab-bg.jpg` (reused from the removed Numbers section). The placeholder fallback is an SVG radial-gradient block. When a real research highlight image is available, place it at `wp-content/uploads/featured-research.jpg` and update the template to point to the new file.
+- The PI inline stats use `border-top` / `border-bottom` hairlines + `border-right` between cells. The mobile breakpoint (≤960px) converts this to a 2x2 grid with bottom borders only — the responsive rules in style.css must stay in sync if columns or row count changes.
+- Affiliations is now a **closing band**, not a footer-replacement section. The site still uses Kadence's footer (footer.php from parent). The affiliations band sits between page content and the WP footer.
+
+**Next**
+Need real content: featured research image + paper title/citation, real recent-publications list, real press items. Possibly a "Featured Image of the Month" slot (lab can showcase one beautiful molecular imaging capture monthly).
 
 ---
 

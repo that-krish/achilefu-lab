@@ -2,7 +2,7 @@
 Theme Name:  Kadence Child
 Template:    kadence
 Description: Achilefu Lab child theme — custom home page and global overrides.
-Version:     2.1.0
+Version:     2.2.0
 Author:      Krish / Salmon
 */
 
@@ -99,33 +99,22 @@ body.home #inner-wrap {
 /* ── Section heading ── */
 .al-section-heading {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  font-weight: 700;
   color: var(--al-text);
-  text-align: center;
-  margin: 0 0 0.75rem;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
-/* Neon accent bar under section headings */
-.al-section-heading::after {
-  content: '';
-  display: block;
-  width: 2.25rem;
-  height: 3px;
-  background: var(--al-accent);
-  border-radius: 2px;
-  margin: 0.75rem auto 0;
-}
+.al-section-heading::after { display: none; }
 
 .al-section-subhead {
-  text-align: center;
-  font-size: 1.0625rem;
+  font-size: 0.95rem;
   color: var(--al-muted);
-  max-width: 560px;
-  margin: 0 auto 3rem;
-  line-height: 1.7;
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.65;
 }
 
 /* ── Buttons ── */
@@ -188,7 +177,7 @@ body.home #inner-wrap {
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
-  padding: calc(68px + 6rem) 0 8rem;
+  padding: calc(68px + 4.25rem) 0 5rem;
   overflow: hidden;
 }
 
@@ -241,11 +230,11 @@ body.home #inner-wrap {
 }
 
 .al-hero__sub {
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   color: rgba(255,255,255,0.62);
   max-width: 520px;
-  margin: 0 0 2.75rem;
+  margin: 0 0 2rem;
   animation: al-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: 0.38s;
 }
@@ -281,6 +270,31 @@ body.home #inner-wrap {
   color: #fff;
 }
 
+/* Credentials strip — inline below buttons */
+.al-hero__cred {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  gap: 0.5rem 2.25rem;
+  animation: al-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.7s;
+}
+
+.al-hero__cred li {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.62);
+  letter-spacing: 0.01em;
+}
+
+.al-hero__cred strong {
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+  margin-right: 0.35rem;
+}
+
 /* ─────────────────────────────────────────────────────────────
    2. RESEARCH PILLARS — Cinematic expanding panels
    Full-bleed, no container. Hover/focus expands panel via flex.
@@ -297,7 +311,7 @@ body.home #inner-wrap {
 
 .al-pillars-grid {
   display: flex;
-  min-height: 520px;
+  min-height: 420px;
 }
 
 .al-pillar-panel {
@@ -361,7 +375,7 @@ body.home #inner-wrap {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 2.5rem;
+  padding: 1.875rem;
   background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 65%);
   z-index: 2;
 }
@@ -441,28 +455,106 @@ body.home #inner-wrap {
 
 
 /* ─────────────────────────────────────────────────────────────
-   3. PI SPOTLIGHT
-   Off-white background. Editorial two-column layout, no card.
-   Diagonal top to overlap pillars.
+   3. FEATURED RESEARCH HIGHLIGHT — editorial block
 ───────────────────────────────────────────────────────────── */
-.al-pi {
-  background: var(--al-off-white);
-  padding: 6rem 0 5rem;
-  position: relative;
+.al-highlight {
+  background: #ffffff;
+  padding: 5rem 0 4.5rem;
 }
 
-
-.al-pi__inner {
+.al-highlight__inner {
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 4rem;
+  grid-template-columns: 5fr 6fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
-/* Photo — no card, just shadow + radius */
-.al-pi__photo-wrap {
-  position: relative;
+.al-highlight__media {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--al-dark);
+  box-shadow: 0 6px 28px rgba(15, 29, 42, 0.12);
 }
+
+.al-highlight__media img,
+.al-highlight__media-placeholder svg {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.al-highlight__media-placeholder { width: 100%; aspect-ratio: 4 / 3; }
+
+.al-highlight__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--al-primary);
+  margin: 0 0 0.875rem;
+}
+
+.al-highlight__title {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  color: var(--al-text);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.875rem;
+}
+
+.al-highlight__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--al-muted);
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+.al-highlight__meta-sep { opacity: 0.45; }
+
+.al-highlight__lede {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--al-muted);
+  margin: 0 0 1.5rem;
+  max-width: 540px;
+}
+
+.al-highlight__link {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--al-primary);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+
+.al-highlight__link:hover { color: var(--al-accent); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. PI SPOTLIGHT + INLINE STATS
+───────────────────────────────────────────────────────────── */
+.al-pi {
+  background: var(--al-off-white);
+  padding: 5rem 0 4.5rem;
+}
+
+.al-pi__inner {
+  display: grid;
+  grid-template-columns: 5fr 8fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.al-pi__photo-wrap { position: relative; }
 
 .al-pi__photo-wrap img,
 .al-pi__photo-placeholder {
@@ -472,8 +564,8 @@ body.home #inner-wrap {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   background: #d8e6ef;
-  max-width: 380px;
-  box-shadow: 0 20px 60px rgba(15, 29, 42, 0.20);
+  max-width: 360px;
+  box-shadow: 0 12px 40px rgba(15, 29, 42, 0.16);
 }
 
 .al-pi__photo-placeholder {
@@ -485,34 +577,22 @@ body.home #inner-wrap {
 
 .al-pi__photo-placeholder svg { width: 100%; height: 100%; }
 
-/* Neon accent bar left of photo */
-.al-pi__photo-wrap::before {
-  content: '';
-  position: absolute;
-  top: 10%;
-  bottom: 10%;
-  left: -16px;
-  width: 3px;
-  background: var(--al-accent);
-  border-radius: 2px;
-}
-
 .al-pi__eyebrow {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--al-primary);
   opacity: 0.7;
-  margin: 0 0 0.625rem;
+  margin: 0 0 0.5rem;
 }
 
 .al-pi__name {
   font-family: 'DM Sans', sans-serif !important;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(1.625rem, 2.8vw, 2.125rem);
+  font-weight: 700;
   color: var(--al-text);
-  margin: 0 0 1.375rem;
+  margin: 0 0 1rem;
   line-height: 1.1;
   letter-spacing: -0.025em;
 }
@@ -520,8 +600,8 @@ body.home #inner-wrap {
 .al-pi__badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.875rem;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
 }
 
 .al-badge {
@@ -537,11 +617,49 @@ body.home #inner-wrap {
 }
 
 .al-pi__bio {
-  font-size: 1.0625rem;
-  line-height: 1.85;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--al-muted);
-  margin: 0 0 2.25rem;
-  max-width: 580px;
+  margin: 0 0 1.5rem;
+  max-width: 620px;
+}
+
+/* Inline stats — thin band inside PI section */
+.al-pi__stats {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--al-border);
+  border-bottom: 1px solid var(--al-border);
+}
+
+.al-pi__stats li {
+  padding: 0 1rem;
+  border-right: 1px solid var(--al-border);
+}
+
+.al-pi__stats li:first-child { padding-left: 0; }
+.al-pi__stats li:last-child  { border-right: none; padding-right: 0; }
+
+.al-pi__stat-value {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--al-primary);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.25rem;
+}
+
+.al-pi__stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--al-muted);
+  line-height: 1.4;
 }
 
 .al-pi .al-btn--primary {
@@ -556,245 +674,145 @@ body.home #inner-wrap {
 
 
 /* ─────────────────────────────────────────────────────────────
-   4. LAB IN NUMBERS
-   Dark parallax section. Giant numbers, staggered reveal.
-   Diagonal top (clip into off-white PI) + diagonal bottom.
+   5. LATEST FROM THE LAB — 3-col Publications / News / Blog
 ───────────────────────────────────────────────────────────── */
-.al-numbers {
-  position: relative;
-  background-color: var(--al-dark);
-  background-image: url('/wp-content/uploads/lab-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: 7rem 0;
-  overflow: hidden;
+.al-latest {
+  background: #ffffff;
+  padding: 5rem 0;
 }
 
-.al-numbers::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(28, 51, 71, 0.95) 0%, rgba(36, 59, 74, 0.88) 100%);
-  z-index: 0;
+.al-latest__head {
+  margin-bottom: 2.5rem;
+  max-width: 720px;
 }
 
-
-.al-numbers .al-container {
-  position: relative;
-  z-index: 1;
+.al-latest__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.75rem;
 }
 
-.al-numbers__heading {
-  font-family: 'DM Sans', sans-serif;
+.al-latest__col-heading {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  text-align: center;
-  margin: 0 0 4rem;
+  color: var(--al-primary);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--al-primary);
 }
 
-.al-numbers__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+.al-latest__list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
 }
 
-.al-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.10);
-  position: relative;
+.al-latest__item { border-bottom: 1px solid var(--al-border); }
+.al-latest__item:last-child { border-bottom: none; }
+
+.al-latest__item a {
+  display: block;
+  padding: 0.875rem 0;
+  text-decoration: none;
+  color: inherit;
 }
 
-.al-stat:last-child { border-right: none; }
-
-/* Neon top accent line on each stat */
-.al-stat::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 30%;
-  right: 30%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--al-accent), transparent);
-  opacity: 0.4;
-}
-
-.al-stat__value {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 800;
-  color: var(--al-white);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.al-stat__label {
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.55;
-  max-width: 110px;
-  font-weight: 400;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   5. LATEST FROM THE LAB — Blog feed
-   Off-white background. Richer card hover (neon left border).
-───────────────────────────────────────────────────────────── */
-.al-blog {
-  background: var(--al-off-white);
-  padding: 6rem 0 5rem;
-}
-
-.al-blog__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.al-card {
-  background: var(--al-white);
-  border-radius: var(--r-card);
-  padding: 2rem 1.875rem;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-card);
-  border-left: 3px solid transparent;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-
-.al-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-5px);
-  border-left-color: var(--al-accent);
-}
-
-.al-card__meta {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--al-muted);
-  margin-bottom: 0.875rem;
-}
-
-.al-card__title {
+.al-latest__title {
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--al-text);
-  margin: 0 0 0.75rem;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
-}
-
-.al-card__title a { color: inherit; text-decoration: none; }
-.al-card__title a:hover { color: var(--al-primary); }
-
-.al-card__excerpt {
   font-size: 0.9375rem;
-  line-height: 1.72;
-  color: var(--al-muted);
-  flex: 1;
-  margin: 0 0 1.375rem;
+  font-weight: 600;
+  color: var(--al-text);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.25rem;
+  transition: color 0.15s ease;
 }
 
-.al-card__link {
-  font-size: 0.875rem;
+.al-latest__item a:hover .al-latest__title { color: var(--al-primary); }
+
+.al-latest__meta {
+  font-size: 0.75rem;
+  color: var(--al-muted);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.al-latest__more {
+  display: inline-block;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--al-primary);
   text-decoration: none;
-  display: inline-block;
-  position: relative;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: color 0.15s ease;
 }
 
-.al-card__link::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--al-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
+.al-latest__more:hover { color: var(--al-accent); }
 
-.al-card__link:hover::after { transform: scaleX(1); }
-
-.al-blog__cta { text-align: center; }
-
-.al-blog .al-btn--secondary {
-  color: var(--al-primary);
-  border-color: rgba(45, 70, 84, 0.4);
-  background: transparent;
-}
-
-.al-blog__empty {
+.al-latest__empty {
   color: var(--al-muted);
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem;
   font-style: italic;
+  font-size: 0.875rem;
+  margin: 0;
 }
 
 
 /* ─────────────────────────────────────────────────────────────
-   6. AFFILIATIONS — Dark footer strip
+   6. AFFILIATIONS — tight closing band
 ───────────────────────────────────────────────────────────── */
 .al-affiliations {
   background: var(--al-primary);
-  padding: 4.5rem 0 4rem;
+  padding: 2.5rem 0;
+}
+
+.al-affiliations__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 2.5rem;
 }
 
 .al-affiliations__label {
-  text-align: center;
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
-  margin: 0 0 2.5rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
 }
 
 .al-affiliations__logos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 2rem 4rem;
+  gap: 0.75rem 2rem;
 }
 
 .al-affiliation-item {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.02em;
-  transition: color 0.2s ease;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.01em;
+  transition: color 0.15s ease;
 }
 
-.al-affiliation-item:hover { color: rgba(255,255,255,0.65); }
+.al-affiliation-item:hover { color: rgba(255,255,255,0.9); }
 
 .al-affiliation-item img {
-  height: 36px;
+  height: 28px;
   width: auto;
-  max-width: 160px;
-  opacity: 0.3;
+  max-width: 140px;
+  opacity: 0.5;
   filter: grayscale(1) brightness(2);
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
   display: block;
 }
 
-.al-affiliation-item img:hover { opacity: 0.6; }
+.al-affiliation-item img:hover { opacity: 0.85; }
 
 /* ─────────────────────────────────────────────────────────────
    SITE HEADER
@@ -1920,6 +1938,14 @@ body.home #inner-wrap {
   .al-pillar-panel::before { transform: scaleX(0.4); opacity: 0.5; }
 }
 
+/* Highlight responsive */
+@media (max-width: 900px) {
+  .al-highlight__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 /* PI responsive */
 @media (max-width: 960px) {
   .al-pi__inner {
@@ -1927,45 +1953,39 @@ body.home #inner-wrap {
     gap: 2.5rem;
   }
   .al-pi__photo-wrap { max-width: 280px; }
-  .al-pi__photo-wrap::before { left: -10px; }
+  .al-pi__stats { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; }
+  .al-pi__stats li {
+    border-right: none;
+    border-bottom: 1px solid var(--al-border);
+    padding: 0.75rem 0;
+  }
+  .al-pi__stats li:nth-last-child(-n+2) { border-bottom: none; }
+  .al-pi__stats li:nth-child(2n) { padding-left: 1rem; }
+  .al-pi__stats li:nth-child(2n+1) { padding-left: 0; }
 }
 
-/* Numbers responsive */
-@media (max-width: 960px) {
-  .al-numbers__grid { grid-template-columns: repeat(2, 1fr); }
-  .al-stat { border-right: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); }
-  .al-stat:nth-child(2n) { border-right: none; }
-  .al-stat:nth-child(3), .al-stat:nth-child(4) { border-bottom: none; }
+/* Latest responsive */
+@media (max-width: 900px) {
+  .al-latest__grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-/* Hero */
+/* Hero / sections small */
 @media (max-width: 640px) {
-  .al-hero { padding: calc(68px + 3.5rem) 0 5rem; }
+  .al-hero { padding: calc(68px + 3rem) 0 4rem; }
   .al-hero__actions { flex-direction: column; align-items: flex-start; }
   .al-hero__actions .al-btn { width: 100%; text-align: center; }
-}
+  .al-hero__cred { gap: 0.4rem 1.5rem; }
 
-/* PI small */
-@media (max-width: 640px) {
-  .al-pi { padding: 5rem 0 3.5rem; }
-}
-
-/* Numbers small */
-@media (max-width: 640px) {
-  .al-numbers { padding: 5rem 0 6rem; }
-  .al-numbers__grid { grid-template-columns: 1fr 1fr; }
-  .al-stat { padding: 1.75rem 1rem; }
-  .al-stat__value { font-size: clamp(2.25rem, 8vw, 3.5rem); }
-}
-
-/* Blog small */
-@media (max-width: 640px) {
-  .al-blog { padding: 5rem 0 3.5rem; }
+  .al-highlight { padding: 3.5rem 0 3rem; }
+  .al-pi { padding: 3.5rem 0 3rem; }
+  .al-latest { padding: 3.5rem 0; }
+  .al-affiliations { padding: 2rem 0; }
+  .al-affiliations__inner { flex-direction: column; gap: 1rem; }
 }
 
 /* Disable fixed background attachment on mobile (iOS Safari bug) */
 @media (max-width: 768px) {
-  .al-hero, .al-numbers { background-attachment: scroll; }
+  .al-hero { background-attachment: scroll; }
 }
 
 /* Inner pages responsive */
@@ -2011,7 +2031,6 @@ body.home #inner-wrap {
 ───────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .al-btn,
-  .al-card,
   .al-pillar-panel,
   .al-pillar-panel__desc,
   .al-pillar-panel__link,
@@ -2021,6 +2040,7 @@ body.home #inner-wrap {
   .al-hero__headline,
   .al-hero__sub,
   .al-hero__actions,
+  .al-hero__cred,
   .al-site-header,
   .al-nav-label,
   .al-contact-cta,
@@ -2029,16 +2049,13 @@ body.home #inner-wrap {
   .al-hamburger span,
   .al-feature-card,
   .al-research-nav-card,
-  .al-team-card,
-  .al-card__link::after {
+  .al-team-card {
     transition: none !important;
     animation: none !important;
   }
 
-  .al-btn:hover,
-  .al-card:hover { transform: none; }
-
-  .al-hero, .al-numbers { background-attachment: scroll; }
+  .al-btn:hover { transform: none; }
+  .al-hero { background-attachment: scroll; }
 
   .al-pillar-panel { flex: 1 !important; }
   .al-pillar-panel__desc,

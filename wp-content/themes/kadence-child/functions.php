@@ -74,51 +74,6 @@ add_action( 'wp_footer', function () {
 	<?php
 }, 18 );
 
-// ── Front-page only JS ─────────────────────────────────────────────────────────
-
-add_action( 'wp_footer', function () {
-	if ( ! is_front_page() ) return;
-	?>
-	<script>
-	(function () {
-
-		// ── Stat counter animation ─────────────────────────────────────────────
-		function animateCounter(el) {
-			var target   = parseInt(el.dataset.count, 10);
-			var suffix   = el.dataset.suffix || '';
-			var duration = 1800;
-			var start    = performance.now();
-			function tick(now) {
-				var elapsed  = now - start;
-				var progress = Math.min(elapsed / duration, 1);
-				var eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-				var current  = Math.round(eased * target);
-				el.textContent = current.toLocaleString() + suffix;
-				if (progress < 1) requestAnimationFrame(tick);
-			}
-			// Reset to 0 before animating (fallback value shown until IO fires)
-			el.textContent = '0' + suffix;
-			requestAnimationFrame(tick);
-		}
-
-		var stats = document.querySelectorAll('.al-stat__value[data-count]');
-		if (stats.length && 'IntersectionObserver' in window) {
-			var counterIO = new IntersectionObserver(function (entries) {
-				entries.forEach(function (entry) {
-					if (entry.isIntersecting) {
-						animateCounter(entry.target);
-						counterIO.unobserve(entry.target);
-					}
-				});
-			}, { threshold: 0.6 });
-			stats.forEach(function (el) { counterIO.observe(el); });
-		}
-
-	})();
-	</script>
-	<?php
-}, 21 );
-
 // ── Mobile nav JS ──────────────────────────────────────────────────────────────
 
 add_action( 'wp_footer', function () {
