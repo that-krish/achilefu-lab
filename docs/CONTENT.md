@@ -13,8 +13,6 @@ Achilefu Lab
 |---|---|
 | Research | Mission & Vision |
 | | Optical & Molecular Imaging |
-| | Image-Guided Surgery |
-| | Bench to Bedside |
 | Team | Meet the PI |
 | | Meet the Team |
 | Updates | Media |
@@ -50,14 +48,6 @@ Pioneering optical and molecular imaging technologies — from molecular probe t
 
 **Row 1 — Title:** Optical & Molecular Imaging
 **Description:** Near-infrared fluorescence platforms that reveal disease at the molecular level, enabling detection that the naked eye cannot achieve.
-**Link:** Learn more →
-
-**Row 2 — Title:** Image-Guided Surgery
-**Description:** Wearable cancer-imaging systems and fluorescent goggles for real-time visualization during oncologic surgery — used in operating rooms worldwide.
-**Link:** Learn more →
-
-**Row 3 — Title:** Bench to Bedside
-**Description:** End-to-end development — from novel molecular probes through preclinical validation to clinical translation and patient care.
 **Link:** Learn more →
 
 ---
@@ -140,14 +130,6 @@ Our vision is a future in which a surgeon can see every cancer cell in real time
 
 **Card 1 — Title:** Optical & Molecular Imaging
 **Description:** Custom-engineered fluorescent probes and near-infrared agents that target specific biological molecules — enabling deep-tissue, real-time imaging of cancer, neurodegeneration, and infection.
-**Link:** Explore platform
-
-**Card 2 — Title:** Image-Guided Surgery
-**Description:** Real-time intraoperative fluorescence imaging systems that let surgeons visualize tumor boundaries, nerve structures, and vascular anatomy — reducing margin errors and improving patient outcomes.
-**Link:** Explore platform
-
-**Card 3 — Title:** Bench to Bedside
-**Description:** Translating laboratory discoveries into FDA-cleared devices and clinical-grade agents through rigorous preclinical validation, IND filings, and active clinical trials at UT Southwestern and partner centers.
 **Link:** Explore platform
 
 ---
@@ -252,146 +234,6 @@ Imaging vulnerable atherosclerotic plaques and mapping myocardial viability usin
 
 ---
 
----
-
-## PAGE: Research → Image-Guided Surgery
-*Slug: /research/image-guided-surgery*
-
----
-
-### Hero
-
-**Eyebrow:** Research Platform
-**Title:** Real-Time Vision for the Operating Room
-**Subheading:** We develop fluorescence-guided surgery platforms that give surgeons the ability to see, in real time, exactly where cancer ends and healthy tissue begins — reducing incomplete resections and improving patient outcomes.
-
----
-
-### The Problem We Solve
-
-**Section heading:** The Problem We Solve
-
-Cancer surgery has an Achilles' heel: surgeons operate under white light, using visual and tactile cues refined over centuries to distinguish tumor from healthy tissue. Yet cancer cells can infiltrate beyond visible margins. Positive surgical margins — leaving cancer cells behind — occur in 20–40% of solid tumor resections depending on the cancer type and are the leading cause of local recurrence.
-
-The answer is not better training or better hands — surgeons are already exceptional. The answer is better information: a real-time molecular map of the tumor boundary that reveals what the eye cannot see.
-
----
-
-### How It Works
-
-**Section heading:** How It Works
-**Lead:** Three components working in concert: a targeted agent, a camera system, and real-time image processing.
-
-**Card 1 — Title:** 1 — Tumor-Targeted Agent
-**Description:** A near-infrared fluorescent probe is administered before surgery. It homes to and accumulates in tumor tissue while clearing from healthy tissue, creating a high-contrast molecular signal that persists throughout the procedure.
-
-**Card 2 — Title:** 2 — Fluorescence Camera System
-**Description:** Custom-built or adapted NIR-capable cameras illuminate the operative field and detect fluorescence emission invisible to the naked eye. Our systems overlay the fluorescent signal on the conventional white-light view in real time.
-
-**Card 3 — Title:** 3 — Intraoperative Feedback
-**Description:** Surgeons see a merged display: normal tissue in white light, fluorescent tumor signal highlighted in a contrasting color. Residual disease that would otherwise remain is immediately visible — before the patient is closed.
-
----
-
-### Clinical Applications
-
-**Section heading:** Clinical Applications
-
-**Breast Cancer.**
-Delineating tumor margins in breast-conserving surgery — reducing the re-excision rate and sparing patients a second operation while improving cosmetic outcomes.
-
-**Brain Tumors.**
-Glioma boundaries are notoriously difficult to define visually. Fluorescence guidance enables more complete resection of high-grade gliomas while preserving eloquent cortex adjacent to the tumor.
-
-**Colorectal Cancer.**
-Real-time assessment of anastomotic perfusion and lymph node mapping to guide oncological resection and reduce leak complications.
-
-**Reconstructive & Plastic Surgery.**
-Perforator mapping and flap perfusion assessment — providing surgeons objective blood-flow data to plan and verify tissue transfers intraoperatively.
-
-**Nerve Visualization.**
-Probes selective for peripheral nerve tissue protect against inadvertent injury during oncological, orthopedic, and parotid gland surgeries.
-
----
-
-### CTA Banner
-
-**Heading:** Clinical or Industry Partnership
-**Body:** We work with surgical teams and medical device companies to validate and deploy image-guided surgery platforms. Contact us to discuss a collaboration.
-**Button:** Get in Touch
-
----
-
----
-
-## PAGE: Research → Bench to Bedside
-*Slug: /research/bench-to-bedside*
-
----
-
-### Hero
-
-**Eyebrow:** Research Platform
-**Title:** From Discovery to Patient Impact
-**Subheading:** A discovery is only as valuable as the patients it reaches. We build the regulatory, commercial, and clinical pathways that carry our optical technologies from laboratory proof-of-concept to approved medical tools.
-
----
-
-### Our Translation Philosophy
-
-**Section heading:** Our Translation Philosophy
-
-Most academic laboratories generate knowledge. We build with it. From the moment a probe enters our design pipeline, we think about the patient who will one day receive it — what disease are they fighting, what does their surgeon or oncologist need, and what regulatory and manufacturing standards will the agent have to meet?
-
-This forward-looking mindset shapes every decision: we select disease targets with defined unmet clinical need, design agents with formulation and stability in mind from the outset, and partner with clinical investigators at UT Southwestern Medical Center to validate efficacy in relevant patient populations as early as possible.
-
----
-
-### The Translation Pathway
-
-**Section heading:** The Translation Pathway
-**Lead:** A disciplined, stage-gated process from chemistry to clinic.
-
-**Card 1 — Title:** Lead Optimization
-**Description:** Iterative structure–activity relationship studies to optimize binding affinity, selectivity, pharmacokinetics, and optical properties before committing to in vivo work.
-
-**Card 2 — Title:** Preclinical Validation
-**Description:** GLP-compliant toxicology and efficacy studies in validated disease models, providing the data package required for IND filing with the FDA.
-
-**Card 3 — Title:** IND & Regulatory Filing
-**Description:** Preparation and submission of Investigational New Drug applications, with engagement of the FDA's Division of Imaging and Radiation Medicine for imaging agent pathways.
-
-**Card 4 — Title:** Phase I / II Clinical Trials
-**Description:** First-in-human safety and dosing studies followed by efficacy trials, conducted in partnership with surgical oncologists and radiologists at UTSW and affiliated academic medical centers.
-
-**Card 5 — Title:** Commercialization & Licensing
-**Description:** Working with the UT Southwestern Technology Transfer office and industry partners to license or spin out technologies — ensuring sustainable pathways for broad patient access.
-
-**Card 6 — Title:** Post-Market Surveillance
-**Description:** Continued outcomes monitoring for approved agents and devices, with data feeding back to improve next-generation probes and identify new clinical indications.
-
----
-
-### Innovation Portfolio
-
-**Section heading:** Innovation Portfolio
-
-Over 25 years, the lab has built one of the most productive translational track records in biomedical optics: more than 70 issued or pending patents, multiple INDs filed with the U.S. FDA, and licensing agreements with medical device and pharmaceutical companies. Several technologies developed here are in active clinical evaluation at UT Southwestern and partner institutions.
-
-This portfolio is made possible by sustained funding from the National Institutes of Health, the National Science Foundation, the Department of Defense, and industry sponsors — and by the decades of relationship-building between our bench scientists and the clinical community at UT Southwestern Medical Center.
-
----
-
-### CTA Banner
-
-**Heading:** Licensing & Partnership Enquiries
-**Body:** Industry partners, clinical trial sites, and investors — contact us to learn about our translational portfolio and ongoing programs.
-**Button:** Get in Touch
-
----
-
----
-
 ## PAGE: Team
 *Slug: /team*
 
@@ -466,7 +308,7 @@ NAE Member · NAM Member · UTSW BME Chair · Simmons Cancer Center
 
 **Section heading:** Biography
 
-Dr. Samuel Achilefu is a world-renowned scientist, inventor, and physician-engineer whose career has been defined by a singular pursuit: giving physicians and scientists the ability to see disease with molecular precision. He joined UT Southwestern Medical Center in 1999 and has built one of the most productive biomedical optics laboratories in the world, founding the institution's optical imaging program and serving as its inaugural Chair of Biomedical Engineering.
+Dr. Samuel Achilefu is a world-renowned scientist, inventor, and physician-engineer whose career has been defined by a singular pursuit: giving physicians and scientists the ability to see disease with molecular precision. After a long tenure at Washington University in St. Louis, where he led foundational work in near-infrared molecular imaging, he was recruited to UT Southwestern Medical Center as the inaugural Chair of Biomedical Engineering, where he holds the Lyda Hill Distinguished University Chair.
 
 His research spans the full spectrum from fundamental photochemistry — designing novel near-infrared fluorescent probes and activatable molecular sensors — to translational engineering, creating FDA-compatible devices and agents that have entered clinical evaluation. This breadth is rare: Dr. Achilefu is equally at home synthesizing a new cyanine dye and advising a surgical team on intraoperative imaging protocols.
 

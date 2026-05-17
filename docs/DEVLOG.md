@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6). Theme v2.3.3.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Opus 4.7). Theme v2.4.
 
 ### Status by area
 
@@ -37,16 +37,15 @@ This file is the single source of truth for *implementation state and decision h
 | Core pages | ✅ Done | 7 WP pages (IDs 6–12). Home = static front page. Blog = posts page. |
 | Navigation | ✅ Done | `header.php` override; white header on all pages (consistent); 500ms hover-delay on desktop. |
 | Fixed header | ✅ Done | `#masthead { position: fixed !important }`. Hero pads `calc(68px + 4.25rem)` to clear it. |
-| Home page (v2.2 editorial) | ✅ Done | Hero (+ inline credentials strip) → Pillars (cinematic flex-expand) → Featured Research → PI (with inline stats band) → Latest from the Lab (3-col: Publications · News · Blog) → Affiliations (tight closing band). |
-| Hero flare effect | ✅ Done | Decorative fluorescent-molecule field: 14 small teal dots scattered behind hero content; cursor proximity excites them. Direct visual reference to the lab's NIR fluorescence imaging. Disabled on touch + reduced-motion. |
-| Inner pages — all 9 done | ✅ Done | Research landing, 3 research sub-pages (Optical Imaging, Image-Guided Surgery, Bench-to-Bedside), PI, Team, Lab Calendar, Contact, Media — all share v2.2 editorial density language. |
+| Home page (v2.3.5 editorial) | ✅ Done | Hero (+ inline credentials strip) → PI (with inline stats band) → Latest from the Lab (2-col: Publications · Blog) → Affiliations (tight closing band). Pillars section removed v2.3.5 — single-platform setup didn't justify a 3-panel grid. |
+| Hero flare effect | ✅ Done (v2.4) | Decorative fluorescent-molecule field scattered behind hero content. **JS-generated, density-driven** (px² per dot target, debounced resize regen). Two modes: desktop = cursor-reactive proximity glow; touch = CSS auto-blink keyframes matched to the desktop max-intensity endpoints. Hero is now `min-height: 100svh` with flex-centered content + a bouncing scroll-cue chevron to `#al-pi`. |
+| Inner pages — 7 done | ✅ Done | Research landing, Optical Imaging sub-page, PI, Team, Lab Calendar, Contact, Media — all share v2.x editorial density language. (IGS + B2B sub-pages removed v2.3.4 — fabricated platforms, not on real lab site.) |
 | Media page | ✅ Visual showcase | Rebuilt as image showcase (not press): hero featured figure + Research Imagery (9) + Lab Life (8) + Conferences (5) + In the OR (4). 27 placeholder SVG figures with varied aspect ratios. |
 | Logo / wordmark | 🟡 Placeholder | CSS wordmark in `header.php`. Real SVG TBD. |
 | Contact form | 🟡 Placeholder | WPForms installed; disabled mock form rendered. Activate by uncommenting `do_shortcode('[wpforms id="X"]')` in `page-contact.php`. |
 | Team member bios | 🟡 Empty arrays | Fabricated names removed; `$team` arrays empty. Real roster needed from lab admin. |
 | Lab image gallery | 🟡 Placeholder SVGs | 27 SVG placeholders on `/media`. Replace with real photos via `.al-media-figure` pattern. |
-| Recent Publications | ✅ Done | Replaced all placeholder publications on home, research landing, all 3 sub-pages, and PI page with verified real papers from labs.utsouthwestern.edu/achilefu-lab. |
-| In the News | 🟡 Placeholder + 3 real | Real anchors: NAE 2025, NAM 2021, UTSW chair 2024. Rest are placeholders. |
+| Recent Publications | ✅ Done | Verified real papers on home, research landing, optical-imaging sub-page, and PI page (from labs.utsouthwestern.edu/achilefu-lab). |
 | Lab Calendar | 🟡 Template built | `.al-calendar-frame` placeholder waiting for Google Calendar embed URL. |
 | Page Publications template | ⏹ Not built | Page exists in WP (ID 8) but no custom template; falls back to Kadence default. |
 | Plugins | 🟡 Installed, not configured | Yoast / WPForms / W3TC at defaults. |
@@ -57,7 +56,7 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 
 ### Active work
 
-**PI academy elections corrected.** v2.3.3. NAM year fixed 2024→2021; NAE year fixed 2018→2025 (verified against UTSW newsroom). Order in awards list updated so NAE (most recent) appears first. Earlier: full placeholder purge complete (v2.3.2) — all `[PLACEHOLDER]`/`[VERIFY]` tags removed, fabricated team member names cleared, bench-to-bedside rewritten from source (Perspective pipeline), h-index=84 confirmed, real collaborators populated.
+**Fabricated content removed.** v2.3.5. Bench-to-Bedside and Image-Guided Surgery sub-pages deleted (neither is a research platform on the real UTSW site) — both PHP templates and WP page rows (IDs 21, 22) deleted. Featured Research home block and "In the News" home column removed (placeholder/fabricated content). v2.3.5: also removed the home "Research Pillars" section entirely (single-panel grid didn't justify the layout); home page is now Hero → PI → Latest → Affiliations. Nav dropdown for Research lists only Mission & Vision + Optical & Molecular Imaging. PI bio in CONTENT.md fixed: the "joined UTSW in 1999" claim was wrong — Achilefu was at Washington University until ~2023. Earlier: v2.3.3 NAE/NAM years corrected, v2.3.2 full placeholder purge.
 
 ### Blocked / pending decisions
 
@@ -66,7 +65,6 @@ Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing
 - [ ] Real molecular imaging + lab life photos for `/media` (replace 27 SVG placeholders).
 - [x] Real recent publications list — replaced with verified papers from UTSW source site.
 - [ ] Full publications page template (`page-publications.php`) — currently Kadence default.
-- [ ] Real press coverage entries (replace placeholder "In the News" items on home).
 - [ ] WPForms contact form: create form, then activate `[wpforms id="X"]` shortcode in `page-contact.php`.
 - [ ] Google Calendar embed URL for Lab Calendar page.
 - [ ] `page-publications.php` template — Publications page exists in WP but renders Kadence default.
@@ -116,6 +114,70 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-17 CST — Hero overhaul: full-viewport, density-driven molecule field, touch auto-blink, scroll cue (theme v2.4)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **front-page.php:** Removed the static PHP `mt_srand` / nested-loop molecule generator. `.al-hero__molecules` now ships as an empty `<div>` and is populated entirely in JS. Added `.al-hero__scroll` chevron link (polyline SVG, `href="#al-pi"`) inside the hero. Gave the PI section `id="al-pi"` so the anchor lands.
+- **functions.php:** Rewrote the hero JS as a single IIFE that does both dot generation and cursor excitation. Measures `hero.getBoundingClientRect()`, computes `target = clamp(MIN_DOTS, area / DENSITY, MAX_DOTS)`, then creates the `<span>`s with random size/position and **two** random `animation-delay` values (one per animation in the CSS shorthand — breathe 7s and blink 2.6s — so phases never sync). Debounced 180ms `resize` regenerates the field. Cursor proximity logic only binds when `(hover: hover) and (pointer: fine)` matches. Density knobs at the top of the IIFE:
+  - Desktop: `DENSITY = 6500 px²/dot`, `MIN = 40`, `MAX = 340`
+  - Touch:   `DENSITY = 6000 px²/dot`, `MIN = 40`, `MAX = 100`
+- **style.css:**
+  - **Hero sizing.** `.al-hero` switched from content-height padding to `min-height: 100vh; min-height: 100svh` + `display: flex; align-items: center`. Existing `padding-top: calc(68px + 4.25rem)` retained to clear the fixed header. Empty space distributes evenly above/below the headline at any viewport.
+  - **Scroll chevron.** `.al-hero__scroll` styled absolute bottom-center, with an 1.8s vertical bounce keyframe and `:hover/:focus-visible` brightening. `html { scroll-behavior: smooth }` added globally. Reduced-motion turns off both bounce and smooth scroll.
+  - **Touch auto-blink.** New `@keyframes al-molecule-blink` with endpoints (`opacity 0.20→0.98`, `box-shadow 0 0 8px 0 rgba(...,0.45) → 0 0 30px 7px rgba(...,0.90)`) that match the desktop max-cursor-intensity values exactly. `@media (hover: none), (pointer: coarse)` adds the blink animation alongside the existing breathe.
+  - **Faster cursor reaction.** `.al-molecule` transition shortened from `opacity 0.18s, box-shadow 0.22s` → `opacity 0.08s, box-shadow 0.10s`.
+  - Removed the now-dead `.al-molecule--desk-only` rule.
+- **DESIGN.md:** Layout diagram updated to mark hero as `100svh`. New "Hero sizing" section. "Hero flare effect" section rewritten to document the density-driven generation, density table, and two modes (cursor vs auto-blink).
+
+**Why**
+Three small UX upgrades requested in one session: (1) more dots and a snappier cursor reaction; (2) mobile/iPad parity — touch users had no equivalent for the cursor flare, so the dots felt dead; (3) hero should always be a full-viewport "champion" frame regardless of screen size, with a scroll cue so users know there's more below. Once dots were both cursor-driven (desktop) and time-driven (touch), making the count auto-scale to viewport area meant the visual density stays consistent on a 4K monitor, a 13" laptop, and an iPhone — no more "too sparse" 4K screens or "too dense" small phones.
+
+The blink endpoints exactly match the desktop max-intensity calc(), so a dot at the blink peak looks identical to a dot the cursor is hovering on desktop — same brightness across both modes.
+
+**Watch out for**
+- Field is now decorative-only with **no PHP fallback**. JS-off browsers see an empty hero. Acceptable because content (headline, CTA, credentials) is fully intact server-side.
+- Each dot's inline style passes `animation-delay: <breathe>s, <blink>s` (a list of two values). This relies on the CSS `animation` shorthand listing breathe first and blink second on touch — if the order in the touch media query ever flips, swap the JS order too or breathe/blink phases will randomize against the wrong animations.
+- The `id="al-pi"` on `.al-pi` is what the chevron anchors to. If the PI section is ever restructured or renamed, update the `href="#al-pi"` in the hero or the smooth-scroll target breaks.
+- Desktop `MAX_DOTS = 340` is a perf ceiling, not a target. 340 dots × cursor rAF + 30px box-shadow blur is fine on modern hardware but lower it if testing on a Chromebook reveals jank.
+- Resize debounce destroys + recreates DOM nodes — random positions reshuffle on every resize. Intentional (otherwise old dots cluster at one corner) but means if a user is actively resizing the window, the field "twinkles into a new arrangement" every 180ms.
+
+**Next**
+- None pending. Self-contained UX polish.
+
+---
+
+### 2026-05-17 CST — Fabricated content purge: drop IGS + B2B pages, Featured Research, In the News, Pillars (theme v2.3.5)
+
+**Author:** Claude (Opus 4.7) working with Krish   ·   **Branch:** main
+
+**What changed**
+- **Deleted PHP templates:** `page-bench-to-bedside.php`, `page-image-guided-surgery.php`.
+- **Deleted WP pages:** post IDs 21 (`image-guided-surgery`) and 22 (`bench-to-bedside`) removed from DB via `wp post delete 21 22 --force` (LocalWP-bundled WP-CLI).
+- **header.php:** Research dropdown reduced to Mission & Vision + Optical & Molecular Imaging.
+- **front-page.php:** Removed IGS and B2B pillar panels; then in v2.3.5 removed the entire pillars section. Removed "Featured Research" highlight section. Removed "In the News" column from "Latest from the Lab" (now 2-col: Pubs + Blog). Dead `$url_media`, `$lab_bg_*` vars removed. Section comment numbering renormalized. Home page is now Hero → PI → Latest → Affiliations.
+- **page-research.php:** Removed IGS and B2B cards from "Our Research Platform" (singular), and their columns from "Recent Breakthroughs". Lead text updated.
+- **page-optical-imaging.php:** Removed `$url_igs` and `$url_b2b` vars + the entire "Related Research" cross-link section.
+- **style.css:** Removed dead `.al-highlight*` (Featured Research) and `.al-pillar*` (Pillars) CSS — main blocks + responsive + reduced-motion overrides. ~280 lines removed.
+- **CONTENT.md:** Nav table reduced; "What We Do" rows 2 + 3 removed; Research page cards 2 + 3 removed; entire IGS + B2B page content sections removed. PI bio rewritten — replaced the false "joined UT Southwestern Medical Center in 1999" with an accurate Washington University → UTSW recruitment sentence.
+- **DESIGN.md:** §5 layout diagram updated (no Pillars, no Featured Research, no In the News, 2-col Latest). Inner pages count 9 → 7. Superseded entries added for the removed home blocks and platform pages.
+
+**Why**
+Compared the existing site against the real UTSW lab page at labs.utsouthwestern.edu/achilefu-lab. The real site lists only **Innovative Molecular Imaging** and **Lab Equipment** under Research — there is no "Image-Guided Surgery" or "Bench to Bedside" platform. Both sub-pages were fabricated breakouts that the lab does not claim. The "Featured Research" block on the home page was placeholder content (cyclic-peptide Annexin A2 paper as a generic anchor, backed by `lab-bg.jpg` decorative image) — not a real curated highlight. The "In the News" column was 3 real anchors + invented filler. The 3-panel "Research Pillars" grid presumed three research areas; with only one real platform the section was removed entirely rather than rendered as a lonely single-panel grid.
+
+The 1999 UTSW join-date claim contradicted page-pi.php's own Appointments list (which correctly shows WashU "prior" and UTSW "2022–present").
+
+**Watch out for**
+- `lab-bg.jpg` is no longer referenced by any template. Safe to delete from `wp-content/uploads/` if not used elsewhere.
+- "In the News" anchors (NAE 2025, NAM 2021, UTSW chair 2024) still live on the PI page Awards/Honors list — they're not lost, just no longer surfaced on the home page.
+- WP-CLI path on this Mac LocalWP install: `/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar`; PHP at `/Users/krish/Library/Application Support/Local/lightning-services/php-8.2.29+0/bin/darwin-arm64/bin/php`; per-site php.ini at `/Users/krish/Library/Application Support/Local/run/3k9Zi_voT/conf/php/php.ini`. Run ID may change if the site is recreated.
+
+**Next**
+- Consider adding **Lab Equipment** and **Collaborations** pages — both exist on the real UTSW site but are missing here.
 
 ---
 

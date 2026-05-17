@@ -55,8 +55,6 @@ defined( 'ABSPATH' ) || exit;
 						<a href="<?php echo al_page_url( 'research' ); ?>" role="menuitem">Mission &amp; Vision</a>
 						<div class="al-dropdown-divider" role="separator"></div>
 						<a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" role="menuitem">Optical &amp; Molecular Imaging</a>
-						<a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" role="menuitem">Image-Guided Surgery</a>
-						<a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" role="menuitem">Bench to Bedside</a>
 					</div>
 				</div>
 

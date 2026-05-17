@@ -1,8 +1,7 @@
 <?php
 /**
  * Home page template — Achilefu Lab
- * v2.2 — denser editorial layout: inline credentials, featured research,
- *         PI w/ inline stats, 3-col "Latest from the Lab".
+ * v2.3.5 — Hero · PI · Latest (Pubs + Blog) · Affiliations.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,17 +12,12 @@ $url_research     = esc_url( get_permalink( get_page_by_path( 'research' ) ) );
 $url_contact      = esc_url( get_permalink( get_page_by_path( 'contact' ) ) );
 $url_team         = esc_url( get_permalink( get_page_by_path( 'team' ) ) );
 $url_publications = al_page_url( 'publications' );
-$url_media        = al_page_url( 'media' );
 $url_blog         = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
 
 $uploads      = wp_get_upload_dir();
 $pi_file      = $uploads['basedir'] . '/dr-achilefu.jpg';
 $pi_url       = $uploads['baseurl'] . '/dr-achilefu.jpg';
 $pi_has_photo = file_exists( $pi_file );
-
-$lab_bg_file = $uploads['basedir'] . '/lab-bg.jpg';
-$lab_bg_url  = $uploads['baseurl'] . '/lab-bg.jpg';
-$has_lab_bg  = file_exists( $lab_bg_file );
 ?>
 
 <div class="al-home">
@@ -36,21 +30,9 @@ $has_lab_bg  = file_exists( $lab_bg_file );
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-hero" aria-labelledby="al-hero-headline">
 
-    <?php
-    // [left%, top%, size_px] — positions for the decorative molecule field
-    $al_molecules = [
-      [12, 14, 4], [38,  8, 3], [62, 18, 5], [88, 12, 4],
-      [ 8, 38, 3], [44, 35, 5], [78, 32, 4],
-      [24, 58, 4], [52, 52, 3], [84, 62, 5],
-      [10, 82, 5], [40, 75, 3], [68, 88, 4], [92, 80, 4],
-    ];
-    ?>
-    <div class="al-hero__molecules" aria-hidden="true">
-      <?php foreach ( $al_molecules as $i => $m ) : ?>
-        <span class="al-molecule"
-              style="left:<?php echo $m[0]; ?>%;top:<?php echo $m[1]; ?>%;width:<?php echo $m[2]; ?>px;height:<?php echo $m[2]; ?>px;animation-delay:<?php echo ( $i * 0.43 ); ?>s;"></span>
-      <?php endforeach; ?>
-    </div>
+    <!-- Molecule field is populated by JS in functions.php — count scales
+         with hero area so density stays consistent across screen sizes. -->
+    <div class="al-hero__molecules" aria-hidden="true"></div>
 
     <div class="al-container">
 
@@ -77,154 +59,20 @@ $has_lab_bg  = file_exists( $lab_bg_file );
       </ul>
 
     </div>
+
+    <a href="#al-pi" class="al-hero__scroll" aria-label="Scroll to next section">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
   </section><!-- /.al-hero -->
 
 
-  <!-- ═══════════════════════════════════════════════════════════
-       2. RESEARCH PILLARS — cinematic expanding panels
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="al-pillars" aria-label="Research focus areas">
-    <div class="al-pillars-grid">
-
-      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Optical and Molecular Imaging">
-        <span class="al-pillar-panel__number" aria-hidden="true">01</span>
-        <div class="al-pillar-panel__content">
-          <div class="al-pillar-panel__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="7.5" stroke="currentColor" stroke-width="2.5"/>
-              <line x1="24" y1="4"  x2="24" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="24" y1="37" x2="24" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="4"  y1="24" x2="11" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="37" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="10.1" y1="10.1" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="33.5" y1="33.5" x2="37.9" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="37.9" y1="10.1" x2="33.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="14.5" y1="33.5" x2="10.1" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3 class="al-pillar-panel__title">Optical &amp; Molecular Imaging</h3>
-          <p class="al-pillar-panel__desc">
-            Near-infrared fluorescence platforms that reveal disease at the molecular level.
-          </p>
-          <a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" class="al-pillar-panel__link">
-            Learn more &rarr;
-          </a>
-        </div>
-      </div>
-
-      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Image-Guided Surgery">
-        <span class="al-pillar-panel__number" aria-hidden="true">02</span>
-        <div class="al-pillar-panel__content">
-          <div class="al-pillar-panel__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 24C4 24 12 13 24 13C36 13 44 24 44 24C44 24 36 35 24 35C12 35 4 24 4 24Z"
-                    stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-              <circle cx="24" cy="24" r="5.5" stroke="currentColor" stroke-width="2.5"/>
-              <circle cx="24" cy="24" r="2"   fill="currentColor"/>
-            </svg>
-          </div>
-          <h3 class="al-pillar-panel__title">Image-Guided Surgery</h3>
-          <p class="al-pillar-panel__desc">
-            Wearable cancer-imaging systems for real-time visualization during oncologic surgery.
-          </p>
-          <a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-pillar-panel__link">
-            Learn more &rarr;
-          </a>
-        </div>
-      </div>
-
-      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Bench to Bedside">
-        <span class="al-pillar-panel__number" aria-hidden="true">03</span>
-        <div class="al-pillar-panel__content">
-          <div class="al-pillar-panel__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 8H31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M19 8V21L9 36.5C8.1 38 9.4 40 11.5 40H36.5C38.6 40 39.9 38 39 36.5L29 21V8"
-                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9.5 33H38.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="17"  cy="36.5" r="1.75" fill="currentColor" opacity="0.5"/>
-              <circle cx="25"  cy="38"   r="1.5"  fill="currentColor" opacity="0.5"/>
-              <circle cx="32"  cy="35.5" r="2"    fill="currentColor" opacity="0.5"/>
-            </svg>
-          </div>
-          <h3 class="al-pillar-panel__title">Bench to Bedside</h3>
-          <p class="al-pillar-panel__desc">
-            From novel molecular probes through preclinical validation to clinical translation.
-          </p>
-          <a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-pillar-panel__link">
-            Learn more &rarr;
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section><!-- /.al-pillars -->
-
 
   <!-- ═══════════════════════════════════════════════════════════
-       3. FEATURED RESEARCH — editorial highlight
+       2. PI SPOTLIGHT + INLINE STATS
   ══════════════════════════════════════════════════════════════ -->
-  <section class="al-highlight" aria-labelledby="al-highlight-heading">
-    <div class="al-container">
-      <div class="al-highlight__inner">
-
-        <div class="al-highlight__media al-reveal">
-          <?php if ( $has_lab_bg ) : ?>
-            <img src="<?php echo esc_url( $lab_bg_url ); ?>"
-                 alt="Achilefu Lab research"
-                 loading="lazy" decoding="async">
-          <?php else : ?>
-            <div class="al-highlight__media-placeholder" aria-hidden="true">
-              <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  <radialGradient id="hl-glow1" cx="32%" cy="38%" r="42%">
-                    <stop offset="0%" stop-color="#9FE5C4" stop-opacity="0.85"/>
-                    <stop offset="100%" stop-color="#9FE5C4" stop-opacity="0"/>
-                  </radialGradient>
-                  <radialGradient id="hl-glow2" cx="72%" cy="62%" r="38%">
-                    <stop offset="0%" stop-color="#B5DBF3" stop-opacity="0.75"/>
-                    <stop offset="100%" stop-color="#B5DBF3" stop-opacity="0"/>
-                  </radialGradient>
-                </defs>
-                <rect width="600" height="450" fill="#1C3347"/>
-                <rect width="600" height="450" fill="url(#hl-glow1)"/>
-                <rect width="600" height="450" fill="url(#hl-glow2)"/>
-              </svg>
-            </div>
-          <?php endif; ?>
-        </div>
-
-        <div class="al-highlight__copy al-reveal" data-delay="2">
-          <p class="al-highlight__eyebrow">Featured Research</p>
-          <h2 class="al-highlight__title" id="al-highlight-heading">
-            Selective tumor imaging via phosphorylated Annexin&nbsp;A2
-          </h2>
-          <p class="al-highlight__meta">
-            <span>Nature Biomedical Engineering</span>
-            <span class="al-highlight__meta-sep" aria-hidden="true">·</span>
-            <span>2020</span>
-          </p>
-          <p class="al-highlight__lede">
-            A cyclic octapeptide labeled with a near-infrared dye that selectively binds
-            phosphorylated Annexin A2 &mdash; a calcium-dependent marker overexpressed at invasive
-            tumor edges. The probe enables precision tumor detection, metastatic lesion identification,
-            and fluorescence-guided surgical resection in animal models, with potential for broad
-            tumor diagnostics and targeted drug delivery.
-          </p>
-          <a href="<?php echo $url_research; ?>" class="al-highlight__link">
-            Read the research &rarr;
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section><!-- /.al-highlight -->
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-       4. PI SPOTLIGHT + INLINE STATS
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="al-pi" aria-labelledby="al-pi-heading">
+  <section class="al-pi" id="al-pi" aria-labelledby="al-pi-heading">
     <div class="al-container">
       <div class="al-pi__inner">
 
@@ -291,7 +139,7 @@ $has_lab_bg  = file_exists( $lab_bg_file );
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       5. LATEST FROM THE LAB — 3-col: Publications, News, Blog
+       3. LATEST FROM THE LAB — 2-col: Publications, Blog
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-latest" aria-labelledby="al-latest-heading">
     <div class="al-container">
@@ -299,7 +147,7 @@ $has_lab_bg  = file_exists( $lab_bg_file );
       <div class="al-latest__head">
         <h2 class="al-section-heading" id="al-latest-heading">Latest from the Lab</h2>
         <p class="al-section-subhead">
-          Active research, recent press coverage, and updates from the lab.
+          Recent publications and updates from the lab.
         </p>
       </div>
 
@@ -330,34 +178,6 @@ $has_lab_bg  = file_exists( $lab_bg_file );
           </ul>
           <a href="<?php echo $url_publications; ?>" class="al-latest__more">
             View all publications &rarr;
-          </a>
-        </div>
-
-        <!-- In the News -->
-        <div class="al-latest__col al-reveal" data-delay="2">
-          <p class="al-latest__col-heading">In the News</p>
-          <ul class="al-latest__list">
-            <li class="al-latest__item">
-              <a href="<?php echo $url_media; ?>">
-                <p class="al-latest__title">Achilefu named inaugural Chair of Biomedical Engineering at UTSW</p>
-                <p class="al-latest__meta">UT Southwestern Newsroom</p>
-              </a>
-            </li>
-            <li class="al-latest__item">
-              <a href="<?php echo $url_media; ?>">
-                <p class="al-latest__title">Elected to the National Academy of Medicine</p>
-                <p class="al-latest__meta">National Academy of Medicine</p>
-              </a>
-            </li>
-            <li class="al-latest__item">
-              <a href="<?php echo $url_media; ?>">
-                <p class="al-latest__title">Elected to the National Academy of Engineering</p>
-                <p class="al-latest__meta">National Academy of Engineering</p>
-              </a>
-            </li>
-          </ul>
-          <a href="<?php echo $url_media; ?>" class="al-latest__more">
-            View all press &rarr;
           </a>
         </div>
 
@@ -396,7 +216,7 @@ $has_lab_bg  = file_exists( $lab_bg_file );
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       6. AFFILIATIONS — tight closing band
+       4. AFFILIATIONS — tight closing band
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-affiliations" aria-label="Affiliations and partners">
     <div class="al-container">

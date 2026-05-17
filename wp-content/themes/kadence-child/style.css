@@ -167,8 +167,8 @@ body.home #inner-wrap {
 
 /* ─────────────────────────────────────────────────────────────
    1. HERO
-   Dark parallax image with overlay. Clip-path diagonal bottom
-   to flow into the dark pillars section.
+   Full-viewport dark parallax image with overlay, scroll cue
+   at bottom-center that targets the next section (#al-pi).
 ───────────────────────────────────────────────────────────── */
 .al-hero {
   position: relative;
@@ -177,8 +177,48 @@ body.home #inner-wrap {
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
-  padding: calc(68px + 4.25rem) 0 5rem;
+  min-height: 100vh;
+  min-height: 100svh; /* small-viewport unit — accounts for mobile browser chrome */
+  display: flex;
+  align-items: center;
+  padding: calc(68px + 4.25rem) 0 4rem;
   overflow: hidden;
+}
+
+.al-hero > .al-container { width: 100%; }
+
+/* Scroll-down hint — bottom-center, gentle bounce */
+.al-hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  z-index: 2;
+  transition: color 0.2s ease;
+  animation: al-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+.al-hero__scroll:hover,
+.al-hero__scroll:focus-visible {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes al-scroll-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 8px); }
+}
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  .al-hero__scroll { animation: none; transform: translateX(-50%); }
+  html { scroll-behavior: auto; }
 }
 
 /* Dark gradient overlay */
@@ -294,7 +334,7 @@ body.home #inner-wrap {
     calc(8px + var(--cursor-intensity) * 22px)
     calc(var(--cursor-intensity) * 7px)
     rgba(135, 188, 222, calc(0.45 + var(--cursor-intensity) * 0.45));
-  transition: opacity 0.18s ease-out, box-shadow 0.22s ease-out;
+  transition: opacity 0.08s ease-out, box-shadow 0.10s ease-out;
   animation: al-molecule-breathe 7s ease-in-out infinite;
   will-change: opacity, box-shadow;
 }
@@ -302,6 +342,28 @@ body.home #inner-wrap {
 @keyframes al-molecule-breathe {
   0%, 100% { transform: scale(0.85); }
   50%      { transform: scale(1.15); }
+}
+
+/* Touch devices (phones, iPad) get an auto-blink since there's no cursor
+   to excite the field. Each dot already has a staggered animation-delay,
+   so the field twinkles out of sync. */
+@keyframes al-molecule-blink {
+  0%, 100% {
+    opacity: 0.20;
+    box-shadow: 0 0 8px 0 rgba(135, 188, 222, 0.45);
+  }
+  50% {
+    opacity: 0.98;
+    box-shadow: 0 0 30px 7px rgba(135, 188, 222, 0.90);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .al-molecule {
+    animation:
+      al-molecule-breathe 7s ease-in-out infinite,
+      al-molecule-blink 2.6s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -337,251 +399,7 @@ body.home #inner-wrap {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   2. RESEARCH PILLARS — Cinematic expanding panels
-   Full-bleed, no container. Hover/focus expands panel via flex.
-───────────────────────────────────────────────────────────── */
-.al-pillars {
-  padding: 0;
-  background: var(--al-dark);
-}
-
-/* Optional eyebrow row above panels */
-.al-pillars__header {
-  padding: 4rem 0 2rem;
-}
-
-.al-pillars-grid {
-  display: flex;
-  min-height: 420px;
-}
-
-.al-pillar-panel {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-  cursor: pointer;
-  border-right: 1px solid rgba(255,255,255,0.06);
-  transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.al-pillar-panel:last-child { border-right: none; }
-
-.al-pillar-panel:hover,
-.al-pillar-panel:focus-within {
-  flex: 3;
-}
-
-/* Brand navy gradients per panel */
-.al-pillar-panel:nth-child(1) { background: linear-gradient(160deg, #1e3a4e 0%, #2d4654 100%); }
-.al-pillar-panel:nth-child(2) { background: linear-gradient(160deg, #1a3347 0%, #264050 100%); }
-.al-pillar-panel:nth-child(3) { background: linear-gradient(160deg, #1c3548 0%, #2d4654 100%); }
-
-/* Neon accent line slides in from left on hover */
-.al-pillar-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--al-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 3;
-}
-
-.al-pillar-panel:hover::before,
-.al-pillar-panel:focus-within::before {
-  transform: scaleX(1);
-}
-
-/* Panel number (decorative) */
-.al-pillar-panel__number {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.18);
-  z-index: 2;
-}
-
-/* Content pinned to bottom */
-.al-pillar-panel__content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.875rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 65%);
-  z-index: 2;
-}
-
-.al-pillar-panel__icon {
-  color: var(--al-accent);
-  width: 40px;
-  height: 40px;
-  margin-bottom: 1.25rem;
-  opacity: 0.9;
-  flex-shrink: 0;
-}
-
-.al-pillar-panel__icon svg {
-  width: 40px;
-  height: 40px;
-  display: block;
-}
-
-.al-pillar-panel__title {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: clamp(1rem, 1.6vw, 1.375rem);
-  font-weight: 700;
-  color: var(--al-white);
-  margin: 0 0 0.875rem;
-  line-height: 1.2;
-}
-
-/* Desc + link hidden until panel expands */
-.al-pillar-panel__desc {
-  font-size: 0.9375rem;
-  line-height: 1.72;
-  color: rgba(255,255,255,0.65);
-  margin: 0 0 1.375rem;
-  max-width: 380px;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s;
-}
-
-.al-pillar-panel__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--al-accent);
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease 0.22s, transform 0.3s ease 0.22s;
-  position: relative;
-}
-
-.al-pillar-panel__link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--al-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.al-pillar-panel:hover .al-pillar-panel__link:hover::after { transform: scaleX(1); }
-
-.al-pillar-panel:hover .al-pillar-panel__desc,
-.al-pillar-panel:focus-within .al-pillar-panel__desc,
-.al-pillar-panel:hover .al-pillar-panel__link,
-.al-pillar-panel:focus-within .al-pillar-panel__link {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ─────────────────────────────────────────────────────────────
-   3. FEATURED RESEARCH HIGHLIGHT — editorial block
-───────────────────────────────────────────────────────────── */
-.al-highlight {
-  background: #ffffff;
-  padding: 5rem 0 4.5rem;
-}
-
-.al-highlight__inner {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.al-highlight__media {
-  border-radius: var(--r-card);
-  overflow: hidden;
-  background: var(--al-dark);
-  box-shadow: 0 6px 28px rgba(15, 29, 42, 0.12);
-}
-
-.al-highlight__media img,
-.al-highlight__media-placeholder svg {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.al-highlight__media-placeholder { width: 100%; aspect-ratio: 4 / 3; }
-
-.al-highlight__eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--al-primary);
-  margin: 0 0 0.875rem;
-}
-
-.al-highlight__title {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  font-weight: 700;
-  color: var(--al-text);
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  margin: 0 0 0.875rem;
-}
-
-.al-highlight__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--al-muted);
-  margin: 0 0 1.25rem;
-  letter-spacing: 0.01em;
-}
-
-.al-highlight__meta-sep { opacity: 0.45; }
-
-.al-highlight__lede {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--al-muted);
-  margin: 0 0 1.5rem;
-  max-width: 540px;
-}
-
-.al-highlight__link {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--al-primary);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-  transition: color 0.15s ease;
-}
-
-.al-highlight__link:hover { color: var(--al-accent); }
-
-
-/* ─────────────────────────────────────────────────────────────
-   4. PI SPOTLIGHT + INLINE STATS
+   2. PI SPOTLIGHT + INLINE STATS
 ───────────────────────────────────────────────────────────── */
 .al-pi {
   background: var(--al-off-white);
@@ -715,7 +533,7 @@ body.home #inner-wrap {
 
 
 /* ─────────────────────────────────────────────────────────────
-   5. LATEST FROM THE LAB — 3-col Publications / News / Blog
+   3. LATEST FROM THE LAB — 2-col Publications / Blog
 ───────────────────────────────────────────────────────────── */
 .al-latest {
   background: #ffffff;
@@ -811,7 +629,7 @@ body.home #inner-wrap {
 
 
 /* ─────────────────────────────────────────────────────────────
-   6. AFFILIATIONS — tight closing band
+   4. AFFILIATIONS — tight closing band
 ───────────────────────────────────────────────────────────── */
 .al-affiliations {
   background: var(--al-primary);
@@ -2008,44 +1826,6 @@ body.home #inner-wrap {
    RESPONSIVE
 ───────────────────────────────────────────────────────────── */
 
-/* Pillars: stack on mobile */
-@media (max-width: 768px) {
-  .al-pillars-grid {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .al-pillar-panel {
-    flex: none !important;
-    min-height: 240px;
-    transition: none;
-  }
-
-  .al-pillar-panel:hover { flex: none; }
-
-  .al-pillar-panel__desc,
-  .al-pillar-panel__link {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none;
-  }
-
-  .al-pillar-panel::before { transition: none; }
-  .al-pillar-panel:hover::before { transform: scaleX(0); }
-  .al-pillar-panel:focus-within::before { transform: scaleX(1); }
-
-  /* On mobile all panels show neon line */
-  .al-pillar-panel::before { transform: scaleX(0.4); opacity: 0.5; }
-}
-
-/* Highlight responsive */
-@media (max-width: 900px) {
-  .al-highlight__inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
 /* PI responsive */
 @media (max-width: 960px) {
   .al-pi__inner {
@@ -2076,7 +1856,6 @@ body.home #inner-wrap {
   .al-hero__actions .al-btn { width: 100%; text-align: center; }
   .al-hero__cred { gap: 0.4rem 1.5rem; }
 
-  .al-highlight { padding: 3.5rem 0 3rem; }
   .al-pi { padding: 3.5rem 0 3rem; }
   .al-latest { padding: 3.5rem 0; }
   .al-affiliations { padding: 2rem 0; }
@@ -2131,10 +1910,6 @@ body.home #inner-wrap {
 ───────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .al-btn,
-  .al-pillar-panel,
-  .al-pillar-panel__desc,
-  .al-pillar-panel__link,
-  .al-pillar-panel::before,
   .al-reveal,
   .al-hero__eyebrow,
   .al-hero__headline,
@@ -2156,10 +1931,6 @@ body.home #inner-wrap {
 
   .al-btn:hover { transform: none; }
   .al-hero { background-attachment: scroll; }
-
-  .al-pillar-panel { flex: 1 !important; }
-  .al-pillar-panel__desc,
-  .al-pillar-panel__link { opacity: 1 !important; transform: none !important; }
 
   .al-reveal { opacity: 1 !important; transform: none !important; }
 }

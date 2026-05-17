@@ -74,29 +74,62 @@ add_action( 'wp_footer', function () {
 	<?php
 }, 18 );
 
-// ── Hero molecule excitation (front-page only) ─────────────────────────────────
+// ── Hero molecule field — density-driven dot generator + cursor excitation ────
 
 add_action( 'wp_footer', function () {
 	if ( ! is_front_page() ) return;
 	?>
 	<script>
 	(function () {
-		// Touch / no-fine-pointer / reduced-motion: skip JS, dots stay in CSS ambient state
-		if ( ! window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches ) return;
-		if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
-
 		var hero = document.querySelector( '.al-hero' );
 		if ( ! hero ) return;
-		var molecules = Array.prototype.slice.call( hero.querySelectorAll( '.al-molecule' ) );
-		if ( ! molecules.length ) return;
+		var field = hero.querySelector( '.al-hero__molecules' );
+		if ( ! field ) return;
 
+		var cursorOk = window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches
+		            && ! window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+		var isTouch  = ! window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches;
+
+		// Target density: hero area (px²) per dot. Lower = denser.
+		var DENSITY  = isTouch ? 6000 : 6500;
+		var MIN_DOTS = 40;
+		var MAX_DOTS = isTouch ? 100 : 340;
+
+		var molecules = [];
 		var molPos    = [];
 		var maxDist   = 240;
 		var maxDistSq = maxDist * maxDist;
 		var mouseX    = -9999;
 		var mouseY    = -9999;
 		var rafId     = null;
-		var inside    = false;
+
+		function generate () {
+			var rect   = hero.getBoundingClientRect();
+			var area   = rect.width * rect.height;
+			var target = Math.max( MIN_DOTS, Math.min( MAX_DOTS, Math.round( area / DENSITY ) ) );
+
+			field.textContent = '';
+			var frag = document.createDocumentFragment();
+			for ( var i = 0; i < target; i++ ) {
+				var span = document.createElement( 'span' );
+				span.className = 'al-molecule';
+				var r    = Math.random();
+				var size = r < 0.15 ? 5 : ( r < 0.70 ? 3 : 4 );
+				// Two delays: one per animation in the shorthand (breathe 7s, blink 2.6s).
+				var breatheDelay = ( Math.random() * 7 ).toFixed( 2 );
+				var blinkDelay   = ( Math.random() * 2.6 ).toFixed( 2 );
+				span.style.cssText =
+					'left:'    + ( Math.random() * 99 + 0.5 ).toFixed( 2 ) + '%;' +
+					'top:'     + ( Math.random() * 99 + 0.5 ).toFixed( 2 ) + '%;' +
+					'width:'   + size + 'px;' +
+					'height:'  + size + 'px;' +
+					'animation-delay:' + breatheDelay + 's,' + blinkDelay + 's;';
+				frag.appendChild( span );
+			}
+			field.appendChild( frag );
+			molecules = Array.prototype.slice.call( field.children );
+			cachePositions();
+		}
 
 		function cachePositions () {
 			molPos = molecules.map( function ( m ) {
@@ -117,7 +150,7 @@ add_action( 'wp_footer', function () {
 				var intensity = 0;
 				if ( distSq < maxDistSq ) {
 					var t = 1 - Math.sqrt( distSq ) / maxDist;
-					intensity = t * t; // quadratic falloff
+					intensity = t * t;
 				}
 				molecules[ i ].style.setProperty( '--cursor-intensity', intensity.toFixed( 3 ) );
 			}
@@ -127,25 +160,31 @@ add_action( 'wp_footer', function () {
 			if ( rafId === null ) rafId = requestAnimationFrame( update );
 		}
 
-		hero.addEventListener( 'mousemove', function ( e ) {
-			var rect = hero.getBoundingClientRect();
-			mouseX = e.clientX - rect.left;
-			mouseY = e.clientY - rect.top;
-			inside = true;
-			schedule();
-		}, { passive: true } );
+		generate();
 
-		hero.addEventListener( 'mouseleave', function () {
-			inside = false;
-			mouseX = -9999;
-			mouseY = -9999;
-			schedule();
+		if ( cursorOk ) {
+			hero.addEventListener( 'mousemove', function ( e ) {
+				var rect = hero.getBoundingClientRect();
+				mouseX = e.clientX - rect.left;
+				mouseY = e.clientY - rect.top;
+				schedule();
+			}, { passive: true } );
+
+			hero.addEventListener( 'mouseleave', function () {
+				mouseX = -9999;
+				mouseY = -9999;
+				schedule();
+			} );
+		}
+
+		// Debounced resize: regenerate the field so density stays consistent.
+		var resizeTimer = null;
+		window.addEventListener( 'resize', function () {
+			if ( resizeTimer ) clearTimeout( resizeTimer );
+			resizeTimer = setTimeout( generate, 180 );
 		} );
 
-		window.addEventListener( 'resize', cachePositions );
-		// Recompute after fonts/images settle.
 		window.addEventListener( 'load', cachePositions );
-		cachePositions();
 	})();
 	</script>
 	<?php

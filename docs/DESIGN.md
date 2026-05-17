@@ -108,7 +108,7 @@ Design should optimize for #1 and #2 first. That means *credibility, clarity, an
 
 | # | Page | WordPress role | Notes |
 |---|---|---|---|
-| 1 | Home | Static front page | Hero, research pillars, PI spotlight, stats, blog feed, affiliations |
+| 1 | Home | Static front page | Hero (full-viewport, credentials strip, scroll cue), PI spotlight + inline stats, Latest from the Lab (Pubs + Blog), affiliations |
 | 2 | Research | Standard page | Areas, projects, facilities |
 | 3 | Publications | Standard page | Papers, patents, proceedings |
 | 4 | Team | Standard page | PI + lab members |
@@ -128,43 +128,35 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 
 ## 5. Home page layout
 
-> Status: **✅ Built and iterated through v2.2.0 (2026-05-17).** `kadence-child/front-page.php` + `style.css` v2.3.0. See DEVLOG 2026-05-17 for full iteration history.
+> Status: **✅ Built and iterated through v2.3.5 (2026-05-17).** `kadence-child/front-page.php` + `style.css`. See DEVLOG for full iteration history.
 
-**Current layout model (v2.2 editorial density):**
+**Current layout model (v2.3.5 editorial density):**
 
 ```
 ╔═════════════════════════════════════════════════════╗
-║  HERO  [full-bleed, navy banner bg, molecule flare] ║
+║  HERO  [full-viewport (100svh), navy + molecule field] ║
+║  flex-centered headline block:                      ║
 ║  "Harnessing Light to Understand, Diagnose          ║
 ║   & Treat Disease."                                 ║
-║  [Our Research]  [Meet the PI]                      ║
+║  [Our Research]  [Contact Us]                       ║
 ║  ─────────────────────────────────────────          ║
-║  300+ Publications · 70+ Patents · 2 Nat'l Acad ·  ║
-║  25+ Years                      ← credentials strip ║
+║  300+ Publications · 60+ Patents · NAE & NAM ·     ║
+║  4 Products in Clinical Study  ← credentials strip  ║
+║                       ↓ scroll cue to PI section    ║
 ╚═════════════════════════════════════════════════════╝
-
-   ── Optical & Molecular Imaging ──────────────── ∨  ← flex-expand (not accordion)
-      Near-infrared fluorescence platforms...          first panel open by default
-   ── Image-Guided Surgery ────────────────────── ›
-   ── Bench to Bedside ────────────────────────── ›
-
-   ┌─────────────────────────────────────────────────┐
-   │  FEATURED RESEARCH  [editorial 2-col, 5fr/6fr]  │
-   │  [image left]  │  headline + body + CTA right   │
-   └─────────────────────────────────────────────────┘
 
    ┌─────────────────────────────────────────────────┐
    │  PI  [white bg, 2-col photo left / bio right]   │
    │  [Photo 4:5]  │  bio + credentials              │
    │  ─────────────────────────────────────          │
-   │  300+ Pub  │  70+ Patents  │  2 Acad  │  25+ Yr │  ← inline stats band
+   │  300+ Pub  │  60+ Patents  │  2 Acad  │  3 Cos. │  ← inline stats band
    └─────────────────────────────────────────────────┘
 
-   LATEST FROM THE LAB  [3-col equal grid]
-   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-   │ Recent Pubs  │ │ In the News  │ │ From Blog    │
-   │ hairline rows│ │ hairline rows│ │ hairline rows│
-   └──────────────┘ └──────────────┘ └──────────────┘
+   LATEST FROM THE LAB  [2-col equal grid]
+   ┌──────────────┐ ┌──────────────┐
+   │ Recent Pubs  │ │ From Blog    │
+   │ hairline rows│ │ hairline rows│
+   └──────────────┘ └──────────────┘
 
    UTSW · Simmons Cancer Center · NIH  ← tight closing band (~2.5rem padding)
 ```
@@ -172,18 +164,21 @@ All pages published (IDs 6–12). Primary navigation menu created and assigned t
 **Key design decisions (v2.x):**
 - **White page, white header, white everything** — no dark background sections, no gradient page surface. The v1 global diagonal gradient and the "Lab in Numbers" dark parallax section are gone. Color comes from the brand navy (`#2D4654`) applied to hero banners and section strips only.
 - **Stats folded into hero and PI** — the standalone "Lab in Numbers" section is removed. The four stats appear twice: once as an inline credentials strip in the hero (establishes credibility immediately), once as a thin hairline-bordered band at the bottom of the PI section (contextualizes the bio). This is intentional redundancy for two different reading contexts.
-- **Featured Research block** (editorial 5fr/6fr 2-col): sits between Pillars and PI. The left image column is purely decorative — it uses `lab-bg.jpg` as placeholder. When a real highlight image is available, it goes at `wp-content/uploads/featured-research.jpg`.
-- **Latest from the Lab** replaces the blog card grid: three equal columns (Recent Publications / In the News / From the Blog), each column a hairline-separated list (`1px var(--al-border)` row borders). Publications and In the News are static placeholder content in `front-page.php`; From the Blog pulls from real WP posts. See §11 for the hairline row pattern.
+- **Latest from the Lab** is a 2-column hairline-separated grid (Recent Publications / From the Blog), each column a `1px var(--al-border)` row list. Publications are static in `front-page.php`; Blog pulls from real WP posts.
 - **Affiliations is a closing band**, not a section — `padding: 2.5rem 0`, logos inline, no background panel or wrapper.
-- **Research Pillars use flex-expand** (CSS `flex: 1` → `flex: 5` on hover/active, JS toggles `.is-active`). First panel open by default. Min-height `420px` (was `520px` in v1).
+- **No Pillars section.** With only one real research platform (Optical & Molecular Imaging), the 3-panel flex-expand grid was removed in v2.3.5. The hero already references the lab's focus, and the Research nav link surfaces the platform page.
 - Fixed header: pinned via `#masthead { position: fixed !important }`. Hero pads `calc(68px + 4.25rem)` to clear it.
 
-**Superseded v1 decisions (moved here from §5 body):**
+**Superseded v1/v2 decisions (moved here from §5 body):**
 - ~~Global diagonal gradient~~ — removed. Felt like a landing-page marketing template.
 - ~~Standalone "Lab in Numbers" parallax section~~ — stats folded into hero strip + PI band.
-- ~~Blog card grid (3 cards)~~ — replaced by the denser "Latest from the Lab" 3-column list.
+- ~~Blog card grid (3 cards)~~ — replaced by the denser "Latest from the Lab" list.
 - ~~Section heading centered + teal underline bar~~ — now left-aligned editorial (see §11).
 - ~~Card radius 12px, reduced shadows~~ — v2 has no cards on the home page.
+- ~~Featured Research home block~~ — removed v2.3.4. Was placeholder content backed by `lab-bg.jpg`; not based on a real curated highlight from the lab.
+- ~~"In the News" home column~~ — removed v2.3.4. Real lab site has no news/press section.
+- ~~"Image-Guided Surgery" and "Bench to Bedside" pillar panels~~ — removed v2.3.4. Neither is a research platform on the real UTSW site; both pillar panels and their dedicated sub-pages were fabricated breakouts.
+- ~~Research Pillars section~~ — removed entirely in v2.3.5. With only one real platform left, a single-panel flex-expand grid didn't justify the layout. The CSS for `.al-pillars*` and `.al-pillar-panel*` was also deleted from `style.css`.
 
 See [CONTENT.md](CONTENT.md) for all copy.
 
@@ -198,7 +193,7 @@ See [CONTENT.md](CONTENT.md) for all copy.
 - **Section vertical padding: 3.5–5rem desktop / 2.5–3.5rem mobile.** (Was 6–8rem in v1; reduced to signal density and active content volume.) The tightest sections (affiliations closing band) go as low as 2.5rem.
 - **Mobile-first.** Full usability on phone — peer reviewers and prospective students browse mobile first.
 - **No cards on the home page.** Content streams use hairline-separated list rows (see §11). Cards remain appropriate for the Media image showcase only.
-- **CSS grid native** for two-column editorial blocks (PI, Featured Research). Kadence's grid is not used for page-level layout — child theme CSS handles it directly.
+- **CSS grid native** for two-column editorial blocks (PI). Kadence's grid is not used for page-level layout — child theme CSS handles it directly.
 
 Open:
 - [ ] Card vs. plain-block treatment for Team / Publications pages (not yet built)
@@ -272,7 +267,7 @@ Things we haven't decided and will need to before launch:
 
 ## 11. v2.x editorial density system
 
-> Status: **✅ Implemented across all 10 pages (home + 9 inner) as of v2.3.0 (2026-05-17).**
+> Status: **✅ Implemented across all 8 pages (home + 7 inner) as of v2.3.4 (2026-05-17).**
 
 This section documents the design language that superseded the v1 "spacious landing page" aesthetic. Read this before touching any page template.
 
@@ -289,7 +284,7 @@ Krish's feedback after v2.0: "nice frame, but the website has no soul. it is too
 - Subheads (`<p class="al-section-sub">`) left-aligned, `max-width: 52ch`, color `var(--al-muted)`.
 
 **Hairline row lists:**
-- Used for Recent Publications, In the News, From the Blog, and any dense content stream.
+- Used for Recent Publications, From the Blog, and any dense content stream.
 - Pattern: `<ul>` with `border-top: 1px var(--al-border)` on `<li>`, last child `border-bottom` too.
 - Row content: date/label left, title/headline as the main text, link arrow right.
 - No cards, no box-shadows, no background fills on individual rows.
@@ -313,22 +308,40 @@ Krish's feedback after v2.0: "nice frame, but the website has no soul. it is too
 - Hero and inner-page hero strips: `background: var(--al-navy)` (`#2D4654`).
 - No dark full-bleed sections anywhere else on any page.
 
+### Hero sizing
+
+The hero is `min-height: 100vh` with a `min-height: 100svh` upgrade for browsers that support the small-viewport unit (iOS Safari toolbar collapse). `display: flex; align-items: center` vertically centers the headline block. Existing `padding-top: calc(68px + 4.25rem)` keeps the headline clear of the fixed header at any height. A bouncing chevron link (`.al-hero__scroll`, polyline SVG) sits absolute bottom-center, anchored to `#al-pi`, with `scroll-behavior: smooth` enabled globally.
+
 ### Hero flare effect
 
-A decorative field of 14 small teal dots (`.al-flare-dot`) is scattered behind the hero content using absolute positioning. On cursor proximity (within ~120px), dots scale up and brighten via a JS `mousemove` listener. Visual reference: NIR fluorescence imaging — the dots simulate excited fluorescent molecules responding to a light source (the cursor).
+A decorative field of small teal dots (`.al-molecule`) is scattered behind the hero content using absolute positioning. Visual reference: NIR fluorescence imaging — the dots simulate excited fluorescent molecules responding to a light source (the cursor on desktop, or ambient self-blinking on touch).
 
-Implementation details:
-- Dots injected via JS into `.al-hero` on `DOMContentLoaded`.
-- Each dot: `8–14px` diameter, `background: var(--al-teal)`, `border-radius: 50%`, `opacity: 0.18` at rest.
-- Excitation: `transform: scale(2.2)`, `opacity: 0.7`, transition `200ms ease-out`.
-- Disabled entirely when `window.matchMedia('(hover: none)')` (touch devices) or `prefers-reduced-motion: reduce`.
-- Applied only on `front-page.php` — inner pages do not get the effect.
+**Density-driven generation (v2.4):** The dots are entirely JS-generated. `.al-hero__molecules` ships empty from `front-page.php`; the script in `functions.php` measures the hero's `getBoundingClientRect()` on first paint, divides the area by a target density to pick a dot count, and creates that many `<span>`s with random `left/top/size/animation-delay`. A debounced `resize` listener (180ms) regenerates the field so density stays roughly constant across viewports and on rotation. The PHP no longer renders any dots — JS-off browsers see an empty hero (decorative only).
+
+Density knobs live at the top of the IIFE in `functions.php`:
+
+| | Desktop (cursor) | Touch |
+|---|---|---|
+| `DENSITY` (px² per dot) | `6500` | `6000` |
+| `MIN_DOTS` | `40` | `40` |
+| `MAX_DOTS` | `340` | `100` |
+
+Indicative counts: laptop 1440×900 ≈ 185 dots; desktop 1920×1080 ≈ 308; 4K caps at 340. iPhone 390×800 ≈ 52; iPad 768×1024 caps at 100.
+
+**Two visual modes:**
+
+1. **Desktop (cursor-reactive).** Gated on `(hover: hover) and (pointer: fine)` and not `prefers-reduced-motion`. A `mousemove` listener with a `requestAnimationFrame` loop updates `--cursor-intensity` per dot; CSS reads it for opacity + box-shadow glow. Quadratic falloff within ~240px of the cursor. Transition is `opacity 0.08s / box-shadow 0.10s ease-out` for a snappy reaction.
+2. **Touch (auto-blink).** Gated on `(hover: none), (pointer: coarse)`. CSS adds a second animation alongside `al-molecule-breathe` — `al-molecule-blink 2.6s ease-in-out infinite` — whose keyframes exactly match the desktop ambient → max-intensity endpoints (`opacity 0.20→0.98`, `box-shadow 0 0 8px 0 rgba(...,0.45) → 0 0 30px 7px rgba(...,0.90)`). Each dot gets two independent random delays (one per animation in the shorthand) so breathe and blink phases never sync — no top-to-bottom wave.
+
+`prefers-reduced-motion: reduce` disables both modes (animation + transition off).
+
+Applied only on `front-page.php` — inner pages do not get the effect.
 
 ### Inner pages
 
-All 9 inner pages share the same language: navy hero strip → white content sections with editorial density. Each page has at least one hairline-row list or inline stats band. No page uses a dark background section below the hero.
+All 7 inner pages share the same language: navy hero strip → white content sections with editorial density. Each page has at least one hairline-row list or inline stats band. No page uses a dark background section below the hero.
 
-Pages: Research landing · Optical Imaging · Image-Guided Surgery · Bench-to-Bedside · PI · Team · Lab Calendar · Contact · Media (visual showcase).
+Pages: Research landing · Optical Imaging · PI · Team · Lab Calendar · Contact · Media (visual showcase).
 
 ---
 

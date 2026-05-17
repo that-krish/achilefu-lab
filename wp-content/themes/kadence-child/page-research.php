@@ -4,7 +4,7 @@
  * Matches slug: research  —  page ID 7.
  *
  * v2 — denser editorial layout: trimmed prose, inline stat strip,
- *      3-col "Recent Breakthroughs" content stream, tightened Why Light grid.
+ *      Recent Breakthroughs content stream, tightened Why Light grid.
  */
 defined( 'ABSPATH' ) || exit;
 get_header();
@@ -69,12 +69,12 @@ $url_publications = al_page_url( 'publications' );
 			<hr class="al-divider">
 
 			<!-- ─────────────────────────────────────────────
-				 2. Research platforms — 3 IA-backbone cards
+				 2. Research platform — single IA-backbone card
 			───────────────────────────────────────────────── -->
 			<section class="al-inner-section">
-				<h2 class="al-inner-section__title">Our Research Platforms</h2>
+				<h2 class="al-inner-section__title">Our Research Platform</h2>
 				<p class="al-inner-section__lead">
-					Three interconnected areas of work &mdash; each building toward a world where light-based medicine is the standard of care.
+					Innovative molecular imaging &mdash; the foundation of the lab's work toward a world where light-based medicine is the standard of care.
 				</p>
 
 				<div class="al-research-nav">
@@ -97,54 +97,18 @@ $url_publications = al_page_url( 'publications' );
 						</span>
 					</a>
 
-					<!-- Image-Guided Surgery -->
-					<a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-research-nav-card">
-						<div class="al-research-nav-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-								<circle cx="12" cy="12" r="3"/>
-							</svg>
-						</div>
-						<p class="al-research-nav-card__title">Image-Guided Surgery</p>
-						<p class="al-research-nav-card__desc">
-							Real-time intraoperative fluorescence imaging systems that let surgeons visualize tumor boundaries, nerve structures, and vascular anatomy &mdash; reducing margin errors and improving patient outcomes.
-						</p>
-						<span class="al-research-nav-card__arrow">
-							Explore platform
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</span>
-					</a>
-
-					<!-- Bench to Bedside -->
-					<a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-research-nav-card">
-						<div class="al-research-nav-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-							</svg>
-						</div>
-						<p class="al-research-nav-card__title">Bench to Bedside</p>
-						<p class="al-research-nav-card__desc">
-							Translating laboratory discoveries into FDA-cleared devices and clinical-grade agents through rigorous preclinical validation, IND filings, and active clinical trials at UT Southwestern and partner centers.
-						</p>
-						<span class="al-research-nav-card__arrow">
-							Explore platform
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</span>
-					</a>
-
 				</div>
 			</section>
 
 			<hr class="al-divider">
 
 			<!-- ─────────────────────────────────────────────
-				 3. Recent Breakthroughs — 3-col content stream
-				 (one column per research platform)
+				 3. Recent Breakthroughs — single-col content stream
 			───────────────────────────────────────────────── -->
 			<section class="al-inner-section">
 				<h2 class="al-inner-section__title">Recent Breakthroughs</h2>
 				<p class="al-inner-section__lead">
-					Selected publications and milestones across the lab's three research platforms.
+					Selected publications and milestones from the lab.
 				</p>
 
 				<div class="al-latest__grid">
@@ -173,62 +137,6 @@ $url_publications = al_page_url( 'publications' );
 							</li>
 						</ul>
 						<a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" class="al-latest__more">
-							Explore the platform &rarr;
-						</a>
-					</div>
-
-					<!-- Image-Guided Surgery -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Image-Guided Surgery</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Single-Operator Cancer Vision Goggles for Quantitative Near-Infrared Fluorescence-Guided Surgery</p>
-									<p class="al-latest__meta">IEEE Trans. Biomed. Eng. &middot; 2026</p>
-								</a>
-							</li>
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Frugal engineering-inspired wearable augmented reality goggle system enables fluorescence-guided surgery</p>
-									<p class="al-latest__meta">Scientific Reports &middot; 2024</p>
-								</a>
-							</li>
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Quantitative tumor depth determination using dual wavelength excitation fluorescence</p>
-									<p class="al-latest__meta">Biomedical Optics Express &middot; 2022</p>
-								</a>
-							</li>
-						</ul>
-						<a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-latest__more">
-							Explore the platform &rarr;
-						</a>
-					</div>
-
-					<!-- Bench to Bedside -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Bench to Bedside</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">First-in-Humans Evaluation of Safety and Dosimetry of 64Cu-LLP2A for PET Imaging</p>
-									<p class="al-latest__meta">Journal of Nuclear Medicine &middot; 2023</p>
-								</a>
-							</li>
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Radionuclides transform chemotherapeutics into phototherapeutics for precise treatment of disseminated cancer</p>
-									<p class="al-latest__meta">Nature Communications &middot; 2018</p>
-								</a>
-							</li>
-							<li class="al-latest__item">
-								<a href="<?php echo $url_publications; ?>">
-									<p class="al-latest__title">Breaking the depth dependency of phototherapy with Cerenkov radiation and low-radiance-responsive nanophotosensitizers</p>
-									<p class="al-latest__meta">Nature Nanotechnology &middot; 2015</p>
-								</a>
-							</li>
-						</ul>
-						<a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-latest__more">
 							Explore the platform &rarr;
 						</a>
 					</div>

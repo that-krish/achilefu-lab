@@ -9,8 +9,6 @@
 defined( 'ABSPATH' ) || exit;
 
 $url_research      = al_page_url( 'research' );
-$url_igs           = al_page_url( 'research/image-guided-surgery' );
-$url_b2b           = al_page_url( 'research/bench-to-bedside' );
 $url_team          = al_page_url( 'team' );
 $url_contact       = al_page_url( 'contact' );
 $url_publications  = al_page_url( 'publications' );
@@ -293,51 +291,6 @@ get_header();
 					<p><strong style="color:var(--al-text)">Neurological disease.</strong> Agents engineered to cross the blood&ndash;brain barrier and bind amyloid plaques, tau tangles, or neuroinflammatory markers &mdash; supporting both mechanistic research and early diagnostic imaging.</p>
 					<p><strong style="color:var(--al-text)">Infectious disease.</strong> Species-specific probes targeting bacterial and fungal cell-wall components for rapid, non-culture identification of pathogens in tissue and on implants.</p>
 					<p><strong style="color:var(--al-text)">Cardiovascular disease.</strong> Imaging vulnerable atherosclerotic plaques and mapping myocardial viability using probes responsive to oxidative stress and hypoxia.</p>
-				</div>
-			</section>
-
-			<hr class="al-divider">
-
-			<!-- ── Row 6: Related research ── -->
-			<section class="al-inner-section" aria-labelledby="omi-related-heading">
-				<h2 class="al-inner-section__title" id="omi-related-heading">Related Research</h2>
-				<p class="al-inner-section__lead">Sibling platforms in the Achilefu Lab research program.</p>
-
-				<div class="al-research-nav">
-
-					<a href="<?php echo $url_igs; ?>" class="al-research-nav-card">
-						<div class="al-research-nav-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-								<circle cx="12" cy="12" r="3"/>
-							</svg>
-						</div>
-						<p class="al-research-nav-card__title">Image-Guided Surgery</p>
-						<p class="al-research-nav-card__desc">
-							Intraoperative fluorescence systems that put these probes to work in the operating room &mdash; resolving tumor margins, nerves, and lymph nodes in real time.
-						</p>
-						<span class="al-research-nav-card__arrow">
-							Explore platform
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</span>
-					</a>
-
-					<a href="<?php echo $url_b2b; ?>" class="al-research-nav-card">
-						<div class="al-research-nav-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-							</svg>
-						</div>
-						<p class="al-research-nav-card__title">Bench to Bedside</p>
-						<p class="al-research-nav-card__desc">
-							Translating probe chemistry and devices into FDA-cleared agents and clinical-grade systems through preclinical validation, IND filings, and active trials.
-						</p>
-						<span class="al-research-nav-card__arrow">
-							Explore platform
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</span>
-					</a>
-
 				</div>
 			</section>
 
