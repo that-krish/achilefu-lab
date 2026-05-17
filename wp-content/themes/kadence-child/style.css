@@ -712,7 +712,8 @@ body.home #inner-wrap {
 .al-latest__item { border-bottom: 1px solid var(--al-border); }
 .al-latest__item:last-child { border-bottom: none; }
 
-.al-latest__item a {
+.al-latest__item a,
+.al-latest__item--static {
   display: block;
   padding: 0.875rem 0;
   text-decoration: none;
