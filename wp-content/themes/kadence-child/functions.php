@@ -1,15 +1,15 @@
 <?php
 /**
  * Kadence Child — functions.php
- * Enqueues child stylesheet after Kadence's global CSS.
  */
 
 defined( 'ABSPATH' ) || exit;
 
 add_action( 'wp_enqueue_scripts', function () {
+	// Syne (display headings) + DM Sans (body/UI) — single request
 	wp_enqueue_style(
-		'al-dm-sans',
-		'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
+		'al-fonts',
+		'https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
 		[],
 		null
 	);
@@ -17,17 +17,14 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style(
 		'kadence-child',
 		get_stylesheet_uri(),
-		[ 'kadence-global', 'al-dm-sans' ],  // loads after Kadence's CSS so our overrides win
+		[ 'kadence-global', 'al-fonts' ],
 		wp_get_theme()->get( 'Version' )
 	);
 } );
 
-// ── Nav helpers (used in header.php) ──────────────────────────
+// ── Nav helpers ────────────────────────────────────────────────────────────────
 
 if ( ! function_exists( 'al_page_url' ) ) {
-	/**
-	 * Return the permalink for a page by slug, or '#' if the page doesn't exist yet.
-	 */
 	function al_page_url( string $slug ): string {
 		$page = get_page_by_path( $slug );
 		return $page ? esc_url( get_permalink( $page ) ) : '#';
@@ -35,16 +32,132 @@ if ( ! function_exists( 'al_page_url' ) ) {
 }
 
 if ( ! function_exists( 'al_blog_url' ) ) {
-	/**
-	 * Return the blog URL, honouring Settings > Reading if a Posts page is set.
-	 */
 	function al_blog_url(): string {
 		$id = (int) get_option( 'page_for_posts' );
 		return $id ? esc_url( get_permalink( $id ) ) : esc_url( home_url( '/blog/' ) );
 	}
 }
 
-// ── Desktop nav: 1s close delay so cursor can reach dropdown ─────
+// ── Global JS: header scroll + scroll reveal ───────────────────────────────────
+
+add_action( 'wp_footer', function () {
+	?>
+	<script>
+	(function () {
+
+		// Header solidify on scroll
+		var header = document.querySelector('.al-site-header');
+		if (header) {
+			var onScroll = function () {
+				header.classList.toggle('is-scrolled', window.scrollY > 60);
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			onScroll();
+		}
+
+		// Scroll reveal — adds .is-visible to .al-reveal elements when they enter viewport
+		var reveals = document.querySelectorAll('.al-reveal');
+		if (reveals.length && 'IntersectionObserver' in window) {
+			var revealIO = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						revealIO.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.12 });
+			reveals.forEach(function (el) { revealIO.observe(el); });
+		}
+
+	})();
+	</script>
+	<?php
+}, 18 );
+
+// ── Front-page only JS ─────────────────────────────────────────────────────────
+
+add_action( 'wp_footer', function () {
+	if ( ! is_front_page() ) return;
+	?>
+	<script>
+	(function () {
+
+		// ── Stat counter animation ─────────────────────────────────────────────
+		function animateCounter(el) {
+			var target   = parseInt(el.dataset.count, 10);
+			var suffix   = el.dataset.suffix || '';
+			var duration = 1800;
+			var start    = performance.now();
+			function tick(now) {
+				var elapsed  = now - start;
+				var progress = Math.min(elapsed / duration, 1);
+				var eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+				var current  = Math.round(eased * target);
+				el.textContent = current.toLocaleString() + suffix;
+				if (progress < 1) requestAnimationFrame(tick);
+			}
+			// Reset to 0 before animating (fallback value shown until IO fires)
+			el.textContent = '0' + suffix;
+			requestAnimationFrame(tick);
+		}
+
+		var stats = document.querySelectorAll('.al-stat__value[data-count]');
+		if (stats.length && 'IntersectionObserver' in window) {
+			var counterIO = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						animateCounter(entry.target);
+						counterIO.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.6 });
+			stats.forEach(function (el) { counterIO.observe(el); });
+		}
+
+	})();
+	</script>
+	<?php
+}, 21 );
+
+// ── Mobile nav JS ──────────────────────────────────────────────────────────────
+
+add_action( 'wp_footer', function () {
+	?>
+	<script>
+	(function () {
+		var toggle = document.getElementById( 'al-menu-toggle' );
+		var nav    = document.getElementById( 'al-primary-nav' );
+		if ( ! toggle || ! nav ) return;
+
+		toggle.addEventListener( 'click', function () {
+			var open = this.getAttribute( 'aria-expanded' ) === 'true';
+			this.setAttribute( 'aria-expanded', String( ! open ) );
+			this.setAttribute( 'aria-label', open ? 'Open navigation menu' : 'Close navigation menu' );
+			nav.classList.toggle( 'is-open', ! open );
+			this.classList.toggle( 'is-active', ! open );
+		} );
+
+		document.querySelectorAll( '.al-nav-label' ).forEach( function ( btn ) {
+			btn.addEventListener( 'click', function () {
+				if ( window.innerWidth >= 900 ) return;
+				var group  = this.closest( '.al-nav-group' );
+				var isOpen = group.classList.contains( 'is-open' );
+				document.querySelectorAll( '.al-nav-group' ).forEach( function ( g ) {
+					g.classList.remove( 'is-open' );
+					g.querySelector( '.al-nav-label' ).setAttribute( 'aria-expanded', 'false' );
+				} );
+				if ( ! isOpen ) {
+					group.classList.add( 'is-open' );
+					this.setAttribute( 'aria-expanded', 'true' );
+				}
+			} );
+		} );
+	})();
+	</script>
+	<?php
+}, 20 );
+
+// ── Desktop nav hover-delay ────────────────────────────────────────────────────
 
 add_action( 'wp_footer', function () {
 	?>
@@ -70,81 +183,3 @@ add_action( 'wp_footer', function () {
 	</script>
 	<?php
 }, 19 );
-
-// ── Pillars accordion JS (front page only) ────────────────────
-
-add_action( 'wp_footer', function () {
-	if ( ! is_front_page() ) return;
-	?>
-	<script>
-	(function () {
-		var items = document.querySelectorAll( '.al-accordion-item' );
-		if ( ! items.length ) return;
-
-		items.forEach( function ( item ) {
-			var trigger = item.querySelector( '.al-accordion-trigger' );
-			if ( ! trigger ) return;
-
-			trigger.addEventListener( 'click', function () {
-				var isActive = item.classList.contains( 'is-active' );
-
-				// Close all
-				items.forEach( function ( i ) {
-					i.classList.remove( 'is-active' );
-					var t = i.querySelector( '.al-accordion-trigger' );
-					if ( t ) t.setAttribute( 'aria-expanded', 'false' );
-				} );
-
-				// Open the clicked one (unless it was already open)
-				if ( ! isActive ) {
-					item.classList.add( 'is-active' );
-					trigger.setAttribute( 'aria-expanded', 'true' );
-				}
-			} );
-		} );
-	})();
-	</script>
-	<?php
-}, 21 );
-
-// ── Mobile nav JS ─────────────────────────────────────────────
-
-add_action( 'wp_footer', function () {
-	?>
-	<script>
-	(function () {
-		var toggle = document.getElementById( 'al-menu-toggle' );
-		var nav    = document.getElementById( 'al-primary-nav' );
-		if ( ! toggle || ! nav ) return;
-
-		// Hamburger open/close
-		toggle.addEventListener( 'click', function () {
-			var open = this.getAttribute( 'aria-expanded' ) === 'true';
-			this.setAttribute( 'aria-expanded', String( ! open ) );
-			this.setAttribute( 'aria-label', open ? 'Open navigation menu' : 'Close navigation menu' );
-			nav.classList.toggle( 'is-open', ! open );
-			this.classList.toggle( 'is-active', ! open );
-		} );
-
-		// Dropdown toggles — only active on mobile (desktop uses CSS :hover)
-		document.querySelectorAll( '.al-nav-label' ).forEach( function ( btn ) {
-			btn.addEventListener( 'click', function () {
-				if ( window.innerWidth >= 900 ) return;
-				var group  = this.closest( '.al-nav-group' );
-				var isOpen = group.classList.contains( 'is-open' );
-				// Collapse all siblings first
-				document.querySelectorAll( '.al-nav-group' ).forEach( function ( g ) {
-					g.classList.remove( 'is-open' );
-					g.querySelector( '.al-nav-label' ).setAttribute( 'aria-expanded', 'false' );
-				} );
-				if ( ! isOpen ) {
-					group.classList.add( 'is-open' );
-					this.setAttribute( 'aria-expanded', 'true' );
-				}
-			} );
-		} );
-
-})();
-	</script>
-	<?php
-}, 20 );

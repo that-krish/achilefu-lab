@@ -24,7 +24,7 @@ This file is the single source of truth for *implementation state and decision h
 
 ## 2. Current state
 
-> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-10 CST** by Claude (Sonnet 4.6). Theme v1.4.2.
+> **Update this section every session.** It must reflect reality at the time of the most recent commit. The Entries section below is append-only; this section is overwrite-in-place. Last updated: **2026-05-17 CST** by Claude (Sonnet 4.6). Theme v2.0.0.
 
 ### Status by area
 
@@ -32,33 +32,37 @@ This file is the single source of truth for *implementation state and decision h
 |---|---|---|
 | Repo + README | ✅ Done | Initial WP install committed, README written and pushed. |
 | Documentation | ✅ Done | DESIGN.md, DEVLOG.md, GOLIVE.md, CONTENT.md all under `docs/`. |
-| Design system spec | ✅ Confirmed | Palette (#2D4654 / #243B4A / #87BCDE / white) and DM Sans typography confirmed by Krish. See DESIGN.md. |
-| Design system implementation | ✅ Done | Kadence global palette and fonts set via WP-CLI. DM Sans 400/700 loading. Brand colors in Kadence palette slots 1–9. |
+| Design system spec | ✅ Confirmed | v2.0 tokens: dark bg (#0f1d2a), neon (#6EF77A), Syne display + DM Sans body. |
+| Design system implementation | ✅ Done | Global CSS in `style.css`; Syne + DM Sans loaded from Google Fonts via `functions.php`. |
 | Core pages | ✅ Done | 7 pages created and published (IDs 6–12). Home = static front page. Blog = posts page. |
-| Navigation | ✅ Done | `header.php` override; all 9 dropdown target slugs resolve to live pages. |
-| Fixed header | ✅ Done | Header pinned via `#masthead { position: fixed !important }`. Offset baked into `.al-inner-hero` padding. No `#wrapper` padding needed. |
-| Home page content | ✅ Done | All 6 sections live. Design iterated: v1.4.0 — Pillars = accordion (one open at a time, JS-driven, no hover/focus shadow). Numbers = flat stats on dark bg, thin dividers. Affiliations = no box. See DESIGN.md §5. |
-| Home page images | ✅ Done | `dr-achilefu.jpg`, `hero-bg.jpg`, `lab-bg.jpg` placed in `wp-content/uploads/` by Krish. |
-| Logo / wordmark | 🟡 Placeholder | CSS wordmark ("Achilefu Lab" + small teal square mark) in header. Real SVG logo TBD. |
-| Other pages content | 🟡 Templates built, content placeholder | 7 `page-{slug}.php` templates created with real design-system layouts and substantive placeholder copy. Media + Contact = no template yet (stubs). Lab Calendar awaits Google Calendar embed. Team grid awaits member bios from lab. |
+| Navigation | ✅ Done | `header.php` override; dark glass on home, white on inner pages. 500ms hover-delay on desktop. |
+| Fixed header | ✅ Done | Header pinned via `#masthead { position: fixed !important }`. Offset baked into `.al-inner-hero`. |
+| Home page — v2.0 redesign | ✅ Done | Cinematic flex-expand pillars, Syne display font, neon accent, diagonal section transitions, scroll reveal, counter animation. All 6 sections live. |
+| Home page images | ✅ Done | `dr-achilefu.jpg`, `hero-bg.jpg`, `lab-bg.jpg` in `wp-content/uploads/`. |
+| Inner page templates | ✅ Done | Research, 3 sub-pages (optical-imaging, image-guided-surgery, bench-to-bedside), PI, Team, Lab Calendar, **Contact**, **Media** — all use v2.0 design tokens. |
+| Logo / wordmark | 🟡 Placeholder | CSS wordmark in header. Real SVG logo TBD. |
+| Contact form | 🟡 Placeholder | WPForms installed. Template shows placeholder form + email fallback. Activate with `[wpforms id="X"]` shortcode when form is created. |
+| Team member bios | ⏹ Awaiting content | `$team` array in `page-team.php` — add entries as bios arrive from lab. |
+| Media gallery images | ⏹ Awaiting content | Placeholder shown. Add `<figure class="al-media-figure">` entries to `page-media.php`. |
 | Publications auto-pull | ⏹ Not started | Strategy TBD (PubMed API likely). |
-| Plugins | 🟡 Installed, not configured | Yoast / WPForms / W3TC installed but at defaults. |
-| Deployment / production host | ⏹ Not chosen | `achilefulab.org` target domain; no host or DNS selected. |
-| PHP (system) | ✅ Done | PHP 8.2 installed via winget. Available in new terminal sessions. |
+| Lab Calendar | 🟡 Template built | Google Calendar embed URL needed. |
+| Plugins | 🟡 Installed, not configured | Yoast / WPForms / W3TC at defaults. |
+| Deployment / production host | ⏹ Not chosen | `achilefulab.org` target domain. |
 
 Legend: ✅ done · 🟡 in progress / partial · ⏹ not started · ❌ missing/blocked
 
 ### Active work
 
-**Home page visual pass complete (v1.4.0).** Pillars accordion live, shadows/radii tightened globally, numbers and affiliations de-boxed. Next: team member bios, Google Calendar embed, Media + Contact page templates. Blog cards and PI Spotlight panel are still boxed — candidates for next design pass.
+**v2.0 full visual redesign committed.** Home page: cinematic expanding pillar panels (CSS flex), Syne display font, neon phosphorescent accent, scroll reveal on all sections, counter animation on stats, diagonal clip-path transitions between sections. All 9 page templates now complete including Contact and Media.
 
 ### Blocked / pending decisions
 
-- [ ] Logo / wordmark creation.
-- [ ] Lab member list and bios for Team page.
-- [ ] Molecular images from lab members (for Media page).
+- [ ] Logo / wordmark (real SVG).
+- [ ] Lab member list and bios for Team page (`$team` array in `page-team.php`).
+- [ ] Molecular imaging photos from lab members (for Media gallery).
+- [ ] WPForms contact form ID — create form, then add `[wpforms id="X"]` to `page-contact.php`.
+- [ ] Google Calendar embed URL for Lab Calendar page.
 - [ ] Verify "25+ Years of innovation" stat with Dr. Achilefu.
-- [ ] Verify all active funding agencies for Affiliations strip.
 - [ ] Production host + DNS provider for `achilefulab.org`.
 
 ### Don't break
@@ -104,6 +108,36 @@ What's still open.
 ## 4. Entries
 
 *(Newest first. Append above the entry below it, never overwrite.)*
+
+---
+
+### 2026-05-17 CST — v2.0 home page redesign + Contact & Media templates (theme v2.0.0)
+
+**Author:** Claude (Sonnet 4.6) working with Krish   ·   **Branch:** main
+
+**What changed**
+1. **Home page v2.0 redesign** (`front-page.php`, `style.css`, `functions.php`): Complete visual overhaul. Hero: dark parallax with diagonal clip-path bottom, neon eyebrow pill, Syne 800 headline, phosphorescent green on keyword "Light". Pillars: replaced accordion with cinematic CSS flex-expand panels — hover grows panel from `flex:1` to `flex:3`, neon line slides in from left via `scaleX`, description/link fade up from `translateY(14px)`. PI Spotlight: off-white section, editorial two-column no-card, neon vertical bar accent left of photo. Numbers: dark parallax, counter animation via IntersectionObserver + `requestAnimationFrame`. Blog: off-white, neon left border reveals on card hover. Affiliations: dark footer strip. All sections connected by `clip-path` diagonal transitions.
+2. **Syne display font** (`functions.php`): Loaded alongside DM Sans in a single Google Fonts request. Applied to all headings and display text globally.
+3. **Scroll reveal** (`functions.php`): Global IntersectionObserver adds `.is-visible` to `.al-reveal` elements at 12% threshold. Staggered via `data-delay` attribute.
+4. **Contact page template** (`page-contact.php`): Two-column layout — form column (WPForms placeholder with email fallback) + sticky detail cards (email, address, joining the lab, press). WPForms shortcode commented in; activate by uncommenting and setting form ID.
+5. **Media page template** (`page-media.php`): Featured image gallery (placeholder grid), press list (NAE/NAM/UTSW announcements), talks/lectures placeholder, contact CTA.
+6. **CSS additions** (`style.css`): Contact layout (`.al-contact-layout`, `.al-contact-detail-card`), Media page (`.al-press-list`, `.al-press-item`, `.al-media-gallery`, `.al-media-figure`, `.al-media-gallery__placeholder`). Full responsive coverage for both pages.
+
+**Why**
+The v1.4.x design used white accordion cards and flat dividers — functional but visually generic. The v2.0 direction leans editorial/premium: dark sections for drama, Syne for authority, the neon as a single energetic accent used sparingly (keyword, neon bar, card hover, CTA). The cinematic pillar panels are a distinctive structural element that directly represents the three research pillars. Contact and Media were the only pages without templates.
+
+**Watch out for**
+- The cinematic pillars use `flex: 1` → `flex: 3` with `transition: flex 0.6s`. On reduced-motion, all panels revert to `flex: 1 !important` and desc/link are always visible. Do not add `min-width` to `.al-pillar-panel` — the grid is purely ratio-based.
+- `background-attachment: fixed` (parallax) is disabled on `max-width: 768px` due to iOS Safari bug. On mobile the hero and numbers sections use `scroll` attachment.
+- The Contact page form column has `min-width: 0` to prevent grid blowout in the `3fr 2fr` layout — do not remove it.
+- WPForms shortcode lives in a PHP `if ( shortcode_exists('wpforms') )` block — commented out. To activate: uncomment the `echo do_shortcode(...)` line and set the correct form ID. Remove the `.al-contact-placeholder` div once WPForms is rendering.
+- The `.al-media-gallery` uses `display: grid` with `auto-fill minmax(280px, 1fr)`. The placeholder uses `grid-column: 1 / -1` — remove this span if real images are added alongside it.
+
+**Next**
+- Create WPForms contact form, activate shortcode in `page-contact.php`.
+- Collect lab member bios → add to `$team` array in `page-team.php`.
+- Collect molecular imaging photos from lab members → add to Media gallery.
+- Get Google Calendar embed URL for Lab Calendar page.
 
 ---
 

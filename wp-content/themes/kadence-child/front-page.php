@@ -1,26 +1,23 @@
 <?php
 /**
  * Home page template — Achilefu Lab
- *
- * Bypasses Kadence's block-editor pipeline for full layout control.
- * All styles live in kadence-child/style.css under the .al-home namespace.
+ * v2.0 — full redesign: cinematic pillars, counter animation, scroll reveals,
+ *         Syne display font, neon accent, diagonal section transitions.
  */
 
 defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-// Resolve page slugs to URLs once, reuse below.
 $url_research = esc_url( get_permalink( get_page_by_path( 'research' ) ) );
 $url_contact  = esc_url( get_permalink( get_page_by_path( 'contact' ) ) );
 $url_team     = esc_url( get_permalink( get_page_by_path( 'team' ) ) );
 $url_blog     = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
 
-// PI photo: place dr-achilefu.jpg in wp-content/uploads/ to activate.
-$uploads       = wp_get_upload_dir();
-$pi_file       = $uploads['basedir'] . '/dr-achilefu.jpg';
-$pi_url        = $uploads['baseurl'] . '/dr-achilefu.jpg';
-$pi_has_photo  = file_exists( $pi_file );
+$uploads      = wp_get_upload_dir();
+$pi_file      = $uploads['basedir'] . '/dr-achilefu.jpg';
+$pi_url       = $uploads['baseurl'] . '/dr-achilefu.jpg';
+$pi_has_photo = file_exists( $pi_file );
 ?>
 
 <div class="al-home">
@@ -30,128 +27,112 @@ $pi_has_photo  = file_exists( $pi_file );
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-hero" aria-labelledby="al-hero-headline">
     <div class="al-container">
+
+      <span class="al-hero__eyebrow">Achilefu Lab &middot; UT Southwestern</span>
+
       <h1 class="al-hero__headline" id="al-hero-headline">
-        Harnessing Light to Understand, Diagnose &amp;&nbsp;Treat&nbsp;Disease.
+        Harnessing <em>Light</em> to Understand, Diagnose &amp;&nbsp;Treat&nbsp;Disease.
       </h1>
 
       <p class="al-hero__sub">
-        Pioneering optical and molecular imaging technologies — from molecular probe to clinical care.
+        Pioneering optical and molecular imaging technologies&nbsp;&mdash; from molecular probe to clinical care.
       </p>
 
       <div class="al-hero__actions">
         <a href="<?php echo $url_research; ?>" class="al-btn al-btn--primary">Our Research</a>
         <a href="<?php echo $url_contact; ?>"  class="al-btn al-btn--secondary">Contact Us</a>
       </div>
+
     </div>
   </section><!-- /.al-hero -->
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       2. RESEARCH PILLARS
+       2. RESEARCH PILLARS — cinematic expanding panels
+       Full-bleed, no container. Hover expands via CSS flex.
   ══════════════════════════════════════════════════════════════ -->
-  <section class="al-pillars" aria-labelledby="al-pillars-heading">
-    <div class="al-container">
-      <h2 class="al-section-heading" id="al-pillars-heading">What We Do</h2>
+  <section class="al-pillars" aria-label="Research focus areas">
 
-      <div class="al-pillars__accordion">
+    <div class="al-pillars-grid">
 
-        <!-- Item 1: Optical & Molecular Imaging — open by default -->
-        <div class="al-accordion-item is-active">
-          <button class="al-accordion-trigger" aria-expanded="true" aria-controls="pillar-panel-1">
-            <span class="al-accordion-trigger__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="7.5" stroke="currentColor" stroke-width="2.5"/>
-                <line x1="24" y1="4"  x2="24" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="24" y1="37" x2="24" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="4"  y1="24" x2="11" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="37" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="10.1" y1="10.1" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="33.5" y1="33.5" x2="37.9" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="37.9" y1="10.1" x2="33.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="14.5" y1="33.5" x2="10.1" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="al-accordion-trigger__title">Optical &amp; Molecular Imaging</span>
-            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Panel 1: Optical & Molecular Imaging -->
+      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Optical and Molecular Imaging">
+        <span class="al-pillar-panel__number" aria-hidden="true">01</span>
+        <div class="al-pillar-panel__content">
+          <div class="al-pillar-panel__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="7.5" stroke="currentColor" stroke-width="2.5"/>
+              <line x1="24" y1="4"  x2="24" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="24" y1="37" x2="24" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="4"  y1="24" x2="11" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="37" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="10.1" y1="10.1" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="33.5" y1="33.5" x2="37.9" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="37.9" y1="10.1" x2="33.5" y2="14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="14.5" y1="33.5" x2="10.1" y2="37.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
-          </button>
-          <div class="al-accordion-panel" id="pillar-panel-1">
-            <div class="al-accordion-panel__inner">
-              <p class="al-accordion-panel__desc">
-                Near-infrared fluorescence platforms that reveal disease at the molecular level,
-                enabling detection that the naked eye cannot achieve.
-              </p>
-              <a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" class="al-accordion-panel__link">
-                Learn more &rarr;
-              </a>
-            </div>
           </div>
-        </div><!-- /.al-accordion-item -->
+          <h3 class="al-pillar-panel__title">Optical &amp; Molecular Imaging</h3>
+          <p class="al-pillar-panel__desc">
+            Near-infrared fluorescence platforms that reveal disease at the molecular level,
+            enabling detection that the naked eye cannot achieve.
+          </p>
+          <a href="<?php echo al_page_url( 'research/optical-imaging' ); ?>" class="al-pillar-panel__link">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div><!-- /.al-pillar-panel -->
 
-        <!-- Item 2: Image-Guided Surgery -->
-        <div class="al-accordion-item">
-          <button class="al-accordion-trigger" aria-expanded="false" aria-controls="pillar-panel-2">
-            <span class="al-accordion-trigger__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 24C4 24 12 13 24 13C36 13 44 24 44 24C44 24 36 35 24 35C12 35 4 24 4 24Z"
-                      stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                <circle cx="24" cy="24" r="5.5" stroke="currentColor" stroke-width="2.5"/>
-                <circle cx="24" cy="24" r="2"   fill="currentColor"/>
-              </svg>
-            </span>
-            <span class="al-accordion-trigger__title">Image-Guided Surgery</span>
-            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Panel 2: Image-Guided Surgery -->
+      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Image-Guided Surgery">
+        <span class="al-pillar-panel__number" aria-hidden="true">02</span>
+        <div class="al-pillar-panel__content">
+          <div class="al-pillar-panel__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 24C4 24 12 13 24 13C36 13 44 24 44 24C44 24 36 35 24 35C12 35 4 24 4 24Z"
+                    stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="5.5" stroke="currentColor" stroke-width="2.5"/>
+              <circle cx="24" cy="24" r="2"   fill="currentColor"/>
             </svg>
-          </button>
-          <div class="al-accordion-panel" id="pillar-panel-2">
-            <div class="al-accordion-panel__inner">
-              <p class="al-accordion-panel__desc">
-                Wearable cancer-imaging systems and fluorescent goggles for real-time visualization
-                during oncologic surgery — used in operating rooms worldwide.
-              </p>
-              <a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-accordion-panel__link">
-                Learn more &rarr;
-              </a>
-            </div>
           </div>
-        </div><!-- /.al-accordion-item -->
+          <h3 class="al-pillar-panel__title">Image-Guided Surgery</h3>
+          <p class="al-pillar-panel__desc">
+            Wearable cancer-imaging systems and fluorescent goggles for real-time visualization
+            during oncologic surgery&nbsp;&mdash; used in operating rooms worldwide.
+          </p>
+          <a href="<?php echo al_page_url( 'research/image-guided-surgery' ); ?>" class="al-pillar-panel__link">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div><!-- /.al-pillar-panel -->
 
-        <!-- Item 3: Bench to Bedside -->
-        <div class="al-accordion-item">
-          <button class="al-accordion-trigger" aria-expanded="false" aria-controls="pillar-panel-3">
-            <span class="al-accordion-trigger__icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17 8H31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M19 8V21L9 36.5C8.1 38 9.4 40 11.5 40H36.5C38.6 40 39.9 38 39 36.5L29 21V8"
-                      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M9.5 33H38.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="17"  cy="36.5" r="1.75" fill="currentColor" opacity="0.45"/>
-                <circle cx="25"  cy="38"   r="1.5"  fill="currentColor" opacity="0.45"/>
-                <circle cx="32"  cy="35.5" r="2"    fill="currentColor" opacity="0.45"/>
-              </svg>
-            </span>
-            <span class="al-accordion-trigger__title">Bench to Bedside</span>
-            <svg class="al-accordion-chevron" width="16" height="16" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Panel 3: Bench to Bedside -->
+      <div class="al-pillar-panel" tabindex="0" role="group" aria-label="Bench to Bedside">
+        <span class="al-pillar-panel__number" aria-hidden="true">03</span>
+        <div class="al-pillar-panel__content">
+          <div class="al-pillar-panel__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 8H31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M19 8V21L9 36.5C8.1 38 9.4 40 11.5 40H36.5C38.6 40 39.9 38 39 36.5L29 21V8"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.5 33H38.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="17"  cy="36.5" r="1.75" fill="currentColor" opacity="0.5"/>
+              <circle cx="25"  cy="38"   r="1.5"  fill="currentColor" opacity="0.5"/>
+              <circle cx="32"  cy="35.5" r="2"    fill="currentColor" opacity="0.5"/>
             </svg>
-          </button>
-          <div class="al-accordion-panel" id="pillar-panel-3">
-            <div class="al-accordion-panel__inner">
-              <p class="al-accordion-panel__desc">
-                End-to-end development — from novel molecular probes through preclinical validation
-                to clinical translation and patient care.
-              </p>
-              <a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-accordion-panel__link">
-                Learn more &rarr;
-              </a>
-            </div>
           </div>
-        </div><!-- /.al-accordion-item -->
+          <h3 class="al-pillar-panel__title">Bench to Bedside</h3>
+          <p class="al-pillar-panel__desc">
+            End-to-end development&nbsp;&mdash; from novel molecular probes through preclinical
+            validation to clinical translation and patient care.
+          </p>
+          <a href="<?php echo al_page_url( 'research/bench-to-bedside' ); ?>" class="al-pillar-panel__link">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div><!-- /.al-pillar-panel -->
 
-      </div><!-- /.al-pillars__accordion -->
-    </div><!-- /.al-container -->
+    </div><!-- /.al-pillars-grid -->
   </section><!-- /.al-pillars -->
 
 
@@ -162,7 +143,7 @@ $pi_has_photo  = file_exists( $pi_file );
     <div class="al-container">
       <div class="al-pi__inner">
 
-        <div class="al-pi__photo-wrap">
+        <div class="al-pi__photo-wrap al-reveal">
           <?php if ( $pi_has_photo ) : ?>
             <img
               src="<?php echo esc_url( $pi_url ); ?>"
@@ -172,22 +153,19 @@ $pi_has_photo  = file_exists( $pi_file );
               decoding="async"
             >
           <?php else : ?>
-            <!-- Placeholder shown until dr-achilefu.jpg is placed in wp-content/uploads/ -->
             <div class="al-pi__photo-placeholder" role="img" aria-label="Dr. Samuel Achilefu — photo coming soon">
               <svg viewBox="0 0 380 475" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect width="380" height="475" fill="#E8EFF3"/>
-                <circle cx="190" cy="175" r="85"  fill="#C8D5DC"/>
-                <ellipse cx="190" cy="500" rx="155" ry="130" fill="#C8D5DC"/>
+                <rect width="380" height="475" fill="#D8E6EF"/>
+                <circle cx="190" cy="175" r="85"  fill="#B8CED9"/>
+                <ellipse cx="190" cy="500" rx="155" ry="130" fill="#B8CED9"/>
                 <text x="190" y="310" font-family="DM Sans, sans-serif" font-size="12"
-                      fill="#8FA8B5" text-anchor="middle">
-                  Photo coming soon
-                </text>
+                      fill="#7A9AAB" text-anchor="middle">Photo coming soon</text>
               </svg>
             </div>
           <?php endif; ?>
         </div><!-- /.al-pi__photo-wrap -->
 
-        <div class="al-pi__content">
+        <div class="al-pi__content al-reveal" data-delay="2">
           <p class="al-pi__eyebrow">Principal Investigator</p>
           <h2 class="al-pi__name" id="al-pi-heading">Dr. Samuel Achilefu</h2>
 
@@ -201,7 +179,7 @@ $pi_has_photo  = file_exists( $pi_file );
             Inaugural Chair of Biomedical Engineering at UT Southwestern and holder of the Lyda Hill
             Distinguished University Chair. Elected to both the National Academy of Engineering and the
             National Academy of Medicine, his lab develops optical imaging technologies that change how
-            cancer is diagnosed and treated — in the operating room and beyond.
+            cancer is diagnosed and treated&nbsp;&mdash; in the operating room and beyond.
           </p>
 
           <a href="<?php echo $url_team; ?>" class="al-btn al-btn--primary">Meet the Team</a>
@@ -214,29 +192,34 @@ $pi_has_photo  = file_exists( $pi_file );
 
   <!-- ═══════════════════════════════════════════════════════════
        4. LAB IN NUMBERS
+       data-count + data-suffix drive the counter animation.
+       Fallback text shown if JS is unavailable or slow.
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-numbers" aria-label="Lab statistics">
     <div class="al-container">
+
+      <p class="al-numbers__heading" aria-hidden="true">Impact by the numbers</p>
+
       <div class="al-numbers__grid">
 
-        <div class="al-stat">
-          <span class="al-stat__value">300+</span>
+        <div class="al-stat al-reveal" data-delay="1">
+          <span class="al-stat__value" data-count="300" data-suffix="+">300+</span>
           <span class="al-stat__label">Peer-reviewed publications</span>
         </div>
 
-        <div class="al-stat">
-          <span class="al-stat__value">70+</span>
+        <div class="al-stat al-reveal" data-delay="2">
+          <span class="al-stat__value" data-count="70" data-suffix="+">70+</span>
           <span class="al-stat__label">U.S. Patents</span>
         </div>
 
-        <div class="al-stat">
-          <span class="al-stat__value">2</span>
+        <div class="al-stat al-reveal" data-delay="3">
+          <span class="al-stat__value" data-count="2" data-suffix="">2</span>
           <span class="al-stat__label">National Academy memberships</span>
         </div>
 
-        <div class="al-stat">
-          <span class="al-stat__value">25+</span>
-          <!-- [VERIFY] with Dr. Achilefu before go-live -->
+        <div class="al-stat al-reveal" data-delay="4">
+          <span class="al-stat__value" data-count="25" data-suffix="+">25+</span>
+          <!-- [VERIFY] years of innovation figure with Dr. Achilefu before go-live -->
           <span class="al-stat__label">Years of innovation</span>
         </div>
 
@@ -250,7 +233,11 @@ $pi_has_photo  = file_exists( $pi_file );
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-blog" aria-labelledby="al-blog-heading">
     <div class="al-container">
-      <h2 class="al-section-heading" id="al-blog-heading">Latest from the Lab</h2>
+
+      <h2 class="al-section-heading al-reveal" id="al-blog-heading">Latest from the Lab</h2>
+      <p class="al-section-subhead al-reveal" data-delay="1">
+        Research updates, breakthroughs, and news from the Achilefu Lab.
+      </p>
 
       <div class="al-blog__grid">
         <?php
@@ -261,14 +248,16 @@ $pi_has_photo  = file_exists( $pi_file );
         ] );
 
         if ( $recent ) :
-          foreach ( $recent as $post ) :
+          foreach ( $recent as $i => $post ) :
             setup_postdata( $post );
             $excerpt = get_the_excerpt( $post );
             if ( ! $excerpt ) {
               $excerpt = wp_trim_words( get_the_content( null, false, $post ), 22, '…' );
             }
+            $delay = $i + 2;
         ?>
-          <article class="al-card" aria-label="<?php echo esc_attr( get_the_title( $post ) ); ?>">
+          <article class="al-card al-reveal" data-delay="<?php echo $delay; ?>"
+                   aria-label="<?php echo esc_attr( get_the_title( $post ) ); ?>">
             <div class="al-card__meta">
               <time datetime="<?php echo esc_attr( get_the_date( 'c', $post ) ); ?>">
                 <?php echo esc_html( get_the_date( 'M j, Y', $post ) ); ?>
@@ -297,9 +286,10 @@ $pi_has_photo  = file_exists( $pi_file );
         <?php endif; ?>
       </div><!-- /.al-blog__grid -->
 
-      <div class="al-blog__cta">
+      <div class="al-blog__cta al-reveal">
         <a href="<?php echo $url_blog; ?>" class="al-btn al-btn--secondary">View all posts</a>
       </div>
+
     </div><!-- /.al-container -->
   </section><!-- /.al-blog -->
 
@@ -309,21 +299,20 @@ $pi_has_photo  = file_exists( $pi_file );
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-affiliations" aria-label="Affiliations and partners">
     <div class="al-container">
+
       <p class="al-affiliations__label">Affiliated with</p>
 
       <div class="al-affiliations__logos">
         <!--
-          Replace each text item with an <img> once logo files are available.
-          Suggested paths (all in wp-content/uploads/logos/):
-            logo-utsw.svg
-            logo-simmons.svg
-            logo-nih.svg
-          Use grayscale, height ~36px. CSS handles opacity + hover.
+          Replace text items with <img> once logo files are in wp-content/uploads/logos/.
+          Suggested files: logo-utsw.svg, logo-simmons.svg, logo-nih.svg
+          Use: filter: grayscale(1) brightness(2); height: 36px; CSS handles opacity.
         -->
-        <div class="al-affiliation-item">UT Southwestern Medical Center</div>
-        <div class="al-affiliation-item">Harold C. Simmons Comprehensive Cancer Center</div>
-        <div class="al-affiliation-item">National Institutes of Health</div>
+        <div class="al-affiliation-item al-reveal" data-delay="1">UT Southwestern Medical Center</div>
+        <div class="al-affiliation-item al-reveal" data-delay="2">Harold C. Simmons Comprehensive Cancer Center</div>
+        <div class="al-affiliation-item al-reveal" data-delay="3">National Institutes of Health</div>
       </div>
+
     </div>
   </section><!-- /.al-affiliations -->
 
