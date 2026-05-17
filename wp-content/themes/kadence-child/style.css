@@ -270,6 +270,47 @@ body.home #inner-wrap {
   color: #fff;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Fluorescent molecule field — decorative cursor-excitation flare
+   Direct visual reference to the lab's NIR fluorescence imaging.
+   CSS handles ambient state + breathe; JS (functions.php) sets
+   --cursor-intensity on each dot based on cursor proximity.
+───────────────────────────────────────────────────────────── */
+.al-hero__molecules {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.al-molecule {
+  --cursor-intensity: 0;
+  position: absolute;
+  background: rgba(135, 188, 222, 1);
+  border-radius: 50%;
+  opacity: calc(0.20 + var(--cursor-intensity) * 0.78);
+  box-shadow:
+    0 0
+    calc(8px + var(--cursor-intensity) * 22px)
+    calc(var(--cursor-intensity) * 7px)
+    rgba(135, 188, 222, calc(0.45 + var(--cursor-intensity) * 0.45));
+  transition: opacity 0.18s ease-out, box-shadow 0.22s ease-out;
+  animation: al-molecule-breathe 7s ease-in-out infinite;
+  will-change: opacity, box-shadow;
+}
+
+@keyframes al-molecule-breathe {
+  0%, 100% { transform: scale(0.85); }
+  50%      { transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .al-molecule {
+    animation: none;
+    transition: none;
+  }
+}
+
 /* Credentials strip — inline below buttons */
 .al-hero__cred {
   display: flex;

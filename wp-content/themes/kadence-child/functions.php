@@ -74,6 +74,83 @@ add_action( 'wp_footer', function () {
 	<?php
 }, 18 );
 
+// ── Hero molecule excitation (front-page only) ─────────────────────────────────
+
+add_action( 'wp_footer', function () {
+	if ( ! is_front_page() ) return;
+	?>
+	<script>
+	(function () {
+		// Touch / no-fine-pointer / reduced-motion: skip JS, dots stay in CSS ambient state
+		if ( ! window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches ) return;
+		if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+		var hero = document.querySelector( '.al-hero' );
+		if ( ! hero ) return;
+		var molecules = Array.prototype.slice.call( hero.querySelectorAll( '.al-molecule' ) );
+		if ( ! molecules.length ) return;
+
+		var molPos    = [];
+		var maxDist   = 240;
+		var maxDistSq = maxDist * maxDist;
+		var mouseX    = -9999;
+		var mouseY    = -9999;
+		var rafId     = null;
+		var inside    = false;
+
+		function cachePositions () {
+			molPos = molecules.map( function ( m ) {
+				return {
+					x: m.offsetLeft + m.offsetWidth  / 2,
+					y: m.offsetTop  + m.offsetHeight / 2,
+				};
+			} );
+		}
+
+		function update () {
+			rafId = null;
+			for ( var i = 0; i < molecules.length; i++ ) {
+				var p = molPos[ i ];
+				var dx = mouseX - p.x;
+				var dy = mouseY - p.y;
+				var distSq = dx * dx + dy * dy;
+				var intensity = 0;
+				if ( distSq < maxDistSq ) {
+					var t = 1 - Math.sqrt( distSq ) / maxDist;
+					intensity = t * t; // quadratic falloff
+				}
+				molecules[ i ].style.setProperty( '--cursor-intensity', intensity.toFixed( 3 ) );
+			}
+		}
+
+		function schedule () {
+			if ( rafId === null ) rafId = requestAnimationFrame( update );
+		}
+
+		hero.addEventListener( 'mousemove', function ( e ) {
+			var rect = hero.getBoundingClientRect();
+			mouseX = e.clientX - rect.left;
+			mouseY = e.clientY - rect.top;
+			inside = true;
+			schedule();
+		}, { passive: true } );
+
+		hero.addEventListener( 'mouseleave', function () {
+			inside = false;
+			mouseX = -9999;
+			mouseY = -9999;
+			schedule();
+		} );
+
+		window.addEventListener( 'resize', cachePositions );
+		// Recompute after fonts/images settle.
+		window.addEventListener( 'load', cachePositions );
+		cachePositions();
+	})();
+	</script>
+	<?php
+}, 22 );
+
 // ── Mobile nav JS ──────────────────────────────────────────────────────────────
 
 add_action( 'wp_footer', function () {

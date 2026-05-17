@@ -30,8 +30,28 @@ $has_lab_bg  = file_exists( $lab_bg_file );
 
   <!-- ═══════════════════════════════════════════════════════════
        1. HERO — headline + inline credentials strip
+       Decorative "fluorescent molecule field" — dots scattered behind
+       the content that light up as the cursor passes (NIR excitation
+       metaphor). Pure flare; degrades to static dim dots without JS.
   ══════════════════════════════════════════════════════════════ -->
   <section class="al-hero" aria-labelledby="al-hero-headline">
+
+    <?php
+    // [left%, top%, size_px] — positions for the decorative molecule field
+    $al_molecules = [
+      [12, 14, 4], [38,  8, 3], [62, 18, 5], [88, 12, 4],
+      [ 8, 38, 3], [44, 35, 5], [78, 32, 4],
+      [24, 58, 4], [52, 52, 3], [84, 62, 5],
+      [10, 82, 5], [40, 75, 3], [68, 88, 4], [92, 80, 4],
+    ];
+    ?>
+    <div class="al-hero__molecules" aria-hidden="true">
+      <?php foreach ( $al_molecules as $i => $m ) : ?>
+        <span class="al-molecule"
+              style="left:<?php echo $m[0]; ?>%;top:<?php echo $m[1]; ?>%;width:<?php echo $m[2]; ?>px;height:<?php echo $m[2]; ?>px;animation-delay:<?php echo ( $i * 0.43 ); ?>s;"></span>
+      <?php endforeach; ?>
+    </div>
+
     <div class="al-container">
 
       <span class="al-hero__eyebrow">Achilefu Lab &middot; UT Southwestern</span>
