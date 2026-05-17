@@ -3,13 +3,14 @@
  * Template for the Media page.
  * Matches slug: media  —  page ID 11.
  *
- * v2.2 — editorial density refresh: inline press stat strip, dense featured + tail press lists,
- *         speaking engagements stream, press-resources grid, awards & recognition list.
+ * v3.0 — visual showcase rewrite. Categorized image galleries (research imagery,
+ *        lab life, conferences & events, operating room) with inline-SVG placeholder
+ *        art in the brand palette. Press/awards content moved off this page; it lives
+ *        on the home page's "Latest from the Lab" section.
  */
 defined( 'ABSPATH' ) || exit;
 
 $url_contact = al_page_url( 'contact' );
-$url_pi      = al_page_url( 'pi' );
 
 get_header();
 ?>
@@ -19,12 +20,12 @@ get_header();
 	<!-- ── Hero ──────────────────────────────────────────── -->
 	<section class="al-inner-hero" aria-labelledby="media-heading">
 		<div class="al-container">
-			<p class="al-inner-hero__eyebrow">Media &amp; Press</p>
+			<p class="al-inner-hero__eyebrow">Media &amp; Imagery</p>
 			<h1 class="al-inner-hero__title" id="media-heading">
-				Light Meets Discovery.
+				Light, Captured.
 			</h1>
 			<p class="al-inner-hero__sub">
-				News coverage, featured images, speaking engagements, and press resources for journalists covering the Achilefu Lab's work in optical and molecular imaging.
+				A visual record of the Achilefu Lab &mdash; molecular imaging captures, microscopy, instrumentation, conferences, and the people who make the work happen.
 			</p>
 		</div>
 	</section>
@@ -33,55 +34,765 @@ get_header();
 	<div class="al-inner-body">
 		<div class="al-container">
 
-			<!-- ── Row 1: Inline stat strip ── -->
-			<div class="al-pi-stats" style="grid-template-columns:repeat(4,1fr);">
-				<div class="al-pi-stat">
-					<span class="al-pi-stat__value">150+</span>
-					<span class="al-pi-stat__label">Press mentions <!-- [PLACEHOLDER] --></span>
-				</div>
-				<div class="al-pi-stat">
-					<span class="al-pi-stat__value">25+</span>
-					<span class="al-pi-stat__label">Conferences / yr <!-- [PLACEHOLDER] --></span>
-				</div>
-				<div class="al-pi-stat">
-					<span class="al-pi-stat__value">50+</span>
-					<span class="al-pi-stat__label">Invited talks <!-- [PLACEHOLDER] --></span>
-				</div>
-				<div class="al-pi-stat">
-					<span class="al-pi-stat__value">1,200+</span>
-					<span class="al-pi-stat__label">Total citations in press <!-- [VERIFY] --></span>
-				</div>
-			</div>
+			<!-- ── Featured image ─────────────────────────────── -->
+			<!-- [PLACEHOLDER] Featured molecular imaging capture; replace with hero photo when available. -->
+			<figure class="al-media-figure al-media-figure--featured al-media-figure--full al-media-figure--overlay">
+				<svg viewBox="0 0 1200 514" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder for featured molecular imaging capture">
+					<defs>
+						<radialGradient id="hl-glow1" cx="38%" cy="48%" r="46%">
+							<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.95"/>
+							<stop offset="35%" stop-color="#87BCDE" stop-opacity="0.55"/>
+							<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+						</radialGradient>
+						<radialGradient id="hl-glow1b" cx="72%" cy="62%" r="28%">
+							<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.55"/>
+							<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+						</radialGradient>
+					</defs>
+					<rect width="1200" height="514" fill="#1C3347"/>
+					<rect width="1200" height="514" fill="url(#hl-glow1)"/>
+					<rect width="1200" height="514" fill="url(#hl-glow1b)"/>
+					<g fill="#F2F6F9">
+						<circle cx="320" cy="180" r="3.2" opacity="0.95"/>
+						<circle cx="410" cy="240" r="2.0" opacity="0.85"/>
+						<circle cx="265" cy="295" r="2.6" opacity="0.9"/>
+						<circle cx="510" cy="200" r="1.6" opacity="0.75"/>
+						<circle cx="455" cy="350" r="2.2" opacity="0.85"/>
+						<circle cx="380" cy="380" r="1.4" opacity="0.7"/>
+						<circle cx="610" cy="305" r="2.8" opacity="0.9"/>
+						<circle cx="720" cy="260" r="1.8" opacity="0.8"/>
+						<circle cx="820" cy="330" r="2.4" opacity="0.85"/>
+						<circle cx="900" cy="220" r="1.6" opacity="0.7"/>
+						<circle cx="985" cy="370" r="2.0" opacity="0.8"/>
+						<circle cx="180" cy="410" r="1.4" opacity="0.65"/>
+						<circle cx="1050" cy="160" r="1.8" opacity="0.75"/>
+					</g>
+				</svg>
+				<figcaption>
+					<!-- [PLACEHOLDER] -->
+					NIR-II fluorescence capture of a tumor margin, in&nbsp;vivo &middot; 2024
+				</figcaption>
+			</figure>
 
 			<hr class="al-divider">
 
-			<!-- ── Row 2: Featured Images ── -->
-			<section class="al-inner-section">
-				<h2 class="al-inner-section__title">Featured Images</h2>
+			<!-- ── Section: Research Imagery ──────────────────── -->
+			<section class="al-inner-section" aria-labelledby="media-research-heading">
+				<h2 class="al-inner-section__title" id="media-research-heading">Research Imagery</h2>
 				<p class="al-inner-section__lead">
-					High-resolution molecular imaging captures from the lab &mdash; available for editorial and educational use with attribution.
+					Molecular images, NIR fluorescence captures, confocal and widefield microscopy, in&nbsp;vivo imaging, and instrumentation. The visual record of how the lab sees disease at the molecular level.
 				</p>
 
+				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
 				<div class="al-media-gallery">
-					<!--
-					  Add lab images here as they are collected from team members.
-					  Format: <figure class="al-media-figure">
-					             <img src="..." alt="..." loading="lazy">
-					             <figcaption>Caption text</figcaption>
-					           </figure>
-					-->
-					<div class="al-media-gallery__placeholder">
-						<div class="al-media-gallery__placeholder-icon" aria-hidden="true">
-							<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="4" y="8" width="40" height="32" rx="3"/>
-								<circle cx="16" cy="20" r="4"/>
-								<path d="M4 36l10-10 6 6 8-10 16 14"/>
-							</svg>
-						</div>
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: NIR fluorescence whole-animal imaging">
+							<defs>
+								<radialGradient id="r-glow1" cx="40%" cy="55%" r="42%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.9"/>
+									<stop offset="40%" stop-color="#87BCDE" stop-opacity="0.45"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="338" fill="#1C3347"/>
+							<rect width="600" height="338" fill="url(#r-glow1)"/>
+							<g fill="#F2F6F9">
+								<circle cx="180" cy="160" r="2.4" opacity="0.9"/>
+								<circle cx="220" cy="200" r="1.6" opacity="0.8"/>
+								<circle cx="260" cy="180" r="2.0" opacity="0.85"/>
+								<circle cx="305" cy="225" r="1.4" opacity="0.7"/>
+								<circle cx="340" cy="155" r="2.2" opacity="0.88"/>
+							</g>
+						</svg>
+						<figcaption>NIR-II whole-animal fluorescence imaging, LS301 probe &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: confocal microscopy">
+							<defs>
+								<radialGradient id="r-glow2" cx="50%" cy="50%" r="38%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
+									<stop offset="60%" stop-color="#87BCDE" stop-opacity="0.3"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#1C3347"/>
+							<rect width="600" height="600" fill="url(#r-glow2)"/>
+							<g fill="#F2F6F9">
+								<circle cx="240" cy="260" r="2.2" opacity="0.9"/>
+								<circle cx="290" cy="320" r="1.8" opacity="0.85"/>
+								<circle cx="350" cy="280" r="2.6" opacity="0.95"/>
+								<circle cx="320" cy="380" r="1.5" opacity="0.75"/>
+								<circle cx="400" cy="350" r="2.0" opacity="0.85"/>
+								<circle cx="260" cy="420" r="1.6" opacity="0.8"/>
+							</g>
+						</svg>
+						<figcaption>Confocal microscopy &mdash; tumor-targeted probe uptake &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: cherenkov imaging">
+							<defs>
+								<radialGradient id="r-glow3" cx="55%" cy="40%" r="40%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.9"/>
+									<stop offset="50%" stop-color="#87BCDE" stop-opacity="0.35"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="450" height="600" fill="#243B4A"/>
+							<rect width="450" height="600" fill="url(#r-glow3)"/>
+							<g fill="#F2F6F9">
+								<circle cx="200" cy="220" r="2.2" opacity="0.9"/>
+								<circle cx="245" cy="260" r="1.6" opacity="0.8"/>
+								<circle cx="285" cy="320" r="2.0" opacity="0.85"/>
+								<circle cx="175" cy="380" r="1.4" opacity="0.7"/>
+								<circle cx="320" cy="420" r="1.8" opacity="0.8"/>
+							</g>
+						</svg>
+						<figcaption>Cherenkov luminescence imaging during radiotherapy &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: histology overlay">
+							<defs>
+								<radialGradient id="r-glow4" cx="30%" cy="35%" r="50%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.65"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+								<radialGradient id="r-glow4b" cx="75%" cy="70%" r="32%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.75"/>
+									<stop offset="100%" stop-color="#B5DBF3" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#1C3347"/>
+							<rect width="600" height="600" fill="url(#r-glow4)"/>
+							<rect width="600" height="600" fill="url(#r-glow4b)"/>
+							<g fill="#F2F6F9">
+								<circle cx="190" cy="200" r="1.8" opacity="0.8"/>
+								<circle cx="430" cy="430" r="2.2" opacity="0.9"/>
+								<circle cx="450" cy="380" r="1.4" opacity="0.7"/>
+								<circle cx="220" cy="170" r="1.2" opacity="0.65"/>
+							</g>
+						</svg>
+						<figcaption>Multimodal histology overlay &mdash; fluorescence + brightfield &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: probe synthesis">
+							<defs>
+								<radialGradient id="r-glow5" cx="50%" cy="50%" r="55%">
+									<stop offset="0%"  stop-color="#243B4A" stop-opacity="0"/>
+									<stop offset="55%" stop-color="#87BCDE" stop-opacity="0.18"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#1C3347"/>
+							<rect width="600" height="600" fill="url(#r-glow5)"/>
+							<g stroke="#87BCDE" stroke-width="1.4" fill="none" opacity="0.75">
+								<path d="M180 300 L260 260 L340 300 L420 260"/>
+								<path d="M260 260 L260 200"/>
+								<path d="M340 300 L340 360"/>
+							</g>
+							<g fill="#B5DBF3" opacity="0.95">
+								<circle cx="180" cy="300" r="6"/>
+								<circle cx="260" cy="260" r="6"/>
+								<circle cx="340" cy="300" r="6"/>
+								<circle cx="420" cy="260" r="6"/>
+								<circle cx="260" cy="200" r="6"/>
+								<circle cx="340" cy="360" r="6"/>
+							</g>
+						</svg>
+						<figcaption>NIR fluorophore &mdash; molecular structure rendering <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: imaging instrumentation">
+							<defs>
+								<linearGradient id="r-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%"  stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+								<radialGradient id="r-glow6" cx="50%" cy="55%" r="32%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.5"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="338" fill="url(#r-grad1)"/>
+							<rect width="600" height="338" fill="url(#r-glow6)"/>
+							<g stroke="#87BCDE" stroke-width="1.2" fill="none" opacity="0.6">
+								<rect x="220" y="120" width="160" height="100" rx="4"/>
+								<line x1="220" y1="170" x2="380" y2="170"/>
+								<line x1="300" y1="120" x2="300" y2="220"/>
+								<circle cx="300" cy="170" r="22"/>
+							</g>
+							<circle cx="300" cy="170" r="3" fill="#F2F6F9" opacity="0.95"/>
+						</svg>
+						<figcaption>Custom-built NIR imaging system &mdash; lab bay 4 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: in vivo capture">
+							<defs>
+								<radialGradient id="r-glow7" cx="50%" cy="55%" r="38%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="450" height="600" fill="#1C3347"/>
+							<rect width="450" height="600" fill="url(#r-glow7)"/>
+							<g fill="#F2F6F9">
+								<circle cx="180" cy="280" r="2.0" opacity="0.85"/>
+								<circle cx="225" cy="320" r="2.6" opacity="0.95"/>
+								<circle cx="270" cy="290" r="1.6" opacity="0.8"/>
+								<circle cx="250" cy="380" r="2.0" opacity="0.85"/>
+							</g>
+						</svg>
+						<figcaption>In&nbsp;vivo tumor imaging &mdash; preclinical model &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: cell imaging">
+							<defs>
+								<radialGradient id="r-glow8" cx="45%" cy="45%" r="36%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.55"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#243B4A"/>
+							<rect width="600" height="600" fill="url(#r-glow8)"/>
+							<g fill="#B5DBF3">
+								<circle cx="200" cy="220" r="14" opacity="0.7"/>
+								<circle cx="330" cy="260" r="18" opacity="0.55"/>
+								<circle cx="280" cy="370" r="12" opacity="0.75"/>
+								<circle cx="410" cy="400" r="16" opacity="0.55"/>
+								<circle cx="170" cy="380" r="10" opacity="0.7"/>
+							</g>
+						</svg>
+						<figcaption>Targeted probe uptake &mdash; single-cell fluorescence <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--full">
+						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: spectral imaging panel">
+							<defs>
+								<radialGradient id="r-glow9a" cx="20%" cy="50%" r="22%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.85"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+								<radialGradient id="r-glow9b" cx="50%" cy="50%" r="22%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.7"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+								<radialGradient id="r-glow9c" cx="82%" cy="50%" r="22%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.55"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="1200" height="675" fill="#1C3347"/>
+							<rect width="1200" height="675" fill="url(#r-glow9a)"/>
+							<rect width="1200" height="675" fill="url(#r-glow9b)"/>
+							<rect width="1200" height="675" fill="url(#r-glow9c)"/>
+							<g stroke="#87BCDE" stroke-width="1" opacity="0.4">
+								<line x1="400" y1="80" x2="400" y2="595"/>
+								<line x1="800" y1="80" x2="800" y2="595"/>
+							</g>
+							<g fill="#F2F6F9">
+								<circle cx="240" cy="340" r="2.4" opacity="0.9"/>
+								<circle cx="600" cy="340" r="2.4" opacity="0.9"/>
+								<circle cx="960" cy="340" r="2.4" opacity="0.9"/>
+							</g>
+						</svg>
+						<figcaption>Three-channel spectral panel &mdash; 700&nbsp;nm, 800&nbsp;nm, 900&nbsp;nm fluorescence &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Section: Lab Life ──────────────────────────── -->
+			<section class="al-inner-section" aria-labelledby="media-life-heading">
+				<h2 class="al-inner-section__title" id="media-life-heading">Lab Life</h2>
+				<p class="al-inner-section__lead">
+					The community behind the science &mdash; group photos, celebrations, milestones, lab dinners, graduation hoods, birthdays, and the everyday rhythm of a research team.
+				</p>
+
+				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
+				<div class="al-media-gallery">
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: group photo">
+							<defs>
+								<linearGradient id="lab1" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#2D4654"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="600" height="338" fill="url(#lab1)"/>
+							<g fill="#87BCDE" opacity="0.65">
+								<circle cx="100" cy="180" r="22"/>
+								<circle cx="170" cy="170" r="24"/>
+								<circle cx="245" cy="175" r="22"/>
+								<circle cx="320" cy="170" r="24"/>
+								<circle cx="395" cy="175" r="22"/>
+								<circle cx="470" cy="170" r="24"/>
+							</g>
+							<g fill="#B5DBF3" opacity="0.4">
+								<rect x="78"  y="210" width="44" height="80" rx="4"/>
+								<rect x="148" y="200" width="44" height="90" rx="4"/>
+								<rect x="223" y="205" width="44" height="85" rx="4"/>
+								<rect x="298" y="200" width="44" height="90" rx="4"/>
+								<rect x="373" y="205" width="44" height="85" rx="4"/>
+								<rect x="448" y="200" width="44" height="90" rx="4"/>
+							</g>
+						</svg>
+						<figcaption>Annual lab group photo &mdash; UTSW BME &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: lab dinner">
+							<defs>
+								<radialGradient id="lab2" cx="50%" cy="50%" r="50%">
+									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.18"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#243B4A"/>
+							<rect width="600" height="600" fill="url(#lab2)"/>
+							<g fill="#B5DBF3" opacity="0.55">
+								<circle cx="200" cy="220" r="36"/>
+								<circle cx="380" cy="220" r="36"/>
+								<circle cx="290" cy="380" r="38"/>
+							</g>
+							<g fill="#87BCDE" opacity="0.35">
+								<rect x="160" y="260" width="80" height="120" rx="6"/>
+								<rect x="340" y="260" width="80" height="120" rx="6"/>
+								<rect x="250" y="420" width="80" height="120" rx="6"/>
+							</g>
+						</svg>
+						<figcaption>End-of-year lab dinner &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: graduation hooding">
+							<defs>
+								<linearGradient id="lab3" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="450" height="600" fill="url(#lab3)"/>
+							<g fill="#87BCDE" opacity="0.55">
+								<circle cx="225" cy="220" r="50"/>
+							</g>
+							<path d="M150 280 Q225 250 300 280 L300 480 L150 480 Z" fill="#B5DBF3" opacity="0.4"/>
+							<path d="M175 270 Q225 240 275 270 L275 200 Q225 180 175 200 Z" fill="#1C3347"/>
+						</svg>
+						<figcaption>PhD graduation hooding ceremony &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: birthday">
+							<defs>
+								<radialGradient id="lab4" cx="50%" cy="60%" r="40%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.45"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#243B4A"/>
+							<rect width="600" height="600" fill="url(#lab4)"/>
+							<rect x="200" y="320" width="200" height="140" rx="6" fill="#F2F6F9" opacity="0.85"/>
+							<rect x="240" y="280" width="120" height="40" rx="4" fill="#87BCDE" opacity="0.75"/>
+							<g stroke="#B5DBF3" stroke-width="3" opacity="0.85">
+								<line x1="260" y1="220" x2="260" y2="280"/>
+								<line x1="300" y1="220" x2="300" y2="280"/>
+								<line x1="340" y1="220" x2="340" y2="280"/>
+							</g>
+							<g fill="#B5DBF3">
+								<circle cx="260" cy="210" r="5"/>
+								<circle cx="300" cy="210" r="5"/>
+								<circle cx="340" cy="210" r="5"/>
+							</g>
+						</svg>
+						<figcaption>Birthday in the lab &mdash; another decade of imaging <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: lab outing">
+							<defs>
+								<linearGradient id="lab5" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.3"/>
+									<stop offset="60%" stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="600" height="338" fill="url(#lab5)"/>
+							<g fill="#87BCDE" opacity="0.5">
+								<circle cx="140" cy="190" r="18"/>
+								<circle cx="200" cy="185" r="20"/>
+								<circle cx="260" cy="190" r="18"/>
+								<circle cx="320" cy="185" r="20"/>
+								<circle cx="380" cy="190" r="18"/>
+								<circle cx="440" cy="185" r="20"/>
+							</g>
+							<rect x="0" y="280" width="600" height="58" fill="#1C3347" opacity="0.7"/>
+						</svg>
+						<figcaption>Lab retreat &mdash; outside Dallas &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: new member welcome">
+							<defs>
+								<radialGradient id="lab6" cx="50%" cy="40%" r="45%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.5"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="450" height="600" fill="#243B4A"/>
+							<rect width="450" height="600" fill="url(#lab6)"/>
+							<g fill="#87BCDE" opacity="0.65">
+								<circle cx="160" cy="240" r="30"/>
+								<circle cx="290" cy="240" r="30"/>
+							</g>
+							<g fill="#B5DBF3" opacity="0.4">
+								<rect x="125" y="280" width="70" height="120" rx="6"/>
+								<rect x="255" y="280" width="70" height="120" rx="6"/>
+							</g>
+						</svg>
+						<figcaption>Welcoming new postdocs &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: holiday party">
+							<defs>
+								<radialGradient id="lab7" cx="45%" cy="45%" r="48%">
+									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.12"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="#1C3347"/>
+							<rect width="600" height="600" fill="url(#lab7)"/>
+							<g fill="#B5DBF3">
+								<circle cx="120" cy="200" r="3" opacity="0.9"/>
+								<circle cx="180" cy="180" r="2" opacity="0.7"/>
+								<circle cx="250" cy="220" r="3" opacity="0.85"/>
+								<circle cx="320" cy="190" r="2" opacity="0.75"/>
+								<circle cx="400" cy="210" r="3" opacity="0.9"/>
+								<circle cx="470" cy="180" r="2" opacity="0.7"/>
+							</g>
+							<g fill="#87BCDE" opacity="0.55">
+								<circle cx="180" cy="380" r="28"/>
+								<circle cx="300" cy="380" r="28"/>
+								<circle cx="420" cy="380" r="28"/>
+							</g>
+						</svg>
+						<figcaption>Holiday party &mdash; lab + collaborators &middot; 2023 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--wide">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: whiteboard moment">
+							<defs>
+								<linearGradient id="lab8" x1="0%" y1="0%" x2="100%" y2="0%">
+									<stop offset="0%"  stop-color="#1C3347"/>
+									<stop offset="100%" stop-color="#243B4A"/>
+								</linearGradient>
+							</defs>
+							<rect width="600" height="338" fill="url(#lab8)"/>
+							<rect x="120" y="80" width="360" height="180" rx="4" fill="#F2F6F9" opacity="0.92"/>
+							<g stroke="#1C3347" stroke-width="1.6" fill="none" opacity="0.7">
+								<line x1="150" y1="120" x2="280" y2="120"/>
+								<line x1="150" y1="150" x2="240" y2="150"/>
+								<line x1="150" y1="180" x2="300" y2="180"/>
+								<line x1="320" y1="120" x2="450" y2="120"/>
+								<line x1="320" y1="150" x2="430" y2="150"/>
+								<circle cx="400" cy="200" r="18"/>
+							</g>
+						</svg>
+						<figcaption>Whiteboard moment &mdash; weekly group meeting <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Section: Conferences & Events ──────────────── -->
+			<section class="al-inner-section" aria-labelledby="media-conf-heading">
+				<h2 class="al-inner-section__title" id="media-conf-heading">Conferences &amp; Events</h2>
+				<p class="al-inner-section__lead">
+					Lab members presenting at SPIE Photonics West, BMES, the World Molecular Imaging Congress, and other venues where the field gathers.
+				</p>
+
+				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected from team members. -->
+				<div class="al-media-gallery">
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: keynote talk">
+							<defs>
+								<linearGradient id="conf1" x1="0%" y1="0%" x2="100%" y2="0%">
+									<stop offset="0%"  stop-color="#1C3347"/>
+									<stop offset="50%" stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="600" height="338" fill="url(#conf1)"/>
+							<rect x="80" y="60" width="440" height="180" fill="#F2F6F9" opacity="0.9"/>
+							<g fill="#1C3347" opacity="0.5">
+								<rect x="110" y="90" width="200" height="14"/>
+								<rect x="110" y="120" width="280" height="8"/>
+								<rect x="110" y="140" width="260" height="8"/>
+								<rect x="110" y="170" width="220" height="8"/>
+								<rect x="110" y="190" width="180" height="8"/>
+							</g>
+							<rect x="250" y="270" width="100" height="50" rx="4" fill="#87BCDE" opacity="0.65"/>
+						</svg>
+						<figcaption>Plenary &mdash; SPIE Photonics West, San Francisco &middot; 2025 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: poster session">
+							<defs>
+								<linearGradient id="conf2" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="450" height="600" fill="url(#conf2)"/>
+							<rect x="80" y="80" width="290" height="380" fill="#F2F6F9" opacity="0.93"/>
+							<g fill="#1C3347" opacity="0.6">
+								<rect x="100" y="105" width="160" height="18"/>
+								<rect x="100" y="140" width="240" height="6"/>
+								<rect x="100" y="155" width="220" height="6"/>
+								<rect x="100" y="180" width="100" height="80"/>
+								<rect x="220" y="180" width="120" height="80"/>
+								<rect x="100" y="280" width="240" height="6"/>
+								<rect x="100" y="295" width="220" height="6"/>
+								<rect x="100" y="320" width="240" height="120" fill="#87BCDE" opacity="0.4"/>
+							</g>
+						</svg>
+						<figcaption>Poster session &mdash; BMES Annual Meeting &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: panel discussion">
+							<defs>
+								<radialGradient id="conf3" cx="50%" cy="40%" r="50%">
+									<stop offset="0%"  stop-color="#87BCDE" stop-opacity="0.3"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="url(#conf3)"/>
+							<g fill="#B5DBF3" opacity="0.55">
+								<circle cx="130" cy="280" r="34"/>
+								<circle cx="250" cy="275" r="34"/>
+								<circle cx="370" cy="275" r="34"/>
+								<circle cx="490" cy="280" r="34"/>
+							</g>
+							<rect x="0" y="380" width="600" height="220" fill="#1C3347" opacity="0.55"/>
+							<g fill="#F2F6F9" opacity="0.4">
+								<rect x="100" y="410" width="80" height="100" rx="4"/>
+								<rect x="220" y="410" width="80" height="100" rx="4"/>
+								<rect x="340" y="410" width="80" height="100" rx="4"/>
+								<rect x="460" y="410" width="80" height="100" rx="4"/>
+							</g>
+						</svg>
+						<figcaption>Symposium panel &mdash; molecular-guided surgery &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: conference travel">
+							<defs>
+								<linearGradient id="conf4" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.18"/>
+									<stop offset="60%" stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+							</defs>
+							<rect width="600" height="600" fill="url(#conf4)"/>
+							<g fill="#1C3347" opacity="0.9">
+								<rect x="0" y="380" width="600" height="220"/>
+							</g>
+							<g fill="#243B4A" opacity="0.95">
+								<rect x="80"  y="260" width="60" height="180"/>
+								<rect x="160" y="220" width="80" height="220"/>
+								<rect x="260" y="280" width="60" height="160"/>
+								<rect x="340" y="200" width="90" height="240"/>
+								<rect x="450" y="260" width="60" height="180"/>
+							</g>
+							<g fill="#87BCDE" opacity="0.55">
+								<rect x="92"  y="290" width="14" height="14"/>
+								<rect x="180" y="250" width="14" height="14"/>
+								<rect x="270" y="310" width="14" height="14"/>
+								<rect x="360" y="230" width="14" height="14"/>
+								<rect x="465" y="290" width="14" height="14"/>
+							</g>
+						</svg>
+						<figcaption>Conference travel &mdash; San Francisco skyline &middot; 2025 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--full">
+						<svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: award ceremony">
+							<defs>
+								<radialGradient id="conf5" cx="50%" cy="50%" r="40%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.45"/>
+									<stop offset="100%" stop-color="#1C3347" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="1200" height="675" fill="#1C3347"/>
+							<rect width="1200" height="675" fill="url(#conf5)"/>
+							<rect x="200" y="180" width="800" height="320" fill="#243B4A" opacity="0.85"/>
+							<rect x="540" y="160" width="120" height="40" fill="#87BCDE" opacity="0.65"/>
+							<rect x="500" y="220" width="200" height="240" fill="#F2F6F9" opacity="0.92"/>
+							<g fill="#1C3347" opacity="0.5">
+								<rect x="520" y="240" width="160" height="12"/>
+								<rect x="520" y="270" width="140" height="8"/>
+								<rect x="520" y="290" width="150" height="8"/>
+								<rect x="520" y="310" width="130" height="8"/>
+								<rect x="520" y="370" width="160" height="60" fill="#87BCDE" opacity="0.6"/>
+							</g>
+						</svg>
+						<figcaption>Awards reception &mdash; World Molecular Imaging Congress &middot; 2024 <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Section: In the Operating Room ─────────────── -->
+			<section class="al-inner-section" aria-labelledby="media-or-heading">
+				<h2 class="al-inner-section__title" id="media-or-heading">In the Operating Room</h2>
+				<p class="al-inner-section__lead">
+					Translational moments &mdash; equipment, instrumentation, and surgical-suite environments where the lab's imaging technologies move from bench to bedside. No patient-identifying imagery.
+				</p>
+
+				<!-- [PLACEHOLDER] All images in this gallery are placeholder SVG art until photographs are collected. All clinical imagery omits patient-identifying content per HIPAA. -->
+				<div class="al-media-gallery">
+
+					<figure class="al-media-figure al-media-figure--wide al-media-figure--span-2">
+						<svg viewBox="0 0 600 338" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: surgical suite">
+							<defs>
+								<radialGradient id="or1" cx="50%" cy="45%" r="35%">
+									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.55"/>
+									<stop offset="60%" stop-color="#87BCDE" stop-opacity="0.18"/>
+									<stop offset="100%" stop-color="#1C3347" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="338" fill="#1C3347"/>
+							<rect width="600" height="338" fill="url(#or1)"/>
+							<g stroke="#87BCDE" stroke-width="1.2" fill="none" opacity="0.5">
+								<rect x="220" y="140" width="160" height="100" rx="6"/>
+								<circle cx="300" cy="190" r="32"/>
+								<line x1="300" y1="60" x2="300" y2="140"/>
+							</g>
+							<circle cx="300" cy="190" r="4" fill="#F2F6F9" opacity="0.95"/>
+						</svg>
+						<figcaption>Cancer-imaging goggles &mdash; intraoperative configuration <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: instrumentation">
+							<defs>
+								<linearGradient id="or2" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%"  stop-color="#243B4A"/>
+									<stop offset="100%" stop-color="#1C3347"/>
+								</linearGradient>
+								<radialGradient id="or2b" cx="50%" cy="50%" r="30%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.4"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="url(#or2)"/>
+							<rect width="600" height="600" fill="url(#or2b)"/>
+							<g stroke="#87BCDE" stroke-width="1.4" fill="none" opacity="0.65">
+								<rect x="180" y="200" width="240" height="160" rx="8"/>
+								<rect x="220" y="240" width="160" height="80" rx="4"/>
+								<line x1="300" y1="360" x2="300" y2="440"/>
+								<rect x="260" y="440" width="80" height="20" rx="3"/>
+							</g>
+						</svg>
+						<figcaption>NIR imaging system &mdash; OR-ready unit <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--portrait">
+						<svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: surgical light">
+							<defs>
+								<radialGradient id="or3" cx="50%" cy="30%" r="35%">
+									<stop offset="0%"  stop-color="#F2F6F9" stop-opacity="0.7"/>
+									<stop offset="60%" stop-color="#87BCDE" stop-opacity="0.2"/>
+									<stop offset="100%" stop-color="#1C3347" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="450" height="600" fill="#1C3347"/>
+							<rect width="450" height="600" fill="url(#or3)"/>
+							<g stroke="#87BCDE" stroke-width="1.4" fill="none" opacity="0.55">
+								<circle cx="225" cy="180" r="60"/>
+								<line x1="225" y1="240" x2="225" y2="380"/>
+								<rect x="170" y="380" width="110" height="40" rx="4"/>
+							</g>
+						</svg>
+						<figcaption>Surgical illumination &mdash; NIR + visible spectrum <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+					<figure class="al-media-figure al-media-figure--square">
+						<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder: imaging display">
+							<defs>
+								<linearGradient id="or4" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%"  stop-color="#1C3347"/>
+									<stop offset="100%" stop-color="#243B4A"/>
+								</linearGradient>
+								<radialGradient id="or4b" cx="50%" cy="45%" r="22%">
+									<stop offset="0%"  stop-color="#B5DBF3" stop-opacity="0.75"/>
+									<stop offset="100%" stop-color="#87BCDE" stop-opacity="0"/>
+								</radialGradient>
+							</defs>
+							<rect width="600" height="600" fill="url(#or4)"/>
+							<rect x="100" y="120" width="400" height="280" rx="8" fill="#1C3347"/>
+							<rect x="100" y="120" width="400" height="280" rx="8" fill="url(#or4b)"/>
+							<rect x="100" y="120" width="400" height="280" rx="8" fill="none" stroke="#87BCDE" stroke-width="1.2" opacity="0.6"/>
+							<rect x="280" y="420" width="40" height="60" fill="#243B4A"/>
+							<rect x="230" y="475" width="140" height="10" rx="3" fill="#243B4A"/>
+							<g fill="#F2F6F9">
+								<circle cx="280" cy="240" r="2.4" opacity="0.9"/>
+								<circle cx="320" cy="270" r="1.6" opacity="0.75"/>
+								<circle cx="260" cy="290" r="2.0" opacity="0.85"/>
+							</g>
+						</svg>
+						<figcaption>Intraoperative imaging display &mdash; real-time fluorescence overlay <!-- [PLACEHOLDER] --></figcaption>
+					</figure>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Image Use & Licensing ──────────────────────── -->
+			<section class="al-inner-section" aria-labelledby="media-licensing-heading">
+				<h2 class="al-inner-section__title" id="media-licensing-heading">Image Use &amp; Licensing</h2>
+
+				<div class="al-two-col al-two-col--60-40">
+					<div class="al-prose">
 						<p>
-							Molecular imaging photography from lab members is coming soon.<br>
-							Contact <a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a>
-							to share images for inclusion.
+							Imagery on this page is provided for editorial and educational use. Please credit <strong>Achilefu Lab, UT Southwestern Medical Center</strong> and link back to <em>achilefulab.org</em> where possible.
+						</p>
+						<p>
+							For high-resolution files, alternate framings, or use in print/broadcast features, contact the lab directly. We can typically provide TIFF or print-ready files within a few business days. <!-- [PLACEHOLDER] confirm turnaround with UTSW comms. -->
+						</p>
+						<p>
+							Commercial use, redistribution, or modification of images requires written permission. Clinical and operating-room imagery omits patient-identifying content; any further clinical context must be cleared through UTSW communications.
+						</p>
+					</div>
+
+					<div class="al-prose">
+						<p><strong>Quick reference</strong></p>
+						<p>
+							Credit line: <em>"Achilefu Lab, UT Southwestern Medical Center."</em>
+						</p>
+						<p>
+							High-res requests: <a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a> <!-- [PLACEHOLDER] confirm address -->
+						</p>
+						<p>
+							Press &amp; comms: route through UTSW Newsroom for institutional approval on broadcast features.
 						</p>
 					</div>
 				</div>
@@ -89,334 +800,13 @@ get_header();
 
 			<hr class="al-divider">
 
-			<!-- ── Row 3: In the News — featured + dense tail ── -->
-			<section class="al-inner-section" aria-labelledby="media-news-heading">
-				<h2 class="al-inner-section__title" id="media-news-heading">In the News</h2>
-				<p class="al-inner-section__lead">
-					Selected press coverage and features on the Achilefu Lab's research and impact.
-				</p>
-
-				<div class="al-press-list">
-
-					<article class="al-press-item">
-						<div class="al-press-item__source">UT Southwestern Newsroom &middot; 2024</div>
-						<h3 class="al-press-item__title">
-							<a href="https://www.utsouthwestern.edu/newsroom/" target="_blank" rel="noopener">
-								Dr. Achilefu Named Inaugural Chair of Biomedical Engineering at UTSW
-							</a>
-						</h3>
-						<p class="al-press-item__excerpt">
-							UT Southwestern Medical Center announces Dr. Samuel Achilefu as the first Chair of the newly established Department of Biomedical Engineering, holder of the Lyda Hill Distinguished University Chair.
-						</p>
-					</article>
-
-					<article class="al-press-item">
-						<div class="al-press-item__source">National Academy of Medicine &middot; 2024</div>
-						<h3 class="al-press-item__title">
-							<a href="https://nam.edu/" target="_blank" rel="noopener">
-								Dr. Samuel Achilefu Elected to the National Academy of Medicine
-							</a>
-						</h3>
-						<p class="al-press-item__excerpt">
-							The NAM elects Dr. Achilefu for his pioneering work in optical molecular imaging, including the development of cancer-imaging goggles used in operating rooms worldwide.
-						</p>
-					</article>
-
-					<article class="al-press-item">
-						<div class="al-press-item__source">National Academy of Engineering &middot; 2018</div>
-						<h3 class="al-press-item__title">
-							<a href="https://www.nae.edu/" target="_blank" rel="noopener">
-								Dr. Samuel Achilefu Elected to the National Academy of Engineering
-							</a>
-						</h3>
-						<p class="al-press-item__excerpt">
-							Election to the NAE recognizes Dr. Achilefu's contributions to engineering biomedical optics and optical imaging systems for cancer detection and treatment.
-						</p>
-					</article>
-
-				</div><!-- /.al-press-list -->
-			</section>
-
-			<!-- ── Row 4: More Coverage — dense list ── -->
-			<section class="al-latest al-latest--nested" aria-labelledby="media-more-coverage-heading">
-				<div class="al-latest__head">
-					<h2 class="al-inner-section__title" id="media-more-coverage-heading">More Coverage</h2>
-					<p class="al-inner-section__lead">
-						Additional features, interviews, and mentions across science and general press. <!-- [PLACEHOLDER] full press archive pending verification with comms team. -->
-					</p>
-				</div>
-
-				<div class="al-latest__grid">
-
-					<!-- Column 1: Science press -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Science Press</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Spotlight on near-infrared imaging probes</p>
-								<p class="al-latest__meta">Nature &middot; 2024 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Surgeons see cancer they used to miss</p>
-								<p class="al-latest__meta">Science News &middot; 2023 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">JAMA news editorial on intraoperative imaging</p>
-								<p class="al-latest__meta">JAMA &middot; 2022 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">The chemistry of seeing tumors in real time</p>
-								<p class="al-latest__meta">C&amp;EN &middot; 2021 <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 2: General press -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">General Press</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Dallas-Fort Worth's biomedical engineering leap</p>
-								<p class="al-latest__meta">D Magazine &middot; 2024 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">The Texan scientists rewiring cancer surgery</p>
-								<p class="al-latest__meta">Texas Monthly &middot; 2023 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">St. Louis to Dallas: a biomedical inventor's next chapter</p>
-								<p class="al-latest__meta">St. Louis Post-Dispatch &middot; 2022 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">UTSW launches biomedical engineering department</p>
-								<p class="al-latest__meta">Dallas Morning News &middot; 2022 <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 3: Radio, podcast & video -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Radio, Podcast &amp; Video</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Lighting up cancer: a conversation on optical imaging</p>
-								<p class="al-latest__meta">NPR Science Friday &middot; 2023 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">The Story Collider &mdash; live science storytelling</p>
-								<p class="al-latest__meta">Podcast &middot; 2022 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Innovators in medicine: cancer imaging goggles</p>
-								<p class="al-latest__meta">PBS NewsHour &middot; 2019 <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">TEDx talk: making the invisible visible</p>
-								<p class="al-latest__meta">TEDx St. Louis &middot; 2017 <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-			</section>
-
-			<hr class="al-divider">
-
-			<!-- ── Row 5: Speaking Engagements ── -->
-			<section class="al-latest al-latest--nested" aria-labelledby="media-talks-heading">
-				<div class="al-latest__head">
-					<h2 class="al-inner-section__title" id="media-talks-heading">Speaking Engagements</h2>
-					<p class="al-inner-section__lead">
-						Recent and upcoming named lectures, plenary talks, and conference keynotes by members of the lab. <!-- [PLACEHOLDER] schedule pending confirmation with PI's office. -->
-					</p>
-				</div>
-
-				<div class="al-latest__grid" style="grid-template-columns:1fr 1fr;">
-
-					<!-- Column 1: Recent -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Recent</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Plenary &mdash; "Seeing disease at the molecular level"</p>
-								<p class="al-latest__meta">2025 &middot; SPIE Photonics West, San Francisco <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Keynote &mdash; Intraoperative fluorescence imaging</p>
-								<p class="al-latest__meta">2024 &middot; World Molecular Imaging Congress <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Distinguished lecture &mdash; Chemistry of NIR probes</p>
-								<p class="al-latest__meta">2024 &middot; Stanford School of Medicine <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Invited talk &mdash; Theranostic agents for oncology</p>
-								<p class="al-latest__meta">2023 &middot; Gordon Research Conference, Bioanalytical Sensors <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Named lecture &mdash; Britton Chance Memorial</p>
-								<p class="al-latest__meta">2023 &middot; University of Pennsylvania <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Column 2: Upcoming -->
-					<div class="al-latest__col">
-						<p class="al-latest__col-heading">Upcoming</p>
-						<ul class="al-latest__list">
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Plenary &mdash; Image-guided surgery in the next decade</p>
-								<p class="al-latest__meta">2026 &middot; AACR Annual Meeting <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Invited talk &mdash; Cherenkov imaging for radiotherapy</p>
-								<p class="al-latest__meta">2026 &middot; ASTRO Annual Meeting <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Symposium chair &mdash; Molecular-Guided Surgery</p>
-								<p class="al-latest__meta">2026 &middot; SPIE Photonics West <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Distinguished seminar series</p>
-								<p class="al-latest__meta">2026 &middot; MD Anderson Cancer Center <!-- [PLACEHOLDER] --></p>
-							</li>
-							<li class="al-latest__item al-latest__item--static">
-								<p class="al-latest__title">Keynote &mdash; UTSW BME Annual Symposium</p>
-								<p class="al-latest__meta">2026 &middot; UT Southwestern Medical Center <!-- [PLACEHOLDER] --></p>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-
-				<!-- Talks video gallery placeholder -->
-				<div class="al-media-gallery" style="margin-top:2.5rem;">
-					<div class="al-media-gallery__placeholder">
-						<div class="al-media-gallery__placeholder-icon" aria-hidden="true">
-							<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="4" y="8" width="40" height="28" rx="3"/>
-								<polygon points="20,18 32,24 20,30" fill="currentColor" stroke="none" opacity="0.4"/>
-								<line x1="16" y1="42" x2="32" y2="42"/>
-							</svg>
-						</div>
-						<p>Video recordings and named-lecture links coming soon.</p>
-					</div>
-				</div>
-			</section>
-
-			<hr class="al-divider">
-
-			<!-- ── Row 6: Press Resources ── -->
-			<section class="al-inner-section" aria-labelledby="media-resources-heading">
-				<h2 class="al-inner-section__title" id="media-resources-heading">Press Resources</h2>
-				<p class="al-inner-section__lead">
-					Materials for journalists, editors, and conference organizers. For anything not listed, contact our communications team. <!-- [PLACEHOLDER] downloadable assets pending preparation. -->
-				</p>
-
-				<div class="al-feature-grid">
-
-					<div class="al-feature-card">
-						<div class="al-feature-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="3" y="3" width="18" height="18" rx="2"/>
-								<circle cx="8.5" cy="8.5" r="1.5"/>
-								<path d="M21 15l-5-5L5 21"/>
-							</svg>
-						</div>
-						<p class="al-feature-card__title">Editorial Image Use</p>
-						<p class="al-feature-card__desc">Lab images may be used in editorial and educational contexts with attribution to the Achilefu Lab, UT Southwestern Medical Center. Commercial use requires written permission. <!-- [PLACEHOLDER] confirm policy with UTSW comms. --></p>
-					</div>
-
-					<div class="al-feature-card">
-						<div class="al-feature-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-								<polyline points="7 10 12 15 17 10"/>
-								<line x1="12" y1="15" x2="12" y2="3"/>
-							</svg>
-						</div>
-						<p class="al-feature-card__title">Press Kit Download</p>
-						<p class="al-feature-card__desc">Comprehensive press kit with lab background, PI biography, current research summaries, and high-resolution figures &mdash; available on request. <!-- [PLACEHOLDER] PDF pending. --></p>
-					</div>
-
-					<div class="al-feature-card">
-						<div class="al-feature-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<circle cx="12" cy="12" r="10"/>
-								<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-							</svg>
-						</div>
-						<p class="al-feature-card__title">Visual Identity</p>
-						<p class="al-feature-card__desc">Lab logo, color palette, and approved usage guidelines for conference programs, posters, and editorial features. <!-- [PLACEHOLDER] brand pack pending. --></p>
-					</div>
-
-					<div class="al-feature-card">
-						<div class="al-feature-card__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-								<circle cx="12" cy="7" r="4"/>
-							</svg>
-						</div>
-						<p class="al-feature-card__title">PI Portrait &amp; Bio</p>
-						<p class="al-feature-card__desc">High-resolution portrait of Dr. Achilefu and short/long-form biographies in editorial-ready format. <a href="<?php echo $url_pi; ?>">See PI page</a> for full background. <!-- [PLACEHOLDER] portrait file pending. --></p>
-					</div>
-
-				</div>
-			</section>
-
-			<hr class="al-divider">
-
-			<!-- ── Row 7: Awards &amp; Recognition ── -->
-			<section class="al-inner-section" aria-labelledby="media-awards-heading">
-				<h2 class="al-inner-section__title" id="media-awards-heading">Awards &amp; Recognition</h2>
-				<p class="al-inner-section__lead">
-					Honors and recognitions for the lab and PI from national academies, professional societies, and the broader research community.
-				</p>
-				<ul class="al-latest__list">
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Elected to the National Academy of Medicine</p>
-						<p class="al-latest__meta">2024 &middot; National Academy of Medicine <!-- [VERIFY] year --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Elected to the National Academy of Engineering</p>
-						<p class="al-latest__meta">2018 &middot; National Academy of Engineering <!-- [VERIFY] year --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Lyda Hill Distinguished University Chair</p>
-						<p class="al-latest__meta">UT Southwestern Medical Center <!-- [VERIFY] year of appointment --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Britton Chance Biomedical Optics Award</p>
-						<p class="al-latest__meta">2021 &middot; SPIE &mdash; International Society for Optics and Photonics <!-- [PLACEHOLDER] --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Fellow, American Institute for Medical and Biological Engineering (AIMBE)</p>
-						<p class="al-latest__meta">2014 &middot; AIMBE College of Fellows <!-- [PLACEHOLDER] --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Fellow, Society for Molecular Imaging</p>
-						<p class="al-latest__meta">2016 &middot; World Molecular Imaging Society <!-- [PLACEHOLDER] --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">NIH Director's Transformative Research Award</p>
-						<p class="al-latest__meta">National Institutes of Health <!-- [PLACEHOLDER] --></p>
-					</li>
-					<li class="al-latest__item al-latest__item--static">
-						<p class="al-latest__title">Distinguished Investigator Award</p>
-						<p class="al-latest__meta">Academy of Radiology Research <!-- [PLACEHOLDER] --></p>
-					</li>
-				</ul>
-			</section>
-
-			<hr class="al-divider">
-
-			<!-- ── CTA ── -->
+			<!-- ── CTA ────────────────────────────────────────── -->
 			<div class="al-inner-cta">
 				<div class="al-inner-cta__copy">
-					<h3>Press &amp; Media Inquiries</h3>
-					<p>For interview requests, high-resolution image licensing, speaking-engagement enquiries, or editorial collaboration &mdash; reach our communications team.</p>
+					<h3>Submit a Photo or Request an Image</h3>
+					<p>Lab members &mdash; send us photos from the bench, the OR, conferences, or lab life and we'll add them to the gallery. Press &mdash; reach out for high-resolution files and licensing.</p>
 				</div>
-				<a href="<?php echo $url_contact; ?>" class="al-inner-cta__btn">Contact Us</a>
+				<a href="<?php echo $url_contact; ?>" class="al-inner-cta__btn">Get in Touch</a>
 			</div>
 
 		</div><!-- .al-container -->

@@ -1847,7 +1847,9 @@ body.home #inner-wrap {
   box-shadow: var(--shadow-card);
 }
 
-.al-media-figure img {
+.al-media-figure img,
+.al-media-figure > svg,
+.al-media-figure picture {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
@@ -1855,13 +1857,61 @@ body.home #inner-wrap {
   transition: transform 0.35s ease;
 }
 
-.al-media-figure:hover img { transform: scale(1.03); }
+.al-media-figure:hover img,
+.al-media-figure:hover > svg,
+.al-media-figure:hover picture { transform: scale(1.03); }
 
 .al-media-figure figcaption {
   font-size: 0.8rem;
   color: var(--al-muted);
   padding: 0.75rem 1rem;
   line-height: 1.5;
+}
+
+/* Aspect-ratio modifiers — vary figure shape for visual rhythm */
+.al-media-figure--square   img,
+.al-media-figure--square   > svg,
+.al-media-figure--square   picture { aspect-ratio: 1 / 1;  }
+.al-media-figure--portrait img,
+.al-media-figure--portrait > svg,
+.al-media-figure--portrait picture { aspect-ratio: 3 / 4;  }
+.al-media-figure--wide     img,
+.al-media-figure--wide     > svg,
+.al-media-figure--wide     picture { aspect-ratio: 16 / 9; }
+.al-media-figure--featured img,
+.al-media-figure--featured > svg,
+.al-media-figure--featured picture { aspect-ratio: 21 / 9; }
+
+/* Grid span modifiers — for breaking the standard 3-col rhythm */
+.al-media-figure--span-2 { grid-column: span 2; }
+.al-media-figure--full   { grid-column: 1 / -1; }
+
+/* Hover lift on the figure itself (in addition to image scale) */
+.al-media-figure {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.al-media-figure:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(15, 29, 42, 0.18);
+}
+
+/* Caption overlay variant — caption fades in over image on hover */
+.al-media-figure--overlay {
+  position: relative;
+}
+.al-media-figure--overlay figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: linear-gradient(to top, rgba(15, 29, 42, 0.85) 0%, rgba(15, 29, 42, 0.0) 100%);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 2rem 1.25rem 1rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.al-media-figure--overlay:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Gallery placeholder */
