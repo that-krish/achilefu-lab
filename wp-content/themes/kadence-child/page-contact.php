@@ -2,8 +2,18 @@
 /**
  * Template for the Contact page.
  * Matches slug: contact  —  page ID 12.
+ *
+ * v2.2 — editorial density refresh: tightened hero + form intro,
+ *         added FAQ-style "How we route inquiries" stream, address /
+ *         visitor-info section, and academic-profile links row.
  */
 defined( 'ABSPATH' ) || exit;
+
+$url_team         = al_page_url( 'team' );
+$url_pi           = al_page_url( 'pi' );
+$url_publications = al_page_url( 'publications' );
+$url_join         = al_page_url( 'join-us' );
+
 get_header();
 ?>
 
@@ -17,8 +27,7 @@ get_header();
 				Connect With the Lab
 			</h1>
 			<p class="al-inner-hero__sub">
-				Whether you're a prospective student, research collaborator, industry partner,
-				or member of the press &mdash; we'd love to hear from you.
+				Collaborators, prospective trainees, industry partners, and press &mdash; the right routing details are below.
 			</p>
 		</div>
 	</section>
@@ -27,13 +36,14 @@ get_header();
 	<div class="al-inner-body">
 		<div class="al-container">
 
+			<!-- ── Row 1: form + sticky details ── -->
 			<div class="al-contact-layout">
 
 				<!-- Left: form -->
 				<div class="al-contact-form-col">
 					<h2 class="al-inner-section__title">Send a Message</h2>
-					<p class="al-prose" style="margin-bottom:2rem;">
-						Use the form below to reach us directly. We respond to most inquiries within two business days.
+					<p class="al-prose" style="margin-bottom:1.75rem;">
+						Most inquiries receive a reply within two business days. For routing details, see the panel at right.
 					</p>
 
 					<?php
@@ -71,8 +81,8 @@ get_header();
 								<textarea id="cf-msg" rows="6" placeholder="Tell us about yourself and how we can help…" disabled></textarea>
 							</div>
 							<p class="al-contact-placeholder__note">
-								Contact form coming soon &mdash; please email us directly at
-								<a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a>.
+								Contact form coming soon &mdash; email
+								<a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a> in the meantime.
 							</p>
 						</form>
 					</div>
@@ -104,8 +114,7 @@ get_header();
 						<h3 class="al-contact-detail-card__label">Lab Location</h3>
 						<address class="al-contact-detail-card__value">
 							UT Southwestern Medical Center<br>
-							5323 Harry Hines Blvd<br>
-							Dallas, TX 75390
+							5323 Harry Hines Blvd, Dallas, TX 75390
 						</address>
 					</div>
 
@@ -120,8 +129,7 @@ get_header();
 						</div>
 						<h3 class="al-contact-detail-card__label">Joining the Lab</h3>
 						<p class="al-contact-detail-card__value">
-							Prospective graduate students and postdoctoral fellows: include your CV
-							and a brief statement of research interests.
+							Prospective students &amp; postdocs: include CV and a brief research-interest statement.
 						</p>
 					</div>
 
@@ -135,7 +143,7 @@ get_header();
 						</div>
 						<h3 class="al-contact-detail-card__label">Press &amp; Media</h3>
 						<p class="al-contact-detail-card__value">
-							For interview requests or media inquiries, contact Erin in lab communications at
+							Interview requests: Erin in lab comms &mdash;
 							<a href="mailto:contact@achilefulab.org">contact@achilefulab.org</a>.
 						</p>
 					</div>
@@ -143,6 +151,160 @@ get_header();
 				</aside><!-- /.al-contact-details-col -->
 
 			</div><!-- /.al-contact-layout -->
+
+			<hr class="al-divider">
+
+			<!-- ── Row 2: How we route inquiries (3-col list grid) ── -->
+			<section class="al-latest al-latest--nested" aria-labelledby="contact-routing-heading">
+				<div class="al-latest__head">
+					<h2 class="al-inner-section__title" id="contact-routing-heading">How We Route Inquiries</h2>
+					<p class="al-inner-section__lead">
+						A quick guide to who handles what, and what to include so we can respond efficiently. <!-- [PLACEHOLDER] routing details and response windows pending confirmation with lab admin. -->
+					</p>
+				</div>
+
+				<div class="al-latest__grid">
+
+					<!-- Column 1: Research & training -->
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">Research &amp; Training</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Research collaboration inquiries</p>
+								<p class="al-latest__meta">Routed to PI &middot; typical response 2&ndash;3 business days <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Prospective graduate students</p>
+								<p class="al-latest__meta">Include CV + research interests &middot; routed to lab admin <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Postdoctoral fellowships</p>
+								<p class="al-latest__meta">CV, two references, statement of interest &middot; routed to PI <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Visiting scholars &amp; sabbaticals</p>
+								<p class="al-latest__meta">Routed to PI &middot; subject to UTSW visa &amp; appointment policy <!-- [PLACEHOLDER] --></p>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Column 2: External & industry -->
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">External &amp; Industry</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Industry partnerships &amp; licensing</p>
+								<p class="al-latest__meta">Routed to UTSW Office for Technology Development <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Sponsored research &amp; contracts</p>
+								<p class="al-latest__meta">Routed to UTSW Sponsored Programs &middot; copy lab admin <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Speaking &amp; conference invitations</p>
+								<p class="al-latest__meta">Routed to PI's office &middot; advance notice appreciated <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Vendor &amp; reagent solicitations</p>
+								<p class="al-latest__meta">Email only &middot; no on-site drop-ins <!-- [PLACEHOLDER] --></p>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Column 3: Press & public -->
+					<div class="al-latest__col">
+						<p class="al-latest__col-heading">Press &amp; Public</p>
+						<ul class="al-latest__list">
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Press &amp; media inquiries</p>
+								<p class="al-latest__meta">Handled by Erin in lab communications <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Patient inquiries</p>
+								<p class="al-latest__meta">Directed to UTSW clinical care teams &middot; the lab does not provide direct patient care <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Image &amp; figure reuse permissions</p>
+								<p class="al-latest__meta">Email contact@achilefulab.org with citation context <!-- [PLACEHOLDER] --></p>
+							</li>
+							<li class="al-latest__item al-latest__item--static">
+								<p class="al-latest__title">Outreach &amp; community events</p>
+								<p class="al-latest__meta">Routed to lab comms &middot; response within one week <!-- [PLACEHOLDER] --></p>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Row 3: Visiting the lab — address + practical notes ── -->
+			<section class="al-inner-section" aria-labelledby="contact-visit-heading">
+				<div class="al-two-col al-two-col--40-60">
+
+					<aside>
+						<p class="al-inner-hero__eyebrow" style="margin-bottom:0.75rem;">Visit</p>
+						<h2 class="al-inner-section__title" id="contact-visit-heading" style="margin-bottom:1rem;">Finding the Lab</h2>
+						<address class="al-prose" style="font-style:normal;">
+							<strong style="color:var(--al-text);">Achilefu Lab</strong><br>
+							Department of Biomedical Engineering<br>
+							UT Southwestern Medical Center<br>
+							5323 Harry Hines Blvd<br>
+							Dallas, TX 75390<br>
+							<!-- [PLACEHOLDER] suite / building / floor number -->
+							Building &amp; suite: TBD
+						</address>
+					</aside>
+
+					<div>
+						<div class="al-prose">
+							<p>
+								The lab is located on the UT Southwestern Medical Center campus in Dallas. Most visitors enter through the South Campus parking structures; visitor parking is available adjacent to the main hospital entrance, with directions provided after appointments are confirmed. <!-- [PLACEHOLDER] confirm preferred visitor garage with PI's office. -->
+							</p>
+							<p>
+								Please coordinate visits in advance with the PI's office or lab admin &mdash; campus access is badge-controlled and most lab spaces require an escort. Site visits for collaborators, prospective trainees, and industry partners are welcomed by appointment.
+							</p>
+							<p>
+								<strong style="color:var(--al-text);">A note on scope:</strong> the Achilefu Lab is a research laboratory within UT Southwestern's Department of Biomedical Engineering. We do not operate a clinic, see patients, or provide medical advice. Patient inquiries and care coordination should be directed to UTSW clinical services.
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── Row 4: Connect on (academic profiles) ── -->
+			<section class="al-inner-section" aria-labelledby="contact-connect-heading">
+				<h2 class="al-inner-section__title" id="contact-connect-heading">Connect on Academic Profiles</h2>
+				<p class="al-inner-section__lead">
+					Follow Dr. Achilefu's publications, citations, and the lab's public work across the channels below. <!-- [PLACEHOLDER] confirm URLs with PI's office before launch. -->
+				</p>
+
+				<div class="al-pi-badges" style="margin-top:1.25rem;">
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->Google Scholar</a>
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->ORCID</a>
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->PubMed</a>
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->ResearchGate</a>
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->LinkedIn</a>
+					<a href="#" class="al-badge"><!-- [PLACEHOLDER URL] -->Lab X / Twitter</a>
+					<a href="<?php echo $url_pi; ?>" class="al-badge">PI Profile</a>
+					<a href="<?php echo $url_publications; ?>" class="al-badge">Publications</a>
+				</div>
+			</section>
+
+			<hr class="al-divider">
+
+			<!-- ── CTA ── -->
+			<div class="al-inner-cta">
+				<div class="al-inner-cta__copy">
+					<h3>Interested in joining the lab?</h3>
+					<p>Open positions, application materials, and trainee pathways are listed on the Join Us page.</p>
+				</div>
+				<a href="<?php echo $url_join; ?>" class="al-inner-cta__btn">See Open Positions</a>
+			</div>
 
 		</div><!-- .al-container -->
 	</div><!-- .al-inner-body -->
