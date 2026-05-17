@@ -233,7 +233,7 @@ get_header();
 			<hr class="al-divider">
 
 			<!-- ── Row 3: Selected Publications (3-col list grid) ── -->
-			<section class="al-latest" style="padding:0;background:transparent;" aria-labelledby="pi-pubs-heading">
+			<section class="al-latest al-latest--nested" aria-labelledby="pi-pubs-heading">
 				<div class="al-latest__head">
 					<h2 class="al-inner-section__title" id="pi-pubs-heading">Selected Publications</h2>
 					<p class="al-inner-section__lead">

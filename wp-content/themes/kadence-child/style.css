@@ -722,6 +722,14 @@ body.home #inner-wrap {
   padding: 5rem 0;
 }
 
+/* Use when .al-latest is nested inside another section (e.g. inner pages
+   that already provide their own padding/background) — strips the
+   standalone-section chrome so the block sits flush in the parent. */
+.al-latest.al-latest--nested {
+  background: transparent;
+  padding: 0;
+}
+
 .al-latest__head {
   margin-bottom: 2.5rem;
   max-width: 720px;
